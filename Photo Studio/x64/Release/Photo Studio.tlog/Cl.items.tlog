@@ -1,0 +1,16 @@
+C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Framebuffer.obj
+C:\dev\Photo Studio\Photo Studio\Source\Shader.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Shader.obj
+C:\dev\Photo Studio\Photo Studio\Source\CanvasObject.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\CanvasObject.obj
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Application.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\glad\src\glad.c;C:\dev\Photo Studio\Photo Studio\x64\Release\glad.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_impl_opengl2.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl3.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_impl_opengl3.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_sdl2.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_impl_sdl2.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_sdlrenderer2.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_impl_sdlrenderer2.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_demo.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_demo.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_draw.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_tables.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_tables.obj
+C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_widgets.obj
+C:\dev\Photo Studio\Photo Studio\Source\Main.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Main.obj
+C:\dev\Photo Studio\Photo Studio\Source\ShaderSource.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\ShaderSource.obj
