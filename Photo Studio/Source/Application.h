@@ -9,6 +9,9 @@
 #include <imgui/backends/imgui_impl_sdl2.h>
 #include <imgui/backends/imgui_impl_opengl2.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <iostream>
 #include <memory>
 
@@ -27,10 +30,14 @@ private:
 	SDL_Window* m_Window;
 	SDL_GLContext m_GLContext;
 	SDL_Event m_Event;
-	std::unique_ptr<CanvasObject> Canvas;
+	std::unique_ptr<CanvasObject> m_CanvasObject;
 	std::unique_ptr<Shader> CanvasShader;
+	std::unique_ptr<Shader> BrushShader;
 	std::unique_ptr<Framebuffer> Viewport;
+	std::unique_ptr<Framebuffer> Background;
 	bool m_Running;
+
+	int m_Height, m_Width;
 
 	void UpdateWindow();
 	void Init();

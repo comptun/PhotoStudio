@@ -1,10 +1,10 @@
 #include "Application.h"
 
 std::vector<float> vertices = {
-     0.5f,  0.5f, 0.0f,  // top right
-     0.5f, -0.5f, 0.0f,  // bottom right
-    -0.5f, -0.5f, 0.0f,  // bottom left
-    -0.5f,  0.5f, 0.0f   // top left 
+     0.5f,  0.5f, 0.0f, // top right
+     0.5f, -0.5f, 0.0f, // bottom right
+    -0.5f, -0.5f, 0.0f, // bottom left
+    -0.5f,  0.5f, 0.0f,   // top left 
 };
 std::vector<unsigned int> indices = {  // note that we start from 0!
     0, 1, 3,   // first triangle
@@ -28,8 +28,14 @@ void Application::UpdateWindow()
         ImGui_ImplSDL2_ProcessEvent(&m_Event);
         if (m_Event.type == SDL_QUIT)
             m_Running = false;
-        if (m_Event.type == SDL_WINDOWEVENT && m_Event.window.event == SDL_WINDOWEVENT_CLOSE && m_Event.window.windowID == SDL_GetWindowID(m_Window))
-            m_Running = false;
+        else if (m_Event.type == SDL_WINDOWEVENT) {
+            if (m_Event.window.event == SDL_WINDOWEVENT_CLOSE && m_Event.window.windowID == SDL_GetWindowID(m_Window)) {
+                m_Running = false;
+            }
+            else if (m_Event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                SDL_GetWindowSize(m_Window, &m_Width, &m_Height);
+            }
+        }
     }
 }
 void Application::Init()
@@ -102,9 +108,11 @@ void Application::Init()
     ImFont* roboto = io.Fonts->AddFontFromFileTTF("Fonts/Roboto-Regular.ttf", 16.0f);
     //ImGui::PushFont(roboto);
 
-    Canvas = std::make_unique<CanvasObject>(indices, vertices);
+    m_CanvasObject = std::make_unique<CanvasObject>(indices, vertices);
     CanvasShader = std::make_unique<Shader>(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS);
+    BrushShader = std::make_unique<Shader>(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS);
     Viewport = std::make_unique<Framebuffer>(100, 100);
+    Background = std::make_unique<Framebuffer>(100, 100);
 }
 void Application::Run()
 {
@@ -168,6 +176,7 @@ void Application::RenderUI()
     
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar();
+
         if (ImGui::BeginMenu("Photo Studio"))
         {
             ImGui::MenuItem("About", "", nullptr, true);
@@ -198,12 +207,6 @@ void Application::RenderUI()
         ImGui::End();
     }
 
-    int w, h;
-    SDL_GetWindowSize(m_Window, &w, &h);
-    glViewport(0, 0, w, h);
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
 
     {
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
@@ -212,9 +215,6 @@ void Application::RenderUI()
 
         const float window_width = ImGui::GetContentRegionAvail().x;
         const float window_height = ImGui::GetContentRegionAvail().y;
-
-        Viewport->Rescale(window_width, window_height);
-        glViewport(0, 0, window_width, window_height);
 
         ImVec2 pos = ImGui::GetCursorScreenPos();
 
@@ -226,14 +226,43 @@ void Application::RenderUI()
             ImVec2(1, 0)
         );
 
+        int width = 1000, height = 750;
 
         Viewport->Bind();
 
+        Viewport->Rescale(window_width, window_height);
+        glViewport(0, 0, window_width, window_height);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
         CanvasShader->UseProgram();
-        Canvas->Draw();
-        glUseProgram(0);
+        CanvasShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(width, height, 0)));
+        CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+        CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
+        
+        glBindTexture(GL_TEXTURE_2D, Background->GetTexture());
+        m_CanvasObject->Draw();
 
         Viewport->Unbind();
+
+        Background->Bind();
+
+
+        Background->Rescale(width, height);
+        glViewport(0, 0, width*2, height*2);
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        BrushShader->UseProgram();
+        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)), glm::vec3(300, 300, 0)));
+        BrushShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+        BrushShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)width, 0.0f, (float)height));
+
+        m_CanvasObject->Draw();
+
+        Background->Unbind();
+
+        glUseProgram(0);
 
         ImGui::End();
     }

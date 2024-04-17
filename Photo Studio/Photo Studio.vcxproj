@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Canvas.cpp" />
     <ClCompile Include="Source\Framebuffer.cpp" />
     <ClCompile Include="Source\Shader.cpp" />
     <ClCompile Include="Source\CanvasObject.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Source\ShaderSource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Canvas.h" />
     <ClInclude Include="Source\Framebuffer.h" />
     <ClInclude Include="Source\Shader.h" />
     <ClInclude Include="Source\CanvasObject.h" />

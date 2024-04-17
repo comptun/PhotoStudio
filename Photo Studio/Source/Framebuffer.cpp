@@ -28,6 +28,8 @@ Framebuffer::Framebuffer(uint64_t Width, uint64_t Height)
 
 Framebuffer::~Framebuffer()
 {
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glDeleteFramebuffers(GL_FRAMEBUFFER, &m_FBO);
 
 }
 

@@ -1,3 +1,7 @@
+C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\Framebuffer.obj
+C:\dev\Photo Studio\Photo Studio\Source\Shader.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\Shader.obj
+C:\dev\Photo Studio\Photo Studio\Source\CanvasObject.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\CanvasObject.obj
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\Application.obj
 C:\dev\Photo Studio\Photo Studio\Dependencies\glad\src\glad.c;C:\dev\Photo Studio\Photo Studio\x64\Debug\glad.obj
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\imgui_impl_opengl2.obj
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl3.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\imgui_impl_opengl3.obj
@@ -8,4 +12,5 @@ C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_demo.cpp;C:\dev\Photo 
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\imgui_draw.obj
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_tables.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\imgui_tables.obj
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\imgui_widgets.obj
-C:\dev\Photo Studio\Photo Studio\Main.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\Main.obj
+C:\dev\Photo Studio\Photo Studio\Source\Main.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\Main.obj
+C:\dev\Photo Studio\Photo Studio\Source\ShaderSource.cpp;C:\dev\Photo Studio\Photo Studio\x64\Debug\ShaderSource.obj

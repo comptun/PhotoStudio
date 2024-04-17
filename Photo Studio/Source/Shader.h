@@ -5,7 +5,8 @@
 #include <unordered_map>
 
 enum class ShaderType {
-	CANVAS_FS, CANVAS_VS,
+	CANVAS_VS, CANVAS_FS,
+	BRUSH_VS, BRUSH_FS,
 };
 
 class Shader

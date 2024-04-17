@@ -1,2 +1,7 @@
-﻿  Main.cpp
+﻿  Application.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(223,41): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(223,27): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(224,40): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(224,26): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(229,13): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
   Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Debug\Photo Studio.exe
