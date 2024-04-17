@@ -1,6 +1,20 @@
-﻿  ShaderSource.cpp
+﻿  Application.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(122,42): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(122,25): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(123,39): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(123,22): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(236,13): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(247,41): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(247,27): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(248,40): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(248,26): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(274,43): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(274,26): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(3465,56): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(118,23): message : see reference to function template instantiation 'std::unique_ptr<Framebuffer,std::default_delete<Framebuffer>> std::make_unique<Framebuffer,float&,float&,0>(float &,float &)' being compiled
+  ShaderSource.cpp
   Generating code
-  20 of 2340 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  21 of 2342 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     35 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

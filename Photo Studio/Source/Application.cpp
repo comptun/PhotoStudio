@@ -38,6 +38,9 @@ void Application::UpdateWindow()
         }
     }
 }
+
+float BackgroundWidth = 1000, BackgroundHeight = 750;
+
 void Application::Init()
 {
     // Setup SDL
@@ -112,7 +115,16 @@ void Application::Init()
     CanvasShader = std::make_unique<Shader>(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS);
     BrushShader = std::make_unique<Shader>(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS);
     Viewport = std::make_unique<Framebuffer>(100, 100);
-    Background = std::make_unique<Framebuffer>(100, 100);
+    Background = std::make_unique<Framebuffer>(BackgroundWidth, BackgroundHeight);
+
+    Background->Bind();
+
+    Background->Rescale(BackgroundWidth, BackgroundHeight);
+    glViewport(0, 0, BackgroundWidth, BackgroundHeight);
+    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    Background->Unbind();
 }
 void Application::Run()
 {
@@ -134,6 +146,8 @@ void Application::RenderUI()
     ImGui_ImplOpenGL2_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
+
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
@@ -226,7 +240,7 @@ void Application::RenderUI()
             ImVec2(1, 0)
         );
 
-        int width = 1000, height = 750;
+
 
         Viewport->Bind();
 
@@ -235,8 +249,18 @@ void Application::RenderUI()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+
+        BrushShader->UseProgram();
+        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(BackgroundWidth, BackgroundHeight, 0)));
+        BrushShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+        CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
+        BrushShader->Uniform<glm::vec4>("Color", { 1.0f,1.0f,1.0f,1.0f });
+
+        m_CanvasObject->Draw();
+
+
         CanvasShader->UseProgram();
-        CanvasShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(width, height, 0)));
+        CanvasShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(BackgroundWidth, -BackgroundHeight, 0)));
         CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
         
@@ -247,16 +271,15 @@ void Application::RenderUI()
 
         Background->Bind();
 
+        glViewport(0, 0, BackgroundWidth, BackgroundHeight);
 
-        Background->Rescale(width, height);
-        glViewport(0, 0, width*2, height*2);
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        ImVec2 mousePos = io.MousePos;
 
         BrushShader->UseProgram();
-        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)), glm::vec3(300, 300, 0)));
+        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(mousePos.x, mousePos.y, 0)), glm::vec3(20, 20, 0)));
         BrushShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        BrushShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)width, 0.0f, (float)height));
+        BrushShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)BackgroundWidth, 0.0f, (float)BackgroundHeight));
+        BrushShader->Uniform<glm::vec4>("Color", { 1.0f,0.0f,0.0f,1.0f });
 
         m_CanvasObject->Draw();
 
@@ -281,7 +304,6 @@ void Application::RenderUI()
     ImGui::Render();
 
     //Canvas->Draw();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
     /*glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
     glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
     glClear(GL_COLOR_BUFFER_BIT);*/
