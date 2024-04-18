@@ -20,6 +20,7 @@
 #include "Framebuffer.h"
 #include "Canvas.h"
 #include "Tools/Tools.h"
+#include "Primitives.h"
 
 class Application
 {

@@ -1,21 +1,7 @@
 ﻿  Application.cpp
-  Canvas.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(25,43): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(25,26): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(26,39): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(26,22): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(51,9): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(62,42): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(62,28): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(63,40): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(63,26): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(91,43): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(91,26): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-  Input.cpp
-  Main.cpp
   Generating code
-  6 of 2312 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  1 of 2355 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    36 functions had inline decision re-evaluated but remain unchanged
+    38 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe

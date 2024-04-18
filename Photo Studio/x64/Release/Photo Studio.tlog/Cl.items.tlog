@@ -1,3 +1,5 @@
+C:\dev\Photo Studio\Photo Studio\Source\Primitives.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Primitives.obj
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Paintbrush.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Paintbrush.obj
 C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Canvas.obj
 C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Framebuffer.obj
 C:\dev\Photo Studio\Photo Studio\Source\Input.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Input.obj
@@ -16,3 +18,5 @@ C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_tables.cpp;C:\dev\Phot
 C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\imgui_widgets.obj
 C:\dev\Photo Studio\Photo Studio\Source\Main.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Main.obj
 C:\dev\Photo Studio\Photo Studio\Source\ShaderSource.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\ShaderSource.obj
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Tools.obj
+C:\dev\Photo Studio\Photo Studio\Source\Utilities.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Utilities.obj

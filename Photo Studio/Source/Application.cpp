@@ -1,7 +1,8 @@
 #include "Application.h"
 
 Application::Application()
-    : m_Running(true)
+    : m_Running(true),
+    m_Canvas({ 1000, 750 })
 {
     m_Window = SDL_GL_GetCurrentWindow();
 }
@@ -113,6 +114,7 @@ void Application::InitImGui()
 }
 void Application::Run()
 {
+    Primitive::Init();
 	InitImGui();
 	while (m_Running) {
 		UpdateWindow();
@@ -206,11 +208,11 @@ void Application::RenderUI()
         if (ImGui::Button("None")) {
             m_Canvas.SetTool(Tool::None);
         }
-        if (ImGui::Button("Paint")) {
-            m_Canvas.SetTool(Tool::Paint);
+        if (ImGui::Button("Paintbrush")) {
+            m_Canvas.SetTool(Tool::Paintbrush);
         }
-        if (ImGui::Button("Fill")) {
-            m_Canvas.SetTool(Tool::Fill);
+        if (ImGui::Button("Fill Bucket")) {
+            m_Canvas.SetTool(Tool::FillBucket);
         }
 
         ImGui::End();
