@@ -1,20 +1,9 @@
 #include "Application.h"
 
-std::vector<float> vertices = {
-     0.5f,  0.5f, 0.0f, // top right
-     0.5f, -0.5f, 0.0f, // bottom right
-    -0.5f, -0.5f, 0.0f, // bottom left
-    -0.5f,  0.5f, 0.0f,   // top left 
-};
-std::vector<unsigned int> indices = {  // note that we start from 0!
-    0, 1, 3,   // first triangle
-    1, 2, 3    // second triangle
-};
-
 Application::Application()
     : m_Running(true)
 {
-
+    m_Window = SDL_GL_GetCurrentWindow();
 }
 Application::~Application()
 {
@@ -36,12 +25,19 @@ void Application::UpdateWindow()
                 SDL_GetWindowSize(m_Window, &m_Width, &m_Height);
             }
         }
+        else if (m_Event.type == SDL_MOUSEMOTION) {
+            ProcessMouseMotion(m_Event.motion);
+        }
+        else if (m_Event.type == SDL_MOUSEBUTTONUP || m_Event.type == SDL_MOUSEBUTTONDOWN) {
+            ProcessMouseButton(m_Event.button);
+        }
+        else if (m_Event.type == SDL_MOUSEWHEEL) {
+            ProcessMouseWheel(m_Event.wheel);
+        }
     }
 }
 
-float BackgroundWidth = 1000, BackgroundHeight = 750;
-
-void Application::Init()
+void Application::InitGL()
 {
     // Setup SDL
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
@@ -62,15 +58,15 @@ void Application::Init()
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
     SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
-    m_Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
-    if (m_Window == nullptr)
+    SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
+    if (Window == nullptr)
     {
         printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
         return;
     }
 
-    m_GLContext = SDL_GL_CreateContext(m_Window);
-    SDL_GL_MakeCurrent(m_Window, m_GLContext);
+    m_GLContext = SDL_GL_CreateContext(Window);
+    SDL_GL_MakeCurrent(Window, m_GLContext);
     gladLoadGLLoader(SDL_GL_GetProcAddress);
     printf("OpenGL loaded\n");
     printf("Vendor:   %s\n", glGetString(GL_VENDOR));
@@ -78,7 +74,11 @@ void Application::Init()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
+}
 
+
+void Application::InitImGui()
+{
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -110,25 +110,10 @@ void Application::Init()
 
     ImFont* roboto = io.Fonts->AddFontFromFileTTF("Fonts/Roboto-Regular.ttf", 16.0f);
     //ImGui::PushFont(roboto);
-
-    m_CanvasObject = std::make_unique<CanvasObject>(indices, vertices);
-    CanvasShader = std::make_unique<Shader>(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS);
-    BrushShader = std::make_unique<Shader>(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS);
-    Viewport = std::make_unique<Framebuffer>(100, 100);
-    Background = std::make_unique<Framebuffer>(BackgroundWidth, BackgroundHeight);
-
-    Background->Bind();
-
-    Background->Rescale(BackgroundWidth, BackgroundHeight);
-    glViewport(0, 0, BackgroundWidth, BackgroundHeight);
-    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    Background->Unbind();
 }
 void Application::Run()
 {
-	Init();
+	InitImGui();
 	while (m_Running) {
 		UpdateWindow();
 		Render();
@@ -217,78 +202,22 @@ void Application::RenderUI()
 
     {
         ImGui::Begin("Toolbar");
-        ImGui::Text("This is the toolbar");
-        ImGui::End();
-    }
-
-
-    {
-        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-        ImGui::Begin("Viewport");
-        ImGui::PopStyleVar();
-
-        const float window_width = ImGui::GetContentRegionAvail().x;
-        const float window_height = ImGui::GetContentRegionAvail().y;
-
-        ImVec2 pos = ImGui::GetCursorScreenPos();
-
-        ImGui::GetWindowDrawList()->AddImage(
-            (void*)Viewport->GetTexture(),
-            ImVec2(pos.x, pos.y),
-            ImVec2(pos.x + window_width, pos.y + window_height),
-            ImVec2(0, 1),
-            ImVec2(1, 0)
-        );
-
-
-
-        Viewport->Bind();
-
-        Viewport->Rescale(window_width, window_height);
-        glViewport(0, 0, window_width, window_height);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-
-        BrushShader->UseProgram();
-        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(BackgroundWidth, BackgroundHeight, 0)));
-        BrushShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
-        BrushShader->Uniform<glm::vec4>("Color", { 1.0f,1.0f,1.0f,1.0f });
-
-        m_CanvasObject->Draw();
-
-
-        CanvasShader->UseProgram();
-        CanvasShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(BackgroundWidth, -BackgroundHeight, 0)));
-        CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
         
-        glBindTexture(GL_TEXTURE_2D, Background->GetTexture());
-        m_CanvasObject->Draw();
-
-        Viewport->Unbind();
-
-        Background->Bind();
-
-        glViewport(0, 0, BackgroundWidth, BackgroundHeight);
-
-        ImVec2 mousePos = io.MousePos;
-
-        BrushShader->UseProgram();
-        BrushShader->Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(mousePos.x, mousePos.y, 0)), glm::vec3(20, 20, 0)));
-        BrushShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        BrushShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)BackgroundWidth, 0.0f, (float)BackgroundHeight));
-        BrushShader->Uniform<glm::vec4>("Color", { 1.0f,0.0f,0.0f,1.0f });
-
-        m_CanvasObject->Draw();
-
-        Background->Unbind();
-
-        glUseProgram(0);
+        if (ImGui::Button("None")) {
+            m_Canvas.SetTool(Tool::None);
+        }
+        if (ImGui::Button("Paint")) {
+            m_Canvas.SetTool(Tool::Paint);
+        }
+        if (ImGui::Button("Fill")) {
+            m_Canvas.SetTool(Tool::Fill);
+        }
 
         ImGui::End();
     }
+
+
+    m_Canvas.DrawCanvas();
 
     {
         ImGui::Begin("Properties");

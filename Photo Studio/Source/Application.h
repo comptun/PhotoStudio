@@ -18,6 +18,8 @@
 #include "CanvasObject.h"
 #include "Shader.h"
 #include "Framebuffer.h"
+#include "Canvas.h"
+#include "Tools/Tools.h"
 
 class Application
 {
@@ -26,23 +28,25 @@ public:
 	~Application();
 
 	void Run();
+	static void InitGL();
 private:
 	SDL_Window* m_Window;
-	SDL_GLContext m_GLContext;
+	inline static SDL_GLContext m_GLContext = nullptr;
 	SDL_Event m_Event;
-	std::unique_ptr<CanvasObject> m_CanvasObject;
-	std::unique_ptr<Shader> CanvasShader;
-	std::unique_ptr<Shader> BrushShader;
-	std::unique_ptr<Framebuffer> Viewport;
-	std::unique_ptr<Framebuffer> Background;
+	Canvas m_Canvas;
+	Tool m_Tool;
 	bool m_Running;
 
 	int m_Height, m_Width;
 
 	void UpdateWindow();
-	void Init();
+	void InitImGui();
 	void Render();
 	void RenderUI();
 	void Cleanup();
+
+	void ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent);
+	void ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent);
+	void ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent);
 };
 
