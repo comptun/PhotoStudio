@@ -52,6 +52,9 @@ void Application::InitGL()
     SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");
 #endif
 
+    /*SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);*/
+
     // Setup window
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
@@ -75,6 +78,8 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
+
+    glEnable(GL_MULTISAMPLE);
 }
 
 
@@ -211,8 +216,8 @@ void Application::RenderUI()
         if (ImGui::Button("Paintbrush")) {
             m_Canvas.SetTool(Tool::Paintbrush);
         }
-        if (ImGui::Button("Fill Bucket")) {
-            m_Canvas.SetTool(Tool::FillBucket);
+        if (ImGui::Button("Paint Bucket")) {
+            m_Canvas.SetTool(Tool::PaintBucket);
         }
 
         ImGui::End();

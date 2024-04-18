@@ -6,7 +6,7 @@ enum class Tool
 {
 	None,
 	Paintbrush,
-	FillBucket,
+	PaintBucket,
 };
 
 class Tools : public Paintbrush

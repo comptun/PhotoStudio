@@ -20,11 +20,9 @@ class Paintbrush
 public:
 	Paintbrush();
 	~Paintbrush();
-	void DrawInterpolatedPaintbrush(glm::vec3 Start, glm::vec3 End);
-	void DrawPaintbrush(glm::vec3 Position);
+	void DrawInterpolatedPaintbrush(glm::vec3 Position);
 private:
 	Shader m_BrushShader;
-
-	
+	void DrawPaintbrush(glm::vec3 Position);
 };
 
