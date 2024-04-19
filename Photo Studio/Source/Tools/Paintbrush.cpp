@@ -38,7 +38,7 @@ void Paintbrush::DrawInterpolatedPaintbrush(glm::vec3 Position)
 
     m_BrushShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
     m_BrushShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)CanvasData::m_CanvasSize.x, 0.0f, (float)CanvasData::m_CanvasSize.y));
-    m_BrushShader.Uniform<glm::vec4>("Color", { 1.0f,0.0f,0.0f,1.0f });
+    m_BrushShader.Uniform<glm::vec4>("Color", WindowData::m_Color);
 
     for (int i = 1; i <= Steps; ++i) {
         glm::vec3 Pos = glm::lerp(PreviousPosition, Position, (float)i * 1.0/(float)Steps);

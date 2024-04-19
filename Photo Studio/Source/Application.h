@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
 
 #include "CanvasObject.h"
 #include "Shader.h"
@@ -21,8 +22,9 @@
 #include "Canvas.h"
 #include "Tools/Tools.h"
 #include "Primitives.h"
+#include "Windows.h"
 
-class Application
+class Application : public Windows
 {
 public:
 	Application();
@@ -34,8 +36,8 @@ private:
 	SDL_Window* m_Window;
 	inline static SDL_GLContext m_GLContext = nullptr;
 	SDL_Event m_Event;
-	Canvas m_Canvas;
-	Tool m_Tool;
+	std::vector<std::unique_ptr<Canvas>> m_Canvases;
+	Tools m_Tools;
 	bool m_Running;
 
 	int m_Height, m_Width;

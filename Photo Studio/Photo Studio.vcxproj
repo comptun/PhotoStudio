@@ -157,6 +157,7 @@
     <ClCompile Include="Source\ShaderSource.cpp" />
     <ClCompile Include="Source\Tools\Tools.cpp" />
     <ClCompile Include="Source\Utilities.cpp" />
+    <ClCompile Include="Source\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\CanvasData.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="Source\Tools\Tools.h" />
     <ClInclude Include="Source\Utilities.h" />
+    <ClInclude Include="Source\Windows.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

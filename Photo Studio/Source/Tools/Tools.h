@@ -13,6 +13,5 @@ class Tools : public Paintbrush
 {
 public:
 	Tools();
-protected:
 	Tool m_Tool;
 };

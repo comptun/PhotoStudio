@@ -1,10 +1,13 @@
 #include "Application.h"
 
 Application::Application()
-    : m_Running(true),
-    m_Canvas({ 1000, 750 })
+    : m_Running(true)
 {
     m_Window = SDL_GL_GetCurrentWindow();
+
+    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(1000, 750));
+
+    m_Canvases.push_back(std::move(Canv));
 }
 Application::~Application()
 {
@@ -141,17 +144,11 @@ void Application::RenderUI()
 
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-    //ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+    //ImGui::ShowDemoWindow();
 
+    bool CreateNewProject = false;
 
-
-    bool show_demo_window = true;
-    bool show_another_window = false;
-    ImVec4 clear_color = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);
-
-    bool open = true;
-
-    ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_NoUndocking;
+    ImGuiDockNodeFlags dockspace_flags = 0;// = ImGuiDockNodeFlags_NoUndocking;
 
 
     ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
@@ -165,7 +162,7 @@ void Application::RenderUI()
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 
 
-    ImGui::Begin("DockSpace Demo", &open, window_flags);
+    ImGui::Begin("DockSpace Demo", nullptr, window_flags);
 
     ImGui::PopStyleVar(3);
 
@@ -190,13 +187,14 @@ void Application::RenderUI()
         }
         if (ImGui::BeginMenu("File"))
         {
-            ImGui::MenuItem("New project", "", nullptr, true);
+            ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
+
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Edit"))
         {
-            ImGui::MenuItem("Undo\tCtrl+Z", "", nullptr, true);
-            ImGui::MenuItem("Redo\tCtrl+Shift+Z", "", nullptr, true);
+            ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, true);
+            ImGui::MenuItem("Redo", "Ctrl+Shift+Z", nullptr, true);
             ImGui::EndMenu();
         }
 
@@ -206,29 +204,51 @@ void Application::RenderUI()
     }
     ImGui::End();
 
+    ImGui::SetNextWindowClass(&window_class);
+    ImGui::Begin("Tool Properties");
+
+    ImGui::End();
+
+    if (CreateNewProject) {
+        static int ProjNumber = 1;
+        std::cout << "YES";
+        auto Canv = std::make_unique<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750));
+
+        m_Canvases.push_back(std::move(Canv));
+
+        ProjNumber += 1;
+    }
+
 
     {
         ImGui::Begin("Toolbar");
         
         if (ImGui::Button("None")) {
-            m_Canvas.SetTool(Tool::None);
+            m_Tools.m_Tool = Tool::None;
         }
         if (ImGui::Button("Paintbrush")) {
-            m_Canvas.SetTool(Tool::Paintbrush);
+            m_Tools.m_Tool = Tool::Paintbrush;
         }
         if (ImGui::Button("Paint Bucket")) {
-            m_Canvas.SetTool(Tool::PaintBucket);
+            m_Tools.m_Tool = Tool::PaintBucket;
         }
 
         ImGui::End();
     }
 
-
-    m_Canvas.DrawCanvas();
+    for (int i = 0; i < m_Canvases.size(); ++i) {
+        m_Canvases[i]->DrawCanvas();
+    }
 
     {
+        DrawColorWindow();
+
         ImGui::Begin("Properties");
-        ImGui::Text("These are the properties");
+        
+
+        ImGui::End();
+
+        ImGui::Begin("Layers");
         ImGui::End();
     }
 
@@ -239,17 +259,9 @@ void Application::RenderUI()
     // Rendering
     ImGui::Render();
 
-    //Canvas->Draw();
-    /*glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-    glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-    glClear(GL_COLOR_BUFFER_BIT);*/
-    //glUseProgram(0); // You may want this if using this code in an OpenGL 3+ context where shaders may be bound
 
     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 
-    // Update and Render additional Platform Windows
-    // (Platform functions may change the current OpenGL context, so we save/restore it to make it easier to paste this code elsewhere.
-    //  For this specific demo app we could also call SDL_GL_MakeCurrent(window, gl_context) directly)
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
         SDL_Window* backup_current_window = SDL_GL_GetCurrentWindow();

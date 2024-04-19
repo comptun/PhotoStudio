@@ -18,14 +18,19 @@
 
 #include <SDL2/SDL.h>
 
-class Canvas : public Tools
+class Canvas
 {
 public:
-	Canvas(glm::vec2 Size);
+	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size);
 	~Canvas();
 
-	Tool GetTool();
-	void SetTool(Tool tool);
+	void SetActive();
+
+	Tools& m_Tools;
+
+	glm::vec2 m_CanvasSize;
+
+	std::string m_CanvasName;
 
 	void DrawCanvas();
 private:

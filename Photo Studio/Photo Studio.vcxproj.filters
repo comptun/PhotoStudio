@@ -81,6 +81,9 @@
     <ClCompile Include="Source\Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\imgui\backends\imgui_impl_sdlrenderer2.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
