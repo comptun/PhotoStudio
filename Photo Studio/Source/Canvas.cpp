@@ -61,17 +61,17 @@ void Canvas::DrawCanvas()
         glClear(GL_COLOR_BUFFER_BIT);
 
 
-        m_BackgroundShader.UseProgram();
+        /*m_BackgroundShader.UseProgram();
         m_BackgroundShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0)));
         m_BackgroundShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         m_BackgroundShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
         m_BackgroundShader.Uniform<glm::vec4>("Color", { 1.0f,1.0f,1.0f,1.0f });
 
-        Primitive::m_CanvasObject->Draw();
+        Primitive::m_CanvasObject->Draw();*/
 
 
         m_CanvasShader.UseProgram();
-        m_CanvasShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0)));
+        m_CanvasShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, 0)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0)));
         m_CanvasShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         m_CanvasShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
 
@@ -81,7 +81,7 @@ void Canvas::DrawCanvas()
     m_Viewport.Unbind();
 
     glm::vec3 BrushPosition = GetCanvasMousePosition();
-    if (m_Tools.m_Tool == Tool::Paintbrush)
+    if (m_Tools.m_Tool == Tool::BrushTool)
     {
         m_Background.Bind();
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition);
@@ -102,5 +102,5 @@ glm::vec3 Canvas::GetCanvasMousePosition()
     glm::vec2 mousePos = Input::Mouse::Pos;
     glm::vec<2, int> WindowPos = { 0,0 };
     SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &WindowPos.x, &WindowPos.y);
-    return glm::vec3(mousePos.x - ViewportPos.x - (ViewportSize.x - m_CanvasSize.x) / 2.0f + WindowPos.x, mousePos.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y) / 2.0f + WindowPos.y, 0);
+    return glm::vec3(mousePos.x - CanvasData::m_CanvasOffset.x - ViewportPos.x - (ViewportSize.x - m_CanvasSize.x) / 2.0f + WindowPos.x, mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y) / 2.0f + WindowPos.y, 0);
 }

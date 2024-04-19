@@ -226,8 +226,8 @@ void Application::RenderUI()
         if (ImGui::Button("None")) {
             m_Tools.m_Tool = Tool::None;
         }
-        if (ImGui::Button("Paintbrush")) {
-            m_Tools.m_Tool = Tool::Paintbrush;
+        if (ImGui::Button("Brush tool")) {
+            m_Tools.m_Tool = Tool::BrushTool;
         }
         if (ImGui::Button("Paint Bucket")) {
             m_Tools.m_Tool = Tool::PaintBucket;

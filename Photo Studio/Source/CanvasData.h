@@ -6,4 +6,5 @@
 struct CanvasData
 {
 	inline static glm::vec2 m_CanvasSize;
+	inline static glm::vec2 m_CanvasOffset = { 0, 0 };
 };

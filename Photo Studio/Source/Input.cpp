@@ -6,6 +6,10 @@ void Application::ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent)
 {
 	Input::Mouse::Pos = { MotionEvent.x, MotionEvent.y };
 	Input::Mouse::Rel = { MotionEvent.xrel, MotionEvent.yrel };
+
+	if (Input::Mouse::Button == SDL_BUTTON_MIDDLE && Input::Mouse::State == SDL_PRESSED) {
+		CanvasData::m_CanvasOffset += Input::Mouse::Rel;
+	}
 }
 
 void Application::ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent)

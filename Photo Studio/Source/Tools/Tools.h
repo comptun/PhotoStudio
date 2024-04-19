@@ -1,15 +1,18 @@
 #pragma once
 
 #include "Paintbrush.h"
+#include "PaintBucket.h"
 
 enum class Tool
 {
 	None,
-	Paintbrush,
+	BrushTool,
 	PaintBucket,
 };
 
-class Tools : public Paintbrush
+class Tools : 
+	public Paintbrush,
+	public PaintBucket
 {
 public:
 	Tools();
