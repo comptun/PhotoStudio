@@ -1,6 +1,7 @@
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Eraser.obj
 C:\dev\Photo Studio\Photo Studio\Source\Tools\PaintBucket.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\PaintBucket.obj
 C:\dev\Photo Studio\Photo Studio\Source\Primitives.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Primitives.obj
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Paintbrush.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Paintbrush.obj
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Brush.obj
 C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Canvas.obj
 C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Framebuffer.obj
 C:\dev\Photo Studio\Photo Studio\Source\Input.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Input.obj

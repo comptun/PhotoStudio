@@ -72,7 +72,7 @@
     <ClCompile Include="Source\Tools\Tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Tools\Paintbrush.cpp">
+    <ClCompile Include="Source\Tools\Brush.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Primitives.cpp">
@@ -85,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Tools\PaintBucket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Tools\Eraser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,7 +146,7 @@
     <ClInclude Include="Source\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Tools\Paintbrush.h">
+    <ClInclude Include="Source\Tools\Brush.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Primitives.h">
@@ -162,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Tools\Eraser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

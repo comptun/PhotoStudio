@@ -19,8 +19,11 @@ void Tools::DrawToolPropertiesMenu()
 		case Tool::None:
 			ImGui::Text("No tool selected");
 			break;
-		case Tool::BrushTool:
+		case Tool::Brush:
 			DrawPaintbrushMenu();
+			break;
+		case Tool::Eraser:
+			DrawEraserMenu();
 			break;
 		case Tool::PaintBucket:
 			ImGui::Text("Paint bucket");

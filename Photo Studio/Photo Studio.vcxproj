@@ -135,9 +135,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Tools\Eraser.cpp" />
     <ClCompile Include="Source\Tools\PaintBucket.cpp" />
     <ClCompile Include="Source\Primitives.cpp" />
-    <ClCompile Include="Source\Tools\Paintbrush.cpp" />
+    <ClCompile Include="Source\Tools\Brush.cpp" />
     <ClCompile Include="Source\Canvas.cpp" />
     <ClCompile Include="Source\Framebuffer.cpp" />
     <ClCompile Include="Source\Input.cpp" />
@@ -161,11 +162,12 @@
     <ClCompile Include="Source\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Tools\Eraser.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Source\Tools\PaintBucket.h" />
     <ClInclude Include="Source\CanvasData.h" />
     <ClInclude Include="Source\Primitives.h" />
-    <ClInclude Include="Source\Tools\Paintbrush.h" />
+    <ClInclude Include="Source\Tools\Brush.h" />
     <ClInclude Include="Source\Canvas.h" />
     <ClInclude Include="Source\Framebuffer.h" />
     <ClInclude Include="Source\Input.h" />

@@ -92,9 +92,15 @@ void Canvas::DrawCanvas()
     m_Background.Bind();
 
     glm::vec3 BrushPosition = GetCanvasMousePosition();
-    if (m_Tools.m_Tool == Tool::BrushTool)
+    if (m_Tools.m_Tool == Tool::Brush)
     {
+        m_Tools.m_BrushMode = BrushMode::Pencil;
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition);
+    }
+    else if (m_Tools.m_Tool == Tool::Eraser) 
+    {
+        m_Tools.m_BrushMode = BrushMode::Eraser;
+        m_Tools.DrawInterpolatedPaintbrush(BrushPosition, m_Tools.GetEraserSize());
     }
 
     m_Background.Unbind();
