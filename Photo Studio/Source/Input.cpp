@@ -2,7 +2,7 @@
 
 #include "Application.h"
 
-void Application::ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent)
+void Input::ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent)
 {
 	Input::Mouse::Pos = { MotionEvent.x, MotionEvent.y };
 	Input::Mouse::Rel = { MotionEvent.xrel, MotionEvent.yrel };
@@ -17,7 +17,7 @@ void Application::ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent)
 	}
 }
 
-void Application::ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent)
+void Input::ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent)
 {
 	Input::Mouse::Button = ButtonEvent.button;
 	Input::Mouse::State = ButtonEvent.state;
@@ -26,7 +26,7 @@ void Application::ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent)
 	Input::Mouse::m_InitialClick = true;
 }
 
-void Application::ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent)
+void Input::ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent)
 {
 	if (!CanvasData::m_CanvasFocused)
 		return;

@@ -89,18 +89,17 @@ void Canvas::DrawCanvas()
     }
 
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+    m_Background.Bind();
 
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::BrushTool)
     {
-        m_Background.Bind();
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition);
-        m_Background.Unbind();
     }
 
-    glUseProgram(0);
+    m_Background.Unbind();
 
-    
+    glUseProgram(0);
 
     ImGui::End();
 }

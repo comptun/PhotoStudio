@@ -3,8 +3,11 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-struct Input
+#include <SDL2/SDL.h>
+
+class Input
 {
+public:
 	struct Mouse
 	{
 		inline static glm::vec2 Pos; // Position
@@ -14,4 +17,8 @@ struct Input
 
 		inline static bool m_InitialClick = false;
 	};
+
+	static void ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent);
+	static void ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent);
+	static void ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent);
 };

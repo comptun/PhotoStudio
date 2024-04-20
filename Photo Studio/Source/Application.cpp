@@ -30,13 +30,13 @@ void Application::UpdateWindow()
             }
         }
         else if (m_Event.type == SDL_MOUSEMOTION) {
-            ProcessMouseMotion(m_Event.motion);
+            Input::ProcessMouseMotion(m_Event.motion);
         }
         else if (m_Event.type == SDL_MOUSEBUTTONUP || m_Event.type == SDL_MOUSEBUTTONDOWN) {
-            ProcessMouseButton(m_Event.button);
+            Input::ProcessMouseButton(m_Event.button);
         }
         else if (m_Event.type == SDL_MOUSEWHEEL) {
-            ProcessMouseWheel(m_Event.wheel);
+            Input::ProcessMouseWheel(m_Event.wheel);
         }
     }
 }

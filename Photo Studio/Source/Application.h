@@ -23,6 +23,7 @@
 #include "Tools/Tools.h"
 #include "Primitives.h"
 #include "Windows.h"
+#include "Input.h"
 
 class Application : public Windows
 {
@@ -47,9 +48,5 @@ private:
 	void Render();
 	void RenderUI();
 	void Cleanup();
-
-	void ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent);
-	void ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent);
-	void ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent);
 };
 

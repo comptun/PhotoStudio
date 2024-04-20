@@ -161,6 +161,7 @@
     <ClCompile Include="Source\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Source\Tools\PaintBucket.h" />
     <ClInclude Include="Source\CanvasData.h" />
     <ClInclude Include="Source\Primitives.h" />
@@ -185,6 +186,12 @@
     <ClInclude Include="Source\Tools\Tools.h" />
     <ClInclude Include="Source\Utilities.h" />
     <ClInclude Include="Source\Windows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Photo Studio.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\x64\Release\Assets\Icons\PhotoStudioLogo.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
