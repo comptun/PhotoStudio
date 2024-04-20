@@ -5,7 +5,7 @@ Application::Application()
 {
     m_Window = SDL_GL_GetCurrentWindow();
 
-    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(1000, 750));
+    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(2000, 2000));
 
     m_Canvases.push_back(std::move(Canv));
 }
@@ -204,10 +204,7 @@ void Application::RenderUI()
     }
     ImGui::End();
 
-    ImGui::SetNextWindowClass(&window_class);
-    ImGui::Begin("Tool Properties");
-
-    ImGui::End();
+    m_Tools.DrawToolPropertiesMenu();
 
     if (CreateNewProject) {
         static int ProjNumber = 1;

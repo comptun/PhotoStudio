@@ -11,5 +11,7 @@ struct Input
 		inline static glm::vec2 Rel; // Relative motion
 		inline static uint8_t Button;
 		inline static uint8_t State;
+
+		inline static bool m_InitialClick = false;
 	};
 };

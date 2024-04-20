@@ -19,14 +19,24 @@ C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(17,34): warning C4244: 'argum
           [
               T=float
           ]
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(49,9): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(58,42): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(58,28): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(59,40): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(59,26): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(51,9): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(60,42): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(60,28): warning C4244: 'argument': conversion from 'const float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(61,40): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(61,26): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(91,74): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(91,46): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  3 of 2672 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 2686 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    50 functions had inline decision re-evaluated but remain unchanged
+    51 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe

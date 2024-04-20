@@ -1,7 +1,8 @@
 #include "Paintbrush.h"
 
 Paintbrush::Paintbrush()
-	: m_BrushShader(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS)
+	: m_BrushShader(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS),
+    m_BrushSize(10.0f)
 {
 
 }
@@ -21,14 +22,17 @@ void Paintbrush::DrawInterpolatedPaintbrush(glm::vec3 Position)
         return;
     }
 
+    if (Input::Mouse::m_InitialClick) {
+        PreviousPosition = Position;
+        PreviousDrawnPosition = Position;
+    }
+
     float DrawDist = glm::length(PreviousDrawnPosition - Position);
 
     if (DrawDist <= 1.0f && Pressed) {
         return;
     }
     Pressed = true;
-
-    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
 
     m_BrushShader.UseProgram();
 
@@ -51,7 +55,23 @@ void Paintbrush::DrawInterpolatedPaintbrush(glm::vec3 Position)
 
 void Paintbrush::DrawPaintbrush(glm::vec3 Position)
 {
-    m_BrushShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), Position), glm::vec3(5, 5, 0)));
+    m_BrushShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), Position), glm::vec3(m_BrushSize, m_BrushSize, 0)));
 
     Primitive::m_CanvasObject->Draw();
+}
+
+void Paintbrush::DrawPaintbrushMenu()
+{
+    ImGui::Text("Brush tool");
+
+    ImGui::SameLine();
+
+    ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+
+    ImGui::SameLine();
+
+    static ImGuiSliderFlags flags = ImGuiSliderFlags_None;
+    ImGui::SetNextItemWidth(200.0f);
+    ImGui::SetCursorPosY(10.0f);
+    ImGui::SliderFloat("Size", &m_BrushSize, 0.0f, 300.0f, "%f", flags);
 }

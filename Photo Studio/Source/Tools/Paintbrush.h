@@ -22,7 +22,9 @@ public:
 	Paintbrush();
 	~Paintbrush();
 	void DrawInterpolatedPaintbrush(glm::vec3 Position);
+	void DrawPaintbrushMenu();
 private:
+	float m_BrushSize;
 	Shader m_BrushShader;
 	void DrawPaintbrush(glm::vec3 Position);
 };

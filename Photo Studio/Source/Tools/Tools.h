@@ -17,4 +17,6 @@ class Tools :
 public:
 	Tools();
 	Tool m_Tool;
+
+	void DrawToolPropertiesMenu();
 };
