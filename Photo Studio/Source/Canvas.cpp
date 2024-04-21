@@ -15,7 +15,7 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
 
     m_Background.Rescale(m_CanvasSize.x, m_CanvasSize.y);
     glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
-    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     m_Background.Unbind();
@@ -69,11 +69,9 @@ void Canvas::DrawCanvas()
         m_BackgroundShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, 0)), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0)));
         m_BackgroundShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         m_BackgroundShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
-        m_BackgroundShader.Uniform<glm::vec4>("Color", { 1.0f,1.0f,1.0f,1.0f });
+        m_BackgroundShader.Uniform<glm::vec4>("Color", { 0.0f,1.0f,1.0f,1.0f });
 
         Primitive::m_CanvasObject->Draw();*/
-
-        glm::vec2 CanSize = { ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y };
 
 
         m_CanvasShader.UseProgram();

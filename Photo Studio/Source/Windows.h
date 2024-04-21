@@ -10,7 +10,7 @@
 
 struct WindowData
 {
-	inline static glm::vec4 m_Color;
+	inline static glm::vec4 m_Color = {0,0,0,1};
 };
 
 class Windows

@@ -56,8 +56,10 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
         switch (m_BrushMode)
         {
         case BrushMode::Eraser:
-            m_BrushShader.Uniform<glm::vec4>("Color", {1.0f,1.0f,1.0f,0.0f});
+            m_BrushShader.Uniform<glm::vec4>("Color", {0.0f,0.0f,0.0f,0.0f});
+            glDisable(GL_BLEND);
             DrawPencil(Pos, CustomSize);
+            glEnable(GL_BLEND);
             break;
         case BrushMode::Pencil:
             DrawPencil(Pos, m_BrushSize);

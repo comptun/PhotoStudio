@@ -81,8 +81,10 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
-    
-    glEnable(GL_MULTISAMPLE);
+
+    glEnable(GL_BLEND);
+    //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 

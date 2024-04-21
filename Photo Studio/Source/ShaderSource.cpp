@@ -38,8 +38,6 @@ std::vector<std::string> Shader::Source = {
 	void main()
 	{
 		vec4 texColor = texture(CanvasTex, TexCoord);
-		if (texColor.a <= 0.0)
-			discard;
 		FragColor = texColor;
 	}
 
@@ -61,8 +59,11 @@ std::vector<std::string> Shader::Source = {
 	uniform mat4 view;
 	uniform mat4 projection;
 
+	out vec4 vPos;
+
 	void main()
 	{
+		vPos = vec4(aPos, 1.0);
 		gl_Position = projection * view * model * vec4(aPos, 1.0);
 	}
 
@@ -77,8 +78,13 @@ std::vector<std::string> Shader::Source = {
 
 	uniform vec4 Color;
 
+	in vec4 vPos;
+
 	void main()
 	{
+		if (dot(vPos, vPos) > 1.25) {
+			discard;
+		}
 		FragColor = Color;
 	}
 
