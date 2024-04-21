@@ -16,7 +16,7 @@
 #include <cmath>
 #include <algorithm>
 
-enum BrushMode
+enum class BrushMode
 {
 	Pencil,
 	Eraser,

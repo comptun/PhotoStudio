@@ -5,6 +5,8 @@
 
 #include <SDL2/SDL.h>
 
+#include <cmath>
+
 class Input
 {
 public:
@@ -14,7 +16,7 @@ public:
 		inline static glm::vec2 Rel; // Relative motion
 		inline static uint8_t Button;
 		inline static uint8_t State;
-
+		inline static bool m_MouseInCanvas = false;
 		inline static bool m_InitialClick = false;
 	};
 

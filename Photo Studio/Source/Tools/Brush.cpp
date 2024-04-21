@@ -27,6 +27,12 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
         PreviousDrawnPosition = Position;
     }
 
+    if (!Input::Mouse::m_MouseInCanvas) {
+        PreviousPosition = Position;
+        PreviousDrawnPosition = Position;
+        return;
+    }
+
     float DrawDist = glm::length(PreviousDrawnPosition - Position);
 
     if (DrawDist <= 1.0f && Pressed) {

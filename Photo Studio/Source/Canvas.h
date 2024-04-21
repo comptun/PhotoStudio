@@ -33,6 +33,8 @@ public:
 	std::string m_CanvasName;
 
 	void DrawCanvas();
+
+	bool MouseInCanvas();
 private:
 	Shader m_CanvasShader;
 	Shader m_BackgroundShader;

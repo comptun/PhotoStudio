@@ -63,7 +63,7 @@ void Application::InitGL()
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
     SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
     if (Window == nullptr)
@@ -81,7 +81,7 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
-
+    
     glEnable(GL_MULTISAMPLE);
 }
 
@@ -116,6 +116,9 @@ void Application::InitImGui()
     ImGui_ImplOpenGL2_Init();
 
     glDisable(GL_CULL_FACE);
+
+    /*glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);*/
 
     ImFont* roboto = io.Fonts->AddFontFromFileTTF("Fonts/Roboto-Regular.ttf", 16.0f);
     //ImGui::PushFont(roboto);
@@ -188,7 +191,8 @@ void Application::RenderUI()
         if (ImGui::BeginMenu("File"))
         {
             ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
-
+            ImGui::MenuItem("Save", "Ctrl+S", nullptr, true);
+            ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Edit"))

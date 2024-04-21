@@ -102,6 +102,12 @@ void Shader::Uniform<int>(const std::string& UniformName, const int& Value) {
 }
 
 template<>
+void Shader::Uniform<glm::vec2>(const std::string& UniformName, const glm::vec2& Value) {
+    unsigned int Location = this->GetUniformLocation(UniformName);
+    glUniform2f(Location, Value[0], Value[1]);
+}
+
+template<>
 void Shader::Uniform<glm::vec3>(const std::string& UniformName, const glm::vec3& Value) {
     unsigned int Location = this->GetUniformLocation(UniformName);
     glUniform3f(Location, Value[0], Value[1], Value[2]);

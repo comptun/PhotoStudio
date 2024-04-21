@@ -40,6 +40,8 @@ void Canvas::DrawCanvas()
     ImGui::Begin(m_CanvasName.c_str());
     ImGui::PopStyleVar();
 
+    Input::Mouse::m_MouseInCanvas = MouseInCanvas();
+
     CanvasData::m_CanvasFocused = ImGui::IsWindowFocused();
 
     const float window_width = ImGui::GetContentRegionAvail().x;
@@ -70,6 +72,8 @@ void Canvas::DrawCanvas()
         m_BackgroundShader.Uniform<glm::vec4>("Color", { 1.0f,1.0f,1.0f,1.0f });
 
         Primitive::m_CanvasObject->Draw();*/
+
+        glm::vec2 CanSize = { ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y };
 
 
         m_CanvasShader.UseProgram();
@@ -119,4 +123,24 @@ glm::vec3 Canvas::GetCanvasMousePosition()
     SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &WindowPos.x, &WindowPos.y);
     return glm::vec3(mousePos.x - CanvasData::m_CanvasOffset.x - ViewportPos.x - (ViewportSize.x - m_CanvasSize.x * CanvasData::m_CanvasScale) / 2.0f + WindowPos.x,
                      mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y * CanvasData::m_CanvasScale) / 2.0f + WindowPos.y, 0) / CanvasData::m_CanvasScale;
+}
+
+bool Canvas::MouseInCanvas()
+{
+    ImVec2 winpos = ImGui::GetWindowPos();
+    ImVec2 winsize = ImGui::GetWindowSize();
+    //std::cout << winpos.x << " " << winpos.y << "\n";
+
+    int xpos, ypos;
+    SDL_GetGlobalMouseState(&xpos, &ypos);
+    glm::vec2 diff = { xpos - winpos.x, ypos - winpos.y };
+
+    if (diff.x < 0 || diff.y < 0) {
+        return false;
+    }
+    else if (diff.x > winsize.x || diff.y > winsize.y) {
+        return false;
+    }
+
+    return true;
 }
