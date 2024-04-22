@@ -82,6 +82,8 @@ void Application::InitGL()
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
 
+    glEnable(GL_DEPTH_TEST);
+
     glEnable(GL_BLEND);
     //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
