@@ -34,5 +34,4 @@ void Input::ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent)
 	ScrolledAmount -= static_cast<float>(WheelEvent.y) / 10.0f;
 	CanvasData::m_CanvasScale = std::pow(2, -ScrolledAmount);
 	CanvasData::m_CanvasMultiplier = std::pow(2, ScrolledAmount);
-	std::cout << CanvasData::m_CanvasScale << " " << CanvasData::m_CanvasMultiplier << "\n";
 }

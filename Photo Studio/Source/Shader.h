@@ -7,6 +7,7 @@
 enum class ShaderType {
 	CANVAS_VS, CANVAS_FS,
 	BRUSH_VS, BRUSH_FS,
+	BACKGROUND_VS, BACKGROUND_FS,
 };
 
 class Shader

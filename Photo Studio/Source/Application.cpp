@@ -87,6 +87,8 @@ void Application::InitGL()
     glEnable(GL_BLEND);
     //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glDepthFunc(GL_LEQUAL);
 }
 
 
@@ -142,6 +144,7 @@ void Application::Render()
 {
 
 }
+
 void Application::RenderUI()
 {
     // Start the Dear ImGui frame
@@ -152,8 +155,6 @@ void Application::RenderUI()
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     //ImGui::ShowDemoWindow();
-
-    bool CreateNewProject = false;
 
     ImGuiDockNodeFlags dockspace_flags = 0;// = ImGuiDockNodeFlags_NoUndocking;
 
@@ -183,6 +184,9 @@ void Application::RenderUI()
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     ImGui::Begin("Title Bar", nullptr, ImGuiWindowFlags_MenuBar);
+
+    bool CreateNewProject = false;
+    bool SaveProject = false;
     
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar();
@@ -195,7 +199,7 @@ void Application::RenderUI()
         if (ImGui::BeginMenu("File"))
         {
             ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
-            ImGui::MenuItem("Save", "Ctrl+S", nullptr, true);
+            ImGui::MenuItem("Save", "Ctrl+S", &SaveProject, true);
             ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
             ImGui::EndMenu();
         }
@@ -216,12 +220,28 @@ void Application::RenderUI()
 
     if (CreateNewProject) {
         static int ProjNumber = 1;
-        std::cout << "YES";
         auto Canv = std::make_unique<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750));
 
         m_Canvases.push_back(std::move(Canv));
 
         ProjNumber += 1;
+    }
+
+    if (SaveProject) {
+        glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+        m_Canvases.at(0)->m_Background.Bind();
+        
+        const uint32_t format = SDL_PIXELFORMAT_RGBA32;
+        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_Canvases.at(0)->m_PixelBuffer.m_Pixels, m_Canvases.at(0)->m_CanvasSize.x, m_Canvases.at(0)->m_CanvasSize.y, 32, 4 * m_Canvases.at(0)->m_CanvasSize.x, format);
+        
+        if (IMGSurface == NULL) {
+            std::cout << SDL_GetError();
+        }
+        std::cout << IMG_SavePNG(IMGSurface, "save.png") << "\n";
+        
+        SDL_FreeSurface(IMGSurface);
+
+        m_Canvases.at(0)->m_Background.Unbind();
     }
 
 

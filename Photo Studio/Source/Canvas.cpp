@@ -2,12 +2,14 @@
 
 Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
     : m_CanvasShader(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS),
-    m_BackgroundShader(ShaderType::BRUSH_VS, ShaderType::BRUSH_FS),
+    m_BackgroundShader(ShaderType::BACKGROUND_VS, ShaderType::BACKGROUND_FS),
     m_Viewport(100, 100),
     m_Background(100, 100),
+    m_DrawBuffer(100,100),
     m_Tools(tools),
     m_CanvasSize(Size),
-    m_CanvasName(CanvasName)
+    m_CanvasName(CanvasName),
+    m_PixelBuffer(GL_RGBA, Size.x, Size.y, 2)
 {
     SetActive();
 
@@ -19,6 +21,16 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_Background.Unbind();
+
+
+    m_DrawBuffer.Bind();
+
+    m_DrawBuffer.Rescale(m_CanvasSize.x, m_CanvasSize.y);
+    glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    m_DrawBuffer.Unbind();
 }
 Canvas::~Canvas()
 {
@@ -59,24 +71,28 @@ void Canvas::DrawCanvas()
 
     m_Viewport.Bind();
     {
-        m_Viewport.Rescale(window_width, window_height);
+        static ImVec2 OldWinSize = ImGui::GetWindowSize();
+        ImVec2 WinSize = ImGui::GetWindowSize();
+        if (!(OldWinSize.x == WinSize.x && OldWinSize.y == WinSize.y)) {
+            m_Viewport.Rescale(window_width, window_height);
+        }
+        OldWinSize = WinSize;
         glViewport(0, 0, window_width, window_height);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-        /*m_BackgroundShader.UseProgram();
-        m_BackgroundShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f, window_height / 2.0f, -5.0f)), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0)));
+        m_BackgroundShader.UseProgram();
+        m_BackgroundShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, -900.0f)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale));
         m_BackgroundShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         m_BackgroundShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height, 0.1f, 1000.0f));
-        m_BackgroundShader.Uniform<glm::vec4>("Color", { 0.0f,1.0f,1.0f,1.0f });
 
-        Primitive::m_CanvasObject->Draw();*/
+        Primitive::m_CanvasObject->Draw();
 
         // https://stackoverflow.com/questions/14154704/how-to-avoid-transparency-overlap-using-opengl
 
         m_CanvasShader.UseProgram();
-        m_CanvasShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, -10.0f)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale));
+        m_CanvasShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, -800.0f)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale));
         m_CanvasShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         m_CanvasShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height, 0.1f, 1000.0f));
 
@@ -93,7 +109,9 @@ void Canvas::DrawCanvas()
 
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
     m_Background.Bind();
-    glDepthFunc(GL_LEQUAL);
+
+    m_PixelBuffer.Download();
+
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::Brush)
     {

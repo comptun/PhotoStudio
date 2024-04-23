@@ -49,7 +49,7 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
     m_BrushShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
     m_BrushShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)CanvasData::m_CanvasSize.x, 0.0f, (float)CanvasData::m_CanvasSize.y, 0.1f, 1000.0f));
     m_BrushShader.Uniform<glm::vec4>("Color", WindowData::m_Color);
-
+    //glDisable(GL_BLEND);
     for (int i = 1; i <= Steps; ++i) {
         glm::vec3 Pos = glm::lerp(PreviousPosition, Position, (float)i * 1.0/(float)Steps);
         
@@ -66,19 +66,19 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
             break;
         }
     }
-
+    //glEnable(GL_BLEND);
     PreviousDrawnPosition = Position;
     PreviousPosition = Position;
 }
 
 void Brush::DrawPencil(glm::vec3 Position, float Size)
 {
-    static float offset = -100.0f;
+    static float offset = -1.0f;
     Position.z = offset;
-    offset += 0.00001f;
+    //offset += 0.0000001f;
     m_BrushShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), Position), glm::vec3(Size, Size, 0)));
 
-    Primitive::m_CanvasObject->Draw();
+    Primitive::m_BrushObject->Draw();
 }
 
 void Brush::DrawPaintbrushMenu()

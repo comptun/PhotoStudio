@@ -7,6 +7,7 @@
 #include "Input.h"
 #include "Primitives.h"
 #include "CanvasData.h"
+#include "PixelBuffer.h"
 
 #include <imgui/imgui.h>
 #include <imgui/imgui_internal.h>
@@ -17,6 +18,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 class Canvas
 {
@@ -25,21 +27,20 @@ public:
 	~Canvas();
 
 	void SetActive();
+	void DrawCanvas();
+	bool MouseInCanvas();
 
 	Tools& m_Tools;
-
 	glm::vec2 m_CanvasSize;
-
 	std::string m_CanvasName;
-
-	void DrawCanvas();
-
-	bool MouseInCanvas();
+	Framebuffer m_Background;
+	PixelBuffer m_PixelBuffer;
 private:
 	Shader m_CanvasShader;
 	Shader m_BackgroundShader;
 	Framebuffer m_Viewport;
-	Framebuffer m_Background;
+	Framebuffer m_DrawBuffer;
+	
 	glm::vec3 GetCanvasMousePosition();
 };
 

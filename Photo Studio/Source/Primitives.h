@@ -8,6 +8,7 @@
 struct Primitive
 {
 	inline static std::unique_ptr<CanvasObject> m_CanvasObject = nullptr;
+	inline static std::unique_ptr<CanvasObject> m_BrushObject = nullptr;
 	static void Init();
 };
 

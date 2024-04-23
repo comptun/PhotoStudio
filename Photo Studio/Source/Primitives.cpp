@@ -1,5 +1,7 @@
 #include "Primitives.h"
 
+#include <cmath>
+
 std::vector<float> vertices = {
      0.5f,  0.5f, 0.0f, // top right
      0.5f, -0.5f, 0.0f, // bottom right
@@ -11,7 +13,18 @@ std::vector<unsigned int> indices = {  // note that we start from 0!
     1, 2, 3    // second triangle
 };
 
+
+
+std::vector<float> brushverts = {
+    1.0f,  1.0f, 0.0f, // top right
+     1.0f, -1.0f, 0.0f, // bottom right
+    -1.0f, -1.0f, 0.0f, // bottom left
+    -1.0f,  1.0f, 0.0f,   // top left 
+};
+
+
 void Primitive::Init()
 {
+    Primitive::m_BrushObject = std::make_unique<CanvasObject>(indices, brushverts);
     Primitive::m_CanvasObject = std::make_unique<CanvasObject>(indices, vertices);
 }

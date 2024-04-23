@@ -82,13 +82,47 @@ std::vector<std::string> Shader::Source = {
 
 	void main()
 	{
-		if (dot(vPos, vPos) > 1.25) {
-			discard;
-		}
 		FragColor = Color;
+		if (vPos.x * vPos.x + vPos.y * vPos.y > 0.25) {
+			FragColor.a = 0.0f;
+		}
 	}
 
 	)END",
 
 
+
+
+
+	// BACKGROUND_VS
+	R"END(
+
+	#version 330 core
+
+	layout(location = 0) in vec3 aPos;
+
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+
+	void main()
+	{
+		gl_Position = projection * view * model * vec4(aPos, 1.0);
+	}
+
+	)END",
+
+	// BACKGROUND_FS
+	R"END(
+
+	#version 330 core
+
+	out vec4 FragColor;
+
+	void main()
+	{
+		FragColor = vec4(0.5, 0.5, 0.5, 1.0);
+	}
+
+	)END",
 };

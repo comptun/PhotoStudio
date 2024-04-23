@@ -1,9 +1,32 @@
-﻿  Brush.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp(47,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp(54,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  Application.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(231,78): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(231,50): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,186): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,176): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,142): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  2 of 2692 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 2702 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    50 functions had inline decision re-evaluated but remain unchanged
+    51 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe
