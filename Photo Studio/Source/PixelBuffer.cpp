@@ -72,6 +72,7 @@ void PixelBuffer::Init()
     m_PBOs = new GLuint[m_NumPBOs];
 
     m_Pixels = new unsigned char[m_NumBytes];
+    m_Pixels32 = reinterpret_cast<uint32_t*>(m_Pixels);
 
     glGenBuffers(m_NumPBOs, m_PBOs);
     for (int i = 0; i < m_NumPBOs; ++i) {
@@ -80,4 +81,9 @@ void PixelBuffer::Init()
     }
 
     glBindBuffer(GL_PIXEL_PACK_BUFFER, 0);
+}
+
+uint32_t* PixelBuffer::GetPixels32Bit()
+{
+    return reinterpret_cast<uint32_t*>(m_Pixels);
 }

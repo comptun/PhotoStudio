@@ -10,7 +10,10 @@ public:
 	~PixelBuffer();
 	void Download();
 
+	uint32_t* GetPixels32Bit();
+
 	unsigned char* m_Pixels;
+	uint32_t* m_Pixels32;
 private:
 	void Init();
 

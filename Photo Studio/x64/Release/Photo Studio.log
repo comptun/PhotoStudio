@@ -1,32 +1,9 @@
-﻿  Application.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(231,78): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(231,50): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,186): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,176): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(235,142): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
+﻿  Input.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Input.cpp(38,38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Input.cpp(39,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating code
-  1 of 2702 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  4 of 2704 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    51 functions had inline decision re-evaluated but remain unchanged
+    53 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe

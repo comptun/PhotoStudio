@@ -44,6 +44,8 @@ private:
 
 	int m_Height, m_Width;
 
+	void DrawTitleBar();
+
 	void UpdateWindow();
 	void InitImGui();
 	void Render();

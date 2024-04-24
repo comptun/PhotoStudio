@@ -22,4 +22,5 @@ public:
 	Tool m_Tool;
 
 	void DrawToolPropertiesMenu();
+	void DrawToolbar();
 };

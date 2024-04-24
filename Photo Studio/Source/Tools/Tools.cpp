@@ -33,3 +33,23 @@ void Tools::DrawToolPropertiesMenu()
 	ImGui::End();
 	ImGui::PopStyleVar();
 }
+
+void Tools::DrawToolbar()
+{
+	ImGui::Begin("Toolbar");
+
+	if (ImGui::Button("None")) {
+		m_Tool = Tool::None;
+	}
+	if (ImGui::Button("Brush tool")) {
+		m_Tool = Tool::Brush;
+	}
+	if (ImGui::Button("Eraser tool")) {
+		m_Tool = Tool::Eraser;
+	}
+	if (ImGui::Button("Paint Bucket tool")) {
+		m_Tool = Tool::PaintBucket;
+	}
+
+	ImGui::End();
+}

@@ -112,6 +112,8 @@ void Canvas::DrawCanvas()
 
     m_PixelBuffer.Download();
 
+    //m_PixelBuffer.m_Pixels32[0] = 0xff000000;
+
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::Brush)
     {
@@ -145,7 +147,7 @@ glm::vec3 Canvas::GetCanvasMousePosition()
 bool Canvas::MouseInCanvas()
 {
     ImVec2 winpos = ImGui::GetWindowPos();
-    ImVec2 winsize = ImGui::GetWindowSize();
+    ImVec2 winsize = ImGui::GetContentRegionAvail();
     //std::cout << winpos.x << " " << winpos.y << "\n";
 
     int xpos, ypos;

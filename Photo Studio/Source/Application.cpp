@@ -177,97 +177,17 @@ void Application::RenderUI()
     ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
     ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 
-    ImGuiWindowClass window_class;
-    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
-    ImGui::SetNextWindowClass(&window_class);
+    DrawTitleBar();
 
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-    ImGui::Begin("Title Bar", nullptr, ImGuiWindowFlags_MenuBar);
-
-    bool CreateNewProject = false;
-    bool SaveProject = false;
-    
-    if (ImGui::BeginMenuBar()) {
-        ImGui::PopStyleVar();
-
-        if (ImGui::BeginMenu("Photo Studio"))
-        {
-            ImGui::MenuItem("About", "", nullptr, true);
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("File"))
-        {
-            ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
-            ImGui::MenuItem("Save", "Ctrl+S", &SaveProject, true);
-            ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Edit"))
-        {
-            ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, true);
-            ImGui::MenuItem("Redo", "Ctrl+Shift+Z", nullptr, true);
-            ImGui::EndMenu();
-        }
-
-        ImGui::PopStyleVar();
-
-        ImGui::EndMenuBar();
-    }
-    ImGui::End();
 
     m_Tools.DrawToolPropertiesMenu();
 
-    if (CreateNewProject) {
-        static int ProjNumber = 1;
-        auto Canv = std::make_unique<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750));
-
-        m_Canvases.push_back(std::move(Canv));
-
-        ProjNumber += 1;
-    }
-
-    if (SaveProject) {
-        glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-        m_Canvases.at(0)->m_Background.Bind();
-        
-        const uint32_t format = SDL_PIXELFORMAT_RGBA32;
-        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_Canvases.at(0)->m_PixelBuffer.m_Pixels, m_Canvases.at(0)->m_CanvasSize.x, m_Canvases.at(0)->m_CanvasSize.y, 32, 4 * m_Canvases.at(0)->m_CanvasSize.x, format);
-        
-        if (IMGSurface == NULL) {
-            std::cout << SDL_GetError();
-        }
-        std::cout << IMG_SavePNG(IMGSurface, "save.png") << "\n";
-        
-        SDL_FreeSurface(IMGSurface);
-
-        m_Canvases.at(0)->m_Background.Unbind();
-    }
-
-
-    {
-        ImGui::Begin("Toolbar");
-        
-        if (ImGui::Button("None")) {
-            m_Tools.m_Tool = Tool::None;
-        }
-        if (ImGui::Button("Brush tool")) {
-            m_Tools.m_Tool = Tool::Brush;
-        }
-        if (ImGui::Button("Eraser tool")) {
-            m_Tools.m_Tool = Tool::Eraser;
-        }
-        if (ImGui::Button("Paint Bucket tool")) {
-            m_Tools.m_Tool = Tool::PaintBucket;
-        }
-
-        ImGui::End();
-    }
+    m_Tools.DrawToolbar();
 
     for (int i = 0; i < m_Canvases.size(); ++i) {
         m_Canvases[i]->DrawCanvas();
     }
-
+    
     {
         DrawColorWindow();
 
@@ -300,6 +220,92 @@ void Application::RenderUI()
     }
 
     SDL_GL_SwapWindow(m_Window);
+}
+
+void Application::DrawTitleBar()
+{
+    ImGuiWindowClass window_class;
+    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
+    ImGui::SetNextWindowClass(&window_class);
+
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+    ImGui::Begin("Title Bar", nullptr, ImGuiWindowFlags_MenuBar);
+
+    bool CreateNewProject = false;
+    bool SaveProject = false;
+    bool ResetView = false;
+
+    if (ImGui::BeginMenuBar()) {
+        ImGui::PopStyleVar(2);
+
+        if (ImGui::BeginMenu("Photo Studio"))
+        {
+            ImGui::MenuItem("About", "", nullptr, true);
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("File"))
+        {
+            ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
+            ImGui::MenuItem("Save", "Ctrl+S", &SaveProject, true);
+            ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Edit"))
+        {
+            ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, true);
+            ImGui::MenuItem("Redo", "Ctrl+Shift+Z", nullptr, true);
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Image"))
+        {
+
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("View"))
+        {
+            ImGui::MenuItem("Reset view", "Ctrl+Shift+R", &ResetView, true);
+            ImGui::EndMenu();
+        }
+
+        ImGui::PopStyleVar();
+
+        ImGui::EndMenuBar();
+    }
+    ImGui::End();
+
+    if (CreateNewProject) {
+        static int ProjNumber = 1;
+        auto Canv = std::make_unique<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750));
+
+        m_Canvases.push_back(std::move(Canv));
+
+        ProjNumber += 1;
+    }
+
+    if (SaveProject) {
+        glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+        m_Canvases.at(0)->m_Background.Bind();
+
+        const uint32_t format = SDL_PIXELFORMAT_RGBA32;
+        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_Canvases.at(0)->m_PixelBuffer.m_Pixels, m_Canvases.at(0)->m_CanvasSize.x, m_Canvases.at(0)->m_CanvasSize.y, 32, 4 * m_Canvases.at(0)->m_CanvasSize.x, format);
+
+        if (IMGSurface == NULL) {
+            std::cout << SDL_GetError();
+        }
+        std::cout << IMG_SavePNG(IMGSurface, "save.png") << "\n";
+
+        SDL_FreeSurface(IMGSurface);
+
+        m_Canvases.at(0)->m_Background.Unbind();
+    }
+
+    if (ResetView) {
+        CanvasData::m_CanvasMultiplier = 1.0f;
+        CanvasData::m_CanvasScale = 1.0f;
+        CanvasData::m_CanvasOffset = { 0.0f, 0.0f };
+    }
 }
 
 void Application::Cleanup()
