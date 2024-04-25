@@ -240,34 +240,72 @@ void Application::DrawTitleBar()
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar(2);
 
+        ImGui::SetCursorPosX(5);
+
+        ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.4, 0.4, 0.4, 0.5));
+        ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.3, 0.3, 0.3, 0.5));
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("Photo Studio"))
         {
+            ImGui::PopStyleVar();
             ImGui::MenuItem("About", "", nullptr, true);
             ImGui::EndMenu();
         }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("File"))
         {
+            ImGui::PopStyleVar();
             ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
             ImGui::MenuItem("Save", "Ctrl+S", &SaveProject, true);
             ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
             ImGui::EndMenu();
         }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("Edit"))
         {
+            ImGui::PopStyleVar();
             ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, true);
             ImGui::MenuItem("Redo", "Ctrl+Shift+Z", nullptr, true);
             ImGui::EndMenu();
         }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("Image"))
         {
-
+            ImGui::PopStyleVar();
             ImGui::EndMenu();
         }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("View"))
         {
+            ImGui::PopStyleVar();
             ImGui::MenuItem("Reset view", "Ctrl+Shift+R", &ResetView, true);
             ImGui::EndMenu();
         }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+
+
+        ImGui::PopStyleColor(2);
 
         ImGui::PopStyleVar();
 

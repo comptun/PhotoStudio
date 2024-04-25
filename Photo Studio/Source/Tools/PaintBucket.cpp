@@ -46,9 +46,9 @@ void PaintBucket::FloodFill4Stack(Framebuffer& FBuffer, PixelBuffer& PBuffer, gl
 
 	PBuffer.Download();
 
-	auto copyMem = std::unique_ptr<unsigned char[]>(new unsigned char[PBuffer.m_NumBytes]);
-	uint32_t* Pixels32 = reinterpret_cast<uint32_t*>(copyMem.get());
-	memcpy(copyMem.get(), PBuffer.m_Pixels, PBuffer.m_NumBytes);
+	auto Pixels32 = std::unique_ptr<uint32_t[]>(new uint32_t[PBuffer.m_NumBytes / 4]);
+	//uint32_t* Pixels32 = reinterpret_cast<uint32_t*>(copyMem.get());
+	memcpy(Pixels32.get(), PBuffer.m_Pixels, PBuffer.m_NumBytes);
 
 	uint32_t newColor =	GetColor();
 	
@@ -80,6 +80,6 @@ void PaintBucket::FloodFill4Stack(Framebuffer& FBuffer, PixelBuffer& PBuffer, gl
 		}
 	}
 
-	FBuffer.Rescale(copyMem.get(), PBuffer.m_Width, PBuffer.m_Height);
+	FBuffer.Rescale(reinterpret_cast<unsigned char*>(Pixels32.get()), PBuffer.m_Width, PBuffer.m_Height);
 	PreviousPosition = Pos;
 }
