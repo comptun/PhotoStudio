@@ -161,6 +161,7 @@
     <ClCompile Include="Source\Tools\Tools.cpp" />
     <ClCompile Include="Source\Utilities.cpp" />
     <ClCompile Include="Source\Windows.cpp" />
+    <ClCompile Include="Source\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\PixelBuffer.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Source\Tools\Tools.h" />
     <ClInclude Include="Source\Utilities.h" />
     <ClInclude Include="Source\Windows.h" />
+    <ClInclude Include="Source\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Photo Studio.rc" />

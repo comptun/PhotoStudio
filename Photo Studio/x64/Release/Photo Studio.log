@@ -1,8 +1,16 @@
-﻿  Input.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Input.cpp(38,38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\dev\Photo Studio\Photo Studio\Source\Input.cpp(39,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  PaintBucket.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Tools\PaintBucket.cpp(55,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Tools\PaintBucket.cpp(55,19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  4 of 2704 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 2780 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     53 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

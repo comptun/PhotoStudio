@@ -93,6 +93,6 @@ void Brush::DrawPaintbrushMenu()
 
     static ImGuiSliderFlags flags = ImGuiSliderFlags_None;
     ImGui::SetNextItemWidth(200.0f);
-    ImGui::SetCursorPosY(10.0f);
+    ImGui::SetCursorPosY(11.0f);
     ImGui::SliderFloat("Size", &m_BrushSize, 0.0f, 300.0f, "%f", flags);
 }

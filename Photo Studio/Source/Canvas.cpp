@@ -3,9 +3,9 @@
 Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
     : m_CanvasShader(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS),
     m_BackgroundShader(ShaderType::BACKGROUND_VS, ShaderType::BACKGROUND_FS),
-    m_Viewport(100, 100),
-    m_Background(100, 100),
-    m_DrawBuffer(100,100),
+    m_Viewport(nullptr, 100, 100),
+    m_Background(nullptr, 100, 100),
+    m_DrawBuffer(nullptr, 100,100),
     m_Tools(tools),
     m_CanvasSize(Size),
     m_CanvasName(CanvasName),
@@ -15,7 +15,7 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
 
     m_Background.Bind();
 
-    m_Background.Rescale(m_CanvasSize.x, m_CanvasSize.y);
+    m_Background.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
     glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
     glClearColor(1, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -25,7 +25,7 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
 
     m_DrawBuffer.Bind();
 
-    m_DrawBuffer.Rescale(m_CanvasSize.x, m_CanvasSize.y);
+    m_DrawBuffer.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
     glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -74,7 +74,7 @@ void Canvas::DrawCanvas()
         static ImVec2 OldWinSize = ImGui::GetWindowSize();
         ImVec2 WinSize = ImGui::GetWindowSize();
         if (!(OldWinSize.x == WinSize.x && OldWinSize.y == WinSize.y)) {
-            m_Viewport.Rescale(window_width, window_height);
+            m_Viewport.Rescale(nullptr, window_width, window_height);
         }
         OldWinSize = WinSize;
         glViewport(0, 0, window_width, window_height);
@@ -112,8 +112,6 @@ void Canvas::DrawCanvas()
 
     m_PixelBuffer.Download();
 
-    //m_PixelBuffer.m_Pixels32[0] = 0xff000000;
-
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::Brush)
     {
@@ -124,6 +122,9 @@ void Canvas::DrawCanvas()
     {
         m_Tools.m_BrushMode = BrushMode::Eraser;
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition, m_Tools.GetEraserSize());
+    }
+    else if (m_Tools.m_Tool == Tool::PaintBucket) {
+        m_Tools.FloodFill4Stack(m_Background, m_PixelBuffer, BrushPosition);
     }
 
     m_Background.Unbind();

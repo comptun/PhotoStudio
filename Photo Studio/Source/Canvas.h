@@ -31,10 +31,10 @@ public:
 	bool MouseInCanvas();
 
 	Tools& m_Tools;
+	PixelBuffer m_PixelBuffer;
 	glm::vec2 m_CanvasSize;
 	std::string m_CanvasName;
 	Framebuffer m_Background;
-	PixelBuffer m_PixelBuffer;
 private:
 	Shader m_CanvasShader;
 	Shader m_BackgroundShader;

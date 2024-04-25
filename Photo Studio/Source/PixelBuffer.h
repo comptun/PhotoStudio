@@ -14,6 +14,10 @@ public:
 
 	unsigned char* m_Pixels;
 	uint32_t* m_Pixels32;
+
+	int m_Width;
+	int m_Height;
+	int m_NumBytes;
 private:
 	void Init();
 
@@ -22,8 +26,5 @@ private:
 	uint64_t m_NumPBOs;
 	uint64_t m_Index;
 	uint64_t m_NumDownloads;
-	int m_Width;
-	int m_Height;
-	int m_NumBytes;
 };
 
