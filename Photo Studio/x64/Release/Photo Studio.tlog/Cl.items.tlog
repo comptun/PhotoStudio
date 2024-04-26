@@ -23,5 +23,5 @@ C:\dev\Photo Studio\Photo Studio\Source\Main.cpp;C:\dev\Photo Studio\Photo Studi
 C:\dev\Photo Studio\Photo Studio\Source\ShaderSource.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\ShaderSource.obj
 C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Tools.obj
 C:\dev\Photo Studio\Photo Studio\Source\Utilities.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Utilities.obj
-C:\dev\Photo Studio\Photo Studio\Source\Windows.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Windows.obj
+C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\WindowManager.obj
 C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp;C:\dev\Photo Studio\Photo Studio\x64\Release\Texture.obj

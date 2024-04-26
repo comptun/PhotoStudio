@@ -11,7 +11,7 @@
 #include "Primitives.h"
 #include "Utilities.h"
 #include "Input.h"
-#include "Windows.h"
+#include "WindowManager.h"
 
 #include <cmath>
 #include <algorithm>

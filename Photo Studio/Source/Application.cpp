@@ -5,7 +5,7 @@ Application::Application()
 {
     m_Window = SDL_GL_GetCurrentWindow();
 
-    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(2000, 2000));
+    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(4096, 4096));
 
     m_Canvases.push_back(std::move(Canv));
 }
@@ -62,10 +62,12 @@ void Application::InitGL()
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
-    SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
+    int window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_MAXIMIZED;
+    SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, (SDL_WindowFlags)window_flags);
     if (Window == nullptr)
     {
         printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
@@ -240,12 +242,16 @@ void Application::DrawTitleBar()
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar(2);
 
-        ImGui::SetCursorPosX(5);
+        //ImGui::SetCursorPosX(5);
+
+        ImGui::Text(" Photo Studio ");
 
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.4, 0.4, 0.4, 0.5));
         ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.3, 0.3, 0.3, 0.5));
 
-        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        ImGui::PushStyleVar(ImGuiStyleVar_PopupRounding, 10.0f);
+
+        /*ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("Photo Studio"))
         {
             ImGui::PopStyleVar();
@@ -254,16 +260,22 @@ void Application::DrawTitleBar()
         }
         else {
             ImGui::PopStyleVar();
-        }
+        }*/
 
 
         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("File"))
         {
             ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+            
             ImGui::MenuItem("New project", "Ctrl+N", &CreateNewProject, true);
             ImGui::MenuItem("Save", "Ctrl+S", &SaveProject, true);
             ImGui::MenuItem("Save as", "Shift+Ctrl+S", nullptr, true);
+
+            ImGui::PopStyleVar();
+
             ImGui::EndMenu();
         }
         else {
@@ -274,8 +286,14 @@ void Application::DrawTitleBar()
         if (ImGui::BeginMenu("Edit"))
         {
             ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
             ImGui::MenuItem("Undo", "Ctrl+Z", nullptr, true);
             ImGui::MenuItem("Redo", "Ctrl+Shift+Z", nullptr, true);
+
+            ImGui::PopStyleVar();
+
             ImGui::EndMenu();
         }
         else {
@@ -286,6 +304,71 @@ void Application::DrawTitleBar()
         if (ImGui::BeginMenu("Image"))
         {
             ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Layer"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Type"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Select"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Filter"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
             ImGui::EndMenu();
         }
         else {
@@ -296,7 +379,43 @@ void Application::DrawTitleBar()
         if (ImGui::BeginMenu("View"))
         {
             ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
             ImGui::MenuItem("Reset view", "Ctrl+Shift+R", &ResetView, true);
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Window"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
+            ImGui::EndMenu();
+        }
+        else {
+            ImGui::PopStyleVar();
+        }
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
+        if (ImGui::BeginMenu("Help"))
+        {
+            ImGui::PopStyleVar();
+
+            ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+            ImGui::PopStyleVar();
+
             ImGui::EndMenu();
         }
         else {
@@ -304,9 +423,11 @@ void Application::DrawTitleBar()
         }
 
 
-
         ImGui::PopStyleColor(2);
-
+        
+        // ImGuiStyleVar_PopupRounding
+        ImGui::PopStyleVar();
+        // ImGuiStyleVar_FramePadding
         ImGui::PopStyleVar();
 
         ImGui::EndMenuBar();

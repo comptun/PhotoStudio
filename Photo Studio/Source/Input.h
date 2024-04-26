@@ -19,7 +19,7 @@ public:
 		inline static bool m_MouseInCanvas = false;
 		inline static bool m_InitialClick = false;
 	};
-
+	static float GetInitialScale();
 	static void ProcessMouseMotion(const SDL_MouseMotionEvent& MotionEvent);
 	static void ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent);
 	static void ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent);

@@ -59,6 +59,10 @@ void Canvas::DrawCanvas()
     const float window_width = ImGui::GetContentRegionAvail().x;
     const float window_height = ImGui::GetContentRegionAvail().y;
 
+    CanvasData::m_ViewportSize = { window_width, window_height };
+
+    CanvasData::m_CanvasScale = CanvasData::m_CanvasMultiplier * Input::GetInitialScale();
+
     ImVec2 pos = ImGui::GetCursorScreenPos();
 
     ImGui::GetWindowDrawList()->AddImage(

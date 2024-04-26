@@ -160,10 +160,11 @@
     <ClCompile Include="Source\ShaderSource.cpp" />
     <ClCompile Include="Source\Tools\Tools.cpp" />
     <ClCompile Include="Source\Utilities.cpp" />
-    <ClCompile Include="Source\Windows.cpp" />
+    <ClCompile Include="Source\WindowManager.cpp" />
     <ClCompile Include="Source\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dependencies\glad\include\glad\glad.h" />
     <ClInclude Include="Source\PixelBuffer.h" />
     <ClInclude Include="Source\Tools\Eraser.h" />
     <ClInclude Include="resource.h" />
@@ -190,7 +191,7 @@
     <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="Source\Tools\Tools.h" />
     <ClInclude Include="Source\Utilities.h" />
-    <ClInclude Include="Source\Windows.h" />
+    <ClInclude Include="Source\WindowManager.h" />
     <ClInclude Include="Source\Texture.h" />
   </ItemGroup>
   <ItemGroup>

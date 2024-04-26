@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "PixelBuffer.h"
-#include "Windows.h"
+#include "WindowManager.h"
 #include "Input.h"
 #include "Framebuffer.h"
 #include "CanvasData.h"

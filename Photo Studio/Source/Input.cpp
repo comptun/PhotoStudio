@@ -31,10 +31,21 @@ void Input::ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent)
 	if (!CanvasData::m_CanvasFocused)
 		return;
 	static float ScrolledAmount = 0;
-	if (CanvasData::m_CanvasScale == 1.0f) {
+	if (CanvasData::m_CanvasScale == GetInitialScale()) {
 		ScrolledAmount = 0;
 	}
 	ScrolledAmount -= static_cast<float>(WheelEvent.y) / 10.0f;
-	CanvasData::m_CanvasScale = std::pow(2, -ScrolledAmount);
-	CanvasData::m_CanvasMultiplier = std::pow(2, ScrolledAmount);
+	//CanvasData::m_CanvasScale = std::pow(2, -ScrolledAmount);
+	CanvasData::m_CanvasMultiplier = std::pow(2, -ScrolledAmount);
+}
+
+float Input::GetInitialScale()
+{
+	float Scale = 1.0f;
+	for (; Scale >= 0; Scale -= 0.01f) {
+		if (Scale * CanvasData::m_CanvasSize.y < CanvasData::m_ViewportSize.y - 100) {
+			return Scale;
+		}
+	}
+	return 1.0f;
 }
