@@ -1,6 +1,6 @@
 #include "Canvas.h"
 
-Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
+Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID)
     : m_CanvasShader(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS),
     m_BackgroundShader(ShaderType::BACKGROUND_VS, ShaderType::BACKGROUND_FS),
     m_Viewport(nullptr, 100, 100),
@@ -9,9 +9,18 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
     m_Tools(tools),
     m_CanvasSize(Size),
     m_CanvasName(CanvasName),
-    m_PixelBuffer(GL_RGBA, Size.x, Size.y, 2)
+    m_PixelBuffer(GL_RGBA, Size.x, Size.y, 2),
+    m_Focused(false),
+    m_CanvasID(CanvasID),
+    m_OldWindowSize(0,0),
+    m_Open(true),
+    m_InitialDraw(true)
 {
-    SetActive();
+    CanvasData::m_CanvasSize = m_CanvasSize;
+
+    CanvasData::m_CanvasScale = Input::GetInitialScale();
+
+    //m_Viewport.Rescale(nullptr, window_width, window_height);
 
     m_Background.Bind();
 
@@ -21,16 +30,6 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_Background.Unbind();
-
-
-    m_DrawBuffer.Bind();
-
-    m_DrawBuffer.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
-    glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
-    glClearColor(0, 0, 0, 0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    m_DrawBuffer.Unbind();
 }
 Canvas::~Canvas()
 {
@@ -41,27 +40,52 @@ void Canvas::SetActive()
 {
     CanvasData::m_CanvasSize = m_CanvasSize;
 
-    //ImGui::SetWindowFocus(m_CanvasName.c_str());
-}
-
-void Canvas::DrawCanvas()
-{
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-    ImGui::Begin(m_CanvasName.c_str());
-    ImGui::PopStyleVar();
-
-    Input::Mouse::m_MouseInCanvas = MouseInCanvas();
-
-    CanvasData::m_CanvasFocused = ImGui::IsWindowFocused();
-
     const float window_width = ImGui::GetContentRegionAvail().x;
     const float window_height = ImGui::GetContentRegionAvail().y;
 
     CanvasData::m_ViewportSize = { window_width, window_height };
 
     CanvasData::m_CanvasScale = CanvasData::m_CanvasMultiplier * Input::GetInitialScale();
+}
+
+void Canvas::DrawCanvas()
+{
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+    ImGuiWindowClass window_class;
+    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoCloseButton;
+    ImGui::SetNextWindowClass(&window_class);
+
+    if (m_InitialDraw) {
+        ImGui::SetNextWindowDockID(4);
+        m_InitialDraw = false;
+    }
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+    ImGui::Begin(m_CanvasName.c_str(), &m_Open);
+    ImGui::PopStyleVar();
+
+    Input::Mouse::m_MouseInCanvas = MouseInCanvas();
+
+    float window_width = ImGui::GetContentRegionAvail().x;
+    float window_height = ImGui::GetContentRegionAvail().y;
+
+    if (ImGui::IsWindowHovered()) {
+        ImGui::SetWindowFocus();
+        CanvasData::m_CanvasFocused = true;
+        //CanvasData::m_ActiveCanvas = m_CanvasID;
+        //m_Viewport.Rescale(nullptr, window_width, window_height);
+        SetActive();
+    }
+    else if (ImGui::IsWindowFocused()) {
+        CanvasData::m_CanvasFocused = true;
+        //CanvasData::m_ActiveCanvas = m_CanvasID;
+        //m_Viewport.Rescale(nullptr, window_width, window_height);
+        SetActive();
+    }
+
+    if (CanvasData::m_ActiveCanvas == m_CanvasID) {
+        SetActive();
+    }
 
     ImVec2 pos = ImGui::GetCursorScreenPos();
 
@@ -75,12 +99,10 @@ void Canvas::DrawCanvas()
 
     m_Viewport.Bind();
     {
-        static ImVec2 OldWinSize = ImGui::GetWindowSize();
-        ImVec2 WinSize = ImGui::GetWindowSize();
-        if (!(OldWinSize.x == WinSize.x && OldWinSize.y == WinSize.y)) {
+        if (!(m_OldWindowSize.x == window_width && m_OldWindowSize.y == window_height)) {
             m_Viewport.Rescale(nullptr, window_width, window_height);
         }
-        OldWinSize = WinSize;
+        m_OldWindowSize = glm::vec2(window_width, window_height);
         glViewport(0, 0, window_width, window_height);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -105,10 +127,16 @@ void Canvas::DrawCanvas()
     }
     m_Viewport.Unbind();
 
-    if (!CanvasData::m_CanvasFocused) {
+    if (!ImGui::IsWindowFocused()) {
         glUseProgram(0);
         ImGui::End();
         return;
+    }
+
+    if (CanvasData::m_ActiveCanvas != m_CanvasID) {
+        CanvasData::m_ActiveCanvas = m_CanvasID;
+        SetActive();
+        m_Viewport.Rescale(nullptr, window_width, window_height);
     }
 
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);

@@ -1,9 +1,53 @@
-﻿  Input.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\dev\Photo Studio\Photo Studio\Dependencies\glad\include\glad\glad.h(32,1): message : see previous definition of 'APIENTRY'
-C:\dev\Photo Studio\Photo Studio\Source\Input.cpp(39,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  Canvas.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(12,40): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(12,32): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(27,63): warning C4244: 'argument': conversion from 'T' to 'uint64_t', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(27,47): warning C4244: 'argument': conversion from 'T' to 'uint64_t', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(28,50): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(28,34): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(93,9): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(103,55): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(103,41): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(106,40): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(106,26): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(139,51): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(139,37): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(142,74): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(142,46): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  0 of 2781 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  0 of 2802 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

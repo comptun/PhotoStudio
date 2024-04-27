@@ -36,6 +36,11 @@ void Tools::DrawToolPropertiesMenu()
 
 void Tools::DrawToolbar()
 {
+	ImGuiWindowClass window_class;
+	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar;
+	
+	ImGui::SetNextWindowClass(&window_class);
+
 	ImGui::Begin("Toolbar");
 
 	if (ImGui::Button("None")) {

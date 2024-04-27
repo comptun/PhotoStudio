@@ -23,7 +23,7 @@
 class Canvas
 {
 public:
-	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size);
+	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID);
 	~Canvas();
 
 	void SetActive();
@@ -40,6 +40,13 @@ private:
 	Shader m_BackgroundShader;
 	Framebuffer m_Viewport;
 	Framebuffer m_DrawBuffer;
+
+	int m_CanvasID;
+	bool m_Focused;
+	bool m_Open;
+	bool m_InitialDraw;
+
+	glm::vec2 m_OldWindowSize;
 	
 	glm::vec3 GetCanvasMousePosition();
 };

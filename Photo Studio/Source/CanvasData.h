@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <iostream>
+
 struct CanvasData
 {
 	inline static glm::vec2 m_CanvasSize;
@@ -11,4 +13,5 @@ struct CanvasData
 	inline static float m_CanvasScale = 1.0f;
 	inline static float m_CanvasMultiplier = 1.0f;
 	inline static bool m_CanvasFocused = false;
+	inline static int m_ActiveCanvas = -100;
 };

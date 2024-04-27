@@ -38,7 +38,7 @@ private:
 	SDL_Window* m_Window;
 	inline static SDL_GLContext m_GLContext = nullptr;
 	SDL_Event m_Event;
-	std::vector<std::unique_ptr<Canvas>> m_Canvases;
+	std::vector<std::shared_ptr<Canvas>> m_Canvases;
 	Tools m_Tools;
 	bool m_Running;
 

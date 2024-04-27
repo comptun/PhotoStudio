@@ -5,7 +5,7 @@ Application::Application()
 {
     m_Window = SDL_GL_GetCurrentWindow();
 
-    auto Canv = std::make_unique<Canvas>(m_Tools, "Example Canvas", glm::vec2(4096, 4096));
+    auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(4096, 4096), m_Canvases.size());
 
     m_Canvases.push_back(std::move(Canv));
 }
@@ -157,9 +157,8 @@ void Application::RenderUI()
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     //ImGui::ShowDemoWindow();
-
+    
     ImGuiDockNodeFlags dockspace_flags = 0;// = ImGuiDockNodeFlags_NoUndocking;
-
 
     ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
 
@@ -185,6 +184,8 @@ void Application::RenderUI()
     m_Tools.DrawToolPropertiesMenu();
 
     m_Tools.DrawToolbar();
+
+    CanvasData::m_CanvasFocused = false;
 
     for (int i = 0; i < m_Canvases.size(); ++i) {
         m_Canvases[i]->DrawCanvas();
@@ -436,7 +437,7 @@ void Application::DrawTitleBar()
 
     if (CreateNewProject) {
         static int ProjNumber = 1;
-        auto Canv = std::make_unique<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750));
+        auto Canv = std::make_shared<Canvas>(m_Tools, "New Canvas " + std::to_string(ProjNumber), glm::vec2(1000, 750), m_Canvases.size());
 
         m_Canvases.push_back(std::move(Canv));
 
@@ -445,24 +446,27 @@ void Application::DrawTitleBar()
 
     if (SaveProject) {
         glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-        m_Canvases.at(0)->m_Background.Bind();
+
+        auto ActiveCanvas = m_Canvases.at(CanvasData::m_ActiveCanvas);
+
+        ActiveCanvas->m_Background.Bind();
 
         const uint32_t format = SDL_PIXELFORMAT_RGBA32;
-        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_Canvases.at(0)->m_PixelBuffer.m_Pixels, m_Canvases.at(0)->m_CanvasSize.x, m_Canvases.at(0)->m_CanvasSize.y, 32, 4 * m_Canvases.at(0)->m_CanvasSize.x, format);
+        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(ActiveCanvas->m_PixelBuffer.m_Pixels, ActiveCanvas->m_CanvasSize.x, ActiveCanvas->m_CanvasSize.y, 32, 4 * ActiveCanvas->m_CanvasSize.x, format);
 
         if (IMGSurface == NULL) {
             std::cout << SDL_GetError();
         }
-        std::cout << IMG_SavePNG(IMGSurface, "save.png") << "\n";
+        IMG_SavePNG(IMGSurface, "save.png");
 
         SDL_FreeSurface(IMGSurface);
 
-        m_Canvases.at(0)->m_Background.Unbind();
+        ActiveCanvas->m_Background.Unbind();
     }
 
     if (ResetView) {
         CanvasData::m_CanvasMultiplier = 1.0f;
-        CanvasData::m_CanvasScale = 1.0f;
+        CanvasData::m_CanvasScale = Input::GetInitialScale();
         CanvasData::m_CanvasOffset = { 0.0f, 0.0f };
     }
 }
