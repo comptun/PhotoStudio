@@ -28,7 +28,7 @@ static uint32_t GetColor() {
 	return r | g | b | a;
 }
 
-void PaintBucket::FloodFill4Stack(Framebuffer& FBuffer, PixelBuffer& PBuffer, glm::vec3 Pos)
+void PaintBucket::FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBuffer, glm::vec3 Pos)
 {
 	static glm::vec3 PreviousPosition = { -1,-1,-1 };
 
@@ -80,6 +80,6 @@ void PaintBucket::FloodFill4Stack(Framebuffer& FBuffer, PixelBuffer& PBuffer, gl
 		}
 	}
 
-	FBuffer.Rescale(reinterpret_cast<unsigned char*>(Pixels32.get()), PBuffer.m_Width, PBuffer.m_Height);
+	Layer->Rescale(reinterpret_cast<unsigned char*>(Pixels32.get()), PBuffer.m_Width, PBuffer.m_Height);
 	PreviousPosition = Pos;
 }

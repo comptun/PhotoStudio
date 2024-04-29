@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Layer.cpp" />
+    <ClCompile Include="Source\LayerManager.cpp" />
     <ClCompile Include="Source\PixelBuffer.cpp" />
     <ClCompile Include="Source\Tools\Eraser.cpp" />
     <ClCompile Include="Source\Tools\PaintBucket.cpp" />
@@ -165,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\glad\include\glad\glad.h" />
+    <ClInclude Include="Source\Layer.h" />
+    <ClInclude Include="Source\LayerManager.h" />
     <ClInclude Include="Source\PixelBuffer.h" />
     <ClInclude Include="Source\Tools\Eraser.h" />
     <ClInclude Include="resource.h" />

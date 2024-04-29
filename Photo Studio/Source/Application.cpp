@@ -84,13 +84,13 @@ void Application::InitGL()
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
 
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
 
     glEnable(GL_BLEND);
     //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glDepthFunc(GL_LEQUAL);
+    //glDepthFunc(GL_LEQUAL);
 }
 
 
@@ -447,7 +447,7 @@ void Application::DrawTitleBar()
     if (SaveProject) {
         glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
 
-        auto ActiveCanvas = m_Canvases.at(CanvasData::m_ActiveCanvas);
+        std::shared_ptr<Canvas> ActiveCanvas = m_Canvases.at(CanvasData::m_ActiveCanvas);
 
         ActiveCanvas->m_Background.Bind();
 
@@ -457,7 +457,10 @@ void Application::DrawTitleBar()
         if (IMGSurface == NULL) {
             std::cout << SDL_GetError();
         }
-        IMG_SavePNG(IMGSurface, "save.png");
+
+        std::string Path = "Images/" + ActiveCanvas->m_CanvasName + ".png";
+
+        IMG_SavePNG(IMGSurface, Path.c_str());
 
         SDL_FreeSurface(IMGSurface);
 

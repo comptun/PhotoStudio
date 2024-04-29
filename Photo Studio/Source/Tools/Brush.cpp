@@ -47,7 +47,7 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
     int Steps = Dist / 2.0f + 1;
 
     m_BrushShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-    m_BrushShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)CanvasData::m_CanvasSize.x, 0.0f, (float)CanvasData::m_CanvasSize.y, 0.1f, 1000.0f));
+    m_BrushShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)CanvasData::m_CanvasSize.x, 0.0f, (float)CanvasData::m_CanvasSize.y));
     m_BrushShader.Uniform<glm::vec4>("Color", WindowData::m_Color);
     //glDisable(GL_BLEND);
     for (int i = 1; i <= Steps; ++i) {
@@ -56,8 +56,8 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
         switch (m_BrushMode)
         {
         case BrushMode::Eraser:
-            m_BrushShader.Uniform<glm::vec4>("Color", {0.0f,0.0f,0.0f,0.0f});
             glDisable(GL_BLEND);
+            m_BrushShader.Uniform<glm::vec4>("Color", {0.0f,0.0f,0.0f,0.0});
             DrawPencil(Pos, CustomSize);
             glEnable(GL_BLEND);
             break;
@@ -73,8 +73,8 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
 
 void Brush::DrawPencil(glm::vec3 Position, float Size)
 {
-    static float offset = -1.0f;
-    Position.z = offset;
+    /*static float offset = -1.0f;
+    Position.z = offset;*/
     //offset += 0.0000001f;
     m_BrushShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), Position), glm::vec3(Size, Size, 0)));
 

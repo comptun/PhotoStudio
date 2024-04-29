@@ -8,6 +8,8 @@
 #include "Primitives.h"
 #include "CanvasData.h"
 #include "PixelBuffer.h"
+#include "Layer.h"
+#include "LayerManager.h"
 
 #include <imgui/imgui.h>
 #include <imgui/imgui_internal.h>
@@ -20,7 +22,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-class Canvas
+class Canvas : LayerManager
 {
 public:
 	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID);
@@ -29,6 +31,7 @@ public:
 	void SetActive();
 	void DrawCanvas();
 	bool MouseInCanvas();
+	glm::vec3 GetCanvasMousePosition();
 
 	Tools& m_Tools;
 	PixelBuffer m_PixelBuffer;
@@ -36,10 +39,7 @@ public:
 	std::string m_CanvasName;
 	Framebuffer m_Background;
 private:
-	Shader m_CanvasShader;
-	Shader m_BackgroundShader;
 	Framebuffer m_Viewport;
-	Framebuffer m_DrawBuffer;
 
 	int m_CanvasID;
 	bool m_Focused;
@@ -47,7 +47,5 @@ private:
 	bool m_InitialDraw;
 
 	glm::vec2 m_OldWindowSize;
-	
-	glm::vec3 GetCanvasMousePosition();
 };
 

@@ -1,11 +1,9 @@
 #include "Canvas.h"
 
 Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID)
-    : m_CanvasShader(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS),
-    m_BackgroundShader(ShaderType::BACKGROUND_VS, ShaderType::BACKGROUND_FS),
+    : 
     m_Viewport(nullptr, 100, 100),
     m_Background(nullptr, 100, 100),
-    m_DrawBuffer(nullptr, 100,100),
     m_Tools(tools),
     m_CanvasSize(Size),
     m_CanvasName(CanvasName),
@@ -14,7 +12,8 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
     m_CanvasID(CanvasID),
     m_OldWindowSize(0,0),
     m_Open(true),
-    m_InitialDraw(true)
+    m_InitialDraw(true),
+    LayerManager(m_CanvasSize)
 {
     CanvasData::m_CanvasSize = m_CanvasSize;
 
@@ -27,9 +26,13 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
     m_Background.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
     glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
     glClearColor(1, 1, 1, 1);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
     m_Background.Unbind();
+
+    uint64_t TestLayer = AddLayer("Test layer");
+    SetActiveLayer(TestLayer);
+    
 }
 Canvas::~Canvas()
 {
@@ -72,14 +75,10 @@ void Canvas::DrawCanvas()
     if (ImGui::IsWindowHovered()) {
         ImGui::SetWindowFocus();
         CanvasData::m_CanvasFocused = true;
-        //CanvasData::m_ActiveCanvas = m_CanvasID;
-        //m_Viewport.Rescale(nullptr, window_width, window_height);
         SetActive();
     }
     else if (ImGui::IsWindowFocused()) {
         CanvasData::m_CanvasFocused = true;
-        //CanvasData::m_ActiveCanvas = m_CanvasID;
-        //m_Viewport.Rescale(nullptr, window_width, window_height);
         SetActive();
     }
 
@@ -105,25 +104,44 @@ void Canvas::DrawCanvas()
         m_OldWindowSize = glm::vec2(window_width, window_height);
         glViewport(0, 0, window_width, window_height);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
 
-        m_BackgroundShader.UseProgram();
-        m_BackgroundShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, -900.0f)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale));
-        m_BackgroundShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        m_BackgroundShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height, 0.1f, 1000.0f));
+        Primitive::m_BackgroundShader->UseProgram();
+        Primitive::m_BackgroundShader->Uniform<glm::mat4>("model", 
+            glm::scale(glm::translate(glm::mat4(1.0f), 
+                glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, 0.0f)
+            ), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale)
+        );
+        Primitive::m_BackgroundShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+        Primitive::m_BackgroundShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
 
         Primitive::m_CanvasObject->Draw();
 
         // https://stackoverflow.com/questions/14154704/how-to-avoid-transparency-overlap-using-opengl
 
-        m_CanvasShader.UseProgram();
-        m_CanvasShader.Uniform<glm::mat4>("model", glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, -800.0f)), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale));
-        m_CanvasShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-        m_CanvasShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height, 0.1f, 1000.0f));
+        Primitive::m_CanvasShader->UseProgram();
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("model", 
+            glm::scale(glm::translate(glm::mat4(1.0f), 
+                glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, 0.0f)
+            ), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale)
+        );
+
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
 
         glBindTexture(GL_TEXTURE_2D, m_Background.GetTexture());
         Primitive::m_CanvasObject->Draw();
+
+
+
+        for (int i = 0; i < m_Layers.size(); ++i) {
+            std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
+
+            glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
+            Primitive::m_CanvasObject->Draw();
+        }
+
     }
     m_Viewport.Unbind();
 
@@ -139,8 +157,9 @@ void Canvas::DrawCanvas()
         m_Viewport.Rescale(nullptr, window_width, window_height);
     }
 
+
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-    m_Background.Bind();
+    BindActiveLayer();
 
     m_PixelBuffer.Download();
 
@@ -150,16 +169,45 @@ void Canvas::DrawCanvas()
         m_Tools.m_BrushMode = BrushMode::Pencil;
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition);
     }
-    else if (m_Tools.m_Tool == Tool::Eraser) 
+    else if (m_Tools.m_Tool == Tool::Eraser)
     {
         m_Tools.m_BrushMode = BrushMode::Eraser;
         m_Tools.DrawInterpolatedPaintbrush(BrushPosition, m_Tools.GetEraserSize());
     }
     else if (m_Tools.m_Tool == Tool::PaintBucket) {
-        m_Tools.FloodFill4Stack(m_Background, m_PixelBuffer, BrushPosition);
+        m_Tools.FloodFill4Stack(GetActiveLayer(), m_PixelBuffer, BrushPosition);
     }
 
-    m_Background.Unbind();
+    UnbindActiveLayer();
+
+
+
+
+    /*m_Background.Bind();
+    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+
+    m_PixelBuffer.Download();
+
+    Primitive::m_CanvasShader->UseProgram();
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
+
+    for (int i = 0; i < m_Layers.size(); ++i) {
+        std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
+
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
+            glm::scale(glm::translate(glm::mat4(1.0f),
+                glm::vec3(m_CanvasSize.x / 2.0f, m_CanvasSize.y / 2.0f, 0.0f)
+            ), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0))
+        );
+
+        glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
+        Primitive::m_CanvasObject->Draw();
+    }
+
+    m_Background.Unbind();*/
+
+
 
     glUseProgram(0);
 
@@ -174,7 +222,7 @@ glm::vec3 Canvas::GetCanvasMousePosition()
     glm::vec<2, int> WindowPos = { 0,0 };
     SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &WindowPos.x, &WindowPos.y);
     return glm::vec3(mousePos.x - CanvasData::m_CanvasOffset.x - ViewportPos.x - (ViewportSize.x - m_CanvasSize.x * CanvasData::m_CanvasScale) / 2.0f + WindowPos.x,
-                     mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y * CanvasData::m_CanvasScale) / 2.0f + WindowPos.y, -1.0f) / glm::vec3(CanvasData::m_CanvasScale, CanvasData::m_CanvasScale, 1.0f);
+                     mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y * CanvasData::m_CanvasScale) / 2.0f + WindowPos.y, 0.0f) / glm::vec3(CanvasData::m_CanvasScale, CanvasData::m_CanvasScale, 1.0f);
 }
 
 bool Canvas::MouseInCanvas()
