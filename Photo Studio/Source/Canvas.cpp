@@ -4,6 +4,7 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
     : 
     m_Viewport(nullptr, 100, 100),
     m_Background(nullptr, 100, 100),
+    m_DrawBuffer(nullptr, 100, 100),
     m_Tools(tools),
     m_CanvasSize(Size),
     m_CanvasName(CanvasName),
@@ -30,8 +31,21 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
 
     m_Background.Unbind();
 
+
+
+    m_DrawBuffer.Bind();
+
+    m_DrawBuffer.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
+    glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
+    glClearColor(1, 1, 1, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    m_DrawBuffer.Unbind();
+
+    uint64_t BackgroundLayer = AddLayer("Background", glm::vec4(1, 1, 1, 1));
+    uint64_t BackgroundLayer2 = AddLayer("Background2", glm::vec4(0, 1, 1, 1));
     uint64_t TestLayer = AddLayer("Test layer");
-    SetActiveLayer(TestLayer);
+    SetActiveLayer(BackgroundLayer2);
     
 }
 Canvas::~Canvas()
@@ -130,8 +144,8 @@ void Canvas::DrawCanvas()
         Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
 
-        glBindTexture(GL_TEXTURE_2D, m_Background.GetTexture());
-        Primitive::m_CanvasObject->Draw();
+        /*glBindTexture(GL_TEXTURE_2D, m_Background.GetTexture());
+        Primitive::m_CanvasObject->Draw();*/
 
 
 
@@ -161,7 +175,7 @@ void Canvas::DrawCanvas()
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
     BindActiveLayer();
 
-    m_PixelBuffer.Download();
+    //m_PixelBuffer.Download();
 
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::Brush)
@@ -243,4 +257,44 @@ bool Canvas::MouseInCanvas()
     }
 
     return true;
+}
+
+void Canvas::SaveAs()
+{
+    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+
+    m_DrawBuffer.Bind();
+    glClearColor(1, 1, 1, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    Primitive::m_CanvasShader->UseProgram();
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
+        glm::scale(glm::translate(glm::mat4(1.0f),
+            glm::vec3(m_CanvasSize.x / 2.0f + CanvasData::m_CanvasOffset.x, m_CanvasSize.y / 2.0f - CanvasData::m_CanvasOffset.y, 0.0f)
+        ), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale)
+    );
+
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
+
+    for (int i = 0; i < 2; ++i) {
+        std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
+        glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
+        Primitive::m_CanvasObject->Draw();
+    }
+    m_PixelBuffer.Download();
+    m_DrawBuffer.Unbind();
+
+    const uint32_t format = SDL_PIXELFORMAT_RGBA32;
+    SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_PixelBuffer.m_Pixels, m_CanvasSize.x, m_CanvasSize.y, 32, 4 * m_CanvasSize.x, format);
+
+    if (IMGSurface == NULL) {
+        std::cout << SDL_GetError();
+    }
+
+    std::string Path = "Images/" + m_CanvasName + ".png";
+
+    IMG_SavePNG(IMGSurface, Path.c_str());
+
+    SDL_FreeSurface(IMGSurface);
 }

@@ -8,7 +8,7 @@
 class Layer : public Framebuffer
 {
 public:
-	Layer(std::string LayerName, uint64_t Index, uint64_t Width, uint64_t Height);
+	Layer(std::string LayerName, uint64_t Index, uint64_t Width, uint64_t Height, glm::vec4 Color);
 	~Layer();
 private:
 	std::string m_LayerName;

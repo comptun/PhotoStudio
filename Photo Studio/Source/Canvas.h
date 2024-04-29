@@ -28,6 +28,7 @@ public:
 	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID);
 	~Canvas();
 
+	void SaveAs();
 	void SetActive();
 	void DrawCanvas();
 	bool MouseInCanvas();
@@ -40,6 +41,7 @@ public:
 	Framebuffer m_Background;
 private:
 	Framebuffer m_Viewport;
+	Framebuffer m_DrawBuffer;
 
 	int m_CanvasID;
 	bool m_Focused;

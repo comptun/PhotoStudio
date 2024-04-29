@@ -18,8 +18,13 @@ void LayerManager::SetActiveLayer(uint64_t LayerID)
 
 uint64_t LayerManager::AddLayer(std::string LayerName)
 {
+	uint64_t ID = AddLayer(LayerName, glm::vec4(0,0,0,0));
+	return ID;
+}
+uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color)
+{
 	uint64_t ID = m_Layers.size();
-	auto NewLayer = std::make_unique<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y));
+	auto NewLayer = std::make_unique<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
 	m_Layers.push_back(std::move(NewLayer));
 	return ID;
 }

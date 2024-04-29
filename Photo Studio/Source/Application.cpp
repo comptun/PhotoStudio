@@ -66,7 +66,7 @@ void Application::InitGL()
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
-    int window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_MAXIMIZED;
+    int window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;// | SDL_WINDOW_MAXIMIZED;
     SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, (SDL_WindowFlags)window_flags);
     if (Window == nullptr)
     {
@@ -445,7 +445,8 @@ void Application::DrawTitleBar()
     }
 
     if (SaveProject) {
-        glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+        m_Canvases.at(CanvasData::m_ActiveCanvas)->SaveAs();
+        /*glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
 
         std::shared_ptr<Canvas> ActiveCanvas = m_Canvases.at(CanvasData::m_ActiveCanvas);
 
@@ -464,7 +465,7 @@ void Application::DrawTitleBar()
 
         SDL_FreeSurface(IMGSurface);
 
-        ActiveCanvas->m_Background.Unbind();
+        ActiveCanvas->m_Background.Unbind();*/
     }
 
     if (ResetView) {
