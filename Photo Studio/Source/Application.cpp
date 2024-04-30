@@ -240,6 +240,7 @@ void Application::DrawTitleBar()
     bool CreateNewProject = false;
     bool SaveProject = false;
     bool ResetView = false;
+    bool CreateNewLayer = false;
 
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar(2);
@@ -323,6 +324,10 @@ void Application::DrawTitleBar()
             ImGui::PopStyleVar();
 
             ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(9, 9));
+
+
+            ImGui::MenuItem("New layer", "Ctrl+L", &CreateNewLayer, true);
+
 
             ImGui::PopStyleVar();
 
@@ -453,6 +458,12 @@ void Application::DrawTitleBar()
         CanvasData::m_CanvasMultiplier = 1.0f;
         CanvasData::m_CanvasScale = Input::GetInitialScale();
         CanvasData::m_CanvasOffset = { 0.0f, 0.0f };
+    }
+
+    if (CreateNewLayer) {
+        static int LayerNum = 1;
+        m_Canvases.at(CanvasData::m_ActiveCanvas)->AddLayer("New layer " + std::to_string(LayerNum));
+        LayerNum += 1;
     }
 }
 
