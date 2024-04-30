@@ -22,7 +22,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-class Canvas : LayerManager
+class Canvas : public LayerManager
 {
 public:
 	Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasID);
@@ -30,12 +30,14 @@ public:
 
 	void SaveAs();
 	void SetActive();
+	void Render();
 	void DrawCanvas();
 	bool MouseInCanvas();
 	glm::vec3 GetCanvasMousePosition();
 
 	Tools& m_Tools;
 	PixelBuffer m_PixelBuffer;
+	PixelBuffer m_DrawPixelBuffer;
 	glm::vec2 m_CanvasSize;
 	std::string m_CanvasName;
 	Framebuffer m_Background;

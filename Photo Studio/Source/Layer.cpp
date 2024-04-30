@@ -2,7 +2,8 @@
 
 Layer::Layer(std::string LayerName, uint64_t Index, uint64_t Width, uint64_t Height, glm::vec4 Color)
 	: Framebuffer(nullptr, Width, Height),
-	m_LayerName(LayerName)
+	m_LayerName(LayerName),
+    m_Visible(true)
 {
     Bind();
 
@@ -13,6 +14,12 @@ Layer::Layer(std::string LayerName, uint64_t Index, uint64_t Width, uint64_t Hei
 
     Unbind();
 }
+
+std::string Layer::GetName()
+{
+    return m_LayerName;
+}
+
 Layer::~Layer()
 {
 

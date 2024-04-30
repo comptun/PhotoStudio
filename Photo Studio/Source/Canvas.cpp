@@ -9,6 +9,7 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
     m_CanvasSize(Size),
     m_CanvasName(CanvasName),
     m_PixelBuffer(GL_RGBA, Size.x, Size.y, 2),
+    m_DrawPixelBuffer(GL_RGBA, Size.x, Size.y, 2),
     m_Focused(false),
     m_CanvasID(CanvasID),
     m_OldWindowSize(0,0),
@@ -43,9 +44,8 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
     m_DrawBuffer.Unbind();
 
     uint64_t BackgroundLayer = AddLayer("Background", glm::vec4(1, 1, 1, 1));
-    uint64_t BackgroundLayer2 = AddLayer("Background2", glm::vec4(0, 1, 1, 1));
     uint64_t TestLayer = AddLayer("Test layer");
-    SetActiveLayer(BackgroundLayer2);
+    SetActiveLayer(TestLayer);
     
 }
 Canvas::~Canvas()
@@ -63,6 +63,11 @@ void Canvas::SetActive()
     CanvasData::m_ViewportSize = { window_width, window_height };
 
     CanvasData::m_CanvasScale = CanvasData::m_CanvasMultiplier * Input::GetInitialScale();
+}
+
+void Canvas::Render()
+{
+    DrawCanvas();
 }
 
 void Canvas::DrawCanvas()
@@ -132,11 +137,11 @@ void Canvas::DrawCanvas()
 
         Primitive::m_CanvasObject->Draw();
 
-        // https://stackoverflow.com/questions/14154704/how-to-avoid-transparency-overlap-using-opengl
+
 
         Primitive::m_CanvasShader->UseProgram();
-        Primitive::m_CanvasShader->Uniform<glm::mat4>("model", 
-            glm::scale(glm::translate(glm::mat4(1.0f), 
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
+            glm::scale(glm::translate(glm::mat4(1.0f),
                 glm::vec3(window_width / 2.0f + CanvasData::m_CanvasOffset.x, window_height / 2.0f - CanvasData::m_CanvasOffset.y, 0.0f)
             ), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale)
         );
@@ -144,20 +149,46 @@ void Canvas::DrawCanvas()
         Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
         Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)window_width, 0.0f, (float)window_height));
 
-        /*glBindTexture(GL_TEXTURE_2D, m_Background.GetTexture());
-        Primitive::m_CanvasObject->Draw();*/
-
-
-
-        for (int i = 0; i < m_Layers.size(); ++i) {
-            std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
-
-            glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
-            Primitive::m_CanvasObject->Draw();
-        }
-
+        glBindTexture(GL_TEXTURE_2D, m_DrawBuffer.GetTexture());
+        Primitive::m_CanvasObject->Draw();
     }
     m_Viewport.Unbind();
+
+
+
+
+
+
+    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
+
+    m_DrawBuffer.Bind();
+    glClearColor(1, 1, 1, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    Primitive::m_CanvasShader->UseProgram();
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
+        glm::scale(glm::translate(glm::mat4(1.0f),
+            glm::vec3(m_CanvasSize.x / 2.0f, m_CanvasSize.y / 2.0f, 0.0f)
+        ), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0))
+    );
+
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+    Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
+
+    for (int i = 0; i < m_Layers.size(); ++i) {
+        if (!m_Layers[i]->m_Visible) {
+            continue;
+        }
+        std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
+        glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
+        Primitive::m_CanvasObject->Draw();
+    }
+    m_DrawPixelBuffer.Download();
+    m_DrawBuffer.Unbind();
+
+
+
+
 
     if (!ImGui::IsWindowFocused()) {
         glUseProgram(0);
@@ -175,7 +206,7 @@ void Canvas::DrawCanvas()
     glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
     BindActiveLayer();
 
-    //m_PixelBuffer.Download();
+    m_PixelBuffer.Download();
 
     glm::vec3 BrushPosition = GetCanvasMousePosition();
     if (m_Tools.m_Tool == Tool::Brush)
@@ -193,35 +224,6 @@ void Canvas::DrawCanvas()
     }
 
     UnbindActiveLayer();
-
-
-
-
-    /*m_Background.Bind();
-    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-
-    m_PixelBuffer.Download();
-
-    Primitive::m_CanvasShader->UseProgram();
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
-
-    for (int i = 0; i < m_Layers.size(); ++i) {
-        std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
-
-        Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
-            glm::scale(glm::translate(glm::mat4(1.0f),
-                glm::vec3(m_CanvasSize.x / 2.0f, m_CanvasSize.y / 2.0f, 0.0f)
-            ), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0))
-        );
-
-        glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
-        Primitive::m_CanvasObject->Draw();
-    }
-
-    m_Background.Unbind();*/
-
-
 
     glUseProgram(0);
 
@@ -261,32 +263,8 @@ bool Canvas::MouseInCanvas()
 
 void Canvas::SaveAs()
 {
-    glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-
-    m_DrawBuffer.Bind();
-    glClearColor(1, 1, 1, 0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    Primitive::m_CanvasShader->UseProgram();
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
-        glm::scale(glm::translate(glm::mat4(1.0f),
-            glm::vec3(m_CanvasSize.x / 2.0f + CanvasData::m_CanvasOffset.x, m_CanvasSize.y / 2.0f - CanvasData::m_CanvasOffset.y, 0.0f)
-        ), glm::vec3(m_CanvasSize.x, -m_CanvasSize.y, 0) * CanvasData::m_CanvasScale)
-    );
-
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
-
-    for (int i = 0; i < 2; ++i) {
-        std::shared_ptr<Layer> CurrentLayer = m_Layers[i];
-        glBindTexture(GL_TEXTURE_2D, CurrentLayer->GetTexture());
-        Primitive::m_CanvasObject->Draw();
-    }
-    m_PixelBuffer.Download();
-    m_DrawBuffer.Unbind();
-
     const uint32_t format = SDL_PIXELFORMAT_RGBA32;
-    SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_PixelBuffer.m_Pixels, m_CanvasSize.x, m_CanvasSize.y, 32, 4 * m_CanvasSize.x, format);
+    SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(m_DrawPixelBuffer.m_Pixels, m_CanvasSize.x, m_CanvasSize.y, 32, 4 * m_CanvasSize.x, format);
 
     if (IMGSurface == NULL) {
         std::cout << SDL_GetError();

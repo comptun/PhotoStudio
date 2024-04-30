@@ -7,7 +7,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <imgui/imgui.h>
+#include <imgui/imgui_internal.h>
+#include <imgui/backends/imgui_impl_sdl2.h>
+#include <imgui/backends/imgui_impl_opengl2.h>
+
 #include "Layer.h"
+#include "Primitives.h"
 
 class LayerManager
 {
@@ -21,6 +27,7 @@ public:
 	void BindActiveLayer();
 	void UnbindActiveLayer();
 	void DrawLayers();
+	void DrawLayersWindow();
 	std::shared_ptr<Layer> GetActiveLayer();
 
 private:

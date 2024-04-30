@@ -199,8 +199,9 @@ void Application::RenderUI()
 
         ImGui::End();
 
-        ImGui::Begin("Layers");
-        ImGui::End();
+        m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayersWindow();
+        /*ImGui::Begin("Layers");
+        ImGui::End();*/
     }
 
     ImGui::End();
@@ -446,26 +447,6 @@ void Application::DrawTitleBar()
 
     if (SaveProject) {
         m_Canvases.at(CanvasData::m_ActiveCanvas)->SaveAs();
-        /*glViewport(0, 0, CanvasData::m_CanvasSize.x, CanvasData::m_CanvasSize.y);
-
-        std::shared_ptr<Canvas> ActiveCanvas = m_Canvases.at(CanvasData::m_ActiveCanvas);
-
-        ActiveCanvas->m_Background.Bind();
-
-        const uint32_t format = SDL_PIXELFORMAT_RGBA32;
-        SDL_Surface* IMGSurface = SDL_CreateRGBSurfaceWithFormatFrom(ActiveCanvas->m_PixelBuffer.m_Pixels, ActiveCanvas->m_CanvasSize.x, ActiveCanvas->m_CanvasSize.y, 32, 4 * ActiveCanvas->m_CanvasSize.x, format);
-
-        if (IMGSurface == NULL) {
-            std::cout << SDL_GetError();
-        }
-
-        std::string Path = "Images/" + ActiveCanvas->m_CanvasName + ".png";
-
-        IMG_SavePNG(IMGSurface, Path.c_str());
-
-        SDL_FreeSurface(IMGSurface);
-
-        ActiveCanvas->m_Background.Unbind();*/
     }
 
     if (ResetView) {
