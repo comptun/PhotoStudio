@@ -25,6 +25,20 @@ std::vector<float> brushverts = {
 
 void Primitive::Init()
 {
+    float baseFontSize = 13.0f; // 13.0f is the size of the default font. Change to the font size you use.
+    float iconFontSize = 35.0f;
+    
+    ImGuiIO& io = ImGui::GetIO();
+    // merge in icons from Font Awesome
+    static const ImWchar icons_ranges[] = { ICON_MIN_MD, ICON_MAX_MD, 0 };
+    ImFontConfig icons_config;
+    icons_config.MergeMode = true;
+    icons_config.PixelSnapH = true;
+    icons_config.GlyphMinAdvanceX = iconFontSize;
+    
+    io.Fonts->AddFontFromFileTTF("Fonts/" FONT_ICON_FILE_NAME_MD, iconFontSize, &icons_config, icons_ranges);
+    // use FONT_ICON_FILE_NAME_FAR if you want regular instead of solid
+
     Primitive::m_BrushObject = std::make_unique<CanvasObject>(indices, brushverts);
     Primitive::m_CanvasObject = std::make_unique<CanvasObject>(indices, vertices);
     Primitive::m_CanvasShader = std::make_unique<Shader>(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS);

@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\glad\include\glad\glad.h" />
+    <ClInclude Include="Source\IconsMaterialDesign.h" />
     <ClInclude Include="Source\Layer.h" />
     <ClInclude Include="Source\LayerManager.h" />
     <ClInclude Include="Source\PixelBuffer.h" />
@@ -202,7 +203,7 @@
     <ResourceCompile Include="Photo Studio.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\x64\Release\Assets\Icons\PhotoStudioLogo.ico" />
+    <Image Include="PhotoStudioLogo.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -197,6 +197,9 @@
     <ClInclude Include="Source\LayerManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\IconsMaterialDesign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Photo Studio.rc">
@@ -204,7 +207,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\x64\Release\Assets\Icons\PhotoStudioLogo.ico">
+    <Image Include="PhotoStudioLogo.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

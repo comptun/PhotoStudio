@@ -12,6 +12,7 @@
 #include "Utilities.h"
 #include "Input.h"
 #include "WindowManager.h"
+#include "IconsMaterialDesign.h"
 
 #include <cmath>
 #include <algorithm>

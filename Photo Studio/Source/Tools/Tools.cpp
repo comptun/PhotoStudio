@@ -3,7 +3,7 @@
 Tools::Tools()
 	: m_Tool(Tool::None)
 {
-
+	
 }
 
 void Tools::DrawToolPropertiesMenu()
@@ -37,24 +37,41 @@ void Tools::DrawToolPropertiesMenu()
 void Tools::DrawToolbar()
 {
 	ImGuiWindowClass window_class;
-	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar;
+	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
 	
 	ImGui::SetNextWindowClass(&window_class);
-
 	ImGui::Begin("Toolbar");
 
-	if (ImGui::Button("None")) {
+	ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 1.1f));
+	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 8.0f);
+	ImGui::PushFont(Primitive::m_IconFont);
+
+	if (ImGui::Button(ICON_MD_HIGHLIGHT_REMOVE, ImVec2(40,40))) {
 		m_Tool = Tool::None;
 	}
-	if (ImGui::Button("Brush tool")) {
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(53.0f);
+	if (ImGui::Button(ICON_MD_BRUSH, ImVec2(40, 40))) {
 		m_Tool = Tool::Brush;
 	}
-	if (ImGui::Button("Eraser tool")) {
+
+	if (ImGui::Button(ICON_MD_PHONELINK_ERASE, ImVec2(40, 40))) {
 		m_Tool = Tool::Eraser;
 	}
-	if (ImGui::Button("Paint Bucket tool")) {
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(53.0f);
+	if (ImGui::Button(ICON_MD_FORMAT_COLOR_FILL, ImVec2(40, 40))) {
 		m_Tool = Tool::PaintBucket;
 	}
+
+	if (ImGui::Button(ICON_MD_COLORIZE, ImVec2(40, 40))) {
+		m_Tool = Tool::Eraser;
+	}
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(53.0f);
+
+	ImGui::PopFont();
+	ImGui::PopStyleVar(2);
 
 	ImGui::End();
 }

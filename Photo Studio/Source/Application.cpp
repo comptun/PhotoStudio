@@ -133,8 +133,8 @@ void Application::InitImGui()
 }
 void Application::Run()
 {
+    InitImGui();
     Primitive::Init();
-	InitImGui();
 	while (m_Running) {
 		UpdateWindow();
 		Render();
