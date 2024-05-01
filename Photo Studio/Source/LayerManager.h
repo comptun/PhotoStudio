@@ -37,6 +37,10 @@ private:
 	uint64_t m_ActiveLayer;
 	float m_LayerYPos;
 	bool m_InitialLayerClick;
+	bool m_DraggingLayer;
+
+	void NextLayerDraggable(int LayerIndex, int LayerNum);
+	void DrawLayer(int LayerIndex, int LayerNum);
 protected:
 	std::vector<std::shared_ptr<Layer>> m_Layers;
 };
