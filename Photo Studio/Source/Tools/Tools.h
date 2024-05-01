@@ -29,4 +29,7 @@ public:
 	Tool m_Tool;
 	void DrawToolPropertiesMenu();
 	void DrawToolbar();
+private:
+	uint64_t m_ToolIndex;
+	void ToolButton(Tool SelectedTool, std::string ToolName, std::string Tooltip);
 };

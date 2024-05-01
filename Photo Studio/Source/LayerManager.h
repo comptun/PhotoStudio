@@ -14,6 +14,7 @@
 
 #include "Layer.h"
 #include "Primitives.h"
+#include "Input.h"
 
 class LayerManager
 {
@@ -31,8 +32,11 @@ public:
 	std::shared_ptr<Layer> GetActiveLayer();
 
 private:
+	std::vector<bool> m_SelectedLayers;
 	glm::vec2& m_CanvasSize;
 	uint64_t m_ActiveLayer;
+	float m_LayerYPos;
+	bool m_InitialLayerClick;
 protected:
 	std::vector<std::shared_ptr<Layer>> m_Layers;
 };

@@ -230,6 +230,7 @@ void Application::DrawTitleBar()
 {
     ImGuiWindowClass window_class;
     window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
+    
     ImGui::SetNextWindowClass(&window_class);
 
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));

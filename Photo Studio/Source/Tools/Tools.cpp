@@ -1,7 +1,8 @@
 #include "Tools.h"
 
 Tools::Tools()
-	: m_Tool(Tool::None)
+	: m_Tool(Tool::None),
+	m_ToolIndex(0)
 {
 	
 }
@@ -34,6 +35,23 @@ void Tools::DrawToolPropertiesMenu()
 	ImGui::PopStyleVar();
 }
 
+void Tools::ToolButton(Tool SelectedTool, std::string ToolName, std::string Tooltip)
+{
+	if (ImGui::Button(ToolName.c_str(), ImVec2(40, 40))) {
+		m_Tool = SelectedTool;
+	}
+	if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+		ImGui::SetTooltip(Tooltip.c_str());
+	}
+
+	if (m_ToolIndex % 2 == 0) {
+		ImGui::SameLine();
+		ImGui::SetCursorPosX(53.0f);
+	}
+
+	m_ToolIndex += 1;
+}
+
 void Tools::DrawToolbar()
 {
 	ImGuiWindowClass window_class;
@@ -46,29 +64,16 @@ void Tools::DrawToolbar()
 	ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 8.0f);
 	ImGui::PushFont(Primitive::m_IconFont);
 
-	if (ImGui::Button(ICON_MD_HIGHLIGHT_REMOVE, ImVec2(40,40))) {
-		m_Tool = Tool::None;
-	}
-	ImGui::SameLine();
-	ImGui::SetCursorPosX(53.0f);
-	if (ImGui::Button(ICON_MD_BRUSH, ImVec2(40, 40))) {
-		m_Tool = Tool::Brush;
-	}
+	m_ToolIndex = 0;
 
-	if (ImGui::Button(ICON_MD_PHONELINK_ERASE, ImVec2(40, 40))) {
-		m_Tool = Tool::Eraser;
-	}
-	ImGui::SameLine();
-	ImGui::SetCursorPosX(53.0f);
-	if (ImGui::Button(ICON_MD_FORMAT_COLOR_FILL, ImVec2(40, 40))) {
-		m_Tool = Tool::PaintBucket;
-	}
-
-	if (ImGui::Button(ICON_MD_COLORIZE, ImVec2(40, 40))) {
-		m_Tool = Tool::Eraser;
-	}
-	ImGui::SameLine();
-	ImGui::SetCursorPosX(53.0f);
+	ToolButton(Tool::None, ICON_MD_HIGHLIGHT_REMOVE, "No tool");
+	ToolButton(Tool::Brush, ICON_MD_BRUSH, "Brush tool");
+	ToolButton(Tool::Eraser, ICON_MD_SMARTPHONE, "Eraser tool");
+	ToolButton(Tool::PaintBucket, ICON_MD_FORMAT_COLOR_FILL, "Paint bucket tool");
+	ToolButton(Tool::Eraser, ICON_MD_COLORIZE, "Eyedropper tool");
+	ToolButton(Tool::Eraser, ICON_MD_FORMAT_SIZE, "Text tool");
+	ToolButton(Tool::Eraser, ICON_MD_CROP, "Crop tool");
+	ToolButton(Tool::Eraser, ICON_MD_SELECT_ALL, "Rectangular select tool");
 
 	ImGui::PopFont();
 	ImGui::PopStyleVar(2);
