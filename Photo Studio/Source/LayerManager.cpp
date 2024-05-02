@@ -79,8 +79,15 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	if (Dragging) {
 		
 		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
-		std::cout << (int)DragPos / 50 << "\n";
 		ImGui::SetCursorPosY(DragPos);
+
+		int Index = (int)m_Layers.size() - (int)DragPos / 50;
+
+		if (Index >= 0 && Index <= m_Layers.size()) {
+			std::shared_ptr<Layer> LayerPtr = m_Layers.at(LayerIndex);
+			m_Layers.insert(m_Layers.begin() + Index, LayerPtr);
+			m_Layers.erase(m_Layers.begin() + LayerIndex);
+		}
 	}
 	else {
 		ImGui::SetCursorPosY(LayerNum * 55.0f + 27.0f);
