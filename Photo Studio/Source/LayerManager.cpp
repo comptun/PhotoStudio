@@ -53,12 +53,13 @@ std::shared_ptr<Layer> LayerManager::GetActiveLayer()
 
 void LayerManager::NextLayerDraggable(int LayerIndex)
 {
+	int LayerNum = m_Layers.size() - 1 - LayerIndex;
+
 	if (Input::Mouse::Button == SDL_BUTTON_LEFT) {
 		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
-			if (!m_InitialLayerClick)
-				m_LayerYPos += Input::Mouse::Rel.y;
-			else
-				m_LayerYPos = 0.0f;
+			if (m_InitialLayerClick)
+				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 55.0f + 27.0f);
+
 			Input::Mouse::Rel = { 0,0 };
 			m_InitialLayerClick = false;
 			m_DraggingLayer = true;
@@ -76,9 +77,9 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	int LayerNum = m_Layers.size() - 1 - LayerIndex;
 
 	if (Dragging) {
-		// need to add sdl window position into equation but it is 3 am goddamn
-		float DragPos = Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY();
-		std::cout << DragPos << "\n";
+		
+		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
+		std::cout << (int)DragPos / 50 << "\n";
 		ImGui::SetCursorPosY(DragPos);
 	}
 	else {
@@ -149,6 +150,9 @@ void LayerManager::DrawLayersWindow()
 
 	ImVec2 WindowPos = ImGui::GetWindowPos();
 	m_LayersWindowPos = { WindowPos.x, WindowPos.y };
+
+	int xPos;
+	SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &xPos, &m_WindowYPos);
 
 	for (int i = 0; i < m_Layers.size(); ++i) {
 		DrawLayer(i);

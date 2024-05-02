@@ -36,6 +36,7 @@ private:
 	glm::vec2& m_CanvasSize;
 	uint64_t m_ActiveLayer;
 	glm::vec2 m_LayersWindowPos;
+	int m_WindowYPos;
 	float m_LayerOffset;
 	float m_LayerYPos;
 	bool m_InitialLayerClick;
