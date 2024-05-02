@@ -35,12 +35,14 @@ private:
 	std::vector<bool> m_SelectedLayers;
 	glm::vec2& m_CanvasSize;
 	uint64_t m_ActiveLayer;
+	glm::vec2 m_LayersWindowPos;
+	float m_LayerOffset;
 	float m_LayerYPos;
 	bool m_InitialLayerClick;
 	bool m_DraggingLayer;
 
-	void NextLayerDraggable(int LayerIndex, int LayerNum);
-	void DrawLayer(int LayerIndex, int LayerNum);
+	void NextLayerDraggable(int LayerIndex);
+	void DrawLayer(int LayerIndex, bool Dragging=false, float Opacity=1.0f);
 protected:
 	std::vector<std::shared_ptr<Layer>> m_Layers;
 };

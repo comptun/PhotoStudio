@@ -5,7 +5,9 @@ LayerManager::LayerManager(glm::vec2& CanvasSize)
 	m_ActiveLayer(0),
 	m_LayerYPos(0),
 	m_InitialLayerClick(true),
-	m_DraggingLayer(false)
+	m_DraggingLayer(false),
+	m_LayersWindowPos({0,0}),
+	m_LayerOffset(0)
 {
 
 }
@@ -49,14 +51,15 @@ std::shared_ptr<Layer> LayerManager::GetActiveLayer()
 	return m_Layers[m_ActiveLayer];
 }
 
-void LayerManager::NextLayerDraggable(int LayerIndex, int LayerNum)
+void LayerManager::NextLayerDraggable(int LayerIndex)
 {
 	if (Input::Mouse::Button == SDL_BUTTON_LEFT) {
-		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || DraggingLayer)) {
+		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
 			if (!m_InitialLayerClick)
 				m_LayerYPos += Input::Mouse::Rel.y;
+			else
+				m_LayerYPos = 0.0f;
 			Input::Mouse::Rel = { 0,0 };
-			ImGui::SetCursorPosY(LayerNum * 55.0f + 27.0f + m_LayerYPos);
 			m_InitialLayerClick = false;
 			m_DraggingLayer = true;
 		}
@@ -68,20 +71,35 @@ void LayerManager::NextLayerDraggable(int LayerIndex, int LayerNum)
 	}
 }
 
-void LayerManager::DrawLayer(int LayerIndex, int LayerNum)
+void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 {
-	if (LayerIndex == m_ActiveLayer) {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.0f, 0.409f, 1.0f, 1.0f));
-		NextLayerDraggable(LayerIndex, LayerNum);
+	int LayerNum = m_Layers.size() - 1 - LayerIndex;
+
+	if (Dragging) {
+		// need to add sdl window position into equation but it is 3 am goddamn
+		float DragPos = Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY();
+		std::cout << DragPos << "\n";
+		ImGui::SetCursorPosY(DragPos);
 	}
 	else {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.137f, 0.263f, 0.424f, 1.0f));
 		ImGui::SetCursorPosY(LayerNum * 55.0f + 27.0f);
 	}
 
+	if (m_ActiveLayer == LayerIndex) {
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.0f, 0.409f, 1.0f, Opacity));
+		NextLayerDraggable(LayerIndex);
+	}
+	else {
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.137f, 0.263f, 0.424f, Opacity));
+	}
+
+	std::string LayerName = m_Layers[LayerIndex]->GetName();
+	if (Dragging) {
+		LayerName += " ";
+	}
 
 	ImGui::PushStyleVar(ImGuiStyleVar_CellPadding, ImVec2(10.0f, 10.0f));
-	ImGui::BeginChild(m_Layers[LayerIndex]->GetName().c_str(), ImVec2(ImGui::GetWindowWidth(), 50.0f));
+	ImGui::BeginChild(LayerName.c_str(), ImVec2(ImGui::GetWindowWidth(), 50.0f));
 	{
 		ImGui::SetCursorPos(ImVec2(6, 13));
 		ImGui::Checkbox("", &m_Layers[LayerIndex]->m_Visible);
@@ -108,10 +126,12 @@ void LayerManager::DrawLayer(int LayerIndex, int LayerNum)
 		
 		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0.5));
 		
-		bool Button = ImGui::ButtonEx(("               " + m_Layers[LayerIndex]->GetName()).c_str(), ImVec2(ImGui::GetWindowWidth() - 30.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
-		m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered() || ImGui::IsWindowHovered();
-		if (Button) {
-			SetActiveLayer(LayerIndex);
+		bool Button = ImGui::ButtonEx(("               " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 30.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+		if (!Dragging) {
+			m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered();
+			if (Button) {
+				SetActiveLayer(LayerIndex);
+			}
 		}
 
 		ImGui::PopStyleColor(3);
@@ -127,9 +147,16 @@ void LayerManager::DrawLayersWindow()
 	ImGui::Begin("Layers", nullptr, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 	ImGui::PopStyleVar();
 
-	for (int i = m_Layers.size() - 1, Num = 0; i >= 0; --i, ++Num) {
-		DrawLayer(i, Num);
+	ImVec2 WindowPos = ImGui::GetWindowPos();
+	m_LayersWindowPos = { WindowPos.x, WindowPos.y };
+
+	for (int i = 0; i < m_Layers.size(); ++i) {
+		DrawLayer(i);
 	}
 
+	if (m_DraggingLayer) {
+		DrawLayer(m_ActiveLayer, true, 0.5f);
+	}
+	//std::cout << m_ActiveLayer << "\n";
 	ImGui::End();
 }
