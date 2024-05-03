@@ -16,6 +16,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <thread>
 
 #include "CanvasObject.h"
 #include "Shader.h"
@@ -34,6 +35,7 @@ public:
 
 	void Run();
 	static void InitGL();
+	void RenderUI();
 private:
 	SDL_Window* m_Window;
 	inline static SDL_GLContext m_GLContext = nullptr;
@@ -49,7 +51,6 @@ private:
 	void UpdateWindow();
 	void InitImGui();
 	void Render();
-	void RenderUI();
 	void Cleanup();
 };
 

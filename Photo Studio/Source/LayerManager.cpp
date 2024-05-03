@@ -20,7 +20,12 @@ void LayerManager::SetActiveLayer(uint64_t LayerID)
 {
 	m_ActiveLayer = LayerID;
 }
-
+uint64_t LayerManager::AddLayer()
+{
+	std::string Name = "Layer " + std::to_string(m_Layers.size() + 1);
+	uint64_t ID = AddLayer(Name);
+	return ID;
+}
 uint64_t LayerManager::AddLayer(std::string LayerName)
 {
 	uint64_t ID = AddLayer(LayerName, glm::vec4(0,0,0,0));
@@ -29,7 +34,7 @@ uint64_t LayerManager::AddLayer(std::string LayerName)
 uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color)
 {
 	uint64_t ID = m_Layers.size();
-	auto NewLayer = std::make_unique<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
+	auto NewLayer = std::make_shared<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
 	m_Layers.push_back(std::move(NewLayer));
 	m_SelectedLayers.push_back(false);
 	return ID;
@@ -58,7 +63,7 @@ void LayerManager::NextLayerDraggable(int LayerIndex)
 	if (Input::Mouse::Button == SDL_BUTTON_LEFT) {
 		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
 			if (m_InitialLayerClick)
-				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 55.0f + 27.0f);
+				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 55.0f + 5.0f);
 
 			Input::Mouse::Rel = { 0,0 };
 			m_InitialLayerClick = false;
@@ -101,7 +106,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		}
 	}
 	else {
-		ImGui::SetCursorPosY(LayerNum * 55.0f + 27.0f);
+		ImGui::SetCursorPosY(LayerNum * 55.0f + 5.0f);
 	}
 
 	if (m_ActiveLayer == LayerIndex) {
@@ -162,8 +167,12 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 void LayerManager::DrawLayersWindow()
 {
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 5.0f));
-	ImGui::Begin("Layers", nullptr, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("Layers");
+
+	ImVec2 LayerWinSize = ImGui::GetWindowSize();
+
+	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 60.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 	ImGui::PopStyleVar();
 
 	ImVec2 WindowPos = ImGui::GetWindowPos();
@@ -180,13 +189,21 @@ void LayerManager::DrawLayersWindow()
 		DrawLayer(m_ActiveLayer, true, 0.5f);
 	}
 
+	ImGui::EndChild();
+
+	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
+	ImGui::BeginChild("LayerProperties");
+	ImGui::PopStyleColor();
+
+	if (ImGui::Button("Add")) {
+		AddLayer();
+	}
+
+	ImGui::EndChild();
+
 	ImGui::End();
 
 	/*ImGuiWindowClass window_class;
 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoUndocking;
 	ImGui::SetNextWindowClass(&window_class);*/
-
-	ImGui::Begin("LayerOptions");
-	//std::cout << ImGui::GetWindowDockID() << "\n";
-	ImGui::End();
 }

@@ -1,10 +1,18 @@
 #include "Application.h"
 
+int RedrawWindow(void* userdata, SDL_Event* ev) {
+    if (ev->type == SDL_WINDOWEVENT) {
+        if (ev->window.event == SDL_WINDOWEVENT_EXPOSED)
+            reinterpret_cast<Application*>(userdata)->RenderUI();
+    }
+    return 0;
+}
+
 Application::Application()
     : m_Running(true)
 {
     m_Window = SDL_GL_GetCurrentWindow();
-
+    SDL_AddEventWatch(RedrawWindow, (void*)this);
     auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(4096, 4096), m_Canvases.size());
 
     m_Canvases.push_back(std::move(Canv));
@@ -28,6 +36,9 @@ void Application::UpdateWindow()
             else if (m_Event.window.event == SDL_WINDOWEVENT_RESIZED) {
                 SDL_GetWindowSize(m_Window, &m_Width, &m_Height);
             }
+            /*else if (m_Event.window.event == SDL_WINDOWEVENT_EXPOSED) {
+                std::cout << "test\n";
+            }*/
         }
         else if (m_Event.type == SDL_MOUSEMOTION) {
             Input::ProcessMouseMotion(m_Event.motion);
@@ -462,9 +473,7 @@ void Application::DrawTitleBar()
     }
 
     if (CreateNewLayer) {
-        static int LayerNum = 1;
-        m_Canvases.at(CanvasData::m_ActiveCanvas)->AddLayer("New layer " + std::to_string(LayerNum));
-        LayerNum += 1;
+        m_Canvases.at(CanvasData::m_ActiveCanvas)->AddLayer();
     }
 }
 

@@ -23,6 +23,7 @@ public:
 	~LayerManager();
 
 	void SetActiveLayer(uint64_t LayerID);
+	uint64_t AddLayer();
 	uint64_t AddLayer(std::string LayerName);
 	uint64_t AddLayer(std::string LayerName, glm::vec4 Color);
 	void BindActiveLayer();
