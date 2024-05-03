@@ -81,12 +81,23 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
 		ImGui::SetCursorPosY(DragPos);
 
-		int Index = (int)m_Layers.size() - (int)DragPos / 50;
+		int Index = (int)m_Layers.size() - (int)DragPos / 55 - 1;
 
-		if (Index >= 0 && Index <= m_Layers.size()) {
+		// the hell is this?
+
+		if (Index >= 0 && Index < m_Layers.size() && m_ActiveLayer != Index) {
 			std::shared_ptr<Layer> LayerPtr = m_Layers.at(LayerIndex);
-			m_Layers.insert(m_Layers.begin() + Index, LayerPtr);
-			m_Layers.erase(m_Layers.begin() + LayerIndex);
+			if (Index > LayerIndex) {
+				m_Layers.insert(m_Layers.begin() + Index + 1, LayerPtr);
+				m_Layers.erase(m_Layers.begin() + LayerIndex);
+				m_ActiveLayer = Index;
+			}
+			else if (Index < LayerIndex) {
+				m_Layers.erase(m_Layers.begin() + LayerIndex);
+				m_Layers.insert(m_Layers.begin() + Index, LayerPtr);
+				m_ActiveLayer = Index;
+			}
+			return;
 		}
 	}
 	else {
@@ -168,6 +179,14 @@ void LayerManager::DrawLayersWindow()
 	if (m_DraggingLayer) {
 		DrawLayer(m_ActiveLayer, true, 0.5f);
 	}
-	//std::cout << m_ActiveLayer << "\n";
+
+	ImGui::End();
+
+	/*ImGuiWindowClass window_class;
+	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoUndocking;
+	ImGui::SetNextWindowClass(&window_class);*/
+
+	ImGui::Begin("LayerOptions");
+	//std::cout << ImGui::GetWindowDockID() << "\n";
 	ImGui::End();
 }
