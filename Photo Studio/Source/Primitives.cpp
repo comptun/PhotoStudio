@@ -36,7 +36,7 @@ void Primitive::Init()
     icons_config.PixelSnapH = true;
     icons_config.GlyphMinAdvanceX = iconFontSize;
     
-    io.Fonts->AddFontFromFileTTF("Fonts/" FONT_ICON_FILE_NAME_MD, iconFontSize, &icons_config, icons_ranges);
+    m_IconFont = io.Fonts->AddFontFromFileTTF("Fonts/" FONT_ICON_FILE_NAME_MD, iconFontSize, &icons_config, icons_ranges);
     // use FONT_ICON_FILE_NAME_FAR if you want regular instead of solid
 
     Primitive::m_BrushObject = std::make_unique<CanvasObject>(indices, brushverts);

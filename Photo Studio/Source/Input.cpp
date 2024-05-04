@@ -28,7 +28,7 @@ void Input::ProcessMouseButton(const SDL_MouseButtonEvent& ButtonEvent)
 
 void Input::ProcessMouseWheel(const SDL_MouseWheelEvent& WheelEvent)
 {
-	if (!CanvasData::m_CanvasFocused)
+	if (!CanvasData::m_CanvasFocused || !CanvasData::m_CanvasHovered)
 		return;
 	static float ScrolledAmount = 0;
 	if (CanvasData::m_CanvasScale == GetInitialScale()) {

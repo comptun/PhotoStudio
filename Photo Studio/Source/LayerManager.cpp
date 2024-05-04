@@ -63,7 +63,7 @@ void LayerManager::NextLayerDraggable(int LayerIndex)
 	if (Input::Mouse::Button == SDL_BUTTON_LEFT) {
 		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
 			if (m_InitialLayerClick)
-				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 55.0f + 5.0f);
+				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 50.0f);
 
 			Input::Mouse::Rel = { 0,0 };
 			m_InitialLayerClick = false;
@@ -86,7 +86,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
 		ImGui::SetCursorPosY(DragPos);
 
-		int Index = (int)m_Layers.size() - (int)DragPos / 55 - 1;
+		int Index = (int)m_Layers.size() - (int)(DragPos + 25.0f) / 50 - 1;
 
 		// the hell is this?
 
@@ -106,7 +106,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		}
 	}
 	else {
-		ImGui::SetCursorPosY(LayerNum * 55.0f + 5.0f);
+		ImGui::SetCursorPosY(LayerNum * 50.0f);
 	}
 
 	if (m_ActiveLayer == LayerIndex) {
@@ -130,7 +130,19 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 		ImGui::SameLine();
 
-		ImGui::SetCursorPosY(4);
+		/*ImGui::PushStyleColor(ImGuiCol_Separator, ImVec4(1, 1, 1, 1));
+		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+		ImGui::PopStyleColor();*/
+
+		ImGui::SetCursorPosY(0);
+		ImVec2 ps = ImGui::GetCursorScreenPos();
+		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 100), 0.5f);
+
+		ImGui::SetCursorPos({ 40, 3.5 });
+		ps = ImGui::GetCursorScreenPos();
+		ImGui::GetWindowDrawList()->AddRectFilled({ ps.x, ps.y }, { ps.x + 42,ps.y + 42 }, IM_COL32(255, 255, 255, 100));
+
+		ImGui::SetCursorPos({ 40, 3.5 });
 		ImVec2 pos = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddImage(
 			(void*)m_Layers[LayerIndex]->GetTexture(),
@@ -150,7 +162,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		
 		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0.5));
 		
-		bool Button = ImGui::ButtonEx(("               " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 30.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+		bool Button = ImGui::ButtonEx(("                 " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 30.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
 		if (!Dragging) {
 			m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered();
 			if (Button) {
@@ -159,6 +171,10 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		}
 
 		ImGui::PopStyleColor(3);
+
+		ImGui::SetCursorPos({0,49});
+		ps = ImGui::GetCursorScreenPos();
+		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x+ImGui::GetWindowSize().x,ps.y}, IM_COL32(255, 255, 255, 100), 0.5f);
 	}
 	ImGui::EndChild();
 	ImGui::PopStyleVar();
@@ -168,12 +184,13 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 void LayerManager::DrawLayersWindow()
 {
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
 	ImGui::Begin("Layers");
 
 	ImVec2 LayerWinSize = ImGui::GetWindowSize();
 
-	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 60.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
-	ImGui::PopStyleVar();
+	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 55.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+	ImGui::PopStyleVar(2);
 
 	ImVec2 WindowPos = ImGui::GetWindowPos();
 	m_LayersWindowPos = { WindowPos.x, WindowPos.y };
@@ -191,13 +208,25 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::EndChild();
 
-	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
+	ImGui::SetCursorPosY(LayerWinSize.y - 33.0f);
+
+	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.15f, 0.15f, 0.15f, 1.0f));
 	ImGui::BeginChild("LayerProperties");
 	ImGui::PopStyleColor();
 
-	if (ImGui::Button("Add")) {
+	ImGui::SetWindowFontScale(0.6f);
+	ImGui::PushFont(Primitive::m_IconFont);
+
+	ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 1.5f));
+
+	ImGui::SetCursorPos({ 5, 5 });
+	if (ImGui::Button(ICON_MD_ADD, ImVec2(28, 22))) {
 		AddLayer();
 	}
+
+	ImGui::PopStyleVar();
+
+	ImGui::PopFont();
 
 	ImGui::EndChild();
 

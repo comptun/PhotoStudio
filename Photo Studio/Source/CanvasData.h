@@ -13,5 +13,6 @@ struct CanvasData
 	inline static float m_CanvasScale = 1.0f;
 	inline static float m_CanvasMultiplier = 1.0f;
 	inline static bool m_CanvasFocused = false;
+	inline static bool m_CanvasHovered = false;
 	inline static int m_ActiveCanvas = -100;
 };

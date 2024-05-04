@@ -91,6 +91,8 @@ void Canvas::DrawCanvas()
     float window_width = ImGui::GetContentRegionAvail().x;
     float window_height = ImGui::GetContentRegionAvail().y;
 
+    CanvasData::m_CanvasHovered = ImGui::IsWindowHovered();
+
     if (ImGui::IsWindowHovered()) {
         ImGui::SetWindowFocus();
         CanvasData::m_CanvasFocused = true;
