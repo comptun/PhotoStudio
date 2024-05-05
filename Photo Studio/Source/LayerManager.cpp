@@ -6,8 +6,9 @@ LayerManager::LayerManager(glm::vec2& CanvasSize)
 	m_LayerYPos(0),
 	m_InitialLayerClick(true),
 	m_DraggingLayer(false),
-	m_LayersWindowPos({0,0}),
-	m_LayerOffset(0)
+	m_LayersWindowPos({ 0,0 }),
+	m_LayerOffset(0),
+	m_TotalLayersAllTime(0)
 {
 
 }
@@ -22,7 +23,7 @@ void LayerManager::SetActiveLayer(uint64_t LayerID)
 }
 uint64_t LayerManager::AddLayer()
 {
-	std::string Name = "Layer " + std::to_string(m_Layers.size() + 1);
+	std::string Name = "Layer " + std::to_string(m_TotalLayersAllTime + 1);
 	uint64_t ID = AddLayer(Name);
 	return ID;
 }
@@ -33,6 +34,7 @@ uint64_t LayerManager::AddLayer(std::string LayerName)
 }
 uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color)
 {
+	m_TotalLayersAllTime += 1;
 	uint64_t ID = m_Layers.size();
 	auto NewLayer = std::make_shared<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
 	m_Layers.push_back(std::move(NewLayer));
@@ -80,7 +82,7 @@ void LayerManager::NextLayerDraggable(int LayerIndex)
 void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 {
 	int LayerNum = m_Layers.size() - 1 - LayerIndex;
-
+	
 	if (Dragging) {
 		
 		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
@@ -110,14 +112,15 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	}
 
 	if (m_ActiveLayer == LayerIndex) {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.0f, 0.409f, 1.0f, Opacity));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, Opacity));
 		NextLayerDraggable(LayerIndex);
 	}
 	else {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.137f, 0.263f, 0.424f, Opacity));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.25f, 0.25f, 0.25f, Opacity));
 	}
 
 	std::string LayerName = m_Layers[LayerIndex]->GetName();
+
 	if (Dragging) {
 		LayerName += " ";
 	}
@@ -136,7 +139,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 		ImGui::SetCursorPosY(0);
 		ImVec2 ps = ImGui::GetCursorScreenPos();
-		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 100), 0.5f);
+		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 50), 0.5f);
 
 		ImGui::SetCursorPos({ 40, 3.5 });
 		ps = ImGui::GetCursorScreenPos();
@@ -174,7 +177,12 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 		ImGui::SetCursorPos({0,49});
 		ps = ImGui::GetCursorScreenPos();
-		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x+ImGui::GetWindowSize().x,ps.y}, IM_COL32(255, 255, 255, 100), 0.5f);
+		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x+ImGui::GetWindowSize().x,ps.y}, IM_COL32(255, 255, 255, 50), 0.5f);
+		if (Dragging) {
+			ImGui::SetCursorPos({ 0,0 });
+			ps = ImGui::GetCursorScreenPos();
+			ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x + ImGui::GetWindowSize().x,ps.y }, IM_COL32(255, 255, 255, 50), 0.5f);
+		}
 	}
 	ImGui::EndChild();
 	ImGui::PopStyleVar();
@@ -185,7 +193,12 @@ void LayerManager::DrawLayersWindow()
 {
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+
+	ImGui::PushStyleColor(ImGuiCol_Tab, ImVec4(1.0f, 0.4f, 0.4f, 1.0f));
+
 	ImGui::Begin("Layers");
+
+	ImGui::PopStyleColor();
 
 	ImVec2 LayerWinSize = ImGui::GetWindowSize();
 
@@ -221,7 +234,15 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::SetCursorPos({ 5, 5 });
 	if (ImGui::Button(ICON_MD_ADD, ImVec2(28, 22))) {
-		AddLayer();
+		m_ActiveLayer = AddLayer();
+		//m_ActiveLayer += 1;
+	}
+
+	ImGui::SameLine();
+
+	if (ImGui::Button(ICON_MD_DELETE, ImVec2(28, 22)) && m_ActiveLayer > 0) {
+		m_Layers.erase(m_Layers.begin() + m_ActiveLayer);
+		m_ActiveLayer -= 1;
 	}
 
 	ImGui::PopStyleVar();

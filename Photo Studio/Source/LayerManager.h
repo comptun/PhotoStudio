@@ -42,6 +42,7 @@ private:
 	float m_LayerYPos;
 	bool m_InitialLayerClick;
 	bool m_DraggingLayer;
+	int m_TotalLayersAllTime;
 
 	void NextLayerDraggable(int LayerIndex);
 	void DrawLayer(int LayerIndex, bool Dragging=false, float Opacity=1.0f);

@@ -13,7 +13,7 @@ Application::Application()
 {
     m_Window = SDL_GL_GetCurrentWindow();
     SDL_AddEventWatch(RedrawWindow, (void*)this);
-    auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(4096, 4096), m_Canvases.size());
+    auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(1000, 1000), m_Canvases.size());
 
     m_Canvases.push_back(std::move(Canv));
 }
@@ -78,7 +78,7 @@ void Application::InitGL()
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
     int window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;// | SDL_WINDOW_MAXIMIZED;
-    SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, (SDL_WindowFlags)window_flags);
+    SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 900, (SDL_WindowFlags)window_flags);
     if (Window == nullptr)
     {
         printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
