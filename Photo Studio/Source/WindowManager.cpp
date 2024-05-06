@@ -11,6 +11,10 @@ Windows::~Windows()
 
 void Windows::DrawColorWindow()
 {
+    ImGuiWindowClass window_class;
+    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
+    ImGui::SetNextWindowClass(&window_class);
+
     ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
 
     float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y);

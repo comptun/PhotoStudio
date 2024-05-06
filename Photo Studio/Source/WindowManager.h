@@ -11,6 +11,7 @@
 struct WindowData
 {
 	inline static glm::vec4 m_Color = {0,0,0,1};
+	inline static ImVec2 m_FramePadding = { 10.0f, 10.0f };
 };
 
 class Windows

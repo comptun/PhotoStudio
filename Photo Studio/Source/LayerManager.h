@@ -15,6 +15,7 @@
 #include "Layer.h"
 #include "Primitives.h"
 #include "Input.h"
+#include "WindowManager.h"
 
 class LayerManager
 {

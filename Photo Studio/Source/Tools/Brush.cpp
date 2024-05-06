@@ -44,7 +44,7 @@ void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
 
     float Dist = glm::length(PreviousPosition - Position);
 
-    int Steps = Dist / 2.0f + 1;
+    int Steps = Dist / 4.0f + 1;
 
     m_BrushShader.Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
     m_BrushShader.Uniform<glm::mat4>("projection", glm::ortho(0.0f, (float)CanvasData::m_CanvasSize.x, 0.0f, (float)CanvasData::m_CanvasSize.y));

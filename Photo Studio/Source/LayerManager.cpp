@@ -112,11 +112,11 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	}
 
 	if (m_ActiveLayer == LayerIndex) {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, Opacity));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.3f, 0.3f, 0.3f, Opacity));
 		NextLayerDraggable(LayerIndex);
 	}
 	else {
-		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.25f, 0.25f, 0.25f, Opacity));
+		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, Opacity));
 	}
 
 	std::string LayerName = m_Layers[LayerIndex]->GetName();
@@ -128,8 +128,40 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	ImGui::PushStyleVar(ImGuiStyleVar_CellPadding, ImVec2(10.0f, 10.0f));
 	ImGui::BeginChild(LayerName.c_str(), ImVec2(ImGui::GetWindowWidth(), 50.0f));
 	{
-		ImGui::SetCursorPos(ImVec2(6, 13));
-		ImGui::Checkbox("", &m_Layers[LayerIndex]->m_Visible);
+		ImGui::SetCursorPos(ImVec2(5, 11));
+		//ImGui::Checkbox("", &m_Layers[LayerIndex]->m_Visible);
+
+		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 1.1f));
+		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 8.0f);
+
+		ImGui::PushStyleColor(ImGuiCol_Button, { 0.4, 0.4, 0.4, 1.0 });
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, { 0.5, 0.5, 0.5, 1.0 });
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, { 0.55, 0.55, 0.55, 1.0 });
+
+		ImGui::PushFont(Primitive::m_IconFont);
+
+		ImGui::SetWindowFontScale(0.6f);
+
+		bool Visible = true;
+
+		if (m_Layers.at(LayerIndex)->m_Visible) {
+			Visible = ImGui::Button(ICON_MD_VISIBILITY, ImVec2(27, 27));
+		}
+		else {
+			Visible = ImGui::Button(ICON_MD_VISIBILITY_OFF, ImVec2(27, 27));
+		}
+
+		if (Visible) {
+			m_Layers.at(LayerIndex)->m_Visible = !m_Layers.at(LayerIndex)->m_Visible;
+		}
+
+		ImGui::SetWindowFontScale(1.0f);
+
+		ImGui::PopFont();
+
+		ImGui::PopStyleColor(3);
+
+		ImGui::PopStyleVar(2);
 
 		ImGui::SameLine();
 
@@ -137,15 +169,15 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 		ImGui::PopStyleColor();*/
 
-		ImGui::SetCursorPosY(0);
+		ImGui::SetCursorPos({37, 0});
 		ImVec2 ps = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 50), 0.5f);
 
-		ImGui::SetCursorPos({ 40, 3.5 });
+		ImGui::SetCursorPos({ 42, 3.5 });
 		ps = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddRectFilled({ ps.x, ps.y }, { ps.x + 42,ps.y + 42 }, IM_COL32(255, 255, 255, 100));
 
-		ImGui::SetCursorPos({ 40, 3.5 });
+		ImGui::SetCursorPos({ 42, 3.5 });
 		ImVec2 pos = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddImage(
 			(void*)m_Layers[LayerIndex]->GetTexture(),
@@ -157,7 +189,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 		ImGui::SameLine();
 
-		ImGui::SetCursorPos(ImVec2(30.0f,0));
+		ImGui::SetCursorPos(ImVec2(37.0f,0));
 
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0, 0, 0, 0));
@@ -165,7 +197,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		
 		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0.5));
 		
-		bool Button = ImGui::ButtonEx(("                 " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 30.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+		bool Button = ImGui::ButtonEx(("                 " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 37.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
 		if (!Dragging) {
 			m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered();
 			if (Button) {
@@ -191,14 +223,18 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 void LayerManager::DrawLayersWindow()
 {
+	ImGuiWindowClass window_class;
+	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
+	ImGui::SetNextWindowClass(&window_class);
+
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
 
-	ImGui::PushStyleColor(ImGuiCol_Tab, ImVec4(1.0f, 0.4f, 0.4f, 1.0f));
+	//foinally, brexitium
+	//ImGui::PushStyleColor(ImGuiCol_Tab, ImVec4(1.0f, 0.4f, 0.4f, 1.0f));
 
 	ImGui::Begin("Layers");
-
-	ImGui::PopStyleColor();
+	//ImGui::PopStyleColor();
 
 	ImVec2 LayerWinSize = ImGui::GetWindowSize();
 
@@ -223,7 +259,7 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::SetCursorPosY(LayerWinSize.y - 33.0f);
 
-	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.15f, 0.15f, 0.15f, 1.0f));
+	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.09f, 0.09f, 0.09f, 1.0f));
 	ImGui::BeginChild("LayerProperties");
 	ImGui::PopStyleColor();
 

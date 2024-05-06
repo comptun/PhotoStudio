@@ -75,7 +75,7 @@ void Canvas::DrawCanvas()
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     ImGuiWindowClass window_class;
-    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoCloseButton;
+    window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoCloseButton | ImGuiDockNodeFlags_NoWindowMenuButton;
     ImGui::SetNextWindowClass(&window_class);
 
     if (m_InitialDraw) {
@@ -91,7 +91,8 @@ void Canvas::DrawCanvas()
     float window_width = ImGui::GetContentRegionAvail().x;
     float window_height = ImGui::GetContentRegionAvail().y;
 
-    CanvasData::m_CanvasHovered = ImGui::IsWindowHovered();
+    if (!CanvasData::m_CanvasHovered)
+        CanvasData::m_CanvasHovered = ImGui::IsWindowHovered();
 
     if (ImGui::IsWindowHovered()) {
         ImGui::SetWindowFocus();
@@ -124,7 +125,7 @@ void Canvas::DrawCanvas()
         }
         m_OldWindowSize = glm::vec2(window_width, window_height);
         glViewport(0, 0, window_width, window_height);
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -230,6 +231,7 @@ void Canvas::DrawCanvas()
     glUseProgram(0);
 
     ImGui::End();
+
 }
 
 glm::vec3 Canvas::GetCanvasMousePosition()

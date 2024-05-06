@@ -104,6 +104,9 @@ void Application::InitGL()
     //glDepthFunc(GL_LEQUAL);
 }
 
+static ImVec4 Color32(const ImVec4& Colors) {
+    return ImVec4(Colors.x / 255.0f, Colors.y / 255.0f, Colors.z / 255.0f, Colors.w / 255.0f);
+}
 
 void Application::InitImGui()
 {
@@ -129,6 +132,30 @@ void Application::InitImGui()
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
+
+    style.Colors[ImGuiCol_Tab] = { 0.1f, 0.1f, 0.1f, 1.0f };
+    style.Colors[ImGuiCol_TabActive] = { 0.3f, 0.3f, 0.3f, 1.0f };
+    style.Colors[ImGuiCol_TabHovered] = { 0.4f, 0.4f, 0.4f, 1.0f };
+    style.Colors[ImGuiCol_TabUnfocused] = { 0.2f, 0.2f, 0.2f, 1.0f };
+    style.Colors[ImGuiCol_TabUnfocusedActive] = { 0.3f, 0.3f, 0.3f, 1.0f };
+
+    style.Colors[ImGuiCol_TitleBg] = Color32({ 16,16,16,255 });
+    style.Colors[ImGuiCol_TitleBgActive] = Color32({ 16,16,16,255 });
+    style.Colors[ImGuiCol_TitleBgCollapsed] = Color32({16,16,16,255});
+    
+    style.Colors[ImGuiCol_MenuBarBg] = Color32({ 24, 24, 24, 255 });
+    style.Colors[ImGuiCol_WindowBg] = Color32({ 36, 36, 36, 255 });
+    style.Colors[ImGuiCol_Button] = Color32({ 0,0,0,0 });
+    style.Colors[ImGuiCol_ButtonHovered] = Color32({ 100,100,100,100 });
+    style.Colors[ImGuiCol_ButtonActive] = Color32({ 150,150,150,100 });
+
+    style.Colors[ImGuiCol_FrameBg] = Color32({ 100,100,100,255 });
+    style.Colors[ImGuiCol_FrameBgActive] = Color32({ 120,120,120,255 });
+    style.Colors[ImGuiCol_FrameBgHovered] = Color32({ 150,150,150,255 });
+    style.Colors[ImGuiCol_CheckMark] = Color32({255,255,255,255});
+
+    style.DockingSeparatorSize = 1.0f;
+    style.WindowBorderSize = 0.0f;
 
     // Setup Platform/Renderer backends
     ImGui_ImplSDL2_InitForOpenGL(m_Window, m_GLContext);
@@ -197,7 +224,7 @@ void Application::RenderUI()
     m_Tools.DrawToolbar();
 
     CanvasData::m_CanvasFocused = false;
-
+    CanvasData::m_CanvasHovered = false;
     for (int i = 0; i < m_Canvases.size(); ++i) {
         m_Canvases[i]->DrawCanvas();
     }
@@ -205,8 +232,11 @@ void Application::RenderUI()
     {
         DrawColorWindow();
 
+        ImGuiWindowClass window_class;
+        window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
+        ImGui::SetNextWindowClass(&window_class);
+
         ImGui::Begin("Properties");
-        
 
         ImGui::End();
 

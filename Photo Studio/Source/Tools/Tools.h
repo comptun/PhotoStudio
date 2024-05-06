@@ -13,10 +13,15 @@
 
 enum class Tool
 {
+	NullTool,
 	None,
 	Brush,
 	PaintBucket,
 	Eraser,
+	Eyedropper,
+	Text,
+	Crop,
+	RectangularSelect,
 };
 
 class Tools : 
@@ -30,6 +35,8 @@ public:
 	void DrawToolPropertiesMenu();
 	void DrawToolbar();
 private:
+	Tool m_HoveredTool;
+	bool m_ToolHovered;
 	uint64_t m_ToolIndex;
 	void ToolButton(Tool SelectedTool, std::string ToolName, std::string Tooltip);
 };
