@@ -9,11 +9,11 @@ PUBLIC	SDL_main
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$SDL_main DD imagerel $LN34@SDL_main
-	DD	imagerel $LN34@SDL_main+585
+	DD	imagerel $LN34@SDL_main+677
 	DD	imagerel $unwind$SDL_main
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$SDL_main DQ 0360203b500047106r	; 1.54075e-48
+$ip2state$SDL_main DQ 03602051900047106r	; 1.54122e-48
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
@@ -29,9 +29,9 @@ $cppxdata$SDL_main DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$SDL_main DQ 00024010900031b19r		; 5.56381e-308
+$unwind$SDL_main DQ 00030010900031b19r		; 8.90254e-308
 	DD	03002H
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$SDL_main
-	DD	0112H
+	DD	0172H
 END

@@ -480,7 +480,7 @@ PUBLIC	__xmm@3f800000000000003f8000003f800000
 PUBLIC	__xmm@3f8000003d23d70a3d23d70a3d23d70a
 PUBLIC	__xmm@3f8000003d8080813d8080813d808081
 PUBLIC	__xmm@3f8000003db851ec3db851ec3db851ec
-PUBLIC	__xmm@3f8000003dc0c0c13dc0c0c13dc0c0c1
+PUBLIC	__xmm@3f8000003e0080813e0080813e008081
 PUBLIC	__xmm@3f8000003e0f5c293e0f5c293e0f5c29
 PUBLIC	__xmm@3f8000003e1090913e1090913e109091
 PUBLIC	__xmm@3f8000003e4ccccd3e428f5c3e428f5c
@@ -514,11 +514,11 @@ PUBLIC	__xmm@bf000000bf00000000000000bf000000
 PUBLIC	__xmm@bf800000bf80000000000000bf800000
 PUBLIC	__xmm@ff7fffffff7fffff7f7fffff7f7fffff
 EXTRN	__std_terminate:PROC
-EXTRN	__CxxFrameHandler4:PROC
 EXTRN	??_Eexception@std@@UEAAPEAXI@Z:PROC		; std::exception::`vector deleting destructor'
 EXTRN	??_Ebad_alloc@std@@UEAAPEAXI@Z:PROC		; std::bad_alloc::`vector deleting destructor'
 EXTRN	??_Ebad_array_new_length@std@@UEAAPEAXI@Z:PROC	; std::bad_array_new_length::`vector deleting destructor'
 EXTRN	_CxxThrowException:PROC
+EXTRN	__CxxFrameHandler4:PROC
 EXTRN	__GSHandlerCheck:PROC
 EXTRN	__GSHandlerCheck_EH4:PROC
 EXTRN	acosf:PROC
@@ -838,10 +838,10 @@ CONST	SEGMENT
 __xmm@3f8000003e0f5c293e0f5c293e0f5c29 DB ')\', 0fH, '>)\', 0fH, '>)\', 0fH
 	DB	'>', 00H, 00H, 080H, '?'
 CONST	ENDS
-;	COMDAT __xmm@3f8000003dc0c0c13dc0c0c13dc0c0c1
+;	COMDAT __xmm@3f8000003e0080813e0080813e008081
 CONST	SEGMENT
-__xmm@3f8000003dc0c0c13dc0c0c13dc0c0c1 DB 0c1H, 0c0H, 0c0H, '=', 0c1H, 0c0H
-	DB	0c0H, '=', 0c1H, 0c0H, 0c0H, '=', 00H, 00H, 080H, '?'
+__xmm@3f8000003e0080813e0080813e008081 DB 081H, 080H, 00H, '>', 081H, 080H
+	DB	00H, '>', 081H, 080H, 00H, '>', 00H, 00H, 080H, '?'
 CONST	ENDS
 ;	COMDAT __xmm@3f8000003db851ec3db851ec3db851ec
 CONST	SEGMENT

@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include <SDL2/SDL_syswm.h>
+#include <dwmapi.h>
+
 int RedrawWindow(void* userdata, SDL_Event* ev) {
     if (ev->type == SDL_WINDOWEVENT) {
         if (ev->window.event == SDL_WINDOWEVENT_EXPOSED)
@@ -103,6 +106,35 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
+    //SDL_SetWindowsMessageHook(nullptr, nullptr);
+    
+    SDL_SysWMinfo wmInfo;
+    SDL_VERSION(&wmInfo.version);
+    SDL_GetWindowWMInfo(Window, &wmInfo);
+    HWND hWnd = wmInfo.info.win.window;
+
+    //// Remove the title bar
+    //LONG_PTR lStyle = GetWindowLongPtr(hWnd, GWL_STYLE);
+    //lStyle &= ~(WS_CAPTION | WS_MAXIMIZEBOX | WS_MINIMIZEBOX);
+    //SetWindowLongPtr(hWnd, GWL_STYLE, lStyle);
+
+    //// Set the window shape and rounded corners
+    //DWMNCRENDERINGPOLICY policy = DWMNCRP_ENABLED;
+    //DwmSetWindowAttribute(hWnd, DWMWA_NCRENDERING_POLICY, &policy, sizeof(policy));
+
+    //// Extend the frame into the client area
+    //MARGINS margins = { 0 };
+    //DwmExtendFrameIntoClientArea(hWnd, &margins);
+
+    //// Adjust the window size to remove the thin frame at the top
+    //RECT windowRect;
+    //GetWindowRect(hWnd, &windowRect);
+    //SetWindowPos(hWnd, NULL, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, SWP_FRAMECHANGED | SWP_NOMOVE);
+
+    BOOL USE_DARK_MODE = true;
+    DwmSetWindowAttribute(
+        hWnd, DWMWINDOWATTRIBUTE::DWMWA_USE_IMMERSIVE_DARK_MODE,
+        &USE_DARK_MODE, sizeof(USE_DARK_MODE));
 
     //SDL_SetWindowHitTest(Window, HitTest, nullptr);
 
@@ -154,7 +186,7 @@ void Application::InitImGui()
     style.Colors[ImGuiCol_TitleBgActive] = Color32({ 16,16,16,255 });
     style.Colors[ImGuiCol_TitleBgCollapsed] = Color32({16,16,16,255});
     
-    style.Colors[ImGuiCol_MenuBarBg] = Color32({ 24, 24, 24, 255 });
+    style.Colors[ImGuiCol_MenuBarBg] = Color32({ 32, 32, 32, 255 });
     style.Colors[ImGuiCol_WindowBg] = Color32({ 36, 36, 36, 255 });
     style.Colors[ImGuiCol_Button] = Color32({ 0,0,0,0 });
     style.Colors[ImGuiCol_ButtonHovered] = Color32({ 100,100,100,100 });
@@ -298,12 +330,12 @@ void Application::DrawTitleBar()
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar(2);
 
-        ImGui::Text(" Photo Studio ");
+        ImGui::SetCursorPosX(5);
 
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.4, 0.4, 0.4, 0.5));
         ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.3, 0.3, 0.3, 0.5));
 
-        ImGui::PushStyleVar(ImGuiStyleVar_PopupRounding, 10.0f);
+        //ImGui::PushStyleVar(ImGuiStyleVar_PopupRounding, 10.0f);
 
         /*ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 20));
         if (ImGui::BeginMenu("Photo Studio"))
@@ -483,8 +515,6 @@ void Application::DrawTitleBar()
 
         ImGui::PopStyleColor(2);
         
-        // ImGuiStyleVar_PopupRounding
-        ImGui::PopStyleVar();
         // ImGuiStyleVar_FramePadding
         ImGui::PopStyleVar();
 
