@@ -12534,8 +12534,8 @@ $pdata$?GetID@ImGui@@YAIPEBD@Z DD imagerel $LN13@GetID
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?IsWindowHovered@ImGui@@YA_NH@Z DD imagerel $LN54@IsWindowHo
-	DD	imagerel $LN54@IsWindowHo+91
+$pdata$?IsWindowHovered@ImGui@@YA_NH@Z DD imagerel $LN54
+	DD	imagerel $LN54+91
 	DD	imagerel $unwind$?IsWindowHovered@ImGui@@YA_NH@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -12950,7 +12950,8 @@ $unwind$?End@ImGui@@YAXXZ DQ 00007340a00040a01r	; 1.00174e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?IsWindowHovered@ImGui@@YA_NH@Z DQ 00000420400010401r ; 3.58617e-310
+$unwind$?IsWindowHovered@ImGui@@YA_NH@Z DD 010401H
+	DD	04204H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -20866,4 +20867,111 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$??_GImGuiWindow@@QEAAPEAXI@Z DQ 03002320600020601r ; 1.96423e-77
+; Function compile flags: /Ogtpy
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+;	COMDAT ?IsWindowHovered@ImGui@@YA_NH@Z
+_TEXT	SEGMENT
+flags$dead$ = 48
+?IsWindowHovered@ImGui@@YA_NH@Z PROC			; ImGui::IsWindowHovered, COMDAT
+
+; 8038 : {
+
+$LN54:
+	sub	rsp, 40					; 00000028H
+
+; 8039 :     IM_ASSERT((flags & ~ImGuiHoveredFlags_AllowedMaskForIsWindowHovered) == 0 && "Invalid flags for IsWindowHovered()!");
+; 8040 : 
+; 8041 :     ImGuiContext& g = *GImGui;
+
+	mov	r10, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 8042 :     ImGuiWindow* ref_window = g.HoveredWindow;
+
+	mov	rcx, QWORD PTR [r10+16712]
+
+; 8043 :     ImGuiWindow* cur_window = g.CurrentWindow;
+; 8044 :     if (ref_window == NULL)
+
+	test	rcx, rcx
+	je	SHORT $LN49@IsWindowHo
+
+; 8045 :         return false;
+; 8046 : 
+; 8047 :     if ((flags & ImGuiHoveredFlags_AnyWindow) == 0)
+; 8048 :     {
+; 8049 :         IM_ASSERT(cur_window); // Not inside a Begin()/End()
+; 8050 :         const bool popup_hierarchy = (flags & ImGuiHoveredFlags_NoPopupHierarchy) == 0;
+; 8051 :         const bool dock_hierarchy = (flags & ImGuiHoveredFlags_DockHierarchy) != 0;
+; 8052 :         if (flags & ImGuiHoveredFlags_RootWindow)
+; 8053 :             cur_window = GetCombinedRootWindow(cur_window, popup_hierarchy, dock_hierarchy);
+; 8054 : 
+; 8055 :         bool result;
+; 8056 :         if (flags & ImGuiHoveredFlags_ChildWindows)
+; 8057 :             result = IsWindowChildOf(ref_window, cur_window, popup_hierarchy, dock_hierarchy);
+; 8058 :         else
+; 8059 :             result = (ref_window == cur_window);
+; 8060 :         if (!result)
+
+	cmp	rcx, QWORD PTR [r10+16704]
+	jne	SHORT $LN49@IsWindowHo
+
+; 8061 :             return false;
+; 8062 :     }
+; 8063 : 
+; 8064 :     if (!IsWindowContentHoverable(ref_window, flags))
+
+	xor	edx, edx
+	call	?IsWindowContentHoverable@ImGui@@YA_NPEAUImGuiWindow@@H@Z ; ImGui::IsWindowContentHoverable
+	test	al, al
+	je	SHORT $LN49@IsWindowHo
+
+; 8065 :         return false;
+; 8066 :     if (!(flags & ImGuiHoveredFlags_AllowWhenBlockedByActiveItem))
+; 8067 :         if (g.ActiveId != 0 && !g.ActiveIdAllowOverlap && g.ActiveId != ref_window->MoveId)
+
+	mov	eax, DWORD PTR [r10+16804]
+	test	eax, eax
+	je	SHORT $LN10@IsWindowHo
+	cmp	BYTE PTR [r10+16817], dl
+	jne	SHORT $LN10@IsWindowHo
+	cmp	eax, DWORD PTR [rcx+180]
+	sete	al
+
+; 8081 : }
+
+	add	rsp, 40					; 00000028H
+	ret	0
+$LN10@IsWindowHo:
+
+; 8069 : 
+; 8070 :     // When changing hovered window we requires a bit of stationary delay before activating hover timer.
+; 8071 :     // FIXME: We don't support delay other than stationary one for now, other delay would need a way
+; 8072 :     // to fullfill the possibility that multiple IsWindowHovered() with varying flag could return true
+; 8073 :     // for different windows of the hierarchy. Possibly need a Hash(Current+Flags) ==> (Timer) cache.
+; 8074 :     // We can implement this for _Stationary because the data is linked to HoveredWindow rather than CurrentWindow.
+; 8075 :     if (flags & ImGuiHoveredFlags_ForTooltip)
+; 8076 :         flags = ApplyHoverFlagsForTooltip(flags, g.Style.HoverFlagsForTooltipMouse);
+; 8077 :     if ((flags & ImGuiHoveredFlags_Stationary) != 0 && g.HoverWindowUnlockedStationaryId != ref_window->ID)
+; 8078 :         return false;
+; 8079 : 
+; 8080 :     return true;
+
+	mov	al, 1
+
+; 8081 : }
+
+	add	rsp, 40					; 00000028H
+	ret	0
+$LN49@IsWindowHo:
+
+; 8068 :             return false;
+
+	xor	al, al
+
+; 8081 : }
+
+	add	rsp, 40					; 00000028H
+	ret	0
+?IsWindowHovered@ImGui@@YA_NH@Z ENDP			; ImGui::IsWindowHovered
+_TEXT	ENDS
 END

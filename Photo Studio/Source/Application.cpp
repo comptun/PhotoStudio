@@ -8,6 +8,13 @@ int RedrawWindow(void* userdata, SDL_Event* ev) {
     return 0;
 }
 
+SDL_HitTestResult HitTest(SDL_Window* Window, const SDL_Point* Area, void* Data)
+{
+    if (WindowData::m_TitleBarHovered) {
+        return SDL_HITTEST_DRAGGABLE;
+    }
+}
+
 Application::Application()
     : m_Running(true)
 {
@@ -52,6 +59,8 @@ void Application::UpdateWindow()
     }
 }
 
+
+
 void Application::InitGL()
 {
     // Setup SDL
@@ -94,6 +103,8 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
+
+    //SDL_SetWindowHitTest(Window, HitTest, nullptr);
 
     //glEnable(GL_DEPTH_TEST);
 
@@ -271,7 +282,7 @@ void Application::DrawTitleBar()
 {
     ImGuiWindowClass window_class;
     window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
-    
+
     ImGui::SetNextWindowClass(&window_class);
 
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));
@@ -286,8 +297,6 @@ void Application::DrawTitleBar()
 
     if (ImGui::BeginMenuBar()) {
         ImGui::PopStyleVar(2);
-
-        //ImGui::SetCursorPosX(5);
 
         ImGui::Text(" Photo Studio ");
 
@@ -479,8 +488,18 @@ void Application::DrawTitleBar()
         // ImGuiStyleVar_FramePadding
         ImGui::PopStyleVar();
 
+
+        /*ImGui::BeginChild("DragBar", {ImGui::GetWindowSize().x - ImGui::GetCursorPosX(), 50});
+
+        WindowData::m_TitleBarHovered = ImGui::IsWindowHovered();
+        std::cout << WindowData::m_TitleBarHovered << "\n";
+
+        ImGui::EndChild();*/
+
+
         ImGui::EndMenuBar();
     }
+
     ImGui::End();
 
     if (CreateNewProject) {

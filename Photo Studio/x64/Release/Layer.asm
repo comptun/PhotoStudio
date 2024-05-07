@@ -513,8 +513,8 @@ PUBLIC	__xmm@80000000800000008000000080000000
 PUBLIC	__xmm@bf000000bf00000000000000bf000000
 PUBLIC	__xmm@bf800000bf80000000000000bf800000
 PUBLIC	__xmm@ff7fffffff7fffff7f7fffff7f7fffff
-EXTRN	__CxxFrameHandler4:PROC
 EXTRN	__std_terminate:PROC
+EXTRN	__CxxFrameHandler4:PROC
 EXTRN	??_Eexception@std@@UEAAPEAXI@Z:PROC		; std::exception::`vector deleting destructor'
 EXTRN	??_Ebad_alloc@std@@UEAAPEAXI@Z:PROC		; std::bad_alloc::`vector deleting destructor'
 EXTRN	??_Ebad_array_new_length@std@@UEAAPEAXI@Z:PROC	; std::bad_array_new_length::`vector deleting destructor'
