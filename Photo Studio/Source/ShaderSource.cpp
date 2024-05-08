@@ -94,7 +94,7 @@ std::vector<std::string> Shader::Source = {
 
 
 
-	// BACKGROUND_VS
+	// RECT_VS
 	R"END(
 
 	#version 330 core
@@ -112,16 +112,18 @@ std::vector<std::string> Shader::Source = {
 
 	)END",
 
-	// BACKGROUND_FS
+	// RECT_FS
 	R"END(
 
 	#version 330 core
 
 	out vec4 FragColor;
 
+	uniform vec4 color;
+
 	void main()
 	{
-		FragColor = vec4(0.5, 0.5, 0.5, 1.0);
+		FragColor = color;
 	}
 
 	)END",

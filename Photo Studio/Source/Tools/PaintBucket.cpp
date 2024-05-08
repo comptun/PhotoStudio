@@ -1,5 +1,14 @@
 #include "PaintBucket.h"
 
+PaintBucket::PaintBucket()
+{
+
+}
+PaintBucket::~PaintBucket()
+{
+
+}
+
 static void push(std::vector<int>& stack, int x, int y)
 {
 	// C++'s std::vector can act as a stack and manage memory for us
@@ -28,8 +37,9 @@ static uint32_t GetColor() {
 	return r | g | b | a;
 }
 
-void PaintBucket::FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBuffer, glm::vec3 Pos)
+void PaintBucket::FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBuffer)
 {
+	glm::vec3 Pos = Input::Mouse::CanvasPos;
 	static glm::vec3 PreviousPosition = { -1,-1,-1 };
 
 	if (!(Input::Mouse::Button == SDL_BUTTON_LEFT && Input::Mouse::State == SDL_PRESSED && Input::Mouse::m_InitialClick && Input::Mouse::m_MouseInCanvas)) {

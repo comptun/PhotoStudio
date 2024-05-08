@@ -18,6 +18,9 @@
 class PaintBucket
 {
 public:
-    void FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBuffer, glm::vec3 Pos);
+    PaintBucket();
+    ~PaintBucket();
+
+    void FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBuffer);
 };
 

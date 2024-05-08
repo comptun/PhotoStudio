@@ -14,6 +14,7 @@ public:
 	{
 		inline static glm::vec2 Pos; // Position
 		inline static glm::vec2 Rel; // Relative motion
+		inline static glm::vec3 CanvasPos;
 		inline static uint8_t Button;
 		inline static uint8_t State;
 		inline static bool m_MouseInCanvas = false;

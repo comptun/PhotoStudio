@@ -1,13 +1,6 @@
-﻿  Tools.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,59): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,54): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,49): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,57): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,47): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating code
-  2 of 3032 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+﻿  Generating code
+  2 of 3030 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    53 functions had inline decision re-evaluated but remain unchanged
+    52 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe
+  Photo Studio.vcxproj -> H:\Downloads\Photo Studio\x64\Release\Photo Studio.exe

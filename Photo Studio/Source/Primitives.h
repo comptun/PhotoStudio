@@ -17,7 +17,7 @@ struct Primitive
 	inline static std::unique_ptr<CanvasObject> m_CanvasObject = nullptr;
 	inline static std::unique_ptr<CanvasObject> m_BrushObject = nullptr;
 	inline static std::unique_ptr<Shader> m_CanvasShader = nullptr;
-	inline static std::unique_ptr<Shader> m_BackgroundShader = nullptr;
+	inline static std::unique_ptr<Shader> m_RectShader = nullptr;
 	inline static ImFont* m_IconFont = nullptr;
 	static void Init();
 };

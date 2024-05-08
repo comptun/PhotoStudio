@@ -40,7 +40,6 @@ public:
 	PixelBuffer m_DrawPixelBuffer;
 	glm::vec2 m_CanvasSize;
 	std::string m_CanvasName;
-	Framebuffer m_Background;
 private:
 	Framebuffer m_Viewport;
 	Framebuffer m_DrawBuffer;

@@ -31,7 +31,7 @@ public:
 	Brush();
 	~Brush();
 	BrushMode m_BrushMode;
-	void DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize = DefaultCustomSize);
+	void DrawInterpolatedPaintbrush(float CustomSize = DefaultCustomSize);
 	void DrawPaintbrushMenu();
 private:
 	float m_BrushSize;

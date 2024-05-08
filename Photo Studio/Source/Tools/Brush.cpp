@@ -10,8 +10,9 @@ Brush::~Brush()
 {
 
 }
-void Brush::DrawInterpolatedPaintbrush(glm::vec3 Position, float CustomSize)
+void Brush::DrawInterpolatedPaintbrush(float CustomSize)
 {
+    glm::vec3 Position = Input::Mouse::CanvasPos;
     static glm::vec3 PreviousPosition = Position;
     static glm::vec3 PreviousDrawnPosition = Position;
     static bool Pressed = true;

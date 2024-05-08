@@ -3,6 +3,8 @@
 #include "Brush.h"
 #include "PaintBucket.h"
 #include "Eraser.h"
+#include "RectangularSelect.h"
+
 #include "IconsMaterialDesign.h"
 #include "Primitives.h"
 
@@ -28,7 +30,8 @@ enum class Tool
 class Tools : 
 	public Brush,
 	public PaintBucket,
-	public Eraser
+	public Eraser,
+	public RectangularSelect
 {
 public:
 	Tools();

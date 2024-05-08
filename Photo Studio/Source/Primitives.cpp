@@ -42,5 +42,5 @@ void Primitive::Init()
     Primitive::m_BrushObject = std::make_unique<CanvasObject>(indices, brushverts);
     Primitive::m_CanvasObject = std::make_unique<CanvasObject>(indices, vertices);
     Primitive::m_CanvasShader = std::make_unique<Shader>(ShaderType::CANVAS_VS, ShaderType::CANVAS_FS);
-    Primitive::m_BackgroundShader = std::make_unique<Shader>(ShaderType::BACKGROUND_VS, ShaderType::BACKGROUND_FS);
+    Primitive::m_RectShader = std::make_unique<Shader>(ShaderType::RECT_VS, ShaderType::RECT_FS);
 }
