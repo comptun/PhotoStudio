@@ -55,8 +55,8 @@ PUBLIC	??_R4?$_Ref_count_obj2@VCanvas@@@std@@6B@	; std::_Ref_count_obj2<Canvas>:
 PUBLIC	??_R2?$_Ref_count_obj2@VCanvas@@@std@@8		; std::_Ref_count_obj2<Canvas>::`RTTI Base Class Array'
 EXTRN	__imp_SDL_GetWindowSize:PROC
 EXTRN	__imp_SDL_CreateWindow:PROC
-EXTRN	__imp_SDL_GL_SetSwapInterval:PROC
 EXTRN	__imp_SDL_PollEvent:PROC
+EXTRN	__imp_SDL_GL_SetSwapInterval:PROC
 EXTRN	__imp_SDL_GL_CreateContext:PROC
 EXTRN	__imp___stdio_common_vfprintf:PROC
 EXTRN	__imp_SDL_GL_SetAttribute:PROC
@@ -65,8 +65,8 @@ EXTRN	__imp_SDL_GetWindowID:PROC
 EXTRN	__imp_SDL_GetWindowWMInfo:PROC
 EXTRN	__imp_SDL_Quit:PROC
 EXTRN	__imp_SDL_SetHint:PROC
-EXTRN	__imp_SDL_AddEventWatch:PROC
 EXTRN	__imp_SDL_DestroyWindow:PROC
+EXTRN	__imp_SDL_AddEventWatch:PROC
 EXTRN	__imp_SDL_Init:PROC
 EXTRN	__imp___acrt_iob_func:PROC
 EXTRN	__imp_SDL_GL_MakeCurrent:PROC
@@ -685,8 +685,8 @@ $pdata$?dtor$8@?0??DrawTitleBar@Application@@AEAAXXZ@4HA DD imagerel ?dtor$8@?0?
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?RenderUI@Application@@QEAAXXZ DD imagerel $LN163@RenderUI
-	DD	imagerel $LN163@RenderUI+1509
+$pdata$?RenderUI@Application@@QEAAXXZ DD imagerel $LN163
+	DD	imagerel $LN163+1509
 	DD	imagerel $unwind$?RenderUI@Application@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -697,8 +697,8 @@ $pdata$?Run@Application@@QEAAXXZ DD imagerel $LN11@Run
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?InitImGui@Application@@AEAAXXZ DD imagerel $LN130
-	DD	imagerel $LN130+882
+$pdata$?InitImGui@Application@@AEAAXXZ DD imagerel $LN130@InitImGui
+	DD	imagerel $LN130@InitImGui+882
 	DD	imagerel $unwind$?InitImGui@Application@@AEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -899,23 +899,15 @@ $unwind$?InitGL@Application@@SAXXZ DQ 00012346400046419r ; 2.53167e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA DD 020601H
-	DD	050023206H
+$unwind$?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA DQ 05002320600020601r ; 2.6336e+77
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?InitImGui@Application@@AEAAXXZ DB 06H
-	DB	'0'
-	DB	00H
-	DB	'Q', 02H
-	DB	02H
-	DB	'"'
-	DB	00H
+$ip2state$?InitImGui@Application@@AEAAXXZ DQ 00022020251003006r ; 5.0086e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$?InitImGui@Application@@AEAAXXZ DB 02H
-	DB	0eH
+$stateUnwindMap$?InitImGui@Application@@AEAAXXZ DW 0e02H
 	DD	imagerel ?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA
 xdata	ENDS
 ;	COMDAT xdata
@@ -926,10 +918,8 @@ $cppxdata$?InitImGui@Application@@AEAAXXZ DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?InitImGui@Application@@AEAAXXZ DD 050911H
-	DD	070056209H
-	DD	050036004H
-	DD	03002H
+$unwind$?InitImGui@Application@@AEAAXXZ DQ 07005620900050911r ; 4.14968e+231
+	DQ	00000300250036004r		; 2.608e-310
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$?InitImGui@Application@@AEAAXXZ
 xdata	ENDS
@@ -939,10 +929,14 @@ $unwind$?Run@Application@@QEAAXXZ DQ 03002320600020601r ; 1.96423e-77
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?RenderUI@Application@@QEAAXXZ DQ 000217424000d3219r ; 4.85446e-308
-	DQ	0001f342400206424r		; 4.33941e-308
-	DQ	0e016f01800180124r		; -7.68866e+154
-	DQ	000005010c012d014r		; 4.3494e-310
+$unwind$?RenderUI@Application@@QEAAXXZ DD 0d3219H
+	DD	0217424H
+	DD	0206424H
+	DD	01f3424H
+	DD	0180124H
+	DD	0e016f018H
+	DD	0c012d014H
+	DD	05010H
 	DD	imagerel __GSHandlerCheck
 	DD	0b0H
 xdata	ENDS
@@ -1289,521 +1283,1030 @@ xdata	SEGMENT
 $unwind$??$construct_at@VCanvas@@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@_K$0A@@std@@YAPEAVCanvas@@QEAV1@AEAVTools@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@$$QEAU?$vec@$01M$0A@@glm@@$$QEA_K@Z DQ 00000a20400010401r ; 8.80119e-310
 ; Function compile flags: /Ogtpy
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_sdl2.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-;	COMDAT ?InitImGui@Application@@AEAAXXZ
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+;	COMDAT ?RenderUI@Application@@QEAAXXZ
 _TEXT	SEGMENT
-$T3 = 96
-this$ = 96
-$T2 = 104
-$T4 = 112
-$T5 = 120
-?InitImGui@Application@@AEAAXXZ PROC			; Application::InitImGui, COMDAT
+backup_current_context$1$ = 80
+$T6 = 80
+$T4 = 80
+$T3 = 80
+pixels$19 = 80
+height$20 = 96
+width$21 = 100
+window_class$22 = 104
+window_class$23 = 136
+backup_current_window$1$ = 168
+last_texture$24 = 168
+$T7 = 168
+__$ArrayPad$ = 176
+this$ = 240
+?RenderUI@Application@@QEAAXXZ PROC			; Application::RenderUI, COMDAT
 
-; 155  : {
+; 232  : {
 
-$LN130:
-	push	rbx
+$LN163:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+24], rsi
+	mov	QWORD PTR [rsp+32], rdi
 	push	rbp
-	push	rsi
-	push	rdi
-	sub	rsp, 56					; 00000038H
-	mov	rsi, rcx
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+	push	r12
+	push	r13
+	push	r14
+	push	r15
+	lea	rbp, QWORD PTR [rsp-55]
+	sub	rsp, 192				; 000000c0H
+	mov	rax, QWORD PTR __security_cookie
+	xor	rax, rsp
+	mov	QWORD PTR __$ArrayPad$[rbp-137], rax
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
 
-; 3620 :     ImGuiContext* prev_ctx = GetCurrentContext();
-
-	mov	rdi, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-
-; 1196 : static void*   MallocWrapper(size_t size, void* user_data)    { IM_UNUSED(user_data); return malloc(size); }
-
-	mov	ecx, 25808				; 000064d0H
-	call	QWORD PTR __imp_malloc
-	mov	r9, rax
-
-; 4294 :     if (ImGuiContext* ctx = GImGui)
-
-	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-	xor	ebp, ebp
-	test	r8, r8
-	je	SHORT $LN20@InitImGui
-
-; 4295 :         DebugAllocHook(&ctx->DebugAllocInfo, ctx->FrameCount, ptr, size);
-
-	mov	r10d, DWORD PTR [r8+16536]
-
-; 4314 :     ImGuiDebugAllocEntry* entry = &info->LastEntriesBuf[info->LastEntriesIdx];
-
-	movsx	rax, WORD PTR [r8+25400]
-	lea	rdx, QWORD PTR [r8+25404]
-	lea	rdx, QWORD PTR [rdx+rax*8]
-
-; 4315 :     IM_UNUSED(ptr);
-; 4316 :     if (entry->FrameCount != frame_count)
-
-	cmp	DWORD PTR [rdx], r10d
-	je	SHORT $LN18@InitImGui
-
-; 4317 :     {
-; 4318 :         info->LastEntriesIdx = (info->LastEntriesIdx + 1) % IM_ARRAYSIZE(info->LastEntriesBuf);
-
-	lea	ecx, DWORD PTR [rax+1]
-	mov	eax, 715827883				; 2aaaaaabH
-	imul	ecx
-	mov	eax, edx
-	shr	eax, 31
-	add	edx, eax
-	lea	eax, DWORD PTR [rdx+rdx*2]
-	add	eax, eax
-	sub	ecx, eax
-	mov	WORD PTR [r8+25400], cx
-
-; 4319 :         entry = &info->LastEntriesBuf[info->LastEntriesIdx];
-
-	movsx	rax, cx
-	lea	rdx, QWORD PTR [r8+25404]
-	lea	rdx, QWORD PTR [rdx+rax*8]
-
-; 4320 :         entry->FrameCount = frame_count;
-
-	mov	DWORD PTR [rdx], r10d
-
-; 4321 :         entry->AllocCount = entry->FreeCount = 0;
-
-	mov	DWORD PTR [rdx+4], ebp
-$LN18@InitImGui:
-
-; 4322 :     }
-; 4323 :     if (size != (size_t)-1)
-; 4324 :     {
-; 4325 :         entry->AllocCount++;
-
-	inc	WORD PTR [rdx+4]
-
-; 4326 :         info->TotalAllocCount++;
-
-	inc	DWORD PTR [r8+25392]
-$LN20@InitImGui:
-
-; 3621 :     ImGuiContext* ctx = IM_NEW(ImGuiContext)(shared_font_atlas);
-
-	mov	QWORD PTR $T2[rsp], r9
-	lea	rax, QWORD PTR $T3[rsp]
-	mov	QWORD PTR $T4[rsp], rax
-	mov	QWORD PTR $T5[rsp], r9
-	test	r9, r9
-	je	SHORT $LN7@InitImGui
-	xor	edx, edx
-	mov	rcx, r9
-	call	??0ImGuiContext@@QEAA@PEAUImFontAtlas@@@Z ; ImGuiContext::ImGuiContext
-	jmp	SHORT $LN8@InitImGui
-$LN7@InitImGui:
-	mov	rax, rbp
-$LN8@InitImGui:
-
-; 3622 :     SetCurrentContext(ctx);
-
-	mov	QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA, rax ; GImGui
-
-; 3623 :     Initialize();
-
-	call	?Initialize@ImGui@@YAXXZ		; ImGui::Initialize
-
-; 3624 :     if (prev_ctx != NULL)
+; 81   :     return ImGui::GetCurrentContext() ? (ImGui_ImplOpenGL2_Data*)ImGui::GetIO().BackendRendererUserData : nullptr;
 
 	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-	test	rdi, rdi
-	cmovne	rbx, rdi
-	mov	QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA, rbx ; GImGui
+	xor	r12d, r12d
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
 
-; 163  :     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
+; 232  : {
 
-	or	DWORD PTR [rbx+8], 1091			; 00000443H
+	mov	r13, rcx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
 
-; 164  :     //io.ConfigViewportsNoAutoMerge = true;
-; 165  :     //io.ConfigViewportsNoTaskBarIcon = true;
-; 166  : 
-; 167  :     // Setup Dear ImGui style
-; 168  :     ImGui::StyleColorsDark();
+; 81   :     return ImGui::GetCurrentContext() ? (ImGui_ImplOpenGL2_Data*)ImGui::GetIO().BackendRendererUserData : nullptr;
 
-	xor	ecx, ecx
-	call	?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z ; ImGui::StyleColorsDark
+	test	rbx, rbx
+	je	SHORT $LN66@RenderUI
+	mov	rax, QWORD PTR [rbx+160]
+	jmp	SHORT $LN67@RenderUI
+$LN66@RenderUI:
+	mov	rax, r12
+$LN67@RenderUI:
 
-; 169  :     //ImGui::StyleColorsLight();
-; 170  : 
-; 171  :     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
-; 172  :     ImGuiStyle& style = ImGui::GetStyle();
+; 125  :     if (!bd->FontTexture)
+
+	mov	r14d, 1
+	cmp	DWORD PTR [rax], r12d
+	jne	$LN62@RenderUI
+
+; 81   :     return ImGui::GetCurrentContext() ? (ImGui_ImplOpenGL2_Data*)ImGui::GetIO().BackendRendererUserData : nullptr;
+
+	test	rbx, rbx
+	je	SHORT $LN74@RenderUI
+	mov	rdi, QWORD PTR [rbx+160]
+	jmp	SHORT $LN75@RenderUI
+$LN74@RenderUI:
+	mov	rdi, r12
+$LN75@RenderUI:
+
+; 264  :     io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);   // Load as RGBA 32-bit (75% of the memory is wasted, but default font is so small) because it is more likely to be compatible with user's existing shaders. If your ImTextureId represent a higher-level concept than just a GL texture id, consider calling GetTexDataAsAlpha8() instead to save on GPU memory.
+
+	mov	rcx, QWORD PTR [rbx+56]
+	lea	r9, QWORD PTR height$20[rbp-137]
+	lea	r8, QWORD PTR width$21[rbp-137]
+	lea	rdx, QWORD PTR pixels$19[rbp-137]
+	call	?GetTexDataAsRGBA32@ImFontAtlas@@QEAAXPEAPEAEPEAH11@Z ; ImFontAtlas::GetTexDataAsRGBA32
+
+; 265  : 
+; 266  :     // Upload texture to graphics system
+; 267  :     // (Bilinear sampling is required by default. Set 'io.Fonts->Flags |= ImFontAtlasFlags_NoBakedLines' or 'style.AntiAliasedLinesUseTex = false' to allow point/nearest sampling)
+; 268  :     GLint last_texture;
+; 269  :     glGetIntegerv(GL_TEXTURE_BINDING_2D, &last_texture);
+
+	lea	rdx, QWORD PTR last_texture$24[rbp-137]
+	mov	ecx, 32873				; 00008069H
+	call	QWORD PTR __imp_glGetIntegerv
+
+; 270  :     glGenTextures(1, &bd->FontTexture);
+
+	mov	rdx, rdi
+	mov	ecx, r14d
+	call	QWORD PTR __imp_glGenTextures
+
+; 271  :     glBindTexture(GL_TEXTURE_2D, bd->FontTexture);
+
+	mov	edx, DWORD PTR [rdi]
+	mov	ecx, 3553				; 00000de1H
+	call	QWORD PTR __imp_glBindTexture
+
+; 272  :     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	mov	edx, 10241				; 00002801H
+	mov	ecx, 3553				; 00000de1H
+	mov	r8d, 9729				; 00002601H
+	call	QWORD PTR __imp_glTexParameteri
+
+; 273  :     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	mov	edx, 10240				; 00002800H
+	mov	ecx, 3553				; 00000de1H
+	mov	r8d, 9729				; 00002601H
+	call	QWORD PTR __imp_glTexParameteri
+
+; 274  :     glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+
+	xor	edx, edx
+	mov	ecx, 3314				; 00000cf2H
+	call	QWORD PTR __imp_glPixelStorei
+
+; 275  :     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+
+	mov	rax, QWORD PTR pixels$19[rbp-137]
+	xor	edx, edx
+	mov	r9d, DWORD PTR width$21[rbp-137]
+	mov	ecx, 3553				; 00000de1H
+	mov	QWORD PTR [rsp+64], rax
+	mov	r8d, 6408				; 00001908H
+	mov	eax, DWORD PTR height$20[rbp-137]
+	mov	DWORD PTR [rsp+56], 5121		; 00001401H
+	mov	DWORD PTR [rsp+48], 6408		; 00001908H
+	mov	DWORD PTR [rsp+40], r12d
+	mov	DWORD PTR [rsp+32], eax
+	call	QWORD PTR __imp_glTexImage2D
+
+; 276  : 
+; 277  :     // Store our identifier
+; 278  :     io.Fonts->SetTexID((ImTextureID)(intptr_t)bd->FontTexture);
+
+	mov	ecx, DWORD PTR [rdi]
+	mov	rax, QWORD PTR [rbx+56]
+	mov	QWORD PTR [rax+8], rcx
+
+; 279  : 
+; 280  :     // Restore state
+; 281  :     glBindTexture(GL_TEXTURE_2D, last_texture);
+
+	mov	ecx, 3553				; 00000de1H
+	mov	edx, DWORD PTR last_texture$24[rbp-137]
+	call	QWORD PTR __imp_glBindTexture
+$LN62@RenderUI:
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 235  :     ImGui_ImplSDL2_NewFrame();
+
+	call	?ImGui_ImplSDL2_NewFrame@@YAXXZ		; ImGui_ImplSDL2_NewFrame
+
+; 236  :     ImGui::NewFrame();
+
+	call	?NewFrame@ImGui@@YAXXZ			; ImGui::NewFrame
+
+; 237  : 
+; 238  :     ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	mov	r15, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
+
+	mov	DWORD PTR $T3[rbp-137], 3
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2020 :     inline T&           operator[](int i)                   { IM_ASSERT(i >= 0 && i < Size); return Data[i]; }
+
+	mov	rax, QWORD PTR [r15+19584]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8296 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasPos;
+
+	mov	ecx, DWORD PTR [r15+19264]
+	or	ecx, r14d
+
+; 14572:     return g.Viewports[0];
+
+	mov	rdx, QWORD PTR [rax]
+
+; 8296 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasPos;
+
+	mov	DWORD PTR [r15+19264], ecx
+
+; 8307 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasSize;
+
+	or	ecx, 2
+
+; 8297 :     g.NextWindowData.PosVal = pos;
+
+	movsd	xmm0, QWORD PTR [rdx+24]
+
+; 8307 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasSize;
+
+	mov	DWORD PTR [r15+19264], ecx
+
+; 8366 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasViewport;
+
+	bts	ecx, 9
+
+; 8297 :     g.NextWindowData.PosVal = pos;
+
+	movsd	QWORD PTR [r15+19284], xmm0
+
+; 8298 :     g.NextWindowData.PosPivotVal = pivot;
+
+	mov	QWORD PTR [r15+19292], r12
+
+; 8299 :     g.NextWindowData.PosCond = cond ? cond : ImGuiCond_Always;
+
+	mov	DWORD PTR [r15+19268], r14d
+
+; 8300 :     g.NextWindowData.PosUndock = true;
+
+	mov	BYTE PTR [r15+19328], r14b
+
+; 8308 :     g.NextWindowData.SizeVal = size;
+
+	movsd	xmm0, QWORD PTR [rdx+32]
+	movsd	QWORD PTR [r15+19300], xmm0
+
+; 8309 :     g.NextWindowData.SizeCond = cond ? cond : ImGuiCond_Always;
+
+	mov	DWORD PTR [r15+19272], r14d
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 249  :     ImGui::SetNextWindowViewport(viewport->ID);
+
+	mov	eax, DWORD PTR [rdx]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T3[rbp-137]
+
+; 8366 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasViewport;
+
+	mov	DWORD PTR [r15+19264], ecx
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [r15+19448]
+
+; 8367 :     g.NextWindowData.ViewportId = id;
+
+	mov	DWORD PTR [r15+19372], eax
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
+
+	movss	xmm0, DWORD PTR [r15+14856]
+	movss	DWORD PTR $T3[rbp-133], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+
+; 3217 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T4[rbp-137]
+
+; 3223 :         *pvar = val;
+
+	mov	DWORD PTR [r15+14856], r12d
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
+
+	mov	DWORD PTR $T4[rbp-137], 4
+	movss	xmm0, DWORD PTR [rbx+14860]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [rbx+19448]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
+
+	movss	DWORD PTR $T4[rbp-133], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+
+; 3223 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+14860], r12d
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T6[rbp-137]
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
+
+	mov	DWORD PTR $T6[rbp-137], 2
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	movss	xmm1, DWORD PTR [rbx+14848]
+	lea	rcx, QWORD PTR [rbx+19448]
+	movss	xmm0, DWORD PTR [rbx+14852]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
+
+	movss	DWORD PTR $T6[rbp-133], xmm1
+	movss	DWORD PTR $T6[rbp-129], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 255  :     ImGui::Begin("DockSpace Demo", nullptr, window_flags);
+
+	xor	edx, edx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3237 :         *pvar = val;
+
+	mov	QWORD PTR [rbx+14848], r12
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 255  :     ImGui::Begin("DockSpace Demo", nullptr, window_flags);
+
+	mov	r8d, 139303				; 00022027H
+	lea	rcx, OFFSET FLAT:??_C@_0P@IHLBBLJK@DockSpace?5Demo@
+	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
+
+; 256  : 
+; 257  :     ImGui::PopStyleVar(3);
+
+	mov	ecx, 3
+	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8710 :     ImGuiWindow* window = GImGui->CurrentWindow;
 
 	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
 
-; 173  :     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
 
-	test	DWORD PTR [rbx+8], 1024			; 00000400H
-	je	SHORT $LN2@InitImGui
+	xor	edx, edx
 
-; 174  :     {
-; 175  :         style.WindowRounding = 0.0f;
+; 8710 :     ImGuiWindow* window = GImGui->CurrentWindow;
 
-	mov	DWORD PTR [rax+14856], ebp
-$LN2@InitImGui:
-
-; 176  :         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-; 177  :     }
-; 178  : 
-; 179  :     style.Colors[ImGuiCol_Tab] = { 0.1f, 0.1f, 0.1f, 1.0f };
-
-	mov	DWORD PTR [rax+15600], 1036831949	; 3dcccccdH
-	mov	DWORD PTR [rax+15604], 1036831949	; 3dcccccdH
-	mov	DWORD PTR [rax+15608], 1036831949	; 3dcccccdH
-	mov	DWORD PTR [rax+15612], 1065353216	; 3f800000H
-
-; 180  :     style.Colors[ImGuiCol_TabActive] = { 0.3f, 0.3f, 0.3f, 1.0f };
-
-	mov	DWORD PTR [rax+15632], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15636], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15640], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15644], 1065353216	; 3f800000H
-
-; 181  :     style.Colors[ImGuiCol_TabHovered] = { 0.4f, 0.4f, 0.4f, 1.0f };
-
-	mov	DWORD PTR [rax+15616], 1053609165	; 3ecccccdH
-	mov	DWORD PTR [rax+15620], 1053609165	; 3ecccccdH
-	mov	DWORD PTR [rax+15624], 1053609165	; 3ecccccdH
-	mov	DWORD PTR [rax+15628], 1065353216	; 3f800000H
-
-; 182  :     style.Colors[ImGuiCol_TabUnfocused] = { 0.2f, 0.2f, 0.2f, 1.0f };
-
-	mov	DWORD PTR [rax+15648], 1045220557	; 3e4ccccdH
-	mov	DWORD PTR [rax+15652], 1045220557	; 3e4ccccdH
-	mov	DWORD PTR [rax+15656], 1045220557	; 3e4ccccdH
-	mov	DWORD PTR [rax+15660], 1065353216	; 3f800000H
-
-; 183  :     style.Colors[ImGuiCol_TabUnfocusedActive] = { 0.3f, 0.3f, 0.3f, 1.0f };
-
-	mov	DWORD PTR [rax+15664], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15668], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15672], 1050253722	; 3e99999aH
-	mov	DWORD PTR [rax+15676], 1065353216	; 3f800000H
+	mov	rbx, QWORD PTR [rax+16704]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
+; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
 
-	movaps	xmm0, XMMWORD PTR __xmm@3f8000003d8080813d8080813d808081
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 185  :     style.Colors[ImGuiCol_TitleBg] = Color32({ 16,16,16,255 });
-
-	movups	XMMWORD PTR [rax+15232], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm1, xmm0
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 186  :     style.Colors[ImGuiCol_TitleBgActive] = Color32({ 16,16,16,255 });
-
-	movups	XMMWORD PTR [rax+15248], xmm0
-
-; 187  :     style.Colors[ImGuiCol_TitleBgCollapsed] = Color32({16,16,16,255});
-
-	movups	XMMWORD PTR [rax+15264], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm1, XMMWORD PTR __xmm@3f8000003e0080813e0080813e008081
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 189  :     style.Colors[ImGuiCol_MenuBarBg] = Color32({ 32, 32, 32, 255 });
-
-	movups	XMMWORD PTR [rax+15280], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm0, XMMWORD PTR __xmm@3f8000003e1090913e1090913e109091
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 190  :     style.Colors[ImGuiCol_WindowBg] = Color32({ 36, 36, 36, 255 });
-
-	movups	XMMWORD PTR [rax+15104], xmm0
-	xorps	xmm1, xmm1
-
-; 191  :     style.Colors[ImGuiCol_Button] = Color32({ 0,0,0,0 });
-
-	movups	XMMWORD PTR [rax+15408], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm0, XMMWORD PTR __xmm@3ec8c8c93ec8c8c93ec8c8c93ec8c8c9
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 192  :     style.Colors[ImGuiCol_ButtonHovered] = Color32({ 100,100,100,100 });
-
-	movups	XMMWORD PTR [rax+15424], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm1, XMMWORD PTR __xmm@3ec8c8c93f1696973f1696973f169697
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 193  :     style.Colors[ImGuiCol_ButtonActive] = Color32({ 150,150,150,100 });
-
-	movups	XMMWORD PTR [rax+15440], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm0, XMMWORD PTR __xmm@3f8000003ec8c8c93ec8c8c93ec8c8c9
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 195  :     style.Colors[ImGuiCol_FrameBg] = Color32({ 100,100,100,255 });
-
-	movups	XMMWORD PTR [rax+15184], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm1, XMMWORD PTR __xmm@3f8000003ef0f0f13ef0f0f13ef0f0f1
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 196  :     style.Colors[ImGuiCol_FrameBgActive] = Color32({ 120,120,120,255 });
-
-	movups	XMMWORD PTR [rax+15216], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm0, XMMWORD PTR __xmm@3f8000003f1696973f1696973f169697
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 197  :     style.Colors[ImGuiCol_FrameBgHovered] = Color32({ 150,150,150,255 });
-
-	movups	XMMWORD PTR [rax+15200], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm1, XMMWORD PTR __xmm@3f8000003f8000003f8000003f800000
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-
-; 198  :     style.Colors[ImGuiCol_CheckMark] = Color32({255,255,255,255});
-
-	movups	XMMWORD PTR [rax+15360], xmm1
-
-; 199  : 
-; 200  :     style.DockingSeparatorSize = 1.0f;
-
-	mov	DWORD PTR [rax+15052], 1065353216	; 3f800000H
-
-; 201  :     style.WindowBorderSize = 0.0f;
-
-	mov	DWORD PTR [rax+14860], ebp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_sdl2.cpp
-
-; 553  :     return ImGui_ImplSDL2_Init(window, nullptr, sdl_gl_context);
-
-	mov	r8, QWORD PTR ?m_GLContext@Application@@0PEAXEA ; Application::m_GLContext
-	mov	rcx, QWORD PTR [rsi]
-	call	?ImGui_ImplSDL2_Init@@YA_NPEAUSDL_Window@@PEAUSDL_Renderer@@PEAX@Z ; ImGui_ImplSDL2_Init
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
-
-; 91   :     ImGuiIO& io = ImGui::GetIO();
-
-	mov	rdi, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	movsxd	rcx, DWORD PTR [rbx+304]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 1196 : static void*   MallocWrapper(size_t size, void* user_data)    { IM_UNUSED(user_data); return malloc(size); }
+; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
 
-	mov	ecx, 4
-	call	QWORD PTR __imp_malloc
-	mov	r9, rax
+	mov	rax, QWORD PTR [rbx+312]
+	mov	r8d, DWORD PTR [rax+rcx*4-4]
+	lea	rcx, OFFSET FLAT:??_C@_0M@MOJOFFHL@MyDockSpace@
+	call	?ImHashStr@@YAIPEBD_KI@Z		; ImHashStr
 
-; 4294 :     if (ImGuiContext* ctx = GImGui)
+; 8591 : #ifndef IMGUI_DISABLE_DEBUG_TOOLS
+; 8592 :     ImGuiContext& g = *Ctx;
+; 8593 :     if (g.DebugHookIdInfo == id)
 
-	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-	test	r8, r8
-	je	SHORT $LN122@InitImGui
+	mov	rcx, QWORD PTR [rbx]
+	mov	edi, eax
+	cmp	DWORD PTR [rcx+16780], eax
+	jne	SHORT $LN118@RenderUI
 
-; 4295 :         DebugAllocHook(&ctx->DebugAllocInfo, ctx->FrameCount, ptr, size);
+; 8594 :         ImGui::DebugHookIdInfo(id, ImGuiDataType_String, str, str_end);
 
-	mov	r10d, DWORD PTR [r8+16536]
-
-; 4314 :     ImGuiDebugAllocEntry* entry = &info->LastEntriesBuf[info->LastEntriesIdx];
-
-	movsx	r11, WORD PTR [r8+25400]
-	lea	rdx, QWORD PTR [r8+25404]
-	lea	rdx, QWORD PTR [rdx+r11*8]
-
-; 4315 :     IM_UNUSED(ptr);
-; 4316 :     if (entry->FrameCount != frame_count)
-
-	cmp	DWORD PTR [rdx], r10d
-	je	SHORT $LN120@InitImGui
-
-; 4317 :     {
-; 4318 :         info->LastEntriesIdx = (info->LastEntriesIdx + 1) % IM_ARRAYSIZE(info->LastEntriesBuf);
-
-	lea	ecx, DWORD PTR [r11+1]
-	mov	eax, 715827883				; 2aaaaaabH
-	imul	ecx
-	mov	eax, edx
-	shr	eax, 31
-	add	edx, eax
-	lea	eax, DWORD PTR [rdx+rdx*2]
-	add	eax, eax
-	sub	ecx, eax
-	mov	WORD PTR [r8+25400], cx
-
-; 4319 :         entry = &info->LastEntriesBuf[info->LastEntriesIdx];
-
-	movsx	rax, cx
-	lea	rdx, QWORD PTR [r8+25404]
-	lea	rdx, QWORD PTR [rdx+rax*8]
-
-; 4320 :         entry->FrameCount = frame_count;
-
-	mov	DWORD PTR [rdx], r10d
-
-; 4321 :         entry->AllocCount = entry->FreeCount = 0;
-
-	mov	DWORD PTR [rdx+4], ebp
-$LN120@InitImGui:
-
-; 4322 :     }
-; 4323 :     if (size != (size_t)-1)
-; 4324 :     {
-; 4325 :         entry->AllocCount++;
-
-	inc	WORD PTR [rdx+4]
-
-; 4326 :         info->TotalAllocCount++;
-
-	inc	DWORD PTR [r8+25392]
-$LN122@InitImGui:
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\backends\imgui_impl_opengl2.cpp
-
-; 95   :     ImGui_ImplOpenGL2_Data* bd = IM_NEW(ImGui_ImplOpenGL2_Data)();
-
-	test	r9, r9
-	je	SHORT $LN109@InitImGui
-
-; 74   :     ImGui_ImplOpenGL2_Data() { memset((void*)this, 0, sizeof(*this)); }
-
-	xor	eax, eax
-	mov	DWORD PTR [r9], eax
-
-; 95   :     ImGui_ImplOpenGL2_Data* bd = IM_NEW(ImGui_ImplOpenGL2_Data)();
-
-	jmp	SHORT $LN110@InitImGui
-$LN109@InitImGui:
-	mov	r9, rbp
-$LN110@InitImGui:
-
-; 96   :     io.BackendRendererUserData = (void*)bd;
-
-	mov	QWORD PTR [rdi+160], r9
-
-; 97   :     io.BackendRendererName = "imgui_impl_opengl2";
-
-	lea	rax, OFFSET FLAT:??_C@_0BD@BJOEHOL@imgui_impl_opengl2@
-	mov	QWORD PTR [rdi+144], rax
-
-; 98   :     io.BackendFlags |= ImGuiBackendFlags_RendererHasViewports;    // We can create multi-viewports on the Renderer side (optional)
-
-	or	DWORD PTR [rdi+12], 4096		; 00001000H
-
-; 99   : 
-; 100  :     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-
-	test	DWORD PTR [rdi+8], 1024			; 00000400H
-	je	SHORT $LN107@InitImGui
-
-; 329  :     platform_io.Renderer_RenderWindow = ImGui_ImplOpenGL2_RenderWindow;
-
-	lea	rax, OFFSET FLAT:?ImGui_ImplOpenGL2_RenderWindow@@YAXPEAUImGuiViewport@@PEAX@Z ; ImGui_ImplOpenGL2_RenderWindow
-	mov	QWORD PTR [r8+14792], rax
-$LN107@InitImGui:
+	lea	r8, OFFSET FLAT:??_C@_0M@MOJOFFHL@MyDockSpace@
+	mov	edx, 11
+	mov	ecx, eax
+	call	?DebugHookIdInfo@ImGui@@YAXIHPEBX0@Z	; ImGui::DebugHookIdInfo
+$LN118@RenderUI:
 ; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
 
-; 207  :     glDisable(GL_CULL_FACE);
+; 260  :     ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 
-	mov	ecx, 2884				; 00000b44H
-	call	QWORD PTR glad_glDisable
+	lea	rdx, QWORD PTR $T7[rbp-137]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
-; 208  : 
-; 209  :     /*glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-; 210  :     glEnable(GL_BLEND);*/
-; 211  : 
-; 212  :     ImFont* roboto = io.Fonts->AddFontFromFileTTF("Fonts/Roboto-Regular.ttf", 16.0f);
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	mov	QWORD PTR [rsp+32], rbp
+	mov	QWORD PTR $T7[rbp-137], r12
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 260  :     ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+
+	mov	ecx, edi
+	call	?DockSpace@ImGui@@YAIIAEBUImVec2@@HPEBUImGuiWindowClass@@@Z ; ImGui::DockSpace
+
+; 261  : 
+; 262  :     DrawTitleBar();
+
+	mov	rcx, r13
+	call	?DrawTitleBar@Application@@AEAAXXZ	; Application::DrawTitleBar
+
+; 263  : 
+; 264  : 
+; 265  :     m_Tools.DrawToolPropertiesMenu();
+
+	lea	rcx, QWORD PTR [r13+88]
+	call	?DrawToolPropertiesMenu@Tools@@QEAAXXZ	; Tools::DrawToolPropertiesMenu
+
+; 266  : 
+; 267  :     m_Tools.DrawToolbar();
+
+	lea	rcx, QWORD PTR [r13+88]
+	call	?DrawToolbar@Tools@@QEAAXXZ		; Tools::DrawToolbar
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	mov	rdx, QWORD PTR [r13+64]
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	mov	edi, r12d
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	mov	rax, QWORD PTR [r13+72]
+	sub	rax, rdx
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 269  :     CanvasData::m_CanvasFocused = false;
+
+	mov	BYTE PTR ?m_CanvasFocused@CanvasData@@2_NA, r12b ; CanvasData::m_CanvasFocused
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	sar	rax, 4
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 270  :     CanvasData::m_CanvasHovered = false;
+
+	mov	BYTE PTR ?m_CanvasHovered@CanvasData@@2_NA, r12b ; CanvasData::m_CanvasHovered
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	test	rax, rax
+	je	SHORT $LN3@RenderUI
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1866 :         auto& _My_data = _Mypair._Myval2;
+
+	mov	rbx, r12
+$LL4@RenderUI:
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 272  :         m_Canvases[i]->DrawCanvas();
+
+	mov	rcx, QWORD PTR [rbx+rdx]
+	call	?DrawCanvas@Canvas@@QEAAXXZ		; Canvas::DrawCanvas
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	mov	rdx, QWORD PTR [r13+64]
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	lea	rbx, QWORD PTR [rbx+16]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	mov	rcx, QWORD PTR [r13+72]
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	inc	edi
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	sub	rcx, rdx
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	movsxd	rax, edi
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	sar	rcx, 4
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 271  :     for (int i = 0; i < m_Canvases.size(); ++i) {
+
+	cmp	rax, rcx
+	jb	SHORT $LL4@RenderUI
+$LN3@RenderUI:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8380 :     ImGuiContext& g = *GImGui;
+
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 18   :     ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
+
+	lea	rcx, OFFSET FLAT:??_C@_05PDOBBJNA@Color@
+	xorps	xmm0, xmm0
+	mov	esi, 8
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$22[rbp-121], xmm0
+	mov	BYTE PTR window_class$22[rbp-108], r14b
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 18   :     ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
+
+	mov	r8d, esi
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8382 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasWindowClass;
+
+	or	DWORD PTR [rax+19264], 2048		; 00000800H
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 18   :     ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
+
+	xor	edx, edx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$22[rbp-137], xmm0
+	mov	DWORD PTR window_class$22[rbp-133], -1	; ffffffffH
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm0, XMMWORD PTR window_class$22[rbp-137]
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 15   :     window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
+
+	mov	DWORD PTR window_class$22[rbp-113], 16384 ; 00004000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm1, XMMWORD PTR window_class$22[rbp-121]
+	movups	XMMWORD PTR [rax+19380], xmm0
+	movups	XMMWORD PTR [rax+19396], xmm1
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 18   :     ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
+
+	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10935:     ImGuiWindow* window = GImGui->CurrentWindow;
+
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	r8, QWORD PTR [rax+16704]
+
+; 10929:     ImVec2 mx = (window->DC.CurrentColumns || g.CurrentTable) ? window->WorkRect.Max : window->ContentRegionRect.Max;
+
+	cmp	QWORD PTR [r8+488], r12
+	jne	SHORT $LN29@RenderUI
+	mov	ecx, 656				; 00000290H
+	cmp	QWORD PTR [rax+20480], r12
+	je	SHORT $LN30@RenderUI
+$LN29@RenderUI:
+	mov	ecx, 608				; 00000260H
+$LN30@RenderUI:
+	movss	xmm1, DWORD PTR [rcx+r8]
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 22   :     ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs);
+
+	lea	rdx, OFFSET FLAT:?m_Color@WindowData@@2U?$vec@$03M$0A@@glm@@A ; WindowData::m_Color
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [r8+320]
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 22   :     ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs);
+
+	lea	rcx, OFFSET FLAT:??_C@_0N@HENPPCEP@?$CD?$CDMyColor?$CD?$CD5@
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rax+19152], r14d
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	subss	xmm1, xmm0
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 22   :     ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs);
+
 	xor	r9d, r9d
-	movss	xmm2, DWORD PTR __real@41800000
-	lea	rdx, OFFSET FLAT:??_C@_0BJ@HCOBDBIG@Fonts?1Roboto?9Regular?4ttf@
-	mov	rcx, QWORD PTR [rbx+56]
-	call	?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z ; ImFontAtlas::AddFontFromFileTTF
+	subss	xmm1, DWORD PTR [rax+14920]
+	lea	r8d, QWORD PTR [r9+32]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 213  :     //ImGui::PushFont(roboto);
-; 214  : }
+; 10804:     g.NextItemData.Width = item_width;
 
-	add	rsp, 56					; 00000038H
-	pop	rdi
-	pop	rsi
+	movss	DWORD PTR [rax+19168], xmm1
+; File C:\dev\Photo Studio\Photo Studio\Source\WindowManager.cpp
+
+; 22   :     ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs);
+
+	call	?ColorPicker4@ImGui@@YA_NPEBDQEAMHPEBM@Z ; ImGui::ColorPicker4
+
+; 23   :     //std::cout << WindowData::m_Color.a << "\n";
+; 24   :     //WindowData::m_Color.a = 1.0f;
+; 25   :     ImGui::End();
+
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8380 :     ImGuiContext& g = *GImGui;
+
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 282  :         ImGui::Begin("Properties");
+
+	lea	rcx, OFFSET FLAT:??_C@_0L@KOOGALIH@Properties@
+	xorps	xmm0, xmm0
+	xor	r8d, r8d
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$23[rbp-121], xmm0
+	mov	BYTE PTR window_class$23[rbp-108], r14b
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 282  :         ImGui::Begin("Properties");
+
+	xor	edx, edx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8382 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasWindowClass;
+
+	or	DWORD PTR [rax+19264], 2048		; 00000800H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$23[rbp-137], xmm0
+	mov	DWORD PTR window_class$23[rbp-133], -1	; ffffffffH
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm0, XMMWORD PTR window_class$23[rbp-137]
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 279  :         window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
+
+	mov	DWORD PTR window_class$23[rbp-113], 16384 ; 00004000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm1, XMMWORD PTR window_class$23[rbp-121]
+	movups	XMMWORD PTR [rax+19380], xmm0
+	movups	XMMWORD PTR [rax+19396], xmm1
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 282  :         ImGui::Begin("Properties");
+
+	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
+
+; 283  : 
+; 284  :         ImGui::End();
+
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1902 :         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
+
+	mov	rdx, QWORD PTR [r13+64]
+	mov	rax, QWORD PTR [r13+72]
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 286  :         m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayersWindow();
+
+	movsxd	rcx, DWORD PTR ?m_ActiveCanvas@CanvasData@@2HA ; CanvasData::m_ActiveCanvas
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1902 :         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
+
+	sub	rax, rdx
+	sar	rax, 4
+	cmp	rax, rcx
+	jbe	$LN161@RenderUI
+
+; 1904 :         }
+; 1905 : 
+; 1906 :         return _My_data._Myfirst[_Pos];
+
+	add	rcx, rcx
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 286  :         m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayersWindow();
+
+	mov	rcx, QWORD PTR [rdx+rcx*8]
+	call	?DrawLayersWindow@LayerManager@@QEAAXXZ	; LayerManager::DrawLayersWindow
+
+; 287  :         /*ImGui::Begin("Layers");
+; 288  :         ImGui::End();*/
+; 289  :     }
+; 290  : 
+; 291  :     ImGui::End();
+
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+
+; 292  : 
+; 293  : 
+; 294  : 
+; 295  :     // Rendering
+; 296  :     ImGui::Render();
+
+	call	?Render@ImGui@@YAXXZ			; ImGui::Render
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2020 :     inline T&           operator[](int i)                   { IM_ASSERT(i >= 0 && i < Size); return Data[i]; }
+
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rcx, QWORD PTR [rax+19584]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 4371 :     ImGuiViewportP* viewport = g.Viewports[0];
+
+	mov	rcx, QWORD PTR [rcx]
+	add	rcx, 168				; 000000a8H
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 299  :     ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+
+	cmp	BYTE PTR [rcx], r12b
+	cmove	rcx, r12
+	call	?ImGui_ImplOpenGL2_RenderDrawData@@YAXPEAUImDrawData@@@Z ; ImGui_ImplOpenGL2_RenderDrawData
+
+; 300  : 
+; 301  :     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+
+	test	DWORD PTR [r15+8], 1024			; 00000400H
+	je	$LN5@RenderUI
+
+; 302  :     {
+; 303  :         SDL_Window* backup_current_window = SDL_GL_GetCurrentWindow();
+
+	call	QWORD PTR __imp_SDL_GL_GetCurrentWindow
+	mov	QWORD PTR backup_current_window$1$[rbp-137], rax
+
+; 304  :         SDL_GLContext backup_current_context = SDL_GL_GetCurrentContext();
+
+	call	QWORD PTR __imp_SDL_GL_GetCurrentContext
+	mov	QWORD PTR backup_current_context$1$[rbp-137], rax
+
+; 305  :         ImGui::UpdatePlatformWindows();
+
+	call	?UpdatePlatformWindows@ImGui@@YAXXZ	; ImGui::UpdatePlatformWindows
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 15415:     ImGuiPlatformIO& platform_io = ImGui::GetPlatformIO();
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 15416:     for (int i = 1; i < platform_io.Viewports.Size; i++)
+
+	mov	r12d, r14d
+	cmp	DWORD PTR [rbx+14824], r14d
+	jle	$LN48@RenderUI
+	mov	r15, rsi
+	npad	2
+$LL46@RenderUI:
+
+; 15417:     {
+; 15418:         ImGuiViewport* viewport = platform_io.Viewports[i];
+
+	mov	rax, QWORD PTR [rbx+14832]
+	mov	rdi, QWORD PTR [r15+rax]
+
+; 15419:         if (viewport->Flags & ImGuiViewportFlags_IsMinimized)
+
+	test	DWORD PTR [rdi+4], 4096			; 00001000H
+	jne	SHORT $LN44@RenderUI
+
+; 15420:             continue;
+; 15421:         if (platform_io.Platform_RenderWindow) platform_io.Platform_RenderWindow(viewport, platform_render_arg);
+
+	mov	rax, QWORD PTR [rbx+14728]
+	test	rax, rax
+	je	SHORT $LN51@RenderUI
+	xor	edx, edx
+	mov	rcx, rdi
+	call	rax
+$LN51@RenderUI:
+
+; 15422:         if (platform_io.Renderer_RenderWindow) platform_io.Renderer_RenderWindow(viewport, renderer_render_arg);
+
+	mov	rax, QWORD PTR [rbx+14792]
+	test	rax, rax
+	je	SHORT $LN44@RenderUI
+	xor	edx, edx
+	mov	rcx, rdi
+	call	rax
+$LN44@RenderUI:
+
+; 15416:     for (int i = 1; i < platform_io.Viewports.Size; i++)
+
+	mov	eax, DWORD PTR [rbx+14824]
+	inc	r12d
+	add	r15, rsi
+	cmp	r12d, eax
+	jl	SHORT $LL46@RenderUI
+
+; 15423:     }
+; 15424:     for (int i = 1; i < platform_io.Viewports.Size; i++)
+
+	cmp	eax, r14d
+	jle	SHORT $LN48@RenderUI
+$LL49@RenderUI:
+
+; 15425:     {
+; 15426:         ImGuiViewport* viewport = platform_io.Viewports[i];
+
+	mov	rax, QWORD PTR [rbx+14832]
+	mov	rdi, QWORD PTR [rsi+rax]
+
+; 15427:         if (viewport->Flags & ImGuiViewportFlags_IsMinimized)
+
+	test	DWORD PTR [rdi+4], 4096			; 00001000H
+	jne	SHORT $LN47@RenderUI
+
+; 15428:             continue;
+; 15429:         if (platform_io.Platform_SwapBuffers) platform_io.Platform_SwapBuffers(viewport, platform_render_arg);
+
+	mov	rax, QWORD PTR [rbx+14736]
+	test	rax, rax
+	je	SHORT $LN54@RenderUI
+	xor	edx, edx
+	mov	rcx, rdi
+	call	rax
+$LN54@RenderUI:
+
+; 15430:         if (platform_io.Renderer_SwapBuffers) platform_io.Renderer_SwapBuffers(viewport, renderer_render_arg);
+
+	mov	rax, QWORD PTR [rbx+14800]
+	test	rax, rax
+	je	SHORT $LN47@RenderUI
+	xor	edx, edx
+	mov	rcx, rdi
+	call	rax
+$LN47@RenderUI:
+
+; 15423:     }
+; 15424:     for (int i = 1; i < platform_io.Viewports.Size; i++)
+
+	inc	r14d
+	add	rsi, 8
+	cmp	r14d, DWORD PTR [rbx+14824]
+	jl	SHORT $LL49@RenderUI
+$LN48@RenderUI:
+; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
+
+; 307  :         SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
+
+	mov	rdx, QWORD PTR backup_current_context$1$[rbp-137]
+	mov	rcx, QWORD PTR backup_current_window$1$[rbp-137]
+	call	QWORD PTR __imp_SDL_GL_MakeCurrent
+$LN5@RenderUI:
+
+; 308  :     }
+; 309  : 
+; 310  :     SDL_GL_SwapWindow(m_Window);
+
+	mov	rcx, QWORD PTR [r13]
+	call	QWORD PTR __imp_SDL_GL_SwapWindow
+
+; 311  : }
+
+	mov	rcx, QWORD PTR __$ArrayPad$[rbp-137]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	lea	r11, QWORD PTR [rsp+192]
+	mov	rbx, QWORD PTR [r11+56]
+	mov	rsi, QWORD PTR [r11+64]
+	mov	rdi, QWORD PTR [r11+72]
+	mov	rsp, r11
+	pop	r15
+	pop	r14
+	pop	r13
+	pop	r12
 	pop	rbp
-	pop	rbx
 	ret	0
-?InitImGui@Application@@AEAAXXZ ENDP			; Application::InitImGui
+$LN161@RenderUI:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1903 :             _Xrange();
+
+	call	?_Xrange@?$vector@V?$shared_ptr@VCanvas@@@std@@V?$allocator@V?$shared_ptr@VCanvas@@@std@@@2@@std@@CAXXZ ; std::vector<std::shared_ptr<Canvas>,std::allocator<std::shared_ptr<Canvas> > >::_Xrange
+	int	3
+$LN159@RenderUI:
+?RenderUI@Application@@QEAAXXZ ENDP			; Application::RenderUI
 _TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT text$x
-text$x	SEGMENT
-$T3 = 96
-this$ = 96
-$T2 = 104
-$T4 = 112
-$T5 = 120
-?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA PROC	; `Application::InitImGui'::`1'::dtor$0
-	push	rbp
-	sub	rsp, 32					; 00000020H
-	mov	rbp, rdx
-	mov	r8, QWORD PTR $T2[rbp]
-	mov	rax, QWORD PTR $T4[rbp]
-	movzx	edx, BYTE PTR [rax]
-	mov	rcx, QWORD PTR $T5[rbp]
-	call	??3@YAXPEAXUImNewWrapper@@0@Z		; operator delete
-	add	rsp, 32					; 00000020H
-	pop	rbp
-	ret	0
-?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA ENDP	; `Application::InitImGui'::`1'::dtor$0
-text$x	ENDS
 END

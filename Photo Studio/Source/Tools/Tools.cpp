@@ -22,6 +22,9 @@ void Tools::DrawToolPropertiesMenu()
 		case Tool::None:
 			ImGui::Text("No tool selected");
 			break;
+		case Tool::Move:
+			ImGui::Text("Move tool");
+			break;
 		case Tool::Brush:
 			DrawPaintbrushMenu();
 			break;
@@ -29,7 +32,19 @@ void Tools::DrawToolPropertiesMenu()
 			DrawEraserMenu();
 			break;
 		case Tool::PaintBucket:
-			ImGui::Text("Paint bucket");
+			ImGui::Text("Paint bucket tool");
+			break;
+		case Tool::RectangularSelect:
+			ImGui::Text("Rectangular select tool");
+			break;
+		case Tool::Eyedropper:
+			ImGui::Text("Eyedropper tool");
+			break;
+		case Tool::Crop:
+			ImGui::Text("Crop tool");
+			break;
+		case Tool::Text:
+			ImGui::Text("Text tool");
 			break;
 	}
 
@@ -95,6 +110,7 @@ void Tools::DrawToolbar()
 	m_ToolHovered = false;
 
 	ToolButton(Tool::None, ICON_MD_HIGHLIGHT_REMOVE, "No tool");
+	ToolButton(Tool::Move, ICON_MD_PAN_TOOL_ALT, "Move tool");
 	ToolButton(Tool::Brush, ICON_MD_BRUSH, "Brush tool");
 	ToolButton(Tool::Eraser, ICON_MD_SMARTPHONE, "Eraser tool");
 	ToolButton(Tool::PaintBucket, ICON_MD_FORMAT_COLOR_FILL, "Paint bucket tool");

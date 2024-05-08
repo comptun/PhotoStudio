@@ -1,43 +1,12 @@
-﻿  Application.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\dev\Photo Studio\Photo Studio\Dependencies\glad\include\glad\glad.h(32,1): message : see previous definition of 'APIENTRY'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(335,72): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(335,67): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(335,62): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(336,65): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(336,60): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(336,55): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xutility(251,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xutility(261,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Tools&,const char(&)[15],glm::vec<2,float,glm::packed_highp>,unsigned __int64,0x0>(_Ty *const ,Tools &,const char (&)[15],glm::vec<2,float,glm::packed_highp> &&,unsigned __int64 &&) noexcept(<expr>)' being compiled
-          with
-          [
-              _Ty=Canvas
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(2092,13): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Tools&,const char(&)[15],glm::vec<2,float,glm::packed_highp>,unsigned __int64>(_Ty &,Tools &,const char (&)[15],glm::vec<2,float,glm::packed_highp> &&,unsigned __int64 &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=Canvas
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(2765,46): message : see reference to function template instantiation 'std::_Ref_count_obj2<Canvas>::_Ref_count_obj2<Tools&,const char(&)[15],_Ty,unsigned __int64>(Tools &,const char (&)[15],_Ty &&,unsigned __int64 &&)' being compiled
-          with
-          [
-              _Ty=glm::vec2
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Application.cpp(26,22): message : see reference to function template instantiation 'std::shared_ptr<Canvas> std::make_shared<Canvas,Tools&,const char(&)[15],glm::vec2,unsigned __int64>(Tools &,const char (&)[15],glm::vec2 &&,unsigned __int64 &&)' being compiled
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xutility(265,77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xutility(252,85): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xutility(261,14): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Tools&,const char(&)[15],glm::vec<2,float,glm::packed_highp>,unsigned __int64,0x0>(_Ty *const ,Tools &,const char (&)[15],glm::vec<2,float,glm::packed_highp> &&,unsigned __int64 &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=Canvas
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory(2092,13): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Tools&,const char(&)[15],glm::vec<2,float,glm::packed_highp>,unsigned __int64>(_Ty &,Tools &,const char (&)[15],glm::vec<2,float,glm::packed_highp> &&,unsigned __int64 &&) noexcept(false)' being compiled
-          with
-          [
-              _Ty=Canvas
-          ]
+﻿  Tools.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,59): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(58,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,57): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,52): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp(67,47): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  1 of 3032 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 3032 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     53 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

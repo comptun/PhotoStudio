@@ -22,6 +22,7 @@ enum class Tool
 	Text,
 	Crop,
 	RectangularSelect,
+	Move,
 };
 
 class Tools : 

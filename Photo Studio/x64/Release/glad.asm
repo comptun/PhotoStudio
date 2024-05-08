@@ -5,8 +5,8 @@ include listing.inc
 INCLUDELIB OLDNAMES
 
 PUBLIC	glad_glGetProgramInfoLog
-PUBLIC	glad_glCompileShader
 PUBLIC	glad_glGetProgramiv
+PUBLIC	glad_glCompileShader
 PUBLIC	glad_glShaderSource
 PUBLIC	glad_glDeleteProgram
 PUBLIC	glad_glUniform4f
@@ -786,8 +786,8 @@ EXTRN	__imp_GetProcAddress:PROC
 EXTRN	__imp_LoadLibraryW:PROC
 EXTRN	__imp_strncmp:PROC
 glad_glGetProgramInfoLog DQ 01H DUP (?)
-glad_glCompileShader DQ 01H DUP (?)
 glad_glGetProgramiv DQ 01H DUP (?)
+glad_glCompileShader DQ 01H DUP (?)
 glad_glShaderSource DQ 01H DUP (?)
 glad_glDeleteProgram DQ 01H DUP (?)
 glad_glUniform4f DQ 01H DUP (?)

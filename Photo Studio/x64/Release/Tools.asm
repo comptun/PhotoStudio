@@ -6,62 +6,42 @@ INCLUDELIB OLDNAMES
 
 PUBLIC	??_C@_0BA@HFDFHACB@Tool?5Properties@		; `string'
 PUBLIC	??_C@_0BB@LAEBPEOJ@No?5tool?5selected@		; `string'
-PUBLIC	??_C@_0N@IKEEMLIC@Paint?5bucket@		; `string'
+PUBLIC	??_C@_09KFCCKCGD@Move?5tool@			; `string'
+PUBLIC	??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@		; `string'
+PUBLIC	??_C@_0BI@PENIANDP@Rectangular?5select?5tool@	; `string'
+PUBLIC	??_C@_0BA@PNEKFLNG@Eyedropper?5tool@		; `string'
+PUBLIC	??_C@_09LAHGKOJP@Crop?5tool@			; `string'
+PUBLIC	??_C@_09DPJEAHJH@Text?5tool@			; `string'
 PUBLIC	??_C@_07FGBMEDIO@Toolbar@			; `string'
 PUBLIC	??_C@_07DJEMMAJP@No?5tool@			; `string'
 PUBLIC	??_C@_03MBLNINKF@?n?$KC?$II@			; `string'
+PUBLIC	??_C@_03OPKHDHD@?n?$KO?$LJ@			; `string'
 PUBLIC	??_C@_03DDDELBAF@?n?$IO?$KO@			; `string'
 PUBLIC	??_C@_03CIGAHOJ@?n?$IM?$KM@			; `string'
-PUBLIC	??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@		; `string'
 PUBLIC	??_C@_03BJBHBKOC@?n?$II?$LK@			; `string'
-PUBLIC	??_C@_0BA@PNEKFLNG@Eyedropper?5tool@		; `string'
 PUBLIC	??_C@_03CPKMAENC@?n?$IO?$LI@			; `string'
-PUBLIC	??_C@_09DPJEAHJH@Text?5tool@			; `string'
 PUBLIC	??_C@_03EAALFKOJ@?n?$IJ?$IF@			; `string'
-PUBLIC	??_C@_09LAHGKOJP@Crop?5tool@			; `string'
 PUBLIC	??_C@_03HJPGKDFE@?n?$IO?$LO@			; `string'
-PUBLIC	??_C@_0BI@PENIANDP@Rectangular?5select?5tool@	; `string'
 PUBLIC	??_C@_03JDNEBBOI@?n?$IF?$KC@			; `string'
 ;	COMDAT ??_C@_03JDNEBBOI@?n?$IF?$KC@
 CONST	SEGMENT
 ??_C@_03JDNEBBOI@?n?$IF?$KC@ DB 0eeH, 085H, 0a2H, 00H	; `string'
 CONST	ENDS
-;	COMDAT ??_C@_0BI@PENIANDP@Rectangular?5select?5tool@
-CONST	SEGMENT
-??_C@_0BI@PENIANDP@Rectangular?5select?5tool@ DB 'Rectangular select tool'
-	DB	00H						; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_03HJPGKDFE@?n?$IO?$LO@
 CONST	SEGMENT
 ??_C@_03HJPGKDFE@?n?$IO?$LO@ DB 0eeH, 08eH, 0beH, 00H	; `string'
-CONST	ENDS
-;	COMDAT ??_C@_09LAHGKOJP@Crop?5tool@
-CONST	SEGMENT
-??_C@_09LAHGKOJP@Crop?5tool@ DB 'Crop tool', 00H	; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_03EAALFKOJ@?n?$IJ?$IF@
 CONST	SEGMENT
 ??_C@_03EAALFKOJ@?n?$IJ?$IF@ DB 0eeH, 089H, 085H, 00H	; `string'
 CONST	ENDS
-;	COMDAT ??_C@_09DPJEAHJH@Text?5tool@
-CONST	SEGMENT
-??_C@_09DPJEAHJH@Text?5tool@ DB 'Text tool', 00H	; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_03CPKMAENC@?n?$IO?$LI@
 CONST	SEGMENT
 ??_C@_03CPKMAENC@?n?$IO?$LI@ DB 0eeH, 08eH, 0b8H, 00H	; `string'
 CONST	ENDS
-;	COMDAT ??_C@_0BA@PNEKFLNG@Eyedropper?5tool@
-CONST	SEGMENT
-??_C@_0BA@PNEKFLNG@Eyedropper?5tool@ DB 'Eyedropper tool', 00H ; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_03BJBHBKOC@?n?$II?$LK@
 CONST	SEGMENT
 ??_C@_03BJBHBKOC@?n?$II?$LK@ DB 0eeH, 088H, 0baH, 00H	; `string'
-CONST	ENDS
-;	COMDAT ??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@
-CONST	SEGMENT
-??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@ DB 'Paint bucket tool', 00H ; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_03CIGAHOJ@?n?$IM?$KM@
 CONST	SEGMENT
@@ -70,6 +50,10 @@ CONST	ENDS
 ;	COMDAT ??_C@_03DDDELBAF@?n?$IO?$KO@
 CONST	SEGMENT
 ??_C@_03DDDELBAF@?n?$IO?$KO@ DB 0eeH, 08eH, 0aeH, 00H	; `string'
+CONST	ENDS
+;	COMDAT ??_C@_03OPKHDHD@?n?$KO?$LJ@
+CONST	SEGMENT
+??_C@_03OPKHDHD@?n?$KO?$LJ@ DB 0eeH, 0aeH, 0b9H, 00H	; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_03MBLNINKF@?n?$KC?$II@
 CONST	SEGMENT
@@ -83,9 +67,30 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_07FGBMEDIO@Toolbar@ DB 'Toolbar', 00H		; `string'
 CONST	ENDS
-;	COMDAT ??_C@_0N@IKEEMLIC@Paint?5bucket@
+;	COMDAT ??_C@_09DPJEAHJH@Text?5tool@
 CONST	SEGMENT
-??_C@_0N@IKEEMLIC@Paint?5bucket@ DB 'Paint bucket', 00H	; `string'
+??_C@_09DPJEAHJH@Text?5tool@ DB 'Text tool', 00H	; `string'
+CONST	ENDS
+;	COMDAT ??_C@_09LAHGKOJP@Crop?5tool@
+CONST	SEGMENT
+??_C@_09LAHGKOJP@Crop?5tool@ DB 'Crop tool', 00H	; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BA@PNEKFLNG@Eyedropper?5tool@
+CONST	SEGMENT
+??_C@_0BA@PNEKFLNG@Eyedropper?5tool@ DB 'Eyedropper tool', 00H ; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BI@PENIANDP@Rectangular?5select?5tool@
+CONST	SEGMENT
+??_C@_0BI@PENIANDP@Rectangular?5select?5tool@ DB 'Rectangular select tool'
+	DB	00H						; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@
+CONST	SEGMENT
+??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@ DB 'Paint bucket tool', 00H ; `string'
+CONST	ENDS
+;	COMDAT ??_C@_09KFCCKCGD@Move?5tool@
+CONST	SEGMENT
+??_C@_09KFCCKCGD@Move?5tool@ DB 'Move tool', 00H	; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_0BB@LAEBPEOJ@No?5tool?5selected@
 CONST	SEGMENT
@@ -106,14 +111,14 @@ $pdata$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawToolbar@Tools@@QEAAXXZ DD imagerel $LN46@DrawToolba
-	DD	imagerel $LN46@DrawToolba+813
+$pdata$?DrawToolbar@Tools@@QEAAXXZ DD imagerel $LN48@DrawToolba
+	DD	imagerel $LN48@DrawToolba+876
 	DD	imagerel $unwind$?DrawToolbar@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD imagerel $LN50@DrawToolPr
-	DD	imagerel $LN50@DrawToolPr+684
+$pdata$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD imagerel $LN53
+	DD	imagerel $LN53+764
 	DD	imagerel $unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -127,18 +132,20 @@ $unwind$??0Tools@@QEAA@XZ DQ 03002320600020601r	; 1.96423e-77
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DQ 00015340d00051f19r ; 2.94869e-308
-	DQ	0000070060012010dr		; 6.08546e-310
+$unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD 051f19H
+	DD	015340dH
+	DD	012010dH
+	DD	07006H
 	DD	imagerel __GSHandlerCheck
 	DD	080H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 000220202e500ca22r ; 5.0086e-308
+$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 000220202e500ca26r ; 5.0086e-308
 	DQ	00022025c0022025cr		; 5.00898e-308
 	DQ	00022025c0022025cr		; 5.00898e-308
 	DQ	00022025c0022025cr		; 5.00898e-308
-	DD	022025cH
+	DQ	00022025c0022025cr		; 5.00898e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -186,4 +193,479 @@ $unwind$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z
 	DD	052H
+; Function compile flags: /Ogtpy
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+;	COMDAT ?DrawToolPropertiesMenu@Tools@@QEAAXXZ
+_TEXT	SEGMENT
+$T2 = 64
+window_class$ = 80
+v_min$ = 112
+v_max$ = 112
+v_max$ = 120
+v_min$ = 120
+__$ArrayPad$ = 128
+this$ = 160
+?DrawToolPropertiesMenu@Tools@@QEAAXXZ PROC		; Tools::DrawToolPropertiesMenu, COMDAT
+
+; 13   : {
+
+$LN53:
+	mov	QWORD PTR [rsp+16], rbx
+	push	rdi
+	sub	rsp, 144				; 00000090H
+	mov	rax, QWORD PTR __security_cookie
+	xor	rax, rsp
+	mov	QWORD PTR __$ArrayPad$[rsp], rax
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8380 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T2[rsp]
+	xorps	xmm0, xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
+
+	mov	DWORD PTR $T2[rsp], 2
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$[rsp+16], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 13   : {
+
+	mov	rdi, rcx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	mov	BYTE PTR window_class$[rsp+29], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8382 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasWindowClass;
+
+	or	DWORD PTR [rbx+19264], 2048		; 00000800H
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [rbx+19448]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
+
+	movups	XMMWORD PTR window_class$[rsp], xmm0
+	mov	DWORD PTR window_class$[rsp+4], -1	; ffffffffH
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm0, XMMWORD PTR window_class$[rsp]
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 15   : 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
+
+	mov	DWORD PTR window_class$[rsp+24], 4128	; 00001020H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8383 :     g.NextWindowData.WindowClass = *window_class;
+
+	movups	xmm1, XMMWORD PTR window_class$[rsp+16]
+	movups	XMMWORD PTR [rbx+19380], xmm0
+	movups	XMMWORD PTR [rbx+19396], xmm1
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	movss	xmm1, DWORD PTR [rbx+14848]
+	movss	xmm0, DWORD PTR [rbx+14852]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
+
+	movss	DWORD PTR $T2[rsp+4], xmm1
+	movss	DWORD PTR $T2[rsp+8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 18   : 	ImGui::Begin("Tool Properties", nullptr, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+	xor	edx, edx
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3237 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+14848], 1093664768	; 41300000H
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 18   : 	ImGui::Begin("Tool Properties", nullptr, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+	lea	rcx, OFFSET FLAT:??_C@_0BA@HFDFHACB@Tool?5Properties@
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3237 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+14852], 1095761920	; 41500000H
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 18   : 	ImGui::Begin("Tool Properties", nullptr, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+
+	lea	r8d, QWORD PTR [rdx+24]
+	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
+
+; 19   : 
+; 20   : 	switch (m_Tool)
+
+	mov	eax, DWORD PTR [rdi+96]
+	dec	eax
+	cmp	eax, 8
+	ja	$LN2@DrawToolPr
+	lea	rdx, OFFSET FLAT:__ImageBase
+	cdqe
+	mov	ecx, DWORD PTR $LN49@DrawToolPr[rdx+rax*4]
+	add	rcx, rdx
+	jmp	rcx
+$LN4@DrawToolPr:
+
+; 21   : 	{
+; 22   : 		case Tool::None:
+; 23   : 			ImGui::Text("No tool selected");
+
+	lea	rcx, OFFSET FLAT:??_C@_0BB@LAEBPEOJ@No?5tool?5selected@
+
+; 24   : 			break;
+
+	jmp	$LN51@DrawToolPr
+$LN5@DrawToolPr:
+
+; 25   : 		case Tool::Move:
+; 26   : 			ImGui::Text("Move tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_09KFCCKCGD@Move?5tool@
+
+; 27   : 			break;
+
+	jmp	$LN51@DrawToolPr
+$LN6@DrawToolPr:
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+
+; 86   :     ImGui::Text("Brush tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_0L@CKCKKFCJ@Brush?5tool@
+	call	?Text@ImGui@@YAXPEBDZZ			; ImGui::Text
+
+; 87   : 
+; 88   :     ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+
+; 89   : 
+; 90   :     ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+
+	movss	xmm1, DWORD PTR __real@3f800000
+	mov	ecx, 2
+	call	?SeparatorEx@ImGui@@YAXHM@Z		; ImGui::SeparatorEx
+
+; 91   : 
+; 92   :     ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10802:     ImGuiContext& g = *GImGui;
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+
+; 97   :     ImGui::SliderFloat("Size", &m_BrushSize, 0.0f, 300.0f, "%f", flags);
+
+	lea	r8, QWORD PTR [rdi+4]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3136 :     return SliderScalar(label, ImGuiDataType_Float, v, &v_min, &v_max, format, flags);
+
+	lea	r9, QWORD PTR v_min$[rsp]
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp
+
+; 97   :     ImGui::SliderFloat("Size", &m_BrushSize, 0.0f, 300.0f, "%f", flags);
+
+	mov	DWORD PTR v_max$[rsp], 1133903872	; 43960000H
+	mov	DWORD PTR v_min$[rsp], 0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rdx+19152], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10804:     g.NextItemData.Width = item_width;
+
+	mov	DWORD PTR [rdx+19168], 1128792064	; 43480000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10772:     window->DC.CursorPos.y = window->Pos.y - window->Scroll.y + y;
+
+	movss	xmm0, DWORD PTR [rax+92]
+	subss	xmm0, DWORD PTR [rax+196]
+
+; 10773:     //window->DC.CursorMaxPos.y = ImMax(window->DC.CursorMaxPos.y, window->DC.CursorPos.y);
+; 10774:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+	addss	xmm0, DWORD PTR __real@41300000
+	movss	DWORD PTR [rax+324], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3136 :     return SliderScalar(label, ImGuiDataType_Float, v, &v_min, &v_max, format, flags);
+
+	lea	rax, QWORD PTR v_max$[rsp]
+	mov	QWORD PTR [rsp+32], rax
+	call	?SliderScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z ; ImGui::SliderScalar
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 30   : 			break;
+
+	jmp	$LN2@DrawToolPr
+$LN7@DrawToolPr:
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+
+; 20   :     ImGui::Text("Eraser tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_0M@HMCLOBBL@Eraser?5tool@
+	call	?Text@ImGui@@YAXPEBDZZ			; ImGui::Text
+
+; 21   : 
+; 22   :     ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+
+; 23   : 
+; 24   :     ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
+
+	movss	xmm1, DWORD PTR __real@3f800000
+	mov	ecx, 2
+	call	?SeparatorEx@ImGui@@YAXHM@Z		; ImGui::SeparatorEx
+
+; 25   : 
+; 26   :     ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10802:     ImGuiContext& g = *GImGui;
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+
+; 31   :     ImGui::SliderFloat("Size", &m_EraserSize, 0.0f, 300.0f, "%f", flags);
+
+	lea	r8, QWORD PTR [rdi+92]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3136 :     return SliderScalar(label, ImGuiDataType_Float, v, &v_min, &v_max, format, flags);
+
+	lea	r9, QWORD PTR v_min$[rsp]
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Eraser.cpp
+
+; 31   :     ImGui::SliderFloat("Size", &m_EraserSize, 0.0f, 300.0f, "%f", flags);
+
+	mov	DWORD PTR v_max$[rsp], 1133903872	; 43960000H
+	mov	DWORD PTR v_min$[rsp], 0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rdx+19152], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10804:     g.NextItemData.Width = item_width;
+
+	mov	DWORD PTR [rdx+19168], 1128792064	; 43480000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10772:     window->DC.CursorPos.y = window->Pos.y - window->Scroll.y + y;
+
+	movss	xmm0, DWORD PTR [rax+92]
+	subss	xmm0, DWORD PTR [rax+196]
+
+; 10773:     //window->DC.CursorMaxPos.y = ImMax(window->DC.CursorMaxPos.y, window->DC.CursorPos.y);
+; 10774:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+	addss	xmm0, DWORD PTR __real@41300000
+	movss	DWORD PTR [rax+324], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3136 :     return SliderScalar(label, ImGuiDataType_Float, v, &v_min, &v_max, format, flags);
+
+	lea	rax, QWORD PTR v_max$[rsp]
+	mov	QWORD PTR [rsp+32], rax
+	call	?SliderScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z ; ImGui::SliderScalar
+; File C:\dev\Photo Studio\Photo Studio\Source\Tools\Tools.cpp
+
+; 33   : 			break;
+
+	jmp	SHORT $LN2@DrawToolPr
+$LN8@DrawToolPr:
+
+; 34   : 		case Tool::PaintBucket:
+; 35   : 			ImGui::Text("Paint bucket tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@
+
+; 36   : 			break;
+
+	jmp	SHORT $LN51@DrawToolPr
+$LN9@DrawToolPr:
+
+; 37   : 		case Tool::RectangularSelect:
+; 38   : 			ImGui::Text("Rectangular select tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_0BI@PENIANDP@Rectangular?5select?5tool@
+
+; 39   : 			break;
+
+	jmp	SHORT $LN51@DrawToolPr
+$LN10@DrawToolPr:
+
+; 40   : 		case Tool::Eyedropper:
+; 41   : 			ImGui::Text("Eyedropper tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_0BA@PNEKFLNG@Eyedropper?5tool@
+
+; 42   : 			break;
+
+	jmp	SHORT $LN51@DrawToolPr
+$LN11@DrawToolPr:
+
+; 43   : 		case Tool::Crop:
+; 44   : 			ImGui::Text("Crop tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_09LAHGKOJP@Crop?5tool@
+
+; 45   : 			break;
+
+	jmp	SHORT $LN51@DrawToolPr
+$LN12@DrawToolPr:
+
+; 46   : 		case Tool::Text:
+; 47   : 			ImGui::Text("Text tool");
+
+	lea	rcx, OFFSET FLAT:??_C@_09DPJEAHJH@Text?5tool@
+$LN51@DrawToolPr:
+
+; 48   : 			break;
+; 49   : 	}
+; 50   : 
+; 51   : 	ImGui::End();
+
+	call	?Text@ImGui@@YAXPEBDZZ			; ImGui::Text
+$LN2@DrawToolPr:
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+
+; 52   : 	ImGui::PopStyleVar();
+
+	mov	ecx, 1
+	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
+
+; 53   : }
+
+	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	mov	rbx, QWORD PTR [rsp+168]
+	add	rsp, 144				; 00000090H
+	pop	rdi
+	ret	0
+$LN49@DrawToolPr:
+	DD	$LN4@DrawToolPr
+	DD	$LN6@DrawToolPr
+	DD	$LN8@DrawToolPr
+	DD	$LN7@DrawToolPr
+	DD	$LN10@DrawToolPr
+	DD	$LN12@DrawToolPr
+	DD	$LN11@DrawToolPr
+	DD	$LN9@DrawToolPr
+	DD	$LN5@DrawToolPr
+?DrawToolPropertiesMenu@Tools@@QEAAXXZ ENDP		; Tools::DrawToolPropertiesMenu
+_TEXT	ENDS
 END
