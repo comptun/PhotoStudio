@@ -14,6 +14,8 @@ public:
 	std::string GetName();
 
 	bool m_Visible;
+
+	glm::vec2 m_LayerOffset;
 private:
 	std::string m_LayerName;
 };
