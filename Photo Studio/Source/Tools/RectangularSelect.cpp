@@ -37,7 +37,6 @@ void RectangularSelect::DrawRectangularSelect()
 		return;
 	}
 
-	std::cout << "test\n";
 	Primitive::m_RectShader->UseProgram();
 	Primitive::m_RectShader->Uniform<glm::mat4>("model",
 		glm::scale(glm::translate(glm::mat4(1.0f),

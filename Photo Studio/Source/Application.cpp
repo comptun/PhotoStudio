@@ -23,7 +23,7 @@ Application::Application()
 {
     m_Window = SDL_GL_GetCurrentWindow();
     SDL_AddEventWatch(RedrawWindow, (void*)this);
-    auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(1000, 1000), m_Canvases.size());
+    auto Canv = std::make_shared<Canvas>(m_Tools, "Example Canvas", glm::vec2(2000, 2000), m_Canvases.size());
 
     m_Canvases.push_back(std::move(Canv));
 }

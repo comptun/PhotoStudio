@@ -1,6 +1,92 @@
-﻿  Generating code
-  2 of 3030 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+﻿  Canvas.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(10,40): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(10,32): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(11,44): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(11,36): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(27,63): warning C4244: 'argument': conversion from 'T' to 'uint64_t', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(27,47): warning C4244: 'argument': conversion from 'T' to 'uint64_t', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(28,50): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(28,34): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(102,9): warning C4312: 'type cast': conversion from 'GLuint' to 'void *' of greater size
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(112,55): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(112,41): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(115,40): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(115,26): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(154,74): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(154,46): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(199,51): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(199,37): warning C4244: 'argument': conversion from 'float' to 'uint64_t', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(203,74): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(203,46): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(270,132): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(270,122): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp(270,106): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Brush.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp(48,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Tools\Brush.cpp(55,77): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating code
+  2 of 3040 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     52 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Photo Studio.vcxproj -> H:\Downloads\Photo Studio\x64\Release\Photo Studio.exe
+  Photo Studio.vcxproj -> C:\dev\Photo Studio\x64\Release\Photo Studio.exe

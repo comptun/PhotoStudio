@@ -37,6 +37,7 @@ uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color)
 	m_TotalLayersAllTime += 1;
 	uint64_t ID = m_Layers.size();
 	auto NewLayer = std::make_shared<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
+	//NewLayer->Rescale(nullptr, 2400, 2400);
 	m_Layers.push_back(std::move(NewLayer));
 	m_SelectedLayers.push_back(false);
 	return ID;
