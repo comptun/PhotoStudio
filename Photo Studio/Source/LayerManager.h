@@ -25,14 +25,15 @@ public:
 
 	void SetActiveLayer(uint64_t LayerID);
 	uint64_t AddLayer();
+	uint64_t AddLayer(glm::vec2 Size);
 	uint64_t AddLayer(std::string LayerName);
-	uint64_t AddLayer(std::string LayerName, glm::vec4 Color);
+	uint64_t AddLayer(std::string LayerName, glm::vec4 Color, glm::vec2 Size);
 	void BindActiveLayer();
 	void UnbindActiveLayer();
 	void DrawLayers();
 	void DrawLayersWindow();
 	std::shared_ptr<Layer> GetActiveLayer();
-
+	std::vector<std::shared_ptr<Layer>> m_Layers;
 private:
 	std::vector<bool> m_SelectedLayers;
 	glm::vec2& m_CanvasSize;
@@ -47,6 +48,4 @@ private:
 
 	void NextLayerDraggable(int LayerIndex);
 	void DrawLayer(int LayerIndex, bool Dragging=false, float Opacity=1.0f);
-protected:
-	std::vector<std::shared_ptr<Layer>> m_Layers;
 };

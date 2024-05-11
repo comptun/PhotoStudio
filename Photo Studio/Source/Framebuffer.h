@@ -17,10 +17,11 @@ public:
 	void Unbind();
 
 	GLuint GetTexture();
+
+	uint64_t m_Width, m_Height;
 private:
 	GLuint m_FBO;
 	GLuint m_RBO;
 	Texture m_Texture;
-	uint64_t m_Width, m_Height;
 };
 

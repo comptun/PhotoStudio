@@ -4,6 +4,7 @@
 #include "PaintBucket.h"
 #include "Eraser.h"
 #include "RectangularSelect.h"
+#include "Move.h"
 
 #include "IconsMaterialDesign.h"
 #include "Primitives.h"
@@ -31,7 +32,8 @@ class Tools :
 	public Brush,
 	public PaintBucket,
 	public Eraser,
-	public RectangularSelect
+	public RectangularSelect,
+	public Move
 {
 public:
 	Tools();

@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>H:\Downloads\Photo Studio\x64\Release\Photo Studio.exe</FullPath>
+      <FullPath>C:\dev\Photo Studio\x64\Release\Photo Studio.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

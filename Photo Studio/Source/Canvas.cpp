@@ -31,9 +31,8 @@ Canvas::Canvas(Tools& tools, std::string CanvasName, glm::vec2 Size, int CanvasI
 
     m_DrawBuffer.Unbind();
 
-    uint64_t BackgroundLayer = AddLayer("Background", glm::vec4(1, 1, 1, 1));
-    uint64_t TestLayer = AddLayer("Test layer");
-    SetActiveLayer(TestLayer);
+    uint64_t BackgroundLayer = AddLayer("Background", glm::vec4(1, 1, 1, 1), m_CanvasSize);
+    SetActiveLayer(BackgroundLayer);
     
 }
 Canvas::~Canvas()
@@ -158,19 +157,26 @@ void Canvas::DrawCanvas()
     glClear(GL_COLOR_BUFFER_BIT);
 
     Primitive::m_CanvasShader->UseProgram();
-    Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
-        glm::scale(glm::translate(glm::mat4(1.0f),
-            glm::vec3(m_CanvasSize.x / 2.0f, m_CanvasSize.y / 2.0f, 0.0f)
-        ), glm::vec3(m_CanvasSize.x, m_CanvasSize.y, 0))
-    );
+
+
 
     Primitive::m_CanvasShader->Uniform<glm::mat4>("view", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)));
+
     Primitive::m_CanvasShader->Uniform<glm::mat4>("projection", glm::ortho(0.0f, m_CanvasSize.x, 0.0f, m_CanvasSize.y));
+
+
 
     for (int i = 0; i < m_Layers.size(); ++i) {
         if (!m_Layers[i]->m_Visible) {
             continue;
         }
+
+        Primitive::m_CanvasShader->Uniform<glm::mat4>("model",
+            glm::scale(glm::translate(glm::mat4(1.0f),
+                glm::vec3(m_CanvasSize.x / 2.0f + m_Layers[i]->m_LayerOffset.x, m_CanvasSize.y / 2.0f + m_Layers[i]->m_LayerOffset.y, 0.0f)
+            ), glm::vec3(m_Layers[i]->m_Width, m_Layers[i]->m_Height, 0))
+        );
+
         glBindTexture(GL_TEXTURE_2D, m_Layers[i]->GetTexture());
         Primitive::m_CanvasObject->Draw();
     }
@@ -220,7 +226,10 @@ void Canvas::DrawCanvas()
         m_Tools.FloodFill4Stack(GetActiveLayer(), m_PixelBuffer);
     }
     else if (m_Tools.m_Tool == Tool::RectangularSelect) {
-        m_Tools.RectangularSelectStep();
+        m_Tools.RectangularSelectStep(GetActiveLayer());
+    }
+    else if (m_Tools.m_Tool == Tool::Move) {
+        m_Tools.MoveLayer(GetActiveLayer());
     }
 
     UnbindActiveLayer();
@@ -238,8 +247,10 @@ glm::vec3 Canvas::GetCanvasMousePosition()
     glm::vec2 mousePos = Input::Mouse::Pos;
     glm::vec<2, int> WindowPos = { 0,0 };
     SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &WindowPos.x, &WindowPos.y);
-    glm::vec3 FinalPos = glm::vec3(mousePos.x - CanvasData::m_CanvasOffset.x - ViewportPos.x - (ViewportSize.x - m_CanvasSize.x * CanvasData::m_CanvasScale) / 2.0f + WindowPos.x,
-        mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - m_CanvasSize.y * CanvasData::m_CanvasScale) / 2.0f + WindowPos.y, 0.0f) / glm::vec3(CanvasData::m_CanvasScale, CanvasData::m_CanvasScale, 1.0f);
+    glm::vec3 FinalPos = glm::vec3(mousePos.x - CanvasData::m_CanvasOffset.x - ViewportPos.x - (ViewportSize.x - GetActiveLayer()->m_Width * CanvasData::m_CanvasScale) / 2.0f + WindowPos.x,
+        mousePos.y - CanvasData::m_CanvasOffset.y - ViewportPos.y - (ViewportSize.y - GetActiveLayer()->m_Height * CanvasData::m_CanvasScale) / 2.0f + WindowPos.y, 0.0f) 
+        / glm::vec3(CanvasData::m_CanvasScale, CanvasData::m_CanvasScale, 1.0f)
+        - glm::vec3(GetActiveLayer()->m_LayerOffset.x, GetActiveLayer()->m_LayerOffset.y, 0.0f);
     Input::Mouse::CanvasPos = FinalPos;
     return FinalPos;
 }

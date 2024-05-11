@@ -1,10 +1,11 @@
 #include "Layer.h"
 
 Layer::Layer(std::string LayerName, uint64_t Index, uint64_t Width, uint64_t Height, glm::vec4 Color)
-	: Framebuffer(nullptr, Width, Height),
-	m_LayerName(LayerName),
+    : Framebuffer(nullptr, Width, Height),
+    m_LayerName(LayerName),
     m_Visible(true),
-    m_LayerOffset({0,0})
+    m_LayerOffset({ 0,0 }),
+    m_ActualOffset({0,0})
 {
     Bind();
 

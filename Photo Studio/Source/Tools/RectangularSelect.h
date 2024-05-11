@@ -17,9 +17,10 @@ public:
 	RectangularSelect();
 	~RectangularSelect();
 
-	void RectangularSelectStep();
+	void RectangularSelectStep(std::shared_ptr<Layer> ActiveLayer);
 	void DrawRectangularSelect();
 
 private:
+	std::shared_ptr<Layer> m_SelectedLayer;
 	glm::vec2 m_Start, m_End;
 };

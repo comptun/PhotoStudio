@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Tools\Move.cpp" />
     <ClCompile Include="Source\Tools\RectangularSelect.cpp" />
     <ClCompile Include="Source\Layer.cpp" />
     <ClCompile Include="Source\LayerManager.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\glad\include\glad\glad.h" />
+    <ClInclude Include="Source\Tools\Move.h" />
     <ClInclude Include="Source\Tools\RectangularSelect.h" />
     <ClInclude Include="Source\IconsMaterialDesign.h" />
     <ClInclude Include="Source\Layer.h" />

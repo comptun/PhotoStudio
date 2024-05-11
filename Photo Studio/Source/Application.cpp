@@ -32,6 +32,26 @@ Application::~Application()
 
 }
 
+static std::string GetFileName(std::string Path)
+{
+    // Remove directory if present.
+    // Do this before extension removal incase directory has a period character.
+    const size_t last_slash_idx = Path.find_last_of("\\/");
+    if (std::string::npos != last_slash_idx)
+    {
+        Path.erase(0, last_slash_idx + 1);
+    }
+
+    // Remove extension if present.
+    const size_t period_idx = Path.rfind('.');
+    if (std::string::npos != period_idx)
+    {
+        Path.erase(period_idx);
+    }
+
+    return Path;
+}
+
 void Application::UpdateWindow()
 {
     while (SDL_PollEvent(&m_Event))
@@ -58,6 +78,17 @@ void Application::UpdateWindow()
         }
         else if (m_Event.type == SDL_MOUSEWHEEL) {
             Input::ProcessMouseWheel(m_Event.wheel);
+        }
+        else if (m_Event.type == SDL_DROPFILE) {
+            std::cout << m_Event.drop.file << "\n";
+            SDL_Surface* LoadedImage = IMG_Load(m_Event.drop.file);
+
+            if (LoadedImage) {
+                uint64_t ImageLayer = m_Canvases.at(CanvasData::m_ActiveCanvas)->AddLayer(GetFileName(m_Event.drop.file), glm::vec4(0,0,0,0), glm::vec2(LoadedImage->w, LoadedImage->h));
+                m_Canvases.at(CanvasData::m_ActiveCanvas)->m_Layers[ImageLayer]->Rescale((unsigned char*)LoadedImage->pixels, LoadedImage->w, LoadedImage->h);
+            }
+
+            SDL_free(m_Event.drop.file);
         }
     }
 }
@@ -106,45 +137,32 @@ void Application::InitGL()
     printf("Version:  %s\n", glGetString(GL_VERSION));
 
     SDL_GL_SetSwapInterval(1); // Enable vsync
-    //SDL_SetWindowsMessageHook(nullptr, nullptr);
+    
+    SDL_EventState(SDL_DROPFILE, SDL_ENABLE);
     
     SDL_SysWMinfo wmInfo;
     SDL_VERSION(&wmInfo.version);
     SDL_GetWindowWMInfo(Window, &wmInfo);
     HWND hWnd = wmInfo.info.win.window;
 
-    //// Remove the title bar
-    //LONG_PTR lStyle = GetWindowLongPtr(hWnd, GWL_STYLE);
-    //lStyle &= ~(WS_CAPTION | WS_MAXIMIZEBOX | WS_MINIMIZEBOX);
-    //SetWindowLongPtr(hWnd, GWL_STYLE, lStyle);
-
-    //// Set the window shape and rounded corners
-    //DWMNCRENDERINGPOLICY policy = DWMNCRP_ENABLED;
-    //DwmSetWindowAttribute(hWnd, DWMWA_NCRENDERING_POLICY, &policy, sizeof(policy));
-
-    //// Extend the frame into the client area
-    //MARGINS margins = { 0 };
-    //DwmExtendFrameIntoClientArea(hWnd, &margins);
-
-    //// Adjust the window size to remove the thin frame at the top
-    //RECT windowRect;
-    //GetWindowRect(hWnd, &windowRect);
-    //SetWindowPos(hWnd, NULL, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, SWP_FRAMECHANGED | SWP_NOMOVE);
-
     BOOL USE_DARK_MODE = true;
     DwmSetWindowAttribute(
         hWnd, DWMWINDOWATTRIBUTE::DWMWA_USE_IMMERSIVE_DARK_MODE,
         &USE_DARK_MODE, sizeof(USE_DARK_MODE));
 
-    //SDL_SetWindowHitTest(Window, HitTest, nullptr);
+    RECT rcClient;
+    GetWindowRect(hWnd, &rcClient);
 
-    //glEnable(GL_DEPTH_TEST);
+    // Inform the application of the frame change.
+    SetWindowPos(hWnd,
+        NULL,
+        rcClient.left, rcClient.top,
+        1200, 900,
+        SWP_FRAMECHANGED);
 
     glEnable(GL_BLEND);
-    //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    //glDepthFunc(GL_LEQUAL);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 static ImVec4 Color32(const ImVec4& Colors) {

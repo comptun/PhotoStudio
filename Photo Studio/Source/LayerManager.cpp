@@ -27,16 +27,22 @@ uint64_t LayerManager::AddLayer()
 	uint64_t ID = AddLayer(Name);
 	return ID;
 }
-uint64_t LayerManager::AddLayer(std::string LayerName)
+uint64_t LayerManager::AddLayer(glm::vec2 Size)
 {
-	uint64_t ID = AddLayer(LayerName, glm::vec4(0,0,0,0));
+	std::string Name = "Layer " + std::to_string(m_TotalLayersAllTime + 1);
+	uint64_t ID = AddLayer(Name, glm::vec4(0,0,0,0), Size);
 	return ID;
 }
-uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color)
+uint64_t LayerManager::AddLayer(std::string LayerName)
+{
+	uint64_t ID = AddLayer(LayerName, glm::vec4(0,0,0,0), m_CanvasSize);
+	return ID;
+}
+uint64_t LayerManager::AddLayer(std::string LayerName, glm::vec4 Color, glm::vec2 Size)
 {
 	m_TotalLayersAllTime += 1;
 	uint64_t ID = m_Layers.size();
-	auto NewLayer = std::make_shared<Layer>(LayerName, ID, static_cast<uint64_t>(m_CanvasSize.x), static_cast<uint64_t>(m_CanvasSize.y), Color);
+	auto NewLayer = std::make_shared<Layer>(LayerName, ID, static_cast<uint64_t>(Size.x), static_cast<uint64_t>(Size.y), Color);
 	//NewLayer->Rescale(nullptr, 2400, 2400);
 	m_Layers.push_back(std::move(NewLayer));
 	m_SelectedLayers.push_back(false);
