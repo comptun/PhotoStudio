@@ -1,16 +1,8 @@
-﻿  PaintBucket.cpp
-C:\dev\Photo Studio\Photo Studio\Source\Tools\PaintBucket.cpp(65,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\dev\Photo Studio\Photo Studio\Source\Tools\PaintBucket.cpp(65,19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
+﻿  Texture.cpp
+C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp(20,49): warning C4244: 'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
+C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp(20,42): warning C4244: 'argument': conversion from 'uint64_t' to 'GLsizei', possible loss of data
   Generating code
-  1 of 3060 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  16 of 3060 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     60 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

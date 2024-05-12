@@ -540,8 +540,8 @@ $pdata$??4?$_Vb_reference@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@QEAAAEA
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??_GLayer@@QEAAPEAXI@Z DD imagerel $LN44@scalar
-	DD	imagerel $LN44@scalar+100
+$pdata$??_GLayer@@QEAAPEAXI@Z DD imagerel $LN47
+	DD	imagerel $LN47+147
 	DD	imagerel $unwind$??_GLayer@@QEAAPEAXI@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -594,8 +594,8 @@ $pdata$??$_Get_size_of_n@$03@std@@YA_K_K@Z DD imagerel $LN7@Get_size_o
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DD imagerel $LN47@Destroy_in
-	DD	imagerel $LN47@Destroy_in+97
+$pdata$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DD imagerel $LN50
+	DD	imagerel $LN50+144
 	DD	imagerel $unwind$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -858,8 +858,8 @@ $pdata$1$??4?$shared_ptr@VLayer@@@std@@QEAAAEAV01@$$QEAV01@@Z DD imagerel $LN37@
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DD imagerel $LN50@Destroy
-	DD	imagerel $LN50@Destroy+97
+$pdata$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DD imagerel $LN53
+	DD	imagerel $LN53+144
 	DD	imagerel $unwind$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -2002,7 +2002,34 @@ $unwind$??1?$_Alloc_temporary2@V?$allocator@V?$shared_ptr@VLayer@@@std@@@std@@@s
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DQ 03002320600020601r ; 1.96423e-77
+$ip2state$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DB 06H
+	DB	0baH
+	DB	02H
+	DB	','
+	DB	04H
+	DB	' '
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DB 04H
+	DB	0eH
+	DD	imagerel __imp___std_terminate
+	DB	02eH
+	DD	imagerel __imp___std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DB 068H
+	DD	imagerel $stateUnwindMap$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ
+	DD	imagerel $ip2state$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ DD 020619H
+	DD	030023206H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -2287,7 +2314,34 @@ $unwind$??$_Uninitialized_fill_n@V?$allocator@I@std@@@std@@YAPEAIPEAI_KAEBIAEAV?
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DQ 03002320600020601r ; 1.96423e-77
+$ip2state$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DB 06H
+	DB	0baH
+	DB	02H
+	DB	','
+	DB	04H
+	DB	' '
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DB 04H
+	DB	0eH
+	DD	imagerel __imp___std_terminate
+	DB	02eH
+	DD	imagerel __imp___std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DB 068H
+	DD	imagerel $stateUnwindMap$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z
+	DD	imagerel $ip2state$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z DD 020619H
+	DD	030023206H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -2342,7 +2396,34 @@ $unwind$??_G?$shared_ptr@VLayer@@@std@@QEAAPEAXI@Z DQ 00007340a00040a01r ; 1.001
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??_GLayer@@QEAAPEAXI@Z DQ 03002320600020601r ; 1.96423e-77
+$ip2state$??_GLayer@@QEAAPEAXI@Z DB 06H
+	DB	0baH
+	DB	02H
+	DB	','
+	DB	04H
+	DB	' '
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??_GLayer@@QEAAPEAXI@Z DB 04H
+	DB	0eH
+	DD	imagerel __imp___std_terminate
+	DB	02eH
+	DD	imagerel __imp___std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??_GLayer@@QEAAPEAXI@Z DB 068H
+	DD	imagerel $stateUnwindMap$??_GLayer@@QEAAPEAXI@Z
+	DD	imagerel $ip2state$??_GLayer@@QEAAPEAXI@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??_GLayer@@QEAAPEAXI@Z DD 020619H
+	DD	030023206H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??_GLayer@@QEAAPEAXI@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -2429,4 +2510,425 @@ xdata	ENDS
 xdata	SEGMENT
 $unwind$??$_Copy_memmove@PEAIPEAI@std@@YAPEAIPEAI00@Z DQ 00009340a00040a01r ; 1.27987e-308
 	DD	07006320aH
+; Function compile flags: /Ogtpy
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+;	COMDAT ?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ
+_TEXT	SEGMENT
+this$ = 48
+?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ PROC	; std::_Ref_count_obj2<Layer>::_Destroy, COMDAT
+
+; 2109 :     void _Destroy() noexcept override { // destroy managed resource
+
+$LN53:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR [rcx+96]
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	cmp	rdx, 16
+	jb	SHORT $LN23@Destroy
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+
+	mov	rcx, QWORD PTR [rcx+72]
+
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN35@Destroy
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	r8, QWORD PTR [rcx-8]
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+
+	sub	rcx, r8
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	lea	rax, QWORD PTR [rcx-8]
+	cmp	rax, 31
+	ja	SHORT $LN32@Destroy
+
+; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
+
+	mov	rcx, r8
+$LN35@Destroy:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN23@Destroy:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	mov	QWORD PTR [rbx+88], 0
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+
+	mov	QWORD PTR [rbx+96], 15
+
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR [rbx+72], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
+
+	lea	rdx, QWORD PTR [rbx+36]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteRenderbuffers
+
+; 31   : 	glDeleteFramebuffers(1, &m_FBO);
+
+	lea	rdx, QWORD PTR [rbx+32]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteFramebuffers
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+
+; 10   : 	glDeleteTextures(1, &m_ID);
+
+	lea	rdx, QWORD PTR [rbx+40]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteTextures
+	npad	1
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 2111 :     }
+
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+$LN32@Destroy:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN50@Destroy:
+?_Destroy@?$_Ref_count_obj2@VLayer@@@std@@EEAAXXZ ENDP	; std::_Ref_count_obj2<Layer>::_Destroy
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+;	COMDAT ??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z
+_TEXT	SEGMENT
+_Obj$ = 48
+??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z PROC ; std::_Destroy_in_place<Layer>, COMDAT
+
+; 294  : _CONSTEXPR20 void _Destroy_in_place(_Ty& _Obj) noexcept {
+
+$LN50:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR [rcx+80]
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	cmp	rdx, 16
+	jb	SHORT $LN21@Destroy_in
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+
+	mov	rcx, QWORD PTR [rcx+56]
+
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN33@Destroy_in
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	r8, QWORD PTR [rcx-8]
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+
+	sub	rcx, r8
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	lea	rax, QWORD PTR [rcx-8]
+	cmp	rax, 31
+	ja	SHORT $LN30@Destroy_in
+
+; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
+
+	mov	rcx, r8
+$LN33@Destroy_in:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN21@Destroy_in:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	mov	QWORD PTR [rbx+72], 0
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+
+	mov	QWORD PTR [rbx+80], 15
+
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR [rbx+56], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
+
+	lea	rdx, QWORD PTR [rbx+20]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteRenderbuffers
+
+; 31   : 	glDeleteFramebuffers(1, &m_FBO);
+
+	lea	rdx, QWORD PTR [rbx+16]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteFramebuffers
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+
+; 10   : 	glDeleteTextures(1, &m_ID);
+
+	lea	rdx, QWORD PTR [rbx+24]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteTextures
+	npad	1
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 300  : }
+
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+$LN30@Destroy_in:
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN47@Destroy_in:
+??$_Destroy_in_place@VLayer@@@std@@YAXAEAVLayer@@@Z ENDP ; std::_Destroy_in_place<Layer>
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+;	COMDAT ??_GLayer@@QEAAPEAXI@Z
+_TEXT	SEGMENT
+this$ = 48
+__flags$dead$ = 56
+??_GLayer@@QEAAPEAXI@Z PROC				; Layer::`scalar deleting destructor', COMDAT
+$LN47:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR [rcx+80]
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	cmp	rdx, 16
+	jb	SHORT $LN19@scalar
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+
+	mov	rcx, QWORD PTR [rcx+56]
+
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN31@scalar
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	r8, QWORD PTR [rcx-8]
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+
+	sub	rcx, r8
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	lea	rax, QWORD PTR [rcx-8]
+	cmp	rax, 31
+	ja	SHORT $LN28@scalar
+
+; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
+
+	mov	rcx, r8
+$LN31@scalar:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN19@scalar:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	mov	QWORD PTR [rbx+72], 0
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+
+	mov	QWORD PTR [rbx+80], 15
+
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR [rbx+56], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
+
+	lea	rdx, QWORD PTR [rbx+20]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteRenderbuffers
+
+; 31   : 	glDeleteFramebuffers(1, &m_FBO);
+
+	lea	rdx, QWORD PTR [rbx+16]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteFramebuffers
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+
+; 10   : 	glDeleteTextures(1, &m_ID);
+
+	lea	rdx, QWORD PTR [rbx+24]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteTextures
+	npad	1
+	mov	rax, rbx
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+$LN28@scalar:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN44@scalar:
+??_GLayer@@QEAAPEAXI@Z ENDP				; Layer::`scalar deleting destructor'
+_TEXT	ENDS
 END

@@ -27,8 +27,8 @@ Framebuffer::Framebuffer(unsigned char* Data, uint64_t Width, uint64_t Height)
 
 Framebuffer::~Framebuffer()
 {
-
-
+	glDeleteRenderbuffers(1, &m_RBO);
+	glDeleteFramebuffers(1, &m_FBO);
 }
 
 void Framebuffer::Rescale(unsigned char* Data, uint64_t Width, uint64_t Height)

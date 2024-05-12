@@ -161,33 +161,52 @@ $pdata$?SetActive@Canvas@@QEAAXXZ DD imagerel $LN45@SetActive
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??1Canvas@@QEAA@XZ DD imagerel $LN47@Canvas
-	DD	imagerel $LN47@Canvas+169
+$pdata$??1Canvas@@QEAA@XZ DD imagerel $LN54
+	DD	imagerel $LN54+281
 	DD	imagerel $unwind$??1Canvas@@QEAA@XZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DD imagerel $LN94@Canvas
-	DD	imagerel $LN94@Canvas+739
+$pdata$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DD imagerel $LN96
+	DD	imagerel $LN96+752
 	DD	imagerel $unwind$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DQ 0082806260402710ar ; 2.27373e-269
-	DD	062d0a2cH
+$ip2state$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DB 0eH
+	DB	'q', 02H
+	DB	04H
+	DB	'&'
+	DB	06H
+	DB	'('
+	DB	08H
+	DB	','
+	DB	0aH
+	DB	','
+	DB	0cH
+	DB	'u', 02H
+	DB	0eH
+	DB	095H, 03H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DW 0c0aH
+$stateUnwindMap$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DB 0eH
+	DB	0cH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	034d0H
+	DB	0d0H
+	DB	034H
 	DD	imagerel ??1LayerManager@@QEAA@XZ
-	DW	03680H
+	DB	080H
+	DB	036H
 	DD	imagerel ?dtor$2@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA
 	DB	02eH
 	DD	imagerel ?dtor$3@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA
 	DB	02eH
 	DD	imagerel ?dtor$4@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA
+	DB	02eH
+	DD	imagerel ?dtor$5@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA
+	DB	02eH
+	DD	imagerel ?dtor$6@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -197,17 +216,52 @@ $cppxdata$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$a
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DQ 000087822000d3119r ; 1.1778e-308
-	DQ	0001401180009681dr		; 2.78194e-308
-	DQ	0700bc00de00ff011r		; 5.38534e+231
-	DQ	0000030085009600ar		; 2.60927e-310
+$unwind$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z DD 0d3119H
+	DD	087822H
+	DD	09681dH
+	DD	0140118H
+	DD	0e00ff011H
+	DD	0700bc00dH
+	DD	05009600aH
+	DD	03008H
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z
 	DD	072H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??1Canvas@@QEAA@XZ DQ 03002320600020601r ; 1.96423e-77
+$ip2state$??1Canvas@@QEAA@XZ DB 0aH
+	DB	'*'
+	DB	02H
+	DB	'2'
+	DB	04H
+	DB	'&'
+	DB	02H
+	DB	'J'
+	DB	04H
+	DB	'&'
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??1Canvas@@QEAA@XZ DB 04H
+	DB	0eH
+	DD	imagerel __imp___std_terminate
+	DB	02eH
+	DD	imagerel __imp___std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??1Canvas@@QEAA@XZ DB 068H
+	DD	imagerel $stateUnwindMap$??1Canvas@@QEAA@XZ
+	DD	imagerel $ip2state$??1Canvas@@QEAA@XZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??1Canvas@@QEAA@XZ DD 020619H
+	DD	030023206H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??1Canvas@@QEAA@XZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -433,4 +487,753 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DQ 03002320600020601r ; 1.96423e-77
+; Function compile flags: /Ogtpy
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Input.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+;	COMDAT ??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z
+_TEXT	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z PROC ; Canvas::Canvas, COMDAT
+
+; 18   : {
+
+$LN96:
+	mov	r11, rsp
+	mov	QWORD PTR [r11+32], r9
+	push	rbx
+	push	rbp
+	push	rsi
+	push	rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 160				; 000000a0H
+	movaps	XMMWORD PTR [r11-72], xmm6
+	movaps	XMMWORD PTR [r11-88], xmm7
+	mov	rax, QWORD PTR __security_cookie
+	xor	rax, rsp
+	mov	QWORD PTR __$ArrayPad$[rsp], rax
+	mov	rbx, r9
+	mov	r15, r8
+	mov	r14, rcx
+	mov	QWORD PTR this$GSCopy$[rsp], rcx
+	mov	QWORD PTR [r11-112], r8
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 398  :     _CONSTEXPR20 _Vector_val() noexcept : _Myfirst(), _Mylast(), _Myend() {}
+
+	xor	r12d, r12d
+	mov	QWORD PTR [rcx], r12
+	mov	QWORD PTR [rcx+8], r12
+	mov	QWORD PTR [rcx+16], r12
+	mov	QWORD PTR [rcx+24], r12
+	mov	QWORD PTR [rcx+32], r12
+	mov	QWORD PTR [rcx+40], r12
+
+; 2781 :     _CONSTEXPR20 _Vb_val(const _Alloc& _Al) noexcept : _Myvec(static_cast<_Alvbase>(_Al)), _Mysize(0) {
+
+	mov	QWORD PTR [rcx+48], r12
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 17   :     LayerManager(m_CanvasSize)
+
+	lea	rbp, QWORD PTR [rcx+240]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 4    : 	: m_CanvasSize(CanvasSize),
+
+	mov	QWORD PTR [rcx+56], rbp
+
+; 5    : 	m_ActiveLayer(0),
+
+	mov	QWORD PTR [rcx+64], r12
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
+
+; 53   : 		: x(static_cast<T>(_x))
+
+	mov	QWORD PTR [rcx+72], r12
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 10   : 	m_LayerOffset(0),
+
+	mov	QWORD PTR [rcx+84], r12
+
+; 6    : 	m_LayerYPos(0),
+; 7    : 	m_InitialLayerClick(true),
+
+	mov	WORD PTR [rcx+92], 1
+
+; 11   : 	m_TotalLayersAllTime(0)
+
+	mov	DWORD PTR [rcx+96], r12d
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 7    :     m_Tools(tools),
+
+	mov	QWORD PTR [rcx+104], rdx
+
+; 10   :     m_PixelBuffer(GL_RGBA, Size.x, Size.y, 2),
+
+	add	rcx, 112				; 00000070H
+	cvttss2si edi, DWORD PTR [r11+36]
+	cvttss2si esi, DWORD PTR [r11+32]
+	mov	r9d, edi
+	mov	r8d, esi
+	call	??0PixelBuffer@@QEAA@IHHH@Z		; PixelBuffer::PixelBuffer
+	npad	1
+
+; 11   :     m_DrawPixelBuffer(GL_RGBA, Size.x, Size.y, 2),
+
+	lea	rcx, QWORD PTR [r14+176]
+	mov	r9d, edi
+	mov	r8d, esi
+	call	??0PixelBuffer@@QEAA@IHHH@Z		; PixelBuffer::PixelBuffer
+	npad	1
+
+; 8    :     m_CanvasSize(Size),
+
+	mov	QWORD PTR [rbp], rbx
+
+; 9    :     m_CanvasName(CanvasName),
+
+	lea	rcx, QWORD PTR [r14+248]
+	mov	rdx, r15
+	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@AEBV01@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+	npad	1
+
+; 5    :     m_Viewport(nullptr, 100, 100),
+
+	lea	rcx, QWORD PTR [r14+280]
+	mov	r9d, 100				; 00000064H
+	mov	r8d, r9d
+	call	??0Framebuffer@@QEAA@PEAE_K1@Z		; Framebuffer::Framebuffer
+	npad	1
+
+; 6    :     m_DrawBuffer(nullptr, 100, 100),
+
+	mov	r9d, 100				; 00000064H
+	mov	r8d, r9d
+	lea	rcx, QWORD PTR [r14+312]
+	call	??0Framebuffer@@QEAA@PEAE_K1@Z		; Framebuffer::Framebuffer
+	npad	1
+
+; 13   :     m_CanvasID(CanvasID),
+
+	mov	eax, DWORD PTR CanvasID$[rsp]
+	mov	DWORD PTR [r14+344], eax
+
+; 12   :     m_Focused(false),
+
+	mov	WORD PTR [r14+348], 256			; 00000100H
+
+; 14   :     m_OldWindowSize(0,0),
+; 15   :     m_Open(true),
+; 16   :     m_InitialDraw(true),
+
+	mov	BYTE PTR [r14+350], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
+
+; 53   : 		: x(static_cast<T>(_x))
+
+	mov	QWORD PTR [r14+352], r12
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 19   :     CanvasData::m_CanvasSize = m_CanvasSize;
+
+	mov	rax, QWORD PTR [rbp]
+	mov	QWORD PTR ?m_CanvasSize@CanvasData@@2U?$vec@$01M$0A@@glm@@A, rax ; CanvasData::m_CanvasSize
+; File C:\dev\Photo Studio\Photo Studio\Source\Input.cpp
+
+; 44   : 	float Scale = 1.0f;
+
+	movss	xmm7, DWORD PTR __real@3f800000
+	movaps	xmm1, xmm7
+	movss	xmm2, DWORD PTR ?m_ViewportSize@CanvasData@@2U?$vec@$01M$0A@@glm@@A+4
+	subss	xmm2, DWORD PTR __real@42c80000
+	movss	xmm3, DWORD PTR ?m_CanvasSize@CanvasData@@2U?$vec@$01M$0A@@glm@@A+4
+	movss	xmm4, DWORD PTR __real@bc23d70a
+	xorps	xmm6, xmm6
+	npad	11
+$LL38@Canvas:
+
+; 46   : 		if (Scale * CanvasData::m_CanvasSize.y < CanvasData::m_ViewportSize.y - 100) {
+
+	movaps	xmm0, xmm1
+	mulss	xmm0, xmm3
+	comiss	xmm2, xmm0
+	ja	SHORT $LN35@Canvas
+
+; 45   : 	for (; Scale >= 0; Scale -= 0.01f) {
+
+	addss	xmm1, xmm4
+	comiss	xmm1, xmm6
+	jae	SHORT $LL38@Canvas
+
+; 47   : 			return Scale;
+; 48   : 		}
+; 49   : 	}
+; 50   : 	return 1.0f;
+
+	movaps	xmm1, xmm7
+$LN35@Canvas:
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 49   : 	glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
+
+	movss	DWORD PTR ?m_CanvasScale@CanvasData@@2MA, xmm1 ; CanvasData::m_CanvasScale
+	mov	edx, DWORD PTR [r14+328]
+	mov	ecx, 36160				; 00008d40H
+	call	QWORD PTR glad_glBindFramebuffer
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 27   :     m_DrawBuffer.Rescale(nullptr, m_CanvasSize.x, m_CanvasSize.y);
+
+	xor	eax, eax
+	movss	xmm1, DWORD PTR [r14+244]
+	mov	rcx, -9223372036854775808		; 8000000000000000H
+	movss	xmm0, DWORD PTR __real@5f000000
+	comiss	xmm1, xmm0
+	jb	SHORT $LN92@Canvas
+	subss	xmm1, xmm0
+	comiss	xmm1, xmm0
+	jae	SHORT $LN92@Canvas
+	mov	rax, rcx
+$LN92@Canvas:
+	cvttss2si r9, xmm1
+	add	r9, rax
+	xor	eax, eax
+	movss	xmm1, DWORD PTR [rbp]
+	comiss	xmm1, xmm0
+	jb	SHORT $LN91@Canvas
+	subss	xmm1, xmm0
+	comiss	xmm1, xmm0
+	jae	SHORT $LN91@Canvas
+	mov	rax, rcx
+$LN91@Canvas:
+	cvttss2si r8, xmm1
+	add	r8, rax
+	xor	edx, edx
+	lea	rcx, QWORD PTR [r14+312]
+	call	?Rescale@Framebuffer@@QEAAXPEAE_K1@Z	; Framebuffer::Rescale
+
+; 28   :     glViewport(0, 0, m_CanvasSize.x, m_CanvasSize.y);
+
+	cvttss2si r9d, DWORD PTR [r14+244]
+	cvttss2si r8d, DWORD PTR [rbp]
+	xor	edx, edx
+	xor	ecx, ecx
+	call	QWORD PTR glad_glViewport
+
+; 29   :     glClearColor(1, 1, 1, 0);
+
+	movaps	xmm3, xmm6
+	movaps	xmm2, xmm7
+	movaps	xmm1, xmm7
+	movaps	xmm0, xmm7
+	call	QWORD PTR glad_glClearColor
+
+; 30   :     glClear(GL_COLOR_BUFFER_BIT);
+
+	mov	ecx, 16384				; 00004000H
+	call	QWORD PTR glad_glClear
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 53   : 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	xor	edx, edx
+	mov	ecx, 36160				; 00008d40H
+	call	QWORD PTR glad_glBindFramebuffer
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 34   :     uint64_t BackgroundLayer = AddLayer("Background", glm::vec4(1, 1, 1, 1), m_CanvasSize);
+
+	mov	rbx, QWORD PTR [rbp]
+	lea	rdx, OFFSET FLAT:??_C@_0L@MALGKGOF@Background@
+	lea	rcx, QWORD PTR $T11[rsp]
+	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+	movaps	xmm0, XMMWORD PTR __xmm@3f8000003f8000003f8000003f800000
+	movaps	XMMWORD PTR $T13[rsp], xmm0
+	mov	r9, rbx
+	lea	r8, QWORD PTR $T13[rsp]
+	mov	rdx, rax
+	mov	rcx, r14
+	call	?AddLayer@LayerManager@@QEAA_KV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$03M$0A@@glm@@U?$vec@$01M$0A@@5@@Z ; LayerManager::AddLayer
+
+; 35   :     SetActiveLayer(BackgroundLayer);
+
+	mov	QWORD PTR [r14+64], rax
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR [r15+24]
+	cmp	rdx, 16
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	jb	SHORT $LN59@Canvas
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
+
+	mov	rcx, QWORD PTR [r15]
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN71@Canvas
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	r8, QWORD PTR [rcx-8]
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+
+	sub	rcx, r8
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	lea	rax, QWORD PTR [rcx-8]
+	cmp	rax, 31
+	ja	SHORT $LN68@Canvas
+
+; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
+
+	mov	rcx, r8
+$LN71@Canvas:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN59@Canvas:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	mov	QWORD PTR [r15+16], r12
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+
+	mov	QWORD PTR [r15+24], 15
+
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR [r15], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 37   : }
+
+	mov	rax, r14
+	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	movaps	xmm6, XMMWORD PTR [rsp+144]
+	movaps	xmm7, XMMWORD PTR [rsp+128]
+	add	rsp, 160				; 000000a0H
+	pop	r15
+	pop	r14
+	pop	r12
+	pop	rdi
+	pop	rsi
+	pop	rbp
+	pop	rbx
+	ret	0
+$LN68@Canvas:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN93@Canvas:
+??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z ENDP ; Canvas::Canvas
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$0@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$0
+	mov	rcx, QWORD PTR CanvasName$GSCopy$[rdx]
+	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
+?dtor$0@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$1@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$1
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	jmp	??1LayerManager@@QEAA@XZ		; LayerManager::~LayerManager
+?dtor$1@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$2@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$2
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	add	rcx, 112				; 00000070H
+	jmp	??1PixelBuffer@@QEAA@XZ			; PixelBuffer::~PixelBuffer
+?dtor$2@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$2
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$3@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$3
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	add	rcx, 176				; 000000b0H
+	jmp	??1PixelBuffer@@QEAA@XZ			; PixelBuffer::~PixelBuffer
+?dtor$3@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$3
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$4@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$4
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	add	rcx, 248				; 000000f8H
+	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
+?dtor$4@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$4
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$5@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$5
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	add	rcx, 280				; 00000118H
+	jmp	??1Framebuffer@@QEAA@XZ			; Framebuffer::~Framebuffer
+?dtor$5@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$5
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 48
+this$GSCopy$ = 64
+$T11 = 72
+CanvasName$GSCopy$ = 104
+__$ArrayPad$ = 112
+this$ = 224
+tools$ = 232
+CanvasName$ = 240
+Size$ = 248
+CanvasID$ = 256
+?dtor$6@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA PROC ; `Canvas::Canvas'::`1'::dtor$6
+	mov	rcx, QWORD PTR this$GSCopy$[rdx]
+	add	rcx, 312				; 00000138H
+	jmp	??1Framebuffer@@QEAA@XZ			; Framebuffer::~Framebuffer
+?dtor$6@?0???0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z@4HA ENDP ; `Canvas::Canvas'::`1'::dtor$6
+text$x	ENDS
+; Function compile flags: /Ogtpy
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+;	COMDAT ??1Canvas@@QEAA@XZ
+_TEXT	SEGMENT
+this$ = 48
+??1Canvas@@QEAA@XZ PROC					; Canvas::~Canvas, COMDAT
+
+; 39   : {
+
+$LN54:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
+
+	lea	rdx, QWORD PTR [rcx+332]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteRenderbuffers
+
+; 31   : 	glDeleteFramebuffers(1, &m_FBO);
+
+	lea	rdx, QWORD PTR [rbx+328]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteFramebuffers
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+
+; 10   : 	glDeleteTextures(1, &m_ID);
+
+	lea	rdx, QWORD PTR [rbx+336]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteTextures
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
+
+; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
+
+	lea	rdx, QWORD PTR [rbx+300]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteRenderbuffers
+
+; 31   : 	glDeleteFramebuffers(1, &m_FBO);
+
+	lea	rdx, QWORD PTR [rbx+296]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteFramebuffers
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
+
+; 10   : 	glDeleteTextures(1, &m_ID);
+
+	lea	rdx, QWORD PTR [rbx+304]
+	mov	ecx, 1
+	call	QWORD PTR glad_glDeleteTextures
+	npad	1
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR [rbx+272]
+	cmp	rdx, 16
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	jb	SHORT $LN27@Canvas
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
+
+	mov	rcx, QWORD PTR [rbx+248]
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN39@Canvas
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	r8, QWORD PTR [rcx-8]
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+
+	sub	rcx, r8
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	lea	rax, QWORD PTR [rcx-8]
+	cmp	rax, 31
+	ja	SHORT $LN36@Canvas
+
+; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
+
+	mov	rcx, r8
+$LN39@Canvas:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN27@Canvas:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	mov	QWORD PTR [rbx+264], 0
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+
+	mov	QWORD PTR [rbx+272], 15
+
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR [rbx+248], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
+
+; 18   : 	if (m_Pixels != nullptr) {
+
+	mov	rcx, QWORD PTR [rbx+176]
+	test	rcx, rcx
+	je	SHORT $LN46@Canvas
+
+; 19   : 		delete[] m_Pixels;
+
+	call	??_V@YAXPEAX@Z				; operator delete[]
+
+; 20   : 		m_Pixels = nullptr;
+
+	mov	QWORD PTR [rbx+176], 0
+$LN46@Canvas:
+
+; 18   : 	if (m_Pixels != nullptr) {
+
+	mov	rcx, QWORD PTR [rbx+112]
+	test	rcx, rcx
+	je	SHORT $LN49@Canvas
+
+; 19   : 		delete[] m_Pixels;
+
+	call	??_V@YAXPEAX@Z				; operator delete[]
+
+; 20   : 		m_Pixels = nullptr;
+
+	mov	QWORD PTR [rbx+112], 0
+$LN49@Canvas:
+; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
+
+; 41   : }
+
+	mov	rcx, rbx
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	jmp	??1LayerManager@@QEAA@XZ		; LayerManager::~LayerManager
+$LN36@Canvas:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN51@Canvas:
+??1Canvas@@QEAA@XZ ENDP					; Canvas::~Canvas
+_TEXT	ENDS
 END

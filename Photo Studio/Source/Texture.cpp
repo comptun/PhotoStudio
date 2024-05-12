@@ -7,7 +7,7 @@ Texture::Texture()
 }
 Texture::~Texture()
 {
-
+	glDeleteTextures(1, &m_ID);
 }
 
 void Texture::Generate()

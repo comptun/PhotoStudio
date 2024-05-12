@@ -54,16 +54,18 @@ void PaintBucket::FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBu
 		return;
 	}
 
-	PBuffer.Download();
+	//PBuffer.Download();
 
 	auto Pixels32 = std::unique_ptr<uint32_t[]>(new uint32_t[PBuffer.m_NumBytes / 4]);
 	//uint32_t* Pixels32 = reinterpret_cast<uint32_t*>(copyMem.get());
-	memcpy(Pixels32.get(), PBuffer.m_Pixels, PBuffer.m_NumBytes);
+	//memcpy(Pixels32.get(), PBuffer.m_Pixels, PBuffer.m_NumBytes);
+
+	glReadPixels(0, 0, Layer->m_Width, Layer->m_Height, GL_RGBA, GL_UNSIGNED_BYTE, Pixels32.get());
 
 	uint32_t newColor =	GetColor();
 	
 	int x = Pos.x, y = Pos.y;
-	int w = PBuffer.m_Width, h = PBuffer.m_Height;
+	int w = Layer->m_Width, h = Layer->m_Height;
 
 	uint32_t oldColor = Pixels32[y * w + x];
 
@@ -90,6 +92,6 @@ void PaintBucket::FloodFill4Stack(std::shared_ptr<Layer> Layer, PixelBuffer& PBu
 		}
 	}
 
-	Layer->Rescale(reinterpret_cast<unsigned char*>(Pixels32.get()), PBuffer.m_Width, PBuffer.m_Height);
+	Layer->Rescale(reinterpret_cast<unsigned char*>(Pixels32.get()), Layer->m_Width, Layer->m_Height);
 	PreviousPosition = Pos;
 }
