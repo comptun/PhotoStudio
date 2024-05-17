@@ -5,6 +5,7 @@ include listing.inc
 INCLUDELIB OLDNAMES
 
 PUBLIC	??_C@_0BA@HFDFHACB@Tool?5Properties@		; `string'
+PUBLIC	??_C@_0BG@EJKMMNMI@Tool?5Properties?5Child@	; `string'
 PUBLIC	??_C@_0BB@LAEBPEOJ@No?5tool?5selected@		; `string'
 PUBLIC	??_C@_09KFCCKCGD@Move?5tool@			; `string'
 PUBLIC	??_C@_0BC@DOONNDPC@Paint?5bucket?5tool@		; `string'
@@ -13,6 +14,7 @@ PUBLIC	??_C@_0BA@PNEKFLNG@Eyedropper?5tool@		; `string'
 PUBLIC	??_C@_09LAHGKOJP@Crop?5tool@			; `string'
 PUBLIC	??_C@_09DPJEAHJH@Text?5tool@			; `string'
 PUBLIC	??_C@_07FGBMEDIO@Toolbar@			; `string'
+PUBLIC	??_C@_0O@KAFGLEKI@Toolbar?5Child@		; `string'
 PUBLIC	??_C@_07DJEMMAJP@No?5tool@			; `string'
 PUBLIC	??_C@_03MBLNINKF@?n?$KC?$II@			; `string'
 PUBLIC	??_C@_03OPKHDHD@?n?$KO?$LJ@			; `string'
@@ -63,6 +65,10 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_07DJEMMAJP@No?5tool@ DB 'No tool', 00H		; `string'
 CONST	ENDS
+;	COMDAT ??_C@_0O@KAFGLEKI@Toolbar?5Child@
+CONST	SEGMENT
+??_C@_0O@KAFGLEKI@Toolbar?5Child@ DB 'Toolbar Child', 00H ; `string'
+CONST	ENDS
 ;	COMDAT ??_C@_07FGBMEDIO@Toolbar@
 CONST	SEGMENT
 ??_C@_07FGBMEDIO@Toolbar@ DB 'Toolbar', 00H		; `string'
@@ -96,6 +102,10 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_0BB@LAEBPEOJ@No?5tool?5selected@ DB 'No tool selected', 00H ; `string'
 CONST	ENDS
+;	COMDAT ??_C@_0BG@EJKMMNMI@Tool?5Properties?5Child@
+CONST	SEGMENT
+??_C@_0BG@EJKMMNMI@Tool?5Properties?5Child@ DB 'Tool Properties Child', 00H ; `string'
+CONST	ENDS
 ;	COMDAT ??_C@_0BA@HFDFHACB@Tool?5Properties@
 CONST	SEGMENT
 ??_C@_0BA@HFDFHACB@Tool?5Properties@ DB 'Tool Properties', 00H ; `string'
@@ -105,20 +115,20 @@ PUBLIC	?DrawToolPropertiesMenu@Tools@@QEAAXXZ		; Tools::DrawToolPropertiesMenu
 PUBLIC	??0Tools@@QEAA@XZ				; Tools::Tools
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z DD imagerel $LN184@ToolButton
-	DD	imagerel $LN184@ToolButton+898
+$pdata$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z DD imagerel $LN191@ToolButton
+	DD	imagerel $LN191@ToolButton+963
 	DD	imagerel $unwind$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawToolbar@Tools@@QEAAXXZ DD imagerel $LN48@DrawToolba
-	DD	imagerel $LN48@DrawToolba+888
+$pdata$?DrawToolbar@Tools@@QEAAXXZ DD imagerel $LN103@DrawToolba
+	DD	imagerel $LN103@DrawToolba+1322
 	DD	imagerel $unwind$?DrawToolbar@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD imagerel $LN53@DrawToolPr
-	DD	imagerel $LN53@DrawToolPr+768
+$pdata$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD imagerel $LN94@DrawToolPr
+	DD	imagerel $LN94@DrawToolPr+1064
 	DD	imagerel $unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -132,24 +142,26 @@ $unwind$??0Tools@@QEAA@XZ DQ 03002320600020601r	; 1.96423e-77
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DQ 00015340d00051f19r ; 2.94869e-308
-	DQ	0000070060012010dr		; 6.08546e-310
+$unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DQ 00015741a00082819r ; 2.98348e-308
+	DQ	00013341a0014641ar		; 2.67058e-308
+	DD	05010f21aH
 	DD	imagerel __GSHandlerCheck
-	DD	080H
+	DD	078H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 000220202fd00ca26r ; 5.0086e-308
-	DQ	00022025c0022025cr		; 5.00898e-308
-	DQ	00022025c0022025cr		; 5.00898e-308
-	DQ	00022025c0022025cr		; 5.00898e-308
-	DQ	00022025c0022025cr		; 5.00898e-308
+$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 0220208e500022d26r ; 7.22141e-145
+	DQ	022025c0022025c00r		; 7.3514e-145
+	DQ	022025c0022025c00r		; 7.3514e-145
+	DQ	022025c0022025c00r		; 7.3514e-145
+	DQ	022025c0022025c00r		; 7.3514e-145
+	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $stateUnwindMap$?DrawToolbar@Tools@@QEAAXXZ DW 0c02H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0201H
+	DW	0281H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -159,15 +171,16 @@ $cppxdata$?DrawToolbar@Tools@@QEAAXXZ DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawToolbar@Tools@@QEAAXXZ DQ 00013741200061211r ; 2.70533e-308
-	DQ	0500bd21200123412r		; 4.02675e+77
+$unwind$?DrawToolbar@Tools@@QEAAXXZ DQ 00017641800081811r ; 3.25292e-308
+	DQ	0e00ef21800163418r		; -5.18642e+154
+	DD	0500b700cH
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$?DrawToolbar@Tools@@QEAAXXZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z DQ 0027902095904d606r ; 9.55966e-297
-	DB	00H
+$ip2state$?ToolButton@Tools@@AEAAXW4Tool@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z DQ 07d0209550402b106r ; 1.43992e+294
+	DW	02H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT

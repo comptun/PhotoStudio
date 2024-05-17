@@ -245,7 +245,9 @@ void LayerManager::DrawLayersWindow()
 
 	ImVec2 LayerWinSize = ImGui::GetWindowSize();
 
-	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 55.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+	ImGui::PushStyleColor(ImGuiCol_ChildBg, { 0,0,0,0 });
+	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 62.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+	ImGui::PopStyleColor();
 	ImGui::PopStyleVar(2);
 
 	ImVec2 WindowPos = ImGui::GetWindowPos();
@@ -264,10 +266,10 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::EndChild();
 
-	ImGui::SetCursorPosY(LayerWinSize.y - 33.0f);
+	ImGui::SetCursorPosY(LayerWinSize.y - 40.0f);
 
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.09f, 0.09f, 0.09f, 1.0f));
-	ImGui::BeginChild("LayerProperties");
+	ImGui::BeginChild("LayerProperties", {ImGui::GetWindowSize().x, 33});
 	ImGui::PopStyleColor();
 
 	ImGui::SetWindowFontScale(0.6f);

@@ -69,14 +69,15 @@ void Canvas::DrawCanvas()
         ImGui::SetNextWindowDockID(4);
         m_InitialDraw = false;
     }
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     ImGui::Begin(m_CanvasName.c_str(), &m_Open);
-    ImGui::PopStyleVar();
+    ImGui::PopStyleVar(2);
 
     Input::Mouse::m_MouseInCanvas = MouseInCanvas();
 
     float window_width = ImGui::GetContentRegionAvail().x;
-    float window_height = ImGui::GetContentRegionAvail().y;
+    float window_height = ImGui::GetContentRegionAvail().y - 7;
 
     if (!CanvasData::m_CanvasHovered)
         CanvasData::m_CanvasHovered = ImGui::IsWindowHovered();
@@ -112,7 +113,7 @@ void Canvas::DrawCanvas()
         }
         m_OldWindowSize = glm::vec2(window_width, window_height);
         glViewport(0, 0, window_width, window_height);
-        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -237,7 +238,6 @@ void Canvas::DrawCanvas()
     glUseProgram(0);
 
     ImGui::End();
-
 }
 
 glm::vec3 Canvas::GetCanvasMousePosition()

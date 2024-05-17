@@ -145,10 +145,10 @@ void Application::InitGL()
     SDL_GetWindowWMInfo(Window, &wmInfo);
     HWND hWnd = wmInfo.info.win.window;
 
-    BOOL USE_DARK_MODE = true;
-    DwmSetWindowAttribute(
-        hWnd, DWMWINDOWATTRIBUTE::DWMWA_USE_IMMERSIVE_DARK_MODE,
-        &USE_DARK_MODE, sizeof(USE_DARK_MODE));
+    COLORREF DARK_COLOR = 0x0A0A0A;
+    BOOL SET_CAPTION_COLOR = DwmSetWindowAttribute(
+        hWnd, DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR,
+        &DARK_COLOR, sizeof(DARK_COLOR));
 
     RECT rcClient;
     GetWindowRect(hWnd, &rcClient);
@@ -200,12 +200,14 @@ void Application::InitImGui()
     style.Colors[ImGuiCol_TabUnfocused] = { 0.2f, 0.2f, 0.2f, 1.0f };
     style.Colors[ImGuiCol_TabUnfocusedActive] = { 0.3f, 0.3f, 0.3f, 1.0f };
 
-    style.Colors[ImGuiCol_TitleBg] = Color32({ 16,16,16,255 });
-    style.Colors[ImGuiCol_TitleBgActive] = Color32({ 16,16,16,255 });
-    style.Colors[ImGuiCol_TitleBgCollapsed] = Color32({16,16,16,255});
+    style.Colors[ImGuiCol_TitleBg] = Color32({ 10,10,10,255 });
+    style.Colors[ImGuiCol_TitleBgActive] = Color32({ 10,10,10,255 });
+    style.Colors[ImGuiCol_TitleBgCollapsed] = Color32({ 10,10,10,255});
     
-    style.Colors[ImGuiCol_MenuBarBg] = Color32({ 32, 32, 32, 255 });
-    style.Colors[ImGuiCol_WindowBg] = Color32({ 36, 36, 36, 255 });
+    style.Colors[ImGuiCol_MenuBarBg] = Color32({ 10, 10, 10, 255 });
+    style.Colors[ImGuiCol_Border] = Color32({ 10, 10, 10, 255 });
+    style.Colors[ImGuiCol_WindowBg] = Color32({ 10, 10, 10, 255 });
+    style.Colors[ImGuiCol_ChildBg] = Color32({ 36, 36, 36, 255 });
     style.Colors[ImGuiCol_Button] = Color32({ 0,0,0,0 });
     style.Colors[ImGuiCol_ButtonHovered] = Color32({ 100,100,100,100 });
     style.Colors[ImGuiCol_ButtonActive] = Color32({ 150,150,150,100 });
@@ -215,8 +217,9 @@ void Application::InitImGui()
     style.Colors[ImGuiCol_FrameBgHovered] = Color32({ 150,150,150,255 });
     style.Colors[ImGuiCol_CheckMark] = Color32({255,255,255,255});
 
-    style.DockingSeparatorSize = 1.0f;
+    style.DockingSeparatorSize = 7.0f;
     style.WindowBorderSize = 0.0f;
+    style.TabBarBorderSize = 0.0f;
 
     // Setup Platform/Renderer backends
     ImGui_ImplSDL2_InitForOpenGL(m_Window, m_GLContext);
@@ -338,7 +341,11 @@ void Application::DrawTitleBar()
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 10));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-    ImGui::Begin("Title Bar", nullptr, ImGuiWindowFlags_MenuBar);
+    ImGui::Begin("Title Bar");
+    
+    ImGui::SetCursorPosX(7);
+
+    ImGui::BeginChild("Title Bar Child", { ImGui::GetWindowSize().x - 14, ImGui::GetWindowSize().y }, ImGuiChildFlags_None, ImGuiWindowFlags_MenuBar);
 
     bool CreateNewProject = false;
     bool SaveProject = false;
@@ -547,6 +554,8 @@ void Application::DrawTitleBar()
 
         ImGui::EndMenuBar();
     }
+
+    ImGui::EndChild();
 
     ImGui::End();
 

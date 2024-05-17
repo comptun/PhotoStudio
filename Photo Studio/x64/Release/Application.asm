@@ -22,6 +22,7 @@ PUBLIC	??_C@_0P@IHLBBLJK@DockSpace?5Demo@		; `string'
 PUBLIC	??_C@_0M@MOJOFFHL@MyDockSpace@			; `string'
 PUBLIC	??_C@_0L@KOOGALIH@Properties@			; `string'
 PUBLIC	??_C@_09MELPKEIH@Title?5Bar@			; `string'
+PUBLIC	??_C@_0BA@LMOECENK@Title?5Bar?5Child@		; `string'
 PUBLIC	??_C@_04PBAHLACE@File@				; `string'
 PUBLIC	??_C@_06CPMDDACM@Ctrl?$CLN@			; `string'
 PUBLIC	??_C@_0M@BKCCDHAN@New?5project@			; `string'
@@ -61,8 +62,8 @@ EXTRN	__imp_SetWindowPos:PROC
 EXTRN	__imp_SDL_CreateWindow:PROC
 EXTRN	__imp_IMG_Load:PROC
 EXTRN	__imp_SDL_EventState:PROC
-EXTRN	__imp_SDL_PollEvent:PROC
 EXTRN	__imp_SDL_GL_SetSwapInterval:PROC
+EXTRN	__imp_SDL_PollEvent:PROC
 EXTRN	__imp_SDL_GL_CreateContext:PROC
 EXTRN	__imp___stdio_common_vfprintf:PROC
 EXTRN	__imp_SDL_GL_SetAttribute:PROC
@@ -71,8 +72,8 @@ EXTRN	__imp_SDL_GetWindowID:PROC
 EXTRN	__imp_SDL_GetWindowWMInfo:PROC
 EXTRN	__imp_SDL_Quit:PROC
 EXTRN	__imp_SDL_SetHint:PROC
-EXTRN	__imp_SDL_AddEventWatch:PROC
 EXTRN	__imp_SDL_DestroyWindow:PROC
+EXTRN	__imp_SDL_AddEventWatch:PROC
 EXTRN	__imp_SDL_Init:PROC
 EXTRN	__imp___acrt_iob_func:PROC
 EXTRN	__imp_SDL_GL_MakeCurrent:PROC
@@ -238,6 +239,10 @@ CONST	ENDS
 ;	COMDAT ??_C@_04PBAHLACE@File@
 CONST	SEGMENT
 ??_C@_04PBAHLACE@File@ DB 'File', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0BA@LMOECENK@Title?5Bar?5Child@
+CONST	SEGMENT
+??_C@_0BA@LMOECENK@Title?5Bar?5Child@ DB 'Title Bar Child', 00H ; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_09MELPKEIH@Title?5Bar@
 CONST	SEGMENT
@@ -500,14 +505,14 @@ $pdata$?_Xlength@?$vector@V?$shared_ptr@VCanvas@@@std@@V?$allocator@V?$shared_pt
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??_GCanvas@@QEAAPEAXI@Z DD imagerel $LN59
-	DD	imagerel $LN59+285
+$pdata$??_GCanvas@@QEAAPEAXI@Z DD imagerel $LN59@scalar
+	DD	imagerel $LN59@scalar+285
 	DD	imagerel $unwind$??_GCanvas@@QEAAPEAXI@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DD imagerel $LN62
-	DD	imagerel $LN62+281
+$pdata$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DD imagerel $LN62@Destroy_in
+	DD	imagerel $LN62@Destroy_in+281
 	DD	imagerel $unwind$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -584,8 +589,8 @@ $pdata$??_G?$_Ref_count_obj2@VCanvas@@@std@@UEAAPEAXI@Z DD imagerel $LN8@scalar
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DD imagerel $LN65
-	DD	imagerel $LN65+282
+$pdata$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DD imagerel $LN65@Destroy
+	DD	imagerel $LN65@Destroy+282
 	DD	imagerel $unwind$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -716,8 +721,8 @@ $pdata$?Cleanup@Application@@AEAAXXZ DD imagerel $LN138@Cleanup
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawTitleBar@Application@@AEAAXXZ DD imagerel $LN724@DrawTitleB
-	DD	imagerel $LN724@DrawTitleB+3817
+$pdata$?DrawTitleBar@Application@@AEAAXXZ DD imagerel $LN763@DrawTitleB
+	DD	imagerel $LN763@DrawTitleB+4126
 	DD	imagerel $unwind$?DrawTitleBar@Application@@AEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -740,8 +745,8 @@ $pdata$?Run@Application@@QEAAXXZ DD imagerel $LN11@Run
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?InitImGui@Application@@AEAAXXZ DD imagerel $LN130@InitImGui
-	DD	imagerel $LN130@InitImGui+882
+$pdata$?InitImGui@Application@@AEAAXXZ DD imagerel $LN244@InitImGui
+	DD	imagerel $LN244@InitImGui+895
 	DD	imagerel $unwind$?InitImGui@Application@@AEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -752,8 +757,8 @@ $pdata$?dtor$0@?0??InitImGui@Application@@AEAAXXZ@4HA DD imagerel ?dtor$0@?0??In
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?InitGL@Application@@SAXXZ DD imagerel $LN9
-	DD	imagerel $LN9+634
+$pdata$?InitGL@Application@@SAXXZ DD imagerel $LN9@InitGL
+	DD	imagerel $LN9@InitGL+634
 	DD	imagerel $unwind$?InitGL@Application@@SAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -981,8 +986,7 @@ $unwind$?UpdateWindow@Application@@AEAAXXZ DQ 0001d010b00040b01r ; 4.03351e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?InitGL@Application@@SAXXZ DD 046419H
-	DD	0163464H
+$unwind$?InitGL@Application@@SAXXZ DQ 00016346400046419r ; 3.08794e-308
 	DD	0170107H
 	DD	imagerel __GSHandlerCheck
 	DD	0a8H
@@ -1032,9 +1036,9 @@ $unwind$?dtor$8@?0??DrawTitleBar@Application@@AEAAXXZ@4HA DQ 05002320600020601r 
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawTitleBar@Application@@AEAAXXZ DQ 099022b410003110er ; -3.26229e-188
-	DQ	0025504c806280403r		; 2.00867e-297
-	DD	02150cH
+$ip2state$?DrawTitleBar@Application@@AEAAXXZ DQ 05102300d0003490er ; 1.72523e+82
+	DQ	0025504c806320403r		; 2.00867e-297
+	DD	02190cH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1042,17 +1046,17 @@ $stateUnwindMap$?DrawTitleBar@Application@@AEAAXXZ DW 0a0cH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
 	DW	03290H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0661H
+	DW	06c1H
 	DB	03eH
 	DD	imagerel ?dtor$8@?0??DrawTitleBar@Application@@AEAAXXZ@4HA
 	DB	062H
 	DD	imagerel ??1?$shared_ptr@VCanvas@@@std@@QEAA@XZ
-	DW	0841H
+	DW	08a1H
 	DB	0caH
 	DD	imagerel ??1?$shared_ptr@VCanvas@@@std@@QEAA@XZ
-	DD	02150841H
+	DD	021508a1H
 	DD	imagerel ??1?$shared_ptr@VCanvas@@@std@@QEAA@XZ
-	DW	0841H
+	DW	08a1H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1062,14 +1066,14 @@ $cppxdata$?DrawTitleBar@Application@@AEAAXXZ DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawTitleBar@Application@@AEAAXXZ DQ 00023782e00113f19r ; 5.41512e-308
-	DQ	0005374260024682ar		; 4.32859e-307
-	DQ	00051342600526426r		; 3.82795e-307
-	DQ	0e016f018004a0126r		; -7.68866e+154
+$unwind$?DrawTitleBar@Application@@AEAAXXZ DQ 00024782e00113f19r ; 5.69326e-308
+	DQ	0005574260025682ar		; 4.77361e-307
+	DQ	00053342600546426r		; 4.27297e-307
+	DQ	0e016f018004c0126r		; -7.68866e+154
 	DQ	000005010c012d014r		; 4.3494e-310
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$?DrawTitleBar@Application@@AEAAXXZ
-	DD	0222H
+	DD	023aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1224,25 +1228,16 @@ $unwind$??$_Destroy_range@V?$allocator@V?$shared_ptr@VCanvas@@@std@@@std@@@std@@
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DB 0aH
-	DB	','
-	DB	02H
-	DB	'2'
-	DB	04H
-	DB	'&'
-	DB	02H
-	DB	'J'
-	DB	04H
-	DB	'&'
+$ip2state$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DQ 04a02260432022c0ar ; 3.31551e+48
+	DW	02604H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DB 04H
-	DB	0eH
-	DD	imagerel __imp___std_terminate
+$stateUnwindMap$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DW 0e04H
+	DD	imagerel __std_terminate
 	DB	02eH
-	DD	imagerel __imp___std_terminate
+	DD	imagerel __std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1252,8 +1247,7 @@ $cppxdata$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DB 068H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DD 020619H
-	DD	030023206H
+$unwind$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ DQ 03002320600020619r ; 1.96423e-77
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ
 xdata	ENDS
@@ -1335,25 +1329,16 @@ $unwind$??$destroy@V?$shared_ptr@VCanvas@@@std@@@?$_Default_allocator_traits@V?$
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DB 0aH
-	DB	'*'
-	DB	02H
-	DB	'2'
-	DB	04H
-	DB	'&'
-	DB	02H
-	DB	'J'
-	DB	04H
-	DB	'&'
+$ip2state$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DQ 04a02260432022a0ar ; 3.31551e+48
+	DW	02604H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DB 04H
-	DB	0eH
-	DD	imagerel __imp___std_terminate
+$stateUnwindMap$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DW 0e04H
+	DD	imagerel __std_terminate
 	DB	02eH
-	DD	imagerel __imp___std_terminate
+	DD	imagerel __std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1363,32 +1348,22 @@ $cppxdata$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DB 068H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DD 020619H
-	DD	030023206H
+$unwind$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z DQ 03002320600020619r ; 1.96423e-77
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??_GCanvas@@QEAAPEAXI@Z DB 0aH
-	DB	'*'
-	DB	02H
-	DB	'2'
-	DB	04H
-	DB	'&'
-	DB	02H
-	DB	'J'
-	DB	04H
-	DB	'&'
+$ip2state$??_GCanvas@@QEAAPEAXI@Z DQ 04a02260432022a0ar ; 3.31551e+48
+	DW	02604H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??_GCanvas@@QEAAPEAXI@Z DB 04H
-	DB	0eH
-	DD	imagerel __imp___std_terminate
+$stateUnwindMap$??_GCanvas@@QEAAPEAXI@Z DW 0e04H
+	DD	imagerel __std_terminate
 	DB	02eH
-	DD	imagerel __imp___std_terminate
+	DD	imagerel __std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1398,8 +1373,7 @@ $cppxdata$??_GCanvas@@QEAAPEAXI@Z DB 068H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??_GCanvas@@QEAAPEAXI@Z DD 020619H
-	DD	030023206H
+$unwind$??_GCanvas@@QEAAPEAXI@Z DQ 03002320600020619r ; 1.96423e-77
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??_GCanvas@@QEAAPEAXI@Z
 xdata	ENDS
@@ -1477,899 +1451,4 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$??$construct_at@VCanvas@@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@_K$0A@@std@@YAPEAVCanvas@@QEAV1@AEAVTools@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@$$QEAU?$vec@$01M$0A@@glm@@$$QEA_K@Z DQ 00000a20400010401r ; 8.80119e-310
-; Function compile flags: /Ogtpy
-; File C:\dev\Photo Studio\Photo Studio\Source\Application.cpp
-;	COMDAT ?InitGL@Application@@SAXXZ
-_TEXT	SEGMENT
-wmInfo$ = 64
-USE_DARK_MODE$ = 144
-rcClient$ = 152
-__$ArrayPad$ = 168
-?InitGL@Application@@SAXXZ PROC				; Application::InitGL, COMDAT
-
-; 99   : {
-
-$LN9:
-	sub	rsp, 184				; 000000b8H
-	mov	rax, QWORD PTR __security_cookie
-	xor	rax, rsp
-	mov	QWORD PTR __$ArrayPad$[rsp], rax
-
-; 100  :     // Setup SDL
-; 101  :     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
-
-	mov	ecx, 8225				; 00002021H
-	call	QWORD PTR __imp_SDL_Init
-	test	eax, eax
-	je	SHORT $LN2@InitGL
-
-; 102  :     {
-; 103  :         printf("Error: %s\n", SDL_GetError());
-
-	call	QWORD PTR __imp_SDL_GetError
-	mov	rdx, rax
-	lea	rcx, OFFSET FLAT:??_C@_0L@DCCGFMBN@Error?3?5?$CFs?6@
-	call	printf
-
-; 166  : }
-
-	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
-	xor	rcx, rsp
-	call	__security_check_cookie
-	add	rsp, 184				; 000000b8H
-	ret	0
-$LN2@InitGL:
-
-; 104  :         return;
-; 105  :     }
-; 106  : 
-; 107  :     // From 2.0.18: Enable native IME.
-; 108  : #ifdef SDL_HINT_IME_SHOW_UI
-; 109  :     SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");
-
-	lea	rdx, OFFSET FLAT:??_C@_01HIHLOKLC@1@
-	mov	QWORD PTR [rsp+176], rbx
-	lea	rcx, OFFSET FLAT:??_C@_0BA@JCFIKKMK@SDL_IME_SHOW_UI@
-	call	QWORD PTR __imp_SDL_SetHint
-
-; 110  : #endif
-; 111  : 
-; 112  :     /*SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-; 113  :     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);*/
-; 114  : 
-; 115  :     // Setup window
-; 116  :     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	mov	edx, 1
-	lea	ecx, QWORD PTR [rdx+4]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 117  :     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-	mov	edx, 24
-	lea	ecx, QWORD PTR [rdx-18]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 118  :     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-
-	mov	edx, 8
-	lea	ecx, QWORD PTR [rdx-1]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 119  :     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-
-	mov	edx, 4
-	lea	ecx, QWORD PTR [rdx+13]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 120  :     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
-
-	mov	edx, 6
-	lea	ecx, QWORD PTR [rdx+12]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 121  :     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
-
-	mov	edx, 2
-	lea	ecx, QWORD PTR [rdx+19]
-	call	QWORD PTR __imp_SDL_GL_SetAttribute
-
-; 122  :     //SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
-; 123  :     int window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;// | SDL_WINDOW_MAXIMIZED;
-; 124  :     SDL_Window* Window = SDL_CreateWindow("Photo Studio", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1200, 900, (SDL_WindowFlags)window_flags);
-
-	mov	edx, 805240832				; 2fff0000H
-	mov	DWORD PTR [rsp+40], 8226		; 00002022H
-	mov	r8d, edx
-	mov	DWORD PTR [rsp+32], 900			; 00000384H
-	mov	r9d, 1200				; 000004b0H
-	lea	rcx, OFFSET FLAT:??_C@_0N@DDOGMLBE@Photo?5Studio@
-	call	QWORD PTR __imp_SDL_CreateWindow
-	mov	rbx, rax
-
-; 125  :     if (Window == nullptr)
-
-	test	rax, rax
-	jne	SHORT $LN3@InitGL
-
-; 126  :     {
-; 127  :         printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
-
-	call	QWORD PTR __imp_SDL_GetError
-	mov	rdx, rax
-	lea	rcx, OFFSET FLAT:??_C@_0BP@BFEIMJMJ@Error?3?5SDL_CreateWindow?$CI?$CJ?3?5?$CFs?6@
-	call	printf
-
-; 128  :         return;
-
-	jmp	$LN7@InitGL
-$LN3@InitGL:
-
-; 129  :     }
-; 130  : 
-; 131  :     m_GLContext = SDL_GL_CreateContext(Window);
-
-	mov	rcx, rbx
-	call	QWORD PTR __imp_SDL_GL_CreateContext
-
-; 132  :     SDL_GL_MakeCurrent(Window, m_GLContext);
-
-	mov	rdx, rax
-	mov	QWORD PTR ?m_GLContext@Application@@0PEAXEA, rax ; Application::m_GLContext
-	mov	rcx, rbx
-	call	QWORD PTR __imp_SDL_GL_MakeCurrent
-
-; 133  :     gladLoadGLLoader(SDL_GL_GetProcAddress);
-
-	mov	rcx, QWORD PTR __imp_SDL_GL_GetProcAddress
-	call	gladLoadGLLoader
-
-; 134  :     printf("OpenGL loaded\n");
-
-	lea	rcx, OFFSET FLAT:??_C@_0P@JLOCEAMK@OpenGL?5loaded?6@
-	call	printf
-
-; 135  :     printf("Vendor:   %s\n", glGetString(GL_VENDOR));
-
-	mov	rax, QWORD PTR glad_glGetString
-	mov	ecx, 7936				; 00001f00H
-	call	rax
-	mov	rdx, rax
-	lea	rcx, OFFSET FLAT:??_C@_0O@BLOPLMMI@Vendor?3?5?5?5?$CFs?6@
-	call	printf
-
-; 136  :     printf("Renderer: %s\n", glGetString(GL_RENDERER));
-
-	mov	rax, QWORD PTR glad_glGetString
-	mov	ecx, 7937				; 00001f01H
-	call	rax
-	mov	rdx, rax
-	lea	rcx, OFFSET FLAT:??_C@_0O@IPGAJLBD@Renderer?3?5?$CFs?6@
-	call	printf
-
-; 137  :     printf("Version:  %s\n", glGetString(GL_VERSION));
-
-	mov	rax, QWORD PTR glad_glGetString
-	mov	ecx, 7938				; 00001f02H
-	call	rax
-	mov	rdx, rax
-	lea	rcx, OFFSET FLAT:??_C@_0O@NHGDCGCA@Version?3?5?5?$CFs?6@
-	call	printf
-
-; 138  : 
-; 139  :     SDL_GL_SetSwapInterval(1); // Enable vsync
-
-	mov	ecx, 1
-	call	QWORD PTR __imp_SDL_GL_SetSwapInterval
-
-; 140  :     
-; 141  :     SDL_EventState(SDL_DROPFILE, SDL_ENABLE);
-
-	mov	edx, 1
-	mov	ecx, 4096				; 00001000H
-	call	QWORD PTR __imp_SDL_EventState
-
-; 142  :     
-; 143  :     SDL_SysWMinfo wmInfo;
-; 144  :     SDL_VERSION(&wmInfo.version);
-; 145  :     SDL_GetWindowWMInfo(Window, &wmInfo);
-
-	lea	rdx, QWORD PTR wmInfo$[rsp]
-	mov	WORD PTR wmInfo$[rsp], 7170		; 00001c02H
-	mov	rcx, rbx
-	mov	BYTE PTR wmInfo$[rsp+2], 4
-	call	QWORD PTR __imp_SDL_GetWindowWMInfo
-
-; 146  :     HWND hWnd = wmInfo.info.win.window;
-
-	mov	rbx, QWORD PTR wmInfo$[rsp+8]
-
-; 147  : 
-; 148  :     BOOL USE_DARK_MODE = true;
-; 149  :     DwmSetWindowAttribute(
-
-	lea	r8, QWORD PTR USE_DARK_MODE$[rsp]
-	mov	r9d, 4
-	mov	DWORD PTR USE_DARK_MODE$[rsp], 1
-	mov	rcx, rbx
-	lea	edx, QWORD PTR [r9+16]
-	call	QWORD PTR __imp_DwmSetWindowAttribute
-
-; 150  :         hWnd, DWMWINDOWATTRIBUTE::DWMWA_USE_IMMERSIVE_DARK_MODE,
-; 151  :         &USE_DARK_MODE, sizeof(USE_DARK_MODE));
-; 152  : 
-; 153  :     RECT rcClient;
-; 154  :     GetWindowRect(hWnd, &rcClient);
-
-	lea	rdx, QWORD PTR rcClient$[rsp]
-	mov	rcx, rbx
-	call	QWORD PTR __imp_GetWindowRect
-
-; 155  : 
-; 156  :     // Inform the application of the frame change.
-; 157  :     SetWindowPos(hWnd,
-
-	mov	r9d, DWORD PTR rcClient$[rsp+4]
-	xor	edx, edx
-	mov	r8d, DWORD PTR rcClient$[rsp]
-	mov	rcx, rbx
-	mov	DWORD PTR [rsp+48], 32			; 00000020H
-	mov	DWORD PTR [rsp+40], 900			; 00000384H
-	mov	DWORD PTR [rsp+32], 1200		; 000004b0H
-	call	QWORD PTR __imp_SetWindowPos
-
-; 158  :         NULL,
-; 159  :         rcClient.left, rcClient.top,
-; 160  :         1200, 900,
-; 161  :         SWP_FRAMECHANGED);
-; 162  : 
-; 163  :     glEnable(GL_BLEND);
-
-	mov	ecx, 3042				; 00000be2H
-	call	QWORD PTR glad_glEnable
-
-; 164  : 
-; 165  :     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	mov	edx, 771				; 00000303H
-	lea	ecx, QWORD PTR [rdx-1]
-	call	QWORD PTR glad_glBlendFunc
-$LN7@InitGL:
-	mov	rbx, QWORD PTR [rsp+176]
-
-; 166  : }
-
-	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
-	xor	rcx, rsp
-	call	__security_check_cookie
-	add	rsp, 184				; 000000b8H
-	ret	0
-?InitGL@Application@@SAXXZ ENDP				; Application::InitGL
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
-;	COMDAT ?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ
-_TEXT	SEGMENT
-this$ = 48
-?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ PROC	; std::_Ref_count_obj2<Canvas>::_Destroy, COMDAT
-
-; 2109 :     void _Destroy() noexcept override { // destroy managed resource
-
-$LN65:
-	push	rbx
-	sub	rsp, 32					; 00000020H
-
-; 2110 :         _Destroy_in_place(_Storage._Value);
-
-	lea	rbx, QWORD PTR [rcx+16]
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rbx+332]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+328]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+336]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rbx+300]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+296]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+304]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 2282 :         return _BUF_SIZE <= _Myres;
-
-	mov	rdx, QWORD PTR [rbx+272]
-	cmp	rdx, 16
-
-; 4868 :         if (_My_data._Large_string_engaged()) {
-
-	jb	SHORT $LN35@Destroy
-
-; 4869 :             _ASAN_STRING_REMOVE(*this);
-; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
-; 4871 :             auto& _Al          = _Getal();
-; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
-; 4873 :             _My_data._Activate_SSO_buffer();
-; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
-
-	inc	rdx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
-
-	mov	rcx, QWORD PTR [rbx+248]
-
-; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
-
-	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN47@Destroy
-
-; 147  :     _Bytes += _Non_user_size;
-
-	add	rdx, 39					; 00000027H
-
-; 148  : 
-; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
-; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
-
-	mov	r8, QWORD PTR [rcx-8]
-
-; 151  : 
-; 152  :     // If the following asserts, it likely means that we are performing
-; 153  :     // an aligned delete on memory coming from an unaligned allocation.
-; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
-; 155  : 
-; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
-; 157  :     // in range [_Min_back_shift, _Non_user_size]
-; 158  : #ifdef _DEBUG
-; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
-; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
-; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
-; 162  : #endif // _DEBUG
-; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
-
-	sub	rcx, r8
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	lea	rax, QWORD PTR [rcx-8]
-	cmp	rax, 31
-	ja	SHORT $LN44@Destroy
-
-; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
-
-	mov	rcx, r8
-$LN47@Destroy:
-
-; 255  :         ::operator delete(_Ptr, _Bytes);
-
-	call	??3@YAXPEAX_K@Z				; operator delete
-$LN35@Destroy:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 4877 :         _My_data._Mysize = 0;
-
-	mov	QWORD PTR [rbx+264], 0
-
-; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
-
-	mov	QWORD PTR [rbx+272], 15
-
-; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
-; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
-
-	mov	BYTE PTR [rbx+248], 0
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+176]
-	test	rcx, rcx
-	je	SHORT $LN54@Destroy
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+176], 0
-$LN54@Destroy:
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+112]
-	test	rcx, rcx
-	je	SHORT $LN57@Destroy
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+112], 0
-$LN57@Destroy:
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-
-; 41   : }
-
-	mov	rcx, rbx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
-
-; 2111 :     }
-
-	add	rsp, 32					; 00000020H
-	pop	rbx
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-
-; 41   : }
-
-	jmp	??1LayerManager@@QEAA@XZ		; LayerManager::~LayerManager
-$LN44@Destroy:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	int	3
-$LN62@Destroy:
-?_Destroy@?$_Ref_count_obj2@VCanvas@@@std@@EEAAXXZ ENDP	; std::_Ref_count_obj2<Canvas>::_Destroy
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-;	COMDAT ??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z
-_TEXT	SEGMENT
-_Obj$ = 48
-??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z PROC ; std::_Destroy_in_place<Canvas>, COMDAT
-
-; 294  : _CONSTEXPR20 void _Destroy_in_place(_Ty& _Obj) noexcept {
-
-$LN62:
-	push	rbx
-	sub	rsp, 32					; 00000020H
-	mov	rbx, rcx
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rcx+332]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+328]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+336]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rbx+300]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+296]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+304]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 2282 :         return _BUF_SIZE <= _Myres;
-
-	mov	rdx, QWORD PTR [rbx+272]
-	cmp	rdx, 16
-
-; 4868 :         if (_My_data._Large_string_engaged()) {
-
-	jb	SHORT $LN33@Destroy_in
-
-; 4869 :             _ASAN_STRING_REMOVE(*this);
-; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
-; 4871 :             auto& _Al          = _Getal();
-; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
-; 4873 :             _My_data._Activate_SSO_buffer();
-; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
-
-	inc	rdx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
-
-	mov	rcx, QWORD PTR [rbx+248]
-
-; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
-
-	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN45@Destroy_in
-
-; 147  :     _Bytes += _Non_user_size;
-
-	add	rdx, 39					; 00000027H
-
-; 148  : 
-; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
-; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
-
-	mov	r8, QWORD PTR [rcx-8]
-
-; 151  : 
-; 152  :     // If the following asserts, it likely means that we are performing
-; 153  :     // an aligned delete on memory coming from an unaligned allocation.
-; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
-; 155  : 
-; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
-; 157  :     // in range [_Min_back_shift, _Non_user_size]
-; 158  : #ifdef _DEBUG
-; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
-; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
-; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
-; 162  : #endif // _DEBUG
-; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
-
-	sub	rcx, r8
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	lea	rax, QWORD PTR [rcx-8]
-	cmp	rax, 31
-	ja	SHORT $LN42@Destroy_in
-
-; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
-
-	mov	rcx, r8
-$LN45@Destroy_in:
-
-; 255  :         ::operator delete(_Ptr, _Bytes);
-
-	call	??3@YAXPEAX_K@Z				; operator delete
-$LN33@Destroy_in:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 4877 :         _My_data._Mysize = 0;
-
-	mov	QWORD PTR [rbx+264], 0
-
-; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
-
-	mov	QWORD PTR [rbx+272], 15
-
-; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
-; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
-
-	mov	BYTE PTR [rbx+248], 0
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+176]
-	test	rcx, rcx
-	je	SHORT $LN52@Destroy_in
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+176], 0
-$LN52@Destroy_in:
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+112]
-	test	rcx, rcx
-	je	SHORT $LN55@Destroy_in
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+112], 0
-$LN55@Destroy_in:
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-
-; 41   : }
-
-	mov	rcx, rbx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 300  : }
-
-	add	rsp, 32					; 00000020H
-	pop	rbx
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-
-; 41   : }
-
-	jmp	??1LayerManager@@QEAA@XZ		; LayerManager::~LayerManager
-$LN42@Destroy_in:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	int	3
-$LN59@Destroy_in:
-??$_Destroy_in_place@VCanvas@@@std@@YAXAEAVCanvas@@@Z ENDP ; std::_Destroy_in_place<Canvas>
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-;	COMDAT ??_GCanvas@@QEAAPEAXI@Z
-_TEXT	SEGMENT
-this$ = 48
-__flags$dead$ = 56
-??_GCanvas@@QEAAPEAXI@Z PROC				; Canvas::`scalar deleting destructor', COMDAT
-$LN59:
-	push	rbx
-	sub	rsp, 32					; 00000020H
-	mov	rbx, rcx
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rcx+332]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+328]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+336]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rbx+300]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+296]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+304]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 2282 :         return _BUF_SIZE <= _Myres;
-
-	mov	rdx, QWORD PTR [rbx+272]
-	cmp	rdx, 16
-
-; 4868 :         if (_My_data._Large_string_engaged()) {
-
-	jb	SHORT $LN31@scalar
-
-; 4869 :             _ASAN_STRING_REMOVE(*this);
-; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
-; 4871 :             auto& _Al          = _Getal();
-; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
-; 4873 :             _My_data._Activate_SSO_buffer();
-; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
-
-	inc	rdx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
-
-	mov	rcx, QWORD PTR [rbx+248]
-
-; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
-
-	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN43@scalar
-
-; 147  :     _Bytes += _Non_user_size;
-
-	add	rdx, 39					; 00000027H
-
-; 148  : 
-; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
-; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
-
-	mov	r8, QWORD PTR [rcx-8]
-
-; 151  : 
-; 152  :     // If the following asserts, it likely means that we are performing
-; 153  :     // an aligned delete on memory coming from an unaligned allocation.
-; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
-; 155  : 
-; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
-; 157  :     // in range [_Min_back_shift, _Non_user_size]
-; 158  : #ifdef _DEBUG
-; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
-; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
-; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
-; 162  : #endif // _DEBUG
-; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
-
-	sub	rcx, r8
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	lea	rax, QWORD PTR [rcx-8]
-	cmp	rax, 31
-	ja	SHORT $LN40@scalar
-
-; 165  :     _Ptr = reinterpret_cast<void*>(_Ptr_container);
-
-	mov	rcx, r8
-$LN43@scalar:
-
-; 255  :         ::operator delete(_Ptr, _Bytes);
-
-	call	??3@YAXPEAX_K@Z				; operator delete
-$LN31@scalar:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
-
-; 4877 :         _My_data._Mysize = 0;
-
-	mov	QWORD PTR [rbx+264], 0
-
-; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
-
-	mov	QWORD PTR [rbx+272], 15
-
-; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
-; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
-
-	mov	BYTE PTR [rbx+248], 0
-; File C:\dev\Photo Studio\Photo Studio\Source\PixelBuffer.cpp
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+176]
-	test	rcx, rcx
-	je	SHORT $LN50@scalar
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+176], 0
-$LN50@scalar:
-
-; 18   : 	if (m_Pixels != nullptr) {
-
-	mov	rcx, QWORD PTR [rbx+112]
-	test	rcx, rcx
-	je	SHORT $LN53@scalar
-
-; 19   : 		delete[] m_Pixels;
-
-	call	??_V@YAXPEAX@Z				; operator delete[]
-
-; 20   : 		m_Pixels = nullptr;
-
-	mov	QWORD PTR [rbx+112], 0
-$LN53@scalar:
-; File C:\dev\Photo Studio\Photo Studio\Source\Canvas.cpp
-
-; 41   : }
-
-	mov	rcx, rbx
-	call	??1LayerManager@@QEAA@XZ		; LayerManager::~LayerManager
-	mov	rax, rbx
-	add	rsp, 32					; 00000020H
-	pop	rbx
-	ret	0
-$LN40@scalar:
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
-
-; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
-
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	int	3
-$LN56@scalar:
-??_GCanvas@@QEAAPEAXI@Z ENDP				; Canvas::`scalar deleting destructor'
-_TEXT	ENDS
 END

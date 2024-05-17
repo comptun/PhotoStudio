@@ -19,14 +19,13 @@ $pdata$?Load@Texture@@QEAAXPEAE_K1@Z DD imagerel $LN4@Load
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??1Texture@@QEAA@XZ DD imagerel $LN5
-	DD	imagerel $LN5+24
+$pdata$??1Texture@@QEAA@XZ DD imagerel $LN5@Texture
+	DD	imagerel $LN5@Texture+24
 	DD	imagerel $unwind$??1Texture@@QEAA@XZ
 pdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??1Texture@@QEAA@XZ DB 02H
-	DB	018H
+$ip2state$??1Texture@@QEAA@XZ DW 01802H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
@@ -36,37 +35,11 @@ $cppxdata$??1Texture@@QEAA@XZ DB 060H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??1Texture@@QEAA@XZ DD 010419H
-	DD	04204H
+$unwind$??1Texture@@QEAA@XZ DQ 00000420400010419r ; 3.58617e-310
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??1Texture@@QEAA@XZ
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$?Load@Texture@@QEAAXPEAE_K1@Z DQ 00000a20400010401r ; 8.80119e-310
-; Function compile flags: /Ogtpy
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-;	COMDAT ??1Texture@@QEAA@XZ
-_TEXT	SEGMENT
-this$ = 48
-??1Texture@@QEAA@XZ PROC				; Texture::~Texture, COMDAT
-
-; 9    : {
-
-$LN5:
-	sub	rsp, 40					; 00000028H
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	mov	rdx, rcx
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-
-; 11   : }
-
-	add	rsp, 40					; 00000028H
-	ret	0
-??1Texture@@QEAA@XZ ENDP				; Texture::~Texture
-_TEXT	ENDS
 END

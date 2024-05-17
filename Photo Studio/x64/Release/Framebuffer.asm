@@ -23,27 +23,23 @@ $pdata$?Rescale@Framebuffer@@QEAAXPEAE_K1@Z DD imagerel $LN8@Rescale
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??1Framebuffer@@QEAA@XZ DD imagerel $LN8
-	DD	imagerel $LN8+62
+$pdata$??1Framebuffer@@QEAA@XZ DD imagerel $LN8@Framebuffe
+	DD	imagerel $LN8@Framebuffe+62
 	DD	imagerel $unwind$??1Framebuffer@@QEAA@XZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$??0Framebuffer@@QEAA@PEAE_K1@Z DD imagerel $LN15
-	DD	imagerel $LN15+329
+$pdata$??0Framebuffer@@QEAA@PEAE_K1@Z DD imagerel $LN15@Framebuffe
+	DD	imagerel $LN15@Framebuffe+329
 	DD	imagerel $unwind$??0Framebuffer@@QEAA@PEAE_K1@Z
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??0Framebuffer@@QEAA@PEAE_K1@Z DB 04H
-	DB	'n'
-	DB	02H
-	DB	0f1H, 03H
-	DB	00H
+$ip2state$??0Framebuffer@@QEAA@PEAE_K1@Z DD 0f1026e04H
+	DW	03H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??0Framebuffer@@QEAA@PEAE_K1@Z DB 02H
-	DB	0eH
+$stateUnwindMap$??0Framebuffer@@QEAA@PEAE_K1@Z DW 0e02H
 	DD	imagerel ?dtor$0@?0???0Framebuffer@@QEAA@PEAE_K1@Z@4HA
 xdata	ENDS
 ;	COMDAT xdata
@@ -54,29 +50,22 @@ $cppxdata$??0Framebuffer@@QEAA@PEAE_K1@Z DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??0Framebuffer@@QEAA@PEAE_K1@Z DD 081711H
-	DD	0c5417H
-	DD	0b3417H
-	DD	0e0135217H
+$unwind$??0Framebuffer@@QEAA@PEAE_K1@Z DQ 0000c541700081711r ; 1.71449e-308
+	DQ	0e0135217000b3417r		; -6.47619e+154
 	DD	060107011H
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??0Framebuffer@@QEAA@PEAE_K1@Z
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$??1Framebuffer@@QEAA@XZ DB 06H
-	DB	'$'
-	DB	00H
-	DB	','
-	DB	02H
-	DB	' '
+$ip2state$??1Framebuffer@@QEAA@XZ DD 02c002406H
+	DW	02002H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$??1Framebuffer@@QEAA@XZ DB 02H
-	DB	0eH
-	DD	imagerel __imp___std_terminate
+$stateUnwindMap$??1Framebuffer@@QEAA@XZ DW 0e02H
+	DD	imagerel __std_terminate
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -86,8 +75,7 @@ $cppxdata$??1Framebuffer@@QEAA@XZ DB 068H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$??1Framebuffer@@QEAA@XZ DD 020619H
-	DD	030023206H
+$unwind$??1Framebuffer@@QEAA@XZ DQ 03002320600020619r ; 1.96423e-77
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$??1Framebuffer@@QEAA@XZ
 xdata	ENDS
@@ -96,225 +84,4 @@ xdata	SEGMENT
 $unwind$?Rescale@Framebuffer@@QEAAXPEAE_K1@Z DQ 0000a641400081401r ; 1.44504e-308
 	DQ	00008341400095414r		; 1.14083e-308
 	DD	070105214H
-; Function compile flags: /Ogtpy
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-;	COMDAT ??0Framebuffer@@QEAA@PEAE_K1@Z
-_TEXT	SEGMENT
-this$ = 80
-Data$dead$ = 88
-Width$ = 96
-Height$ = 104
-??0Framebuffer@@QEAA@PEAE_K1@Z PROC			; Framebuffer::Framebuffer, COMDAT
-
-; 5    : {
-
-$LN15:
-	mov	QWORD PTR [rsp+16], rbx
-	mov	QWORD PTR [rsp+24], rbp
-	mov	QWORD PTR [rsp+8], rcx
-	push	rsi
-	push	rdi
-	push	r14
-	sub	rsp, 48					; 00000030H
-	mov	rsi, r9
-	mov	rbp, r8
-	mov	r14, rcx
-
-; 4    : 	: m_Width(Width), m_Height(Height)
-
-	mov	QWORD PTR [rcx], r8
-	mov	QWORD PTR [rcx+8], r9
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 4    : 	: m_ID(0)
-
-	mov	DWORD PTR [rcx+24], 0
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 6    : 	glGenFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rcx+16]
-	mov	ecx, 1
-	call	QWORD PTR glad_glGenFramebuffers
-
-; 7    : 	glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
-
-	mov	edx, DWORD PTR [r14+16]
-	mov	ecx, 36160				; 00008d40H
-	call	QWORD PTR glad_glBindFramebuffer
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 15   : 	glGenTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [r14+24]
-	mov	ecx, 1
-	call	QWORD PTR glad_glGenTextures
-
-; 30   : 	glBindTexture(GL_TEXTURE_2D, m_ID);
-
-	mov	edx, DWORD PTR [r14+24]
-	mov	ecx, 3553				; 00000de1H
-	call	QWORD PTR glad_glBindTexture
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 11   : 	m_Texture.Load(Data, Width, Height);
-
-	mov	r9, rsi
-	mov	r8, rbp
-	xor	edx, edx
-	call	?Load@Texture@@QEAAXPEAE_K1@Z		; Texture::Load
-
-; 12   : 
-; 13   : 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_Texture.GetID(), 0);
-
-	mov	DWORD PTR [rsp+32], 0
-	mov	r9d, DWORD PTR [r14+24]
-	mov	edx, 36064				; 00008ce0H
-	lea	ecx, QWORD PTR [rdx+96]
-	mov	r8d, 3553				; 00000de1H
-	call	QWORD PTR glad_glFramebufferTexture2D
-
-; 14   : 
-; 15   : 	glGenRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [r14+20]
-	mov	ecx, 1
-	call	QWORD PTR glad_glGenRenderbuffers
-
-; 16   : 	glBindRenderbuffer(GL_RENDERBUFFER, m_RBO);
-
-	mov	edx, DWORD PTR [r14+20]
-	mov	ecx, 36161				; 00008d41H
-	call	QWORD PTR glad_glBindRenderbuffer
-
-; 17   : 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height);
-
-	mov	r9d, esi
-	mov	r8d, ebp
-	mov	edx, 35056				; 000088f0H
-	mov	ecx, 36161				; 00008d41H
-	call	QWORD PTR glad_glRenderbufferStorage
-
-; 18   : 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, m_RBO);
-
-	mov	r9d, DWORD PTR [r14+20]
-	mov	edx, 33306				; 0000821aH
-	mov	ecx, 36160				; 00008d40H
-	lea	r8d, QWORD PTR [rcx+1]
-	call	QWORD PTR glad_glFramebufferRenderbuffer
-
-; 19   : 
-; 20   : 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-
-	mov	rax, QWORD PTR glad_glCheckFramebufferStatus
-	mov	ecx, 36160				; 00008d40H
-	call	rax
-	cmp	eax, 36053				; 00008cd5H
-	je	SHORT $LN2@Framebuffe
-
-; 21   : 		std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!\n";
-
-	lea	rdx, OFFSET FLAT:??_C@_0DD@GGDOFOIM@ERROR?3?3FRAMEBUFFER?3?3?5Framebuffe@
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
-$LN2@Framebuffe:
-
-; 22   : 
-; 23   : 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	xor	edx, edx
-	mov	ecx, 36160				; 00008d40H
-	call	QWORD PTR glad_glBindFramebuffer
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 34   : 	glBindTexture(GL_TEXTURE_2D, 0);
-
-	xor	edx, edx
-	mov	ecx, 3553				; 00000de1H
-	call	QWORD PTR glad_glBindTexture
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 25   : 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
-
-	xor	edx, edx
-	mov	ecx, 36161				; 00008d41H
-	call	QWORD PTR glad_glBindRenderbuffer
-	npad	1
-
-; 26   : }
-
-	mov	rax, r14
-	mov	rbx, QWORD PTR [rsp+88]
-	mov	rbp, QWORD PTR [rsp+96]
-	add	rsp, 48					; 00000030H
-	pop	r14
-	pop	rdi
-	pop	rsi
-	ret	0
-??0Framebuffer@@QEAA@PEAE_K1@Z ENDP			; Framebuffer::Framebuffer
-_TEXT	ENDS
-; Function compile flags: /Ogtpy
-;	COMDAT text$x
-text$x	SEGMENT
-this$ = 80
-Data$dead$ = 88
-Width$ = 96
-Height$ = 104
-?dtor$0@?0???0Framebuffer@@QEAA@PEAE_K1@Z@4HA PROC	; `Framebuffer::Framebuffer'::`1'::dtor$0
-	mov	rcx, QWORD PTR this$[rdx]
-	add	rcx, 24
-	jmp	??1Texture@@QEAA@XZ			; Texture::~Texture
-?dtor$0@?0???0Framebuffer@@QEAA@PEAE_K1@Z@4HA ENDP	; `Framebuffer::Framebuffer'::`1'::dtor$0
-text$x	ENDS
-; Function compile flags: /Ogtpy
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-;	COMDAT ??1Framebuffer@@QEAA@XZ
-_TEXT	SEGMENT
-this$ = 48
-??1Framebuffer@@QEAA@XZ PROC				; Framebuffer::~Framebuffer, COMDAT
-
-; 29   : {
-
-$LN8:
-	push	rbx
-	sub	rsp, 32					; 00000020H
-	mov	rbx, rcx
-
-; 30   : 	glDeleteRenderbuffers(1, &m_RBO);
-
-	lea	rdx, QWORD PTR [rcx+20]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteRenderbuffers
-
-; 31   : 	glDeleteFramebuffers(1, &m_FBO);
-
-	lea	rdx, QWORD PTR [rbx+16]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteFramebuffers
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Texture.cpp
-
-; 10   : 	glDeleteTextures(1, &m_ID);
-
-	lea	rdx, QWORD PTR [rbx+24]
-	mov	ecx, 1
-	call	QWORD PTR glad_glDeleteTextures
-	npad	1
-; File C:\dev\Photo Studio\Photo Studio\Source\Framebuffer.cpp
-
-; 32   : }
-
-	add	rsp, 32					; 00000020H
-	pop	rbx
-	ret	0
-??1Framebuffer@@QEAA@XZ ENDP				; Framebuffer::~Framebuffer
-_TEXT	ENDS
 END
