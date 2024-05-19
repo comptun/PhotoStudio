@@ -8,6 +8,8 @@
 #include <imgui/backends/imgui_impl_sdl2.h>
 #include <imgui/backends/imgui_impl_opengl2.h>
 
+#include "Utilities.h"
+
 struct WindowData
 {
 	inline static glm::vec4 m_Color = {0,0,0,1};

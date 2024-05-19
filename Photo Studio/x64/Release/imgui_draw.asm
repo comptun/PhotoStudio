@@ -6152,6 +6152,7 @@ PUBLIC	?Clear@ImFontAtlas@@QEAAXXZ			; ImFontAtlas::Clear
 PUBLIC	?ClearFonts@ImFontAtlas@@QEAAXXZ		; ImFontAtlas::ClearFonts
 PUBLIC	?ClearTexData@ImFontAtlas@@QEAAXXZ		; ImFontAtlas::ClearTexData
 PUBLIC	?ClearInputData@ImFontAtlas@@QEAAXXZ		; ImFontAtlas::ClearInputData
+PUBLIC	?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z ; ImGui::ShadeVertsLinearUV
 PUBLIC	?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z ; ImGui::ShadeVertsLinearColorGradientKeepAlpha
 PUBLIC	??0ImDrawChannel@@QEAA@XZ			; ImDrawChannel::ImDrawChannel
 PUBLIC	?PathRect@ImDrawList@@QEAAXAEBUImVec2@@0MH@Z	; ImDrawList::PathRect
@@ -6215,6 +6216,7 @@ PUBLIC	?AddDrawListToDrawDataEx@ImGui@@YAXPEAUImDrawData@@PEAU?$ImVector@PEAUImD
 PUBLIC	?RenderBullet@ImGui@@YAXPEAUImDrawList@@UImVec2@@I@Z ; ImGui::RenderBullet
 PUBLIC	?GetTexDataAsRGBA32@ImFontAtlas@@QEAAXPEAPEAEPEAH11@Z ; ImFontAtlas::GetTexDataAsRGBA32
 PUBLIC	?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z	; ImGui::StyleColorsDark
+PUBLIC	?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z ; ImDrawList::AddImageRounded
 PUBLIC	??0ImFontConfig@@QEAA@XZ			; ImFontConfig::ImFontConfig
 PUBLIC	?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z ; ImFontAtlas::AddFontFromFileTTF
 PUBLIC	?AddImage@ImDrawList@@QEAAXPEAXAEBUImVec2@@111I@Z ; ImDrawList::AddImage
@@ -7389,6 +7391,12 @@ $pdata$?ClearInputData@ImFontAtlas@@QEAAXXZ DD imagerel $LN84@ClearInput
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z DD imagerel $LN133@ShadeVerts
+	DD	imagerel $LN133@ShadeVerts+712
+	DD	imagerel $unwind$?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z DD imagerel $LN56@ShadeVerts
 	DD	imagerel $LN56@ShadeVerts+223
 	DD	imagerel $unwind$?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z
@@ -8223,6 +8231,12 @@ $pdata$?Create@ImBitVector@@QEAAXH@Z DD imagerel $LN13@Create
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?ImClamp@@YA?AUImVec2@@AEBU1@0U1@@Z DD imagerel ?ImClamp@@YA?AUImVec2@@AEBU1@0U1@@Z
+	DD	imagerel ?ImClamp@@YA?AUImVec2@@AEBU1@0U1@@Z+74
+	DD	imagerel $unwind$?ImClamp@@YA?AUImVec2@@AEBU1@0U1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?_CalcCircleAutoSegmentCount@ImDrawList@@QEBAHM@Z DD imagerel $LN14@CalcCircle
 	DD	imagerel $LN14@CalcCircle+144
 	DD	imagerel $unwind$?_CalcCircleAutoSegmentCount@ImDrawList@@QEBAHM@Z
@@ -8769,6 +8783,30 @@ $pdata$?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z DD imagerel $LN125@StyleCol
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DD imagerel $LN25@AddImageRo
+	DD	imagerel $LN25@AddImageRo+48
+	DD	imagerel $unwind$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$2$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DD imagerel $LN25@AddImageRo+48
+	DD	imagerel $LN25@AddImageRo+207
+	DD	imagerel $chain$2$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DD imagerel $LN25@AddImageRo+207
+	DD	imagerel $LN25@AddImageRo+265
+	DD	imagerel $chain$3$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$4$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DD imagerel $LN25@AddImageRo+265
+	DD	imagerel $LN25@AddImageRo+295
+	DD	imagerel $chain$4$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z DD imagerel $LN44@AddFontFro
 	DD	imagerel $LN44@AddFontFro+102
 	DD	imagerel $unwind$?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z
@@ -8947,6 +8985,33 @@ $unwind$?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@
 	DQ	05002300360047005r		; 2.63247e+77
 	DD	imagerel __GSHandlerCheck
 	DD	01f0H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$4$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DD 021H
+	DD	imagerel $LN25@AddImageRo
+	DD	imagerel $LN25@AddImageRo+48
+	DD	imagerel $unwind$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$3$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DQ 0000d540000020021r ; 1.8535e-308
+	DD	imagerel $LN25@AddImageRo
+	DD	imagerel $LN25@AddImageRo+48
+	DD	imagerel $unwind$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$2$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DQ 0000ee40f00060f21r ; 2.07083e-308
+	DQ	0000c3405000d540ar		; 1.69706e-308
+	DD	imagerel $LN25@AddImageRo
+	DD	imagerel $LN25@AddImageRo+48
+	DD	imagerel $unwind$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z DQ 0000f640e00060e01r ; 2.14036e-308
+	DQ	07006c008f00a720er		; 4.415e+231
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -9617,6 +9682,10 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$?_CalcCircleAutoSegmentCount@ImDrawList@@QEBAHM@Z DQ 00000420400010401r ; 3.58617e-310
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?ImClamp@@YA?AUImVec2@@AEBU1@0U1@@Z DQ 00000220400010401r ; 1.84783e-310
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -10582,6 +10651,12 @@ $unwind$?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImV
 	DQ	00005b81c0004c82cr		; 7.95349e-309
 	DQ	07005e0070016010er		; 4.24519e+231
 	DQ	00000300250036004r		; 2.608e-310
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z DQ 00000985d00095d01r ; 8.27684e-310
+	DQ	00002781800018855r		; 3.43373e-309
+	DQ	00000820400036813r		; 7.06285e-310
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT

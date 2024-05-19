@@ -4,6 +4,110 @@ include listing.inc
 
 INCLUDELIB OLDNAMES
 
+PUBLIC	??_C@_06ILNCHJDN@?5Child@			; `string'
+;	COMDAT ??_C@_06ILNCHJDN@?5Child@
+CONST	SEGMENT
+??_C@_06ILNCHJDN@?5Child@ DB ' Child', 00H		; `string'
+PUBLIC	??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z ; std::operator+<char,std::char_traits<char>,std::allocator<char> >
 PUBLIC	??$?HM$0A@@glm@@YA?AU?$vec@$02M$0A@@0@AEBU10@0@Z ; glm::operator+<float,0>
 PUBLIC	?lerp@glm@@YA?AU?$vec@$02M$0A@@1@U21@0M@Z	; glm::lerp
+PUBLIC	?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z ; ImGui::BeginPS
+PUBLIC	?EndPS@ImGui@@YAXXZ				; ImGui::EndPS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DD imagerel $LN99@operator
+	DD	imagerel $LN99@operator+57
+	DD	imagerel $unwind$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$2$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DD imagerel $LN99@operator+57
+	DD	imagerel $LN99@operator+303
+	DD	imagerel $chain$2$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DD imagerel $LN99@operator+303
+	DD	imagerel $LN99@operator+309
+	DD	imagerel $chain$3$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$4$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DD imagerel $LN99@operator+309
+	DD	imagerel $LN99@operator+315
+	DD	imagerel $chain$4$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z DD imagerel $LN159@BeginPS
+	DD	imagerel $LN159@BeginPS+841
+	DD	imagerel $unwind$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?EndPS@ImGui@@YAXXZ DD imagerel $LN4@EndPS
+	DD	imagerel $LN4@EndPS+18
+	DD	imagerel $unwind$?EndPS@ImGui@@YAXXZ
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?EndPS@ImGui@@YAXXZ DQ 00000420400010401r ; 3.58617e-310
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z DQ 0f80405490202910ar ; -1.3221e+270
+	DD	027d02H
+	DW	0264H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z DW 0c04H
+	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
+	DW	032e0H
+	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
+	DB	0a0H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z DB 028H
+	DD	imagerel $stateUnwindMap$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
+	DD	imagerel $ip2state$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z DQ 000087826000f3419r ; 1.17781e-308
+	DQ	0001d641e00096822r		; 4.08733e-308
+	DQ	00014011e001c341er		; 2.78195e-308
+	DQ	0700dc00fe011f013r		; 5.77347e+231
+	DD	0500cH
+	DD	imagerel __GSHandlerCheck_EH4
+	DD	imagerel $cppxdata$?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
+	DD	07aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$4$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DQ 00006f40000060021r ; 9.66951e-309
+	DQ	0000e340000077400r		; 1.97519e-308
+	DD	imagerel $LN99@operator
+	DD	imagerel $LN99@operator+57
+	DD	imagerel $unwind$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$3$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DD 021H
+	DD	imagerel $LN99@operator
+	DD	imagerel $LN99@operator+57
+	DD	imagerel $unwind$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$2$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DQ 00006f40f00060f21r ; 9.66983e-309
+	DQ	0000e34050007740ar		; 1.9752e-308
+	DD	imagerel $LN99@operator
+	DD	imagerel $LN99@operator+57
+	DD	imagerel $unwind$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEBV10@QEBD@Z DQ 0e005720900040901r ; -3.59421e+154
+	DD	050026003H
 END

@@ -15,12 +15,15 @@ void Windows::DrawColorWindow()
     window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
     ImGui::SetNextWindowClass(&window_class);
 
-    ImGui::Begin("Color", nullptr, ImGuiWindowFlags_NoScrollbar);
+    ImGui::BeginPS("Color", ImGuiWindowFlags_NoScrollbar);
 
-    float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y);
+    float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y - 10);
     ImGui::SetNextItemWidth(w);
-    ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs);
+
+    ImGui::SetCursorPos({ 7,7 });
+    
+    ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoSidePreview);
     //std::cout << WindowData::m_Color.a << "\n";
     //WindowData::m_Color.a = 1.0f;
-    ImGui::End();
+    ImGui::EndPS();
 }

@@ -270,7 +270,7 @@ void Application::RenderUI()
     ImGui::SetNextWindowViewport(viewport->ID);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(7.0f, 7.0f));
 
 
     ImGui::Begin("DockSpace Demo", nullptr, window_flags);
@@ -300,9 +300,9 @@ void Application::RenderUI()
         window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
         ImGui::SetNextWindowClass(&window_class);
 
-        ImGui::Begin("Properties");
+        ImGui::BeginPS("Properties");
 
-        ImGui::End();
+        ImGui::EndPS();
 
         m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayersWindow();
         /*ImGui::Begin("Layers");
@@ -343,9 +343,9 @@ void Application::DrawTitleBar()
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     ImGui::Begin("Title Bar");
     
-    ImGui::SetCursorPosX(7);
+    ImGui::SetCursorPosX(0);
 
-    ImGui::BeginChild("Title Bar Child", { ImGui::GetWindowSize().x - 14, ImGui::GetWindowSize().y }, ImGuiChildFlags_None, ImGuiWindowFlags_MenuBar);
+    ImGui::BeginChild("Title Bar Child", { ImGui::GetWindowSize().x, ImGui::GetWindowSize().y }, ImGuiChildFlags_None, ImGuiWindowFlags_MenuBar);
 
     bool CreateNewProject = false;
     bool SaveProject = false;

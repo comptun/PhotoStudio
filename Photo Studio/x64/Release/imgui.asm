@@ -6086,13 +6086,15 @@ PUBLIC	?GetID@ImGui@@YAIPEBD@Z				; ImGui::GetID
 PUBLIC	?SetCursorPosX@ImGui@@YAXM@Z			; ImGui::SetCursorPosX
 PUBLIC	?SetWindowFocus@ImGui@@YAXXZ			; ImGui::SetWindowFocus
 PUBLIC	?IsWindowHovered@ImGui@@YA_NH@Z			; ImGui::IsWindowHovered
+PUBLIC	?End@ImGui@@YAXXZ				; ImGui::End
 PUBLIC	?IsWindowFocused@ImGui@@YA_NH@Z			; ImGui::IsWindowFocused
+PUBLIC	?Begin@ImGui@@YA_NPEBDPEA_NH@Z			; ImGui::Begin
+PUBLIC	?SetNextWindowClass@ImGui@@YAXPEBUImGuiWindowClass@@@Z ; ImGui::SetNextWindowClass
 PUBLIC	?SetNextWindowDockID@ImGui@@YAXIH@Z		; ImGui::SetNextWindowDockID
 PUBLIC	?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ	; ImGui::GetContentRegionAvail
 PUBLIC	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ			; ImGui::GetIO
 PUBLIC	?SetNextItemWidth@ImGui@@YAXM@Z			; ImGui::SetNextItemWidth
 PUBLIC	?SetCursorPos@ImGui@@YAXAEBUImVec2@@@Z		; ImGui::SetCursorPos
-PUBLIC	?End@ImGui@@YAXXZ				; ImGui::End
 PUBLIC	?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z	; ImGui::PushStyleColor
 PUBLIC	?GetWindowWidth@ImGui@@YAMXZ			; ImGui::GetWindowWidth
 PUBLIC	?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z	; ImGui::BeginChild
@@ -6106,9 +6108,7 @@ PUBLIC	?EndChild@ImGui@@YAXXZ				; ImGui::EndChild
 PUBLIC	?GetWindowSize@ImGui@@YA?AUImVec2@@XZ		; ImGui::GetWindowSize
 PUBLIC	?PopStyleVar@ImGui@@YAXH@Z			; ImGui::PopStyleVar
 PUBLIC	?GetWindowPos@ImGui@@YA?AUImVec2@@XZ		; ImGui::GetWindowPos
-PUBLIC	?Begin@ImGui@@YA_NPEBDPEA_NH@Z			; ImGui::Begin
 PUBLIC	?IsItemHovered@ImGui@@YA_NH@Z			; ImGui::IsItemHovered
-PUBLIC	?SetNextWindowClass@ImGui@@YAXPEBUImGuiWindowClass@@@Z ; ImGui::SetNextWindowClass
 PUBLIC	?GetWindowDrawList@ImGui@@YAPEAUImDrawList@@XZ	; ImGui::GetWindowDrawList
 PUBLIC	?PopFont@ImGui@@YAXXZ				; ImGui::PopFont
 PUBLIC	?PushStyleVar@ImGui@@YAXHM@Z			; ImGui::PushStyleVar
@@ -12558,60 +12558,6 @@ $pdata$1$?End@ImGui@@YAXXZ DD imagerel $LN102@End+690
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z DD imagerel $LN10@PushStyleC
-	DD	imagerel $LN10@PushStyleC+110
-	DD	imagerel $unwind$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z DD imagerel $LN14@BeginChild
-	DD	imagerel $LN14@BeginChild+164
-	DD	imagerel $unwind$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?PushFont@ImGui@@YAXPEAUImFont@@@Z DD imagerel $LN13@PushFont
-	DD	imagerel $LN13@PushFont+146
-	DD	imagerel $unwind$?PushFont@ImGui@@YAXPEAUImFont@@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild
-	DD	imagerel $LN94@EndChild+99
-	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$3$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild+99
-	DD	imagerel $LN94@EndChild+643
-	DD	imagerel $chain$3$?EndChild@ImGui@@YAXXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$4$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild+643
-	DD	imagerel $LN94@EndChild+702
-	DD	imagerel $chain$4$?EndChild@ImGui@@YAXXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa
-	DD	imagerel $LN62@PopStyleVa+47
-	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$0$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa+47
-	DD	imagerel $LN62@PopStyleVa+509
-	DD	imagerel $chain$0$?PopStyleVar@ImGui@@YAXH@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$1$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa+509
-	DD	imagerel $LN62@PopStyleVa+628
-	DD	imagerel $chain$1$?PopStyleVar@ImGui@@YAXH@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
 $pdata$?Begin@ImGui@@YA_NPEBDPEA_NH@Z DD imagerel $LN2220@Begin
 	DD	imagerel $LN2220@Begin+45
 	DD	imagerel $unwind$?Begin@ImGui@@YA_NPEBDPEA_NH@Z
@@ -12681,6 +12627,60 @@ pdata	SEGMENT
 $pdata$20$?Begin@ImGui@@YA_NPEBDPEA_NH@Z DD imagerel $LN2220@Begin+12476
 	DD	imagerel $LN2220@Begin+12600
 	DD	imagerel $chain$20$?Begin@ImGui@@YA_NPEBDPEA_NH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z DD imagerel $LN10@PushStyleC
+	DD	imagerel $LN10@PushStyleC+110
+	DD	imagerel $unwind$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z DD imagerel $LN14@BeginChild
+	DD	imagerel $LN14@BeginChild+164
+	DD	imagerel $unwind$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?PushFont@ImGui@@YAXPEAUImFont@@@Z DD imagerel $LN13@PushFont
+	DD	imagerel $LN13@PushFont+146
+	DD	imagerel $unwind$?PushFont@ImGui@@YAXPEAUImFont@@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild
+	DD	imagerel $LN94@EndChild+99
+	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild+99
+	DD	imagerel $LN94@EndChild+643
+	DD	imagerel $chain$3$?EndChild@ImGui@@YAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$4$?EndChild@ImGui@@YAXXZ DD imagerel $LN94@EndChild+643
+	DD	imagerel $LN94@EndChild+702
+	DD	imagerel $chain$4$?EndChild@ImGui@@YAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa
+	DD	imagerel $LN62@PopStyleVa+47
+	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa+47
+	DD	imagerel $LN62@PopStyleVa+509
+	DD	imagerel $chain$0$?PopStyleVar@ImGui@@YAXH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$?PopStyleVar@ImGui@@YAXH@Z DD imagerel $LN62@PopStyleVa+509
+	DD	imagerel $LN62@PopStyleVa+628
+	DD	imagerel $chain$1$?PopStyleVar@ImGui@@YAXH@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -12778,6 +12778,66 @@ $unwind$?IsItemHovered@ImGui@@YA_NH@Z DQ 00007640f00060f01r ; 1.02782e-308
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$chain$1$?PopStyleVar@ImGui@@YAXH@Z DD 021H
+	DD	imagerel $LN62@PopStyleVa
+	DD	imagerel $LN62@PopStyleVa+47
+	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$?PopStyleVar@ImGui@@YAXH@Z DQ 00002340500020521r ; 3.06393e-309
+	DD	imagerel $LN62@PopStyleVa
+	DD	imagerel $LN62@PopStyleVa+47
+	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?PopStyleVar@ImGui@@YAXH@Z DQ 00000700200010201r ; 6.08461e-310
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$4$?EndChild@ImGui@@YAXXZ DD 021H
+	DD	imagerel $LN94@EndChild
+	DD	imagerel $LN94@EndChild+99
+	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$3$?EndChild@ImGui@@YAXXZ DQ 00004982800082821r ; 6.38924e-309
+	DQ	00006780a00058819r		; 8.99612e-309
+	DD	076805H
+	DD	imagerel $LN94@EndChild
+	DD	imagerel $LN94@EndChild+99
+	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?EndChild@ImGui@@YAXXZ DQ 00012340d00041c19r ; 2.53148e-308
+	DD	07006f20dH
+	DD	imagerel __GSHandlerCheck
+	DD	038H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?PushFont@ImGui@@YAXPEAUImFont@@@Z DQ 00009340a00041919r ; 1.27987e-308
+	DD	07006520aH
+	DD	imagerel __GSHandlerCheck
+	DD	028H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z DQ 0000b741a000a1a01r ; 1.59281e-308
+	DQ	00009541a000a641ar		; 1.29729e-308
+	DQ	0e016521a0008341ar		; -7.48179e+154
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z DQ 0000c641400081401r ; 1.72317e-308
+	DQ	0000a3414000b5414r		; 1.41896e-308
+	DD	070107214H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $chain$20$?Begin@ImGui@@YA_NPEBDPEA_NH@Z DD 021H
 	DD	imagerel $LN2220@Begin
 	DD	imagerel $LN2220@Begin+45
@@ -12868,66 +12928,6 @@ $unwind$?Begin@ImGui@@YA_NPEBDPEA_NH@Z DQ 00054011500052619r ; 4.45109e-307
 	DQ	0000050046005e007r		; 4.34678e-310
 	DD	imagerel __GSHandlerCheck
 	DD	01d0H
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$1$?PopStyleVar@ImGui@@YAXH@Z DD 021H
-	DD	imagerel $LN62@PopStyleVa
-	DD	imagerel $LN62@PopStyleVa+47
-	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$0$?PopStyleVar@ImGui@@YAXH@Z DQ 00002340500020521r ; 3.06393e-309
-	DD	imagerel $LN62@PopStyleVa
-	DD	imagerel $LN62@PopStyleVa+47
-	DD	imagerel $unwind$?PopStyleVar@ImGui@@YAXH@Z
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?PopStyleVar@ImGui@@YAXH@Z DQ 00000700200010201r ; 6.08461e-310
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$4$?EndChild@ImGui@@YAXXZ DD 021H
-	DD	imagerel $LN94@EndChild
-	DD	imagerel $LN94@EndChild+99
-	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$3$?EndChild@ImGui@@YAXXZ DQ 00004982800082821r ; 6.38924e-309
-	DQ	00006780a00058819r		; 8.99612e-309
-	DD	076805H
-	DD	imagerel $LN94@EndChild
-	DD	imagerel $LN94@EndChild+99
-	DD	imagerel $unwind$?EndChild@ImGui@@YAXXZ
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?EndChild@ImGui@@YAXXZ DQ 00012340d00041c19r ; 2.53148e-308
-	DD	07006f20dH
-	DD	imagerel __GSHandlerCheck
-	DD	038H
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?PushFont@ImGui@@YAXPEAUImFont@@@Z DQ 00009340a00041919r ; 1.27987e-308
-	DD	07006520aH
-	DD	imagerel __GSHandlerCheck
-	DD	028H
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z DQ 0000b741a000a1a01r ; 1.59281e-308
-	DQ	00009541a000a641ar		; 1.29729e-308
-	DQ	0e016521a0008341ar		; -7.48179e+154
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z DQ 0000c641400081401r ; 1.72317e-308
-	DQ	0000a3414000b5414r		; 1.41896e-308
-	DD	070107214H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT

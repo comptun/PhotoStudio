@@ -9,8 +9,8 @@ PUBLIC	??1Windows@@QEAA@XZ				; Windows::~Windows
 PUBLIC	??0Windows@@QEAA@XZ				; Windows::Windows
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawColorWindow@Windows@@QEAAXXZ DD imagerel $LN20@DrawColorW
-	DD	imagerel $LN20@DrawColorW+218
+$pdata$?DrawColorWindow@Windows@@QEAAXXZ DD imagerel $LN38@DrawColorW
+	DD	imagerel $LN38@DrawColorW+325
 	DD	imagerel $unwind$?DrawColorWindow@Windows@@QEAAXXZ
 ;	COMDAT xdata
 xdata	SEGMENT

@@ -15,7 +15,7 @@ void Tools::DrawToolPropertiesMenu()
 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoResize;
 	ImGui::SetNextWindowClass(&window_class);
 	
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(7, 0));
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 	ImGui::Begin("Tool Properties", nullptr, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
 	/*ImGui::SetCursorPos({ 5,9 });
@@ -27,7 +27,7 @@ void Tools::DrawToolPropertiesMenu()
 	ImGui::EndChild();*/
 
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 4.0f);
-	ImGui::BeginChild("Tool Properties Child", { ImGui::GetWindowSize().x - 14, ImGui::GetWindowSize().y });
+	ImGui::BeginChild("Tool Properties Child", { ImGui::GetWindowSize().x, ImGui::GetWindowSize().y });
 	ImGui::PopStyleVar();
 
 	ImGui::SetCursorPos({ 8.0f, 13.0f });
@@ -137,9 +137,9 @@ void Tools::DrawToolbar()
 	//ImGui::EndChild();
 
 
-	ImGui::SetCursorPos({ 7,0 });
+	ImGui::SetCursorPos({ 0,0 });
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 4.0f);
-	ImGui::BeginChild("Toolbar Child", { ImGui::GetWindowSize().x, ImGui::GetWindowSize().y - 7 });
+	ImGui::BeginChild("Toolbar Child", { ImGui::GetWindowSize().x, ImGui::GetWindowSize().y });
 	ImGui::PopStyleVar();
 
 	ImGui::SetCursorPosY(5);

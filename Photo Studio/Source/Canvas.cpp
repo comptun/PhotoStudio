@@ -77,7 +77,7 @@ void Canvas::DrawCanvas()
     Input::Mouse::m_MouseInCanvas = MouseInCanvas();
 
     float window_width = ImGui::GetContentRegionAvail().x;
-    float window_height = ImGui::GetContentRegionAvail().y - 7;
+    float window_height = ImGui::GetContentRegionAvail().y;
 
     if (!CanvasData::m_CanvasHovered)
         CanvasData::m_CanvasHovered = ImGui::IsWindowHovered();
@@ -98,12 +98,14 @@ void Canvas::DrawCanvas()
 
     ImVec2 pos = ImGui::GetCursorScreenPos();
 
-    ImGui::GetWindowDrawList()->AddImage(
+    ImGui::GetWindowDrawList()->AddImageRounded(
         (void*)m_Viewport.GetTexture(),
         ImVec2(pos.x, pos.y),
         ImVec2(pos.x + window_width, pos.y + window_height),
         ImVec2(0, 1),
-        ImVec2(1, 0)
+        ImVec2(1, 0),
+        0xFFFFFFFF,
+        4.0f
     );
 
     m_Viewport.Bind();

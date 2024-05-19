@@ -62,8 +62,8 @@ EXTRN	__imp_SetWindowPos:PROC
 EXTRN	__imp_SDL_CreateWindow:PROC
 EXTRN	__imp_IMG_Load:PROC
 EXTRN	__imp_SDL_EventState:PROC
-EXTRN	__imp_SDL_GL_SetSwapInterval:PROC
 EXTRN	__imp_SDL_PollEvent:PROC
+EXTRN	__imp_SDL_GL_SetSwapInterval:PROC
 EXTRN	__imp_SDL_GL_CreateContext:PROC
 EXTRN	__imp___stdio_common_vfprintf:PROC
 EXTRN	__imp_SDL_GL_SetAttribute:PROC
@@ -72,8 +72,8 @@ EXTRN	__imp_SDL_GetWindowID:PROC
 EXTRN	__imp_SDL_GetWindowWMInfo:PROC
 EXTRN	__imp_SDL_Quit:PROC
 EXTRN	__imp_SDL_SetHint:PROC
-EXTRN	__imp_SDL_DestroyWindow:PROC
 EXTRN	__imp_SDL_AddEventWatch:PROC
+EXTRN	__imp_SDL_DestroyWindow:PROC
 EXTRN	__imp_SDL_Init:PROC
 EXTRN	__imp___acrt_iob_func:PROC
 EXTRN	__imp_SDL_GL_MakeCurrent:PROC
@@ -722,7 +722,7 @@ pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$?DrawTitleBar@Application@@AEAAXXZ DD imagerel $LN763@DrawTitleB
-	DD	imagerel $LN763@DrawTitleB+4126
+	DD	imagerel $LN763@DrawTitleB+4129
 	DD	imagerel $unwind$?DrawTitleBar@Application@@AEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -733,8 +733,8 @@ $pdata$?dtor$8@?0??DrawTitleBar@Application@@AEAAXXZ@4HA DD imagerel ?dtor$8@?0?
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?RenderUI@Application@@QEAAXXZ DD imagerel $LN163@RenderUI
-	DD	imagerel $LN163@RenderUI+1509
+$pdata$?RenderUI@Application@@QEAAXXZ DD imagerel $LN272@RenderUI
+	DD	imagerel $LN272@RenderUI+1667
 	DD	imagerel $unwind$?RenderUI@Application@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -1036,7 +1036,7 @@ $unwind$?dtor$8@?0??DrawTitleBar@Application@@AEAAXXZ@4HA DQ 05002320600020601r 
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawTitleBar@Application@@AEAAXXZ DQ 05102300d0003490er ; 1.72523e+82
+$ip2state$?DrawTitleBar@Application@@AEAAXXZ DQ 051022ff900035d0er ; 1.7252e+82
 	DQ	0025504c806320403r		; 2.00867e-297
 	DD	02190cH
 xdata	ENDS
@@ -1066,11 +1066,12 @@ $cppxdata$?DrawTitleBar@Application@@AEAAXXZ DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawTitleBar@Application@@AEAAXXZ DQ 00024782e00113f19r ; 5.69326e-308
-	DQ	0005574260025682ar		; 4.77361e-307
-	DQ	00053342600546426r		; 4.27297e-307
-	DQ	0e016f018004c0126r		; -7.68866e+154
-	DQ	000005010c012d014r		; 4.3494e-310
+$unwind$?DrawTitleBar@Application@@AEAAXXZ DQ 00024883300134419r ; 5.71066e-308
+	DQ	00026682a0025782er		; 6.23212e-308
+	DQ	00056642600577426r		; 4.98221e-307
+	DQ	0004e012600553426r		; 3.33811e-307
+	DQ	0c012d014e016f018r		; -4.7032
+	DD	05010H
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$?DrawTitleBar@Application@@AEAAXXZ
 	DD	023aH

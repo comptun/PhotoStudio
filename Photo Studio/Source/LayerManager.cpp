@@ -184,12 +184,12 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		ps = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddRectFilled({ ps.x, ps.y }, { ps.x + 42,ps.y + 42 }, IM_COL32(255, 255, 255, 100));
 
-		ImGui::SetCursorPos({ 42, 3.5 });
+		ImGui::SetCursorPos({ 42, 3.5 + 21 });
 		ImVec2 pos = ImGui::GetCursorScreenPos();
 		ImGui::GetWindowDrawList()->AddImage(
 			(void*)m_Layers[LayerIndex]->GetTexture(),
-			ImVec2(pos.x, pos.y),
-			ImVec2(pos.x + 42.0f, pos.y + 42.0f),
+			ImVec2(pos.x, pos.y + 21),
+			ImVec2(pos.x + 42.0f, pos.y - 21.0f),
 			ImVec2(0, 1),
 			ImVec2(1, 0)
 		);
@@ -204,7 +204,7 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 		
 		ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0.5));
 		
-		bool Button = ImGui::ButtonEx(("                 " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 37.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+		bool Button = ImGui::ButtonEx(("               " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 37.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
 		if (!Dragging) {
 			m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered();
 			if (Button) {
@@ -230,23 +230,12 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 
 void LayerManager::DrawLayersWindow()
 {
-	ImGuiWindowClass window_class;
-	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
-	ImGui::SetNextWindowClass(&window_class);
-
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
-
-	//foinally, brexitium
-	//ImGui::PushStyleColor(ImGuiCol_Tab, ImVec4(1.0f, 0.4f, 0.4f, 1.0f));
-
-	ImGui::Begin("Layers");
-	//ImGui::PopStyleColor();
+	ImGui::BeginPS("Layers");
 
 	ImVec2 LayerWinSize = ImGui::GetWindowSize();
 
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, { 0,0,0,0 });
-	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 62.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 33.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 	ImGui::PopStyleColor();
 	ImGui::PopStyleVar(2);
 
@@ -266,10 +255,11 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::EndChild();
 
-	ImGui::SetCursorPosY(LayerWinSize.y - 40.0f);
+	ImGui::SetCursorPosY(LayerWinSize.y - 33.0f);
 
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.09f, 0.09f, 0.09f, 1.0f));
 	ImGui::BeginChild("LayerProperties", {ImGui::GetWindowSize().x, 33});
+	//ImGui::PopStyleVar(); // linked
 	ImGui::PopStyleColor();
 
 	ImGui::SetWindowFontScale(0.6f);
@@ -296,7 +286,7 @@ void LayerManager::DrawLayersWindow()
 
 	ImGui::EndChild();
 
-	ImGui::End();
+	ImGui::EndPS();
 
 	/*ImGuiWindowClass window_class;
 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoUndocking;

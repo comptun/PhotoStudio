@@ -8,7 +8,7 @@ PUBLIC	??_C@_06BIFLPOGA@Layer?5@			; `string'
 PUBLIC	??_C@_01CLKCMJKC@?5@				; `string'
 PUBLIC	??_C@_03LDIMJOGN@?n?$KD?$LE@			; `string'
 PUBLIC	??_C@_03KKJHKPCM@?n?$KD?$LF@			; `string'
-PUBLIC	??_C@_0BC@KELNKFGO@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ ; `string'
+PUBLIC	??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ ; `string'
 PUBLIC	??_C@_06IJMNPAPH@Layers@			; `string'
 PUBLIC	??_C@_09DJFJMHEJ@LayerList@			; `string'
 PUBLIC	??_C@_0BA@MENHHACE@LayerProperties@		; `string'
@@ -160,10 +160,9 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_06IJMNPAPH@Layers@ DB 'Layers', 00H		; `string'
 CONST	ENDS
-;	COMDAT ??_C@_0BC@KELNKFGO@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@
+;	COMDAT ??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@
 CONST	SEGMENT
-??_C@_0BC@KELNKFGO@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ DB '              '
-	DB	'   ', 00H					; `string'
+??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ DB '               ', 00H ; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_03KKJHKPCM@?n?$KD?$LF@
 CONST	SEGMENT
@@ -424,7 +423,6 @@ PUBLIC	?SetActiveLayer@LayerManager@@QEAAX_K@Z		; LayerManager::SetActiveLayer
 PUBLIC	??1LayerManager@@QEAA@XZ			; LayerManager::~LayerManager
 PUBLIC	??0LayerManager@@QEAA@AEAU?$vec@$01M$0A@@glm@@@Z ; LayerManager::LayerManager
 PUBLIC	??$?0HHHH@?$vec@$03M$0A@@glm@@QEAA@HHHH@Z	; glm::vec<4,float,0>::vec<4,float,0><int,int,int,int>
-PUBLIC	??0ImGuiWindowClass@@QEAA@XZ			; ImGuiWindowClass::ImGuiWindowClass
 PUBLIC	??0ImVec4@@QEAA@MMMM@Z				; ImVec4::ImVec4
 PUBLIC	??0ImVec2@@QEAA@MM@Z				; ImVec2::ImVec2
 PUBLIC	?to_string@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z ; std::to_string
@@ -1314,14 +1312,14 @@ $pdata$?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QEAAXAEB_N@Z DD imagerel
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawLayersWindow@LayerManager@@QEAAXXZ DD imagerel $LN183
-	DD	imagerel $LN183+1492
+$pdata$?DrawLayersWindow@LayerManager@@QEAAXXZ DD imagerel $LN171@DrawLayers
+	DD	imagerel $LN171@DrawLayers+1345
 	DD	imagerel $unwind$?DrawLayersWindow@LayerManager@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawLayer@LayerManager@@AEAAXH_NM@Z DD imagerel $LN681@DrawLayer
-	DD	imagerel $LN681@DrawLayer+4133
+$pdata$?DrawLayer@LayerManager@@AEAAXH_NM@Z DD imagerel $LN681
+	DD	imagerel $LN681+4145
 	DD	imagerel $unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -1497,20 +1495,37 @@ $unwind$?NextLayerDraggable@LayerManager@@AEAAXH@Z DQ 00000420400010401r ; 3.586
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawLayer@LayerManager@@AEAAXH_NM@Z DQ 008dd009e0205a112r ; 5.62157e-266
-	DQ	00b21044606239d04r		; 4.53324e-255
-	DD	018048e00H
-	DW	01800H
+$ip2state$?DrawLayer@LayerManager@@AEAAXH_NM@Z DB 012H
+	DB	08dH, 05H
+	DB	02H
+	DB	09eH
+	DB	00H
+	DB	0c5H, 08H
+	DB	04H
+	DB	0e1H, '#'
+	DB	06H
+	DB	'F'
+	DB	04H
+	DB	'9', 0bH
+	DB	00H
+	DB	08eH
+	DB	04H
+	DB	018H
+	DB	00H
+	DB	018H
 	DB	04H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$?DrawLayer@LayerManager@@AEAAXH_NM@Z DW 0a06H
+$stateUnwindMap$?DrawLayer@LayerManager@@AEAAXH_NM@Z DB 06H
+	DB	0aH
 	DD	imagerel ??1?$shared_ptr@VLayer@@@std@@QEAA@XZ
-	DW	02c1H
+	DB	0c1H
+	DB	02H
 	DB	042H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0301H
+	DB	01H
+	DB	03H
 	DB	03aH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
 	DB	0e0H
@@ -1523,11 +1538,15 @@ $cppxdata$?DrawLayer@LayerManager@@AEAAXH_NM@Z DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z DQ 0000fa82f00133d19r ; 2.17737e-308
-	DQ	0001178250010882ar		; 2.42941e-308
-	DQ	00030341d00126821r		; 9.01353e-308
-	DQ	0e010f0120026011dr		; -5.67746e+154
-	DQ	06009700ac00cd00er		; 4.26329e+154
+$unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z DD 0113819H
+	DD	0f982aH
+	DD	0107825H
+	DD	0116821H
+	DD	02e341dH
+	DD	024011dH
+	DD	0e010f012H
+	DD	0c00cd00eH
+	DD	06009700aH
 	DD	05008H
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$?DrawLayer@LayerManager@@AEAAXH_NM@Z
@@ -1535,17 +1554,13 @@ $unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z DQ 0000fa82f00133d19r ; 2.17737e-30
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawLayersWindow@LayerManager@@QEAAXXZ DD 0f3619H
-	DD	068828H
-	DD	077823H
-	DD	08681fH
-	DD	017741bH
-	DD	016641bH
-	DD	015341bH
-	DD	012011bH
+$unwind$?DrawLayersWindow@LayerManager@@QEAAXXZ DQ 000088828000f3619r ; 1.1865e-308
+	DQ	0000a681f00097823r		; 1.44723e-308
+	DQ	0001a641b001b741br		; 3.67013e-308
+	DQ	00016011b0019341br		; 3.06008e-308
 	DD	05010H
 	DD	imagerel __GSHandlerCheck
-	DD	058H
+	DD	070H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -2499,42 +2514,14 @@ $unwind$??$_Copy_memmove@PEAIPEAI@std@@YAPEAIPEAI00@Z DQ 00009340a00040a01r ; 1.
 	DD	07006320aH
 ; Function compile flags: /Ogtpy
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
@@ -2542,512 +2529,249 @@ $unwind$??$_Copy_memmove@PEAIPEAI@std@@YAPEAIPEAI00@Z DQ 00009340a00040a01r ; 1.
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-;	COMDAT ?DrawLayersWindow@LayerManager@@QEAAXXZ
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\Layer.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+;	COMDAT ?DrawLayer@LayerManager@@AEAAXH_NM@Z
 _TEXT	SEGMENT
-$T2 = 48
-backup$31 = 48
-$T15 = 48
-backup$32 = 48
-$T30 = 48
-$T20 = 48
-$T19 = 48
-$T11 = 48
-$T7 = 48
-$T4 = 48
-$T1 = 48
-window_class$ = 48
-xPos$ = 80
-__$ArrayPad$ = 88
-this$ = 160
-?DrawLayersWindow@LayerManager@@QEAAXXZ PROC		; LayerManager::DrawLayersWindow, COMDAT
+backup$171 = 64
+backup$172 = 64
+backup$173 = 64
+$T77 = 64
+$T76 = 64
+backup$174 = 64
+backup$175 = 64
+$T66 = 64
+$T124 = 64
+backup$176 = 64
+backup$177 = 64
+backup$178 = 64
+$T163 = 64
+$T155 = 64
+$T126 = 64
+$T112 = 64
+$T108 = 88
+$T101 = 88
+$T93 = 88
+$T83 = 88
+$T68 = 88
+$T106 = 96
+$T100 = 96
+$T94 = 96
+$T164 = 104
+$T156 = 104
+$T110 = 104
+$T133 = 112
+$T20 = 144
+$T29 = 152
+$T38 = 160
+$T48 = 168
+$T60 = 176
+$T49 = 176
+LayerPtr$179 = 176
+LayerName$ = 192
+__$ArrayPad$ = 224
+this$ = 352
+LayerIndex$ = 360
+Dragging$ = 368
+Opacity$ = 376
+?DrawLayer@LayerManager@@AEAAXH_NM@Z PROC		; LayerManager::DrawLayer, COMDAT
 
-; 232  : {
+; 90   : {
 
-$LN183:
+$LN681:
 	mov	rax, rsp
-	mov	QWORD PTR [rax+16], rbx
-	mov	QWORD PTR [rax+24], rsi
-	mov	QWORD PTR [rax+32], rdi
+	mov	QWORD PTR [rax+24], rbx
 	push	rbp
-	lea	rbp, QWORD PTR [rax-95]
-	sub	rsp, 144				; 00000090H
-	movaps	XMMWORD PTR [rax-24], xmm6
-	movaps	XMMWORD PTR [rax-40], xmm7
-	movaps	XMMWORD PTR [rax-56], xmm8
+	push	rsi
+	push	rdi
+	push	r12
+	push	r13
+	push	r14
+	push	r15
+	lea	rbp, QWORD PTR [rax-88]
+	sub	rsp, 288				; 00000120H
+	movaps	XMMWORD PTR [rax-72], xmm6
+	movaps	XMMWORD PTR [rax-88], xmm7
+	movaps	XMMWORD PTR [rax-104], xmm9
 	mov	rax, QWORD PTR __security_cookie
 	xor	rax, rsp
-	mov	QWORD PTR __$ArrayPad$[rbp-57], rax
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8380 :     ImGuiContext& g = *GImGui;
-
-	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 237  : 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-
-	lea	rdx, QWORD PTR $T1[rbp-57]
-	xorps	xmm0, xmm0
+	mov	QWORD PTR __$ArrayPad$[rbp-256], rax
+	movzx	r12d, r8b
+	movsxd	r15, edx
 	mov	rdi, rcx
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
-
-	movups	XMMWORD PTR window_class$[rbp-41], xmm0
-	mov	BYTE PTR window_class$[rbp-28], 1
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 237  : 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-
-	mov	ecx, 2
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8382 :     g.NextWindowData.Flags |= ImGuiNextWindowDataFlags_HasWindowClass;
-
-	or	DWORD PTR [rax+19264], 2048		; 00000800H
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2429 :     ImGuiWindowClass() { memset(this, 0, sizeof(*this)); ParentViewportId = (ImGuiID)-1; DockingAllowUnclassed = true; }
-
-	movups	XMMWORD PTR window_class$[rbp-57], xmm0
-	mov	DWORD PTR window_class$[rbp-53], -1	; ffffffffH
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8383 :     g.NextWindowData.WindowClass = *window_class;
-
-	movups	xmm0, XMMWORD PTR window_class$[rbp-57]
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 234  : 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
-
-	mov	DWORD PTR window_class$[rbp-33], 16384	; 00004000H
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8383 :     g.NextWindowData.WindowClass = *window_class;
-
-	movups	xmm1, XMMWORD PTR window_class$[rbp-41]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
-
-	mov	QWORD PTR $T1[rbp-57], 0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8383 :     g.NextWindowData.WindowClass = *window_class;
-
-	movups	XMMWORD PTR [rax+19380], xmm0
-	movups	XMMWORD PTR [rax+19396], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 237  : 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-
-	call	?PushStyleVar@ImGui@@YAXHAEBUImVec2@@@Z	; ImGui::PushStyleVar
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3217 :     ImGuiContext& g = *GImGui;
-
-	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-
-; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
-
-	lea	rdx, QWORD PTR $T2[rbp-57]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
-
-	mov	DWORD PTR $T2[rbp-57], 4
-	movss	xmm0, DWORD PTR [rbx+14860]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
-
-	lea	rcx, QWORD PTR [rbx+19448]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
-
-	movss	DWORD PTR $T2[rbp-53], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
-
-	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 243  : 	ImGui::Begin("Layers");
-
-	xor	r8d, r8d
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3223 :         *pvar = val;
-
-	mov	DWORD PTR [rbx+14860], 0
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 243  : 	ImGui::Begin("Layers");
-
-	xor	edx, edx
-	lea	rcx, OFFSET FLAT:??_C@_06IJMNPAPH@Layers@
-	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8184 :     return window->Size;
-
-	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-
-; 3145 :     g.ColorStack.push_back(backup);
-
-	lea	rdx, QWORD PTR backup$31[rbp-57]
-	xorps	xmm6, xmm6
-
-; 3143 :     backup.Col = idx;
-
-	mov	DWORD PTR backup$31[rbp-57], 3
-
-; 8184 :     return window->Size;
-
-	mov	rax, QWORD PTR [rbx+16704]
-
-; 3145 :     g.ColorStack.push_back(backup);
-
-	lea	rcx, QWORD PTR [rbx+19432]
-	movups	xmm0, XMMWORD PTR [rbx+15120]
-
-; 8184 :     return window->Size;
-
-	movss	xmm8, DWORD PTR [rax+96]
-	movss	xmm7, DWORD PTR [rax+100]
-
-; 3144 :     backup.BackupValue = g.Style.Colors[idx];
-
-	movups	XMMWORD PTR backup$31[rbp-53], xmm0
-
-; 3145 :     g.ColorStack.push_back(backup);
-
-	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
-
-; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
-
-	cmp	DWORD PTR [rbx+19428], 3
-	je	SHORT $LN127@DrawLayers
-
-; 3147 :         g.Style.Colors[idx] = col;
-
-	movups	XMMWORD PTR [rbx+15120], xmm6
-$LN127@DrawLayers:
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
-	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 249  : 	ImGui::BeginChild("LayerList", { LayerWinSize.x, LayerWinSize.y - 62.0f }, ImGuiChildFlags_None, ImGuiWindowFlags_AlwaysVerticalScrollbar);
-
-	movaps	xmm0, xmm7
-	subss	xmm0, DWORD PTR __real@42780000
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
-
-	xor	edx, edx
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
-
-	movss	DWORD PTR $T4[rbp-57], xmm8
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
-	mov	rax, QWORD PTR [rcx+16704]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
-
-	movss	DWORD PTR $T4[rbp-53], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
-	mov	BYTE PTR [rax+245], 1
-	mov	rbx, QWORD PTR [rcx+16704]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
-
-	movsxd	rcx, DWORD PTR [rbx+304]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
-
-	mov	rax, QWORD PTR [rbx+312]
-	mov	r8d, DWORD PTR [rax+rcx*4-4]
-	lea	rcx, OFFSET FLAT:??_C@_09DJFJMHEJ@LayerList@
-	call	?ImHashStr@@YAIPEBD_KI@Z		; ImHashStr
-
-; 8591 : #ifndef IMGUI_DISABLE_DEBUG_TOOLS
-; 8592 :     ImGuiContext& g = *Ctx;
-; 8593 :     if (g.DebugHookIdInfo == id)
-
-	mov	rcx, QWORD PTR [rbx]
-	mov	esi, eax
-	cmp	DWORD PTR [rcx+16780], eax
-	jne	SHORT $LN118@DrawLayers
-
-; 8594 :         ImGui::DebugHookIdInfo(id, ImGuiDataType_String, str, str_end);
-
-	lea	r8, OFFSET FLAT:??_C@_09DJFJMHEJ@LayerList@
-	mov	edx, 11
-	mov	ecx, eax
-	call	?DebugHookIdInfo@ImGui@@YAXIHPEBX0@Z	; ImGui::DebugHookIdInfo
-$LN118@DrawLayers:
-
-; 5660 :     return BeginChildEx(str_id, id, size_arg, child_flags, window_flags);
-
-	xor	r9d, r9d
-	mov	DWORD PTR [rsp+32], 16384		; 00004000H
-	lea	r8, QWORD PTR $T4[rbp-57]
-	mov	edx, esi
-	lea	rcx, OFFSET FLAT:??_C@_09DJFJMHEJ@LayerList@
-	call	?BeginChildEx@ImGui@@YA_NPEBDIAEBUImVec2@@HH@Z ; ImGui::BeginChildEx
-
-; 3152 :     ImGuiContext& g = *GImGui;
-
-	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-
-; 3153 :     if (g.ColorStack.Size < count)
-
-	movsxd	rax, DWORD PTR [rbx+19432]
-	cmp	eax, 1
-	jl	SHORT $LN106@DrawLayers
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
-
-	mov	rdx, QWORD PTR [rbx+19440]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3162 :         g.ColorStack.pop_back();
-
-	lea	r8, QWORD PTR [rax+rax*4]
-	movsxd	rax, DWORD PTR [rdx+r8*4-20]
-	movups	xmm0, XMMWORD PTR [rdx+r8*4-16]
-	add	rax, 942				; 000003aeH
-	add	rax, rax
-	movups	XMMWORD PTR [rbx+rax*8], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
-
-	dec	DWORD PTR [rbx+19432]
-$LN106@DrawLayers:
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 251  : 	ImGui::PopStyleVar(2);
-
-	mov	ecx, 2
-	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 8142 :     return window->Pos;
-
-	mov	rax, QWORD PTR [rbx+16704]
-	movss	xmm0, DWORD PTR [rax+88]
-	movss	xmm1, DWORD PTR [rax+92]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\glm\detail\type_vec2.inl
-
-; 38   : 		: x(_x), y(_y)
-
-	movss	DWORD PTR $T7[rbp-57], xmm0
-	movss	DWORD PTR $T7[rbp-53], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 254  : 	m_LayersWindowPos = { WindowPos.x, WindowPos.y };
-
-	mov	rax, QWORD PTR $T7[rbp-57]
-	mov	QWORD PTR [rdi+72], rax
-
-; 255  : 
-; 256  : 	int xPos;
-; 257  : 	SDL_GetWindowPosition(SDL_GL_GetCurrentWindow(), &xPos, &m_WindowYPos);
-
-	call	QWORD PTR __imp_SDL_GL_GetCurrentWindow
-	mov	rcx, rax
-	lea	r8, QWORD PTR [rdi+80]
-	lea	rdx, QWORD PTR xPos$[rbp-57]
-	call	QWORD PTR __imp_SDL_GetWindowPosition
 ; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 
 ; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
 
-	mov	rax, QWORD PTR [rdi+8]
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 259  : 	for (int i = 0; i < m_Layers.size(); ++i) {
-
-	xor	ebx, ebx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
-
-; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
-
-	sub	rax, QWORD PTR [rdi]
-	sar	rax, 4
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 259  : 	for (int i = 0; i < m_Layers.size(); ++i) {
-
-	test	rax, rax
-	je	SHORT $LN3@DrawLayers
-	movss	xmm6, DWORD PTR __real@3f800000
-	npad	15
-$LL4@DrawLayers:
-
-; 260  : 		DrawLayer(i);
-
-	movaps	xmm3, xmm6
-	xor	r8d, r8d
-	mov	edx, ebx
-	mov	rcx, rdi
-	call	?DrawLayer@LayerManager@@AEAAXH_NM@Z	; LayerManager::DrawLayer
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
-
-; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
-
-	mov	rcx, QWORD PTR [rdi+8]
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 259  : 	for (int i = 0; i < m_Layers.size(); ++i) {
-
-	inc	ebx
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
-
-; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
-
+	mov	rcx, QWORD PTR [rcx+8]
 	sub	rcx, QWORD PTR [rdi]
 	sar	rcx, 4
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 
-; 259  : 	for (int i = 0; i < m_Layers.size(); ++i) {
+; 91   : 	int LayerNum = m_Layers.size() - 1 - LayerIndex;
 
-	movsxd	rax, ebx
-	cmp	rax, rcx
-	jb	SHORT $LL4@DrawLayers
-$LN3@DrawLayers:
+	sub	ecx, r15d
+	dec	ecx
 
-; 261  : 	}
-; 262  : 
-; 263  : 	if (m_DraggingLayer) {
+; 92   : 	
+; 93   : 	if (Dragging) {
 
-	cmp	BYTE PTR [rdi+93], 0
-	je	SHORT $LN5@DrawLayers
-
-; 264  : 		DrawLayer(m_ActiveLayer, true, 0.5f);
-
-	movss	xmm3, DWORD PTR __real@3f000000
-	mov	r8b, 1
-	mov	edx, DWORD PTR [rdi+64]
-	mov	rcx, rdi
-	call	?DrawLayer@LayerManager@@AEAAXH_NM@Z	; LayerManager::DrawLayer
-$LN5@DrawLayers:
-
-; 265  : 	}
-; 266  : 
-; 267  : 	ImGui::EndChild();
-
-	call	?EndChild@ImGui@@YAXXZ			; ImGui::EndChild
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
+	movss	xmm6, DWORD PTR __real@42480000
 	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3145 :     g.ColorStack.push_back(backup);
-
-	lea	rdx, QWORD PTR backup$32[rbp-57]
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 269  : 	ImGui::SetCursorPosY(LayerWinSize.y - 40.0f);
-
-	subss	xmm7, DWORD PTR __real@42200000
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
-
-	movaps	xmm6, XMMWORD PTR __xmm@3f8000003db851ec3db851ec3db851ec
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3143 :     backup.Col = idx;
-
-	mov	DWORD PTR backup$32[rbp-57], 3
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
 	mov	rax, QWORD PTR [rbx+16704]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+	test	r8b, r8b
+	je	$LN2@DrawLayer
+	movd	xmm1, DWORD PTR [rdi+80]
 
-; 3145 :     g.ColorStack.push_back(backup);
+; 94   : 		
+; 95   : 		float DragPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - m_LayerYPos;
 
-	lea	rcx, QWORD PTR [rbx+19432]
+	cvtdq2ps xmm1, xmm1
+	addss	xmm1, DWORD PTR ?Pos@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A+4
+	subss	xmm1, DWORD PTR [rdi+76]
+	addss	xmm1, DWORD PTR [rax+196]
+	subss	xmm1, DWORD PTR [rdi+88]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
 ; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
@@ -3060,140 +2784,748 @@ $LN5@DrawLayers:
 
 	movss	xmm0, DWORD PTR [rax+92]
 	subss	xmm0, DWORD PTR [rax+196]
+	addss	xmm0, xmm1
+	movss	DWORD PTR [rax+324], xmm0
 
 ; 10773:     //window->DC.CursorMaxPos.y = ImMax(window->DC.CursorMaxPos.y, window->DC.CursorPos.y);
 ; 10774:     window->DC.IsSetPos = true;
 
 	mov	BYTE PTR [rax+385], 1
-	addss	xmm0, xmm7
-	movss	DWORD PTR [rax+324], xmm0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
+
+	mov	r10, QWORD PTR [rdi]
+	mov	r9, QWORD PTR [rdi+8]
+	sub	r9, r10
+	sar	r9, 4
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 98   : 		int Index = (int)m_Layers.size() - (int)(DragPos + 25.0f) / 50 - 1;
+
+	addss	xmm1, DWORD PTR __real@41c80000
+	cvttss2si ecx, xmm1
+	mov	eax, 1374389535				; 51eb851fH
+	imul	ecx
+	sar	edx, 4
+	mov	eax, edx
+	shr	eax, 31
+	add	edx, eax
+	mov	r8d, r9d
+	sub	r8d, edx
+	sub	r8d, 1
+
+; 99   : 
+; 100  : 		// the hell is this?
+; 101  : 
+; 102  : 		if (Index >= 0 && Index < m_Layers.size() && m_ActiveLayer != Index) {
+
+	js	$LN4@DrawLayer
+	movsxd	rsi, r8d
+	cmp	rsi, r9
+	jae	$LN4@DrawLayer
+	cmp	QWORD PTR [rdi+64], rsi
+	je	$LN4@DrawLayer
+	xorps	xmm0, xmm0
+	movups	XMMWORD PTR LayerPtr$179[rbp-256], xmm0
+
+; 103  : 			std::shared_ptr<Layer> LayerPtr = m_Layers.at(LayerIndex);
+
+	mov	rbx, r15
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1902 :         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
+
+	cmp	r9, r15
+	jbe	$LN676@DrawLayer
+
+; 1904 :         }
+; 1905 : 
+; 1906 :         return _My_data._Myfirst[_Pos];
+
+	shl	rbx, 4
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+r10+8]
+	test	rax, rax
+	je	SHORT $LN584@DrawLayer
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN584@DrawLayer:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rbx+r10]
+	mov	QWORD PTR LayerPtr$179[rbp-256], rax
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rcx, QWORD PTR [rbx+r10+8]
+	mov	QWORD PTR LayerPtr$179[rbp-248], rcx
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 104  : 			if (Index > LayerIndex) {
+
+	cmp	r8d, r15d
+	jle	SHORT $LN5@DrawLayer
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 126  :         _Ptr += _Off;
+
+	lea	r8, QWORD PTR [rsi+1]
+	shl	r8, 4
+	add	r8, QWORD PTR [rdi]
+
+; 1001 :         return emplace(_Where, _Val);
+
+	lea	r9, QWORD PTR LayerPtr$179[rbp-256]
+	lea	rdx, QWORD PTR $T20[rbp-256]
+	mov	rcx, rdi
+	call	??$emplace@AEBV?$shared_ptr@VLayer@@@std@@@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@QEAA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@1@AEBV?$shared_ptr@VLayer@@@1@@Z ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::emplace<std::shared_ptr<Layer> const &>
+
+; 126  :         _Ptr += _Off;
+
+	mov	r8, QWORD PTR [rdi]
+	add	r8, rbx
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 106  : 				m_Layers.erase(m_Layers.begin() + LayerIndex);
+
+	lea	rdx, QWORD PTR $T29[rbp-256]
+	mov	rcx, rdi
+	call	?erase@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@QEAA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@@Z ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::erase
+
+; 107  : 				m_ActiveLayer = Index;
+; 108  : 			}
+
+	jmp	SHORT $LN673@DrawLayer
+$LN5@DrawLayer:
+
+; 109  : 			else if (Index < LayerIndex) {
+
+	jge	SHORT $LN7@DrawLayer
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 126  :         _Ptr += _Off;
+
+	mov	r8, QWORD PTR [rdi]
+	add	r8, rbx
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 110  : 				m_Layers.erase(m_Layers.begin() + LayerIndex);
+
+	lea	rdx, QWORD PTR $T38[rbp-256]
+	mov	rcx, rdi
+	call	?erase@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@QEAA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@@Z ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::erase
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 126  :         _Ptr += _Off;
+
+	mov	r8, rsi
+	shl	r8, 4
+	add	r8, QWORD PTR [rdi]
+
+; 1001 :         return emplace(_Where, _Val);
+
+	lea	r9, QWORD PTR LayerPtr$179[rbp-256]
+	lea	rdx, QWORD PTR $T48[rbp-256]
+	mov	rcx, rdi
+	call	??$emplace@AEBV?$shared_ptr@VLayer@@@std@@@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@QEAA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@1@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@1@AEBV?$shared_ptr@VLayer@@@1@@Z ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::emplace<std::shared_ptr<Layer> const &>
+$LN673@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 114  : 			return;
+
+	mov	rcx, QWORD PTR LayerPtr$179[rbp-248]
+	mov	QWORD PTR [rdi+64], rsi
+$LN7@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	test	rcx, rcx
+	je	SHORT $LN302@DrawLayer
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	edi, -1
+	mov	eax, edi
+	lock xadd DWORD PTR [rcx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN302@DrawLayer
+
+; 1171 :             _Destroy();
+
+	mov	rbx, QWORD PTR LayerPtr$179[rbp-248]
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	lock xadd DWORD PTR [rbx+12], edi
+	cmp	edi, 1
+	jne	SHORT $LN302@DrawLayer
+
+; 1178 :             _Delete_this();
+
+	mov	rcx, QWORD PTR LayerPtr$179[rbp-248]
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+$LN302@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 229  : }
+
+	mov	rcx, QWORD PTR __$ArrayPad$[rbp-256]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	lea	r11, QWORD PTR [rsp+288]
+	mov	rbx, QWORD PTR [r11+80]
+	movaps	xmm6, XMMWORD PTR [r11-16]
+	movaps	xmm7, XMMWORD PTR [r11-32]
+	movaps	xmm9, XMMWORD PTR [r11-48]
+	mov	rsp, r11
+	pop	r15
+	pop	r14
+	pop	r13
+	pop	r12
+	pop	rdi
+	pop	rsi
+	pop	rbp
+	ret	0
+$LN2@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rbx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10772:     window->DC.CursorPos.y = window->Pos.y - window->Scroll.y + y;
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+	movd	xmm0, ecx
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 118  : 		ImGui::SetCursorPosY(LayerNum * 50.0f);
+
+	cvtdq2ps xmm0, xmm0
+	mulss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10772:     window->DC.CursorPos.y = window->Pos.y - window->Scroll.y + y;
+
+	addss	xmm1, xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10773:     //window->DC.CursorMaxPos.y = ImMax(window->DC.CursorMaxPos.y, window->DC.CursorPos.y);
+; 10774:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+$LN4@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 121  : 	if (m_ActiveLayer == LayerIndex) {
+
+	mov	r13, rbx
+	mov	r14, r15
+	xorps	xmm7, xmm7
+	movss	DWORD PTR $T49[rbp-244], xmm3
+	mov	esi, 3
+	lea	rdx, QWORD PTR backup$172[rsp]
+	mov	DWORD PTR backup$172[rsp], esi
+	cmp	QWORD PTR [rdi+64], r15
+	jne	$LN8@DrawLayer
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
+
+	mov	DWORD PTR $T49[rbp-256], 1050253722	; 3e99999aH
+	mov	DWORD PTR $T49[rbp-252], 1050253722	; 3e99999aH
+	mov	DWORD PTR $T49[rbp-248], 1050253722	; 3e99999aH
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 3144 :     backup.BackupValue = g.Style.Colors[idx];
 
 	movups	xmm0, XMMWORD PTR [rbx+15120]
-	movups	XMMWORD PTR backup$32[rbp-53], xmm0
+	movups	XMMWORD PTR backup$172[rsp+4], xmm0
 
 ; 3145 :     g.ColorStack.push_back(backup);
 
+	lea	rcx, QWORD PTR [rbx+19432]
 	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
 
 ; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
 
-	cmp	DWORD PTR [rbx+19428], 3
-	je	SHORT $LN18@DrawLayers
+	cmp	DWORD PTR [rbx+19428], esi
+	je	SHORT $LN489@DrawLayer
 
 ; 3147 :         g.Style.Colors[idx] = col;
 
-	movups	XMMWORD PTR [rbx+15120], xmm6
-$LN18@DrawLayers:
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+	movups	xmm0, XMMWORD PTR $T49[rbp-256]
+	movups	XMMWORD PTR [rbx+15120], xmm0
+$LN489@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
 
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+; 1867 :         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
 
-	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	r9, QWORD PTR [rdi+8]
+	sub	r9, QWORD PTR [rdi]
+	sar	r9, 4
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 70   : 	int LayerNum = m_Layers.size() - 1 - LayerIndex;
+
+	sub	r9d, r15d
+	dec	r9d
+
+; 71   : 
+; 72   : 	if (Input::Mouse::Button == SDL_BUTTON_LEFT) {
+
+	cmp	BYTE PTR ?Button@Mouse@Input@@2EA, 1	; Input::Mouse::Button
+	jne	$LN540@DrawLayer
+
+; 73   : 		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
+
+	movzx	eax, BYTE PTR ?State@Mouse@Input@@2EA	; Input::Mouse::State
+	cmp	al, 1
+	jne	$LN497@DrawLayer
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 3176 :         if (size() <= _Off) {
+
+	cmp	QWORD PTR [rdi+48], r14
+	jbe	$LN677@DrawLayer
+
+; 2391 :         _Myoff += _Off;
+
+	mov	r8, r14
+	shr	r8, 5
+
+; 2392 :         _Myptr += _Myoff / _VBITS;
+
+	mov	rdx, QWORD PTR [rdi+24]
+	mov	rcx, r14
+	and	ecx, 31
+
+; 2476 :         return static_cast<_Vbase>(1) << this->_Myoff;
+
+	mov	eax, 1
+	shl	eax, cl
+
+; 2454 :         return (*_Getptr() & _Mask()) != 0;
+
+	test	eax, DWORD PTR [rdx+r8*4]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 73   : 		if (Input::Mouse::State == SDL_PRESSED && (m_SelectedLayers.at(LayerIndex) || m_DraggingLayer)) {
+
+	jne	SHORT $LN499@DrawLayer
+	cmp	BYTE PTR [rdi+93], 0
+	je	$LN540@DrawLayer
+$LN499@DrawLayer:
+
+; 74   : 			if (m_InitialLayerClick)
+
+	cmp	BYTE PTR [rdi+92], 0
+	je	SHORT $LN500@DrawLayer
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
+; 11186:     ImGuiWindow* window = GImGui->CurrentWindow;
 
-	xor	edx, edx
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rcx, QWORD PTR [rax+16704]
+	movd	xmm1, DWORD PTR [rdi+80]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 75   : 				m_LayerYPos = (m_WindowYPos + Input::Mouse::Pos.y - m_LayersWindowPos.y + ImGui::GetScrollY()) - (LayerNum * 50.0f);
+
+	cvtdq2ps xmm1, xmm1
+	addss	xmm1, DWORD PTR ?Pos@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A+4
+	subss	xmm1, DWORD PTR [rdi+76]
+	addss	xmm1, DWORD PTR [rcx+196]
+	movd	xmm0, r9d
+	cvtdq2ps xmm0, xmm0
+	mulss	xmm0, xmm6
+	subss	xmm1, xmm0
+	movss	DWORD PTR [rdi+88], xmm1
+$LN500@DrawLayer:
+
+; 76   : 
+; 77   : 			Input::Mouse::Rel = { 0,0 };
+
+	mov	QWORD PTR ?Rel@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A, 0 ; Input::Mouse::Rel
+
+; 78   : 			m_InitialLayerClick = false;
+
+	mov	WORD PTR [rdi+92], 256			; 00000100H
+
+; 79   : 			m_DraggingLayer = true;
+; 80   : 		}
+
+	jmp	SHORT $LN540@DrawLayer
+$LN497@DrawLayer:
+
+; 81   : 		else if (Input::Mouse::State == SDL_RELEASED) {
+
+	test	al, al
+	jne	SHORT $LN540@DrawLayer
+
+; 82   : 			m_LayerYPos = 0.0f;
+
+	mov	DWORD PTR [rdi+88], 0
+
+; 83   : 			m_InitialLayerClick = true;
+
+	mov	WORD PTR [rdi+92], 1
+
+; 122  : 		ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.3f, 0.3f, 0.3f, Opacity));
+; 123  : 		NextLayerDraggable(LayerIndex);
+; 124  : 	}
+
+	jmp	SHORT $LN540@DrawLayer
+$LN8@DrawLayer:
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
 
-	mov	DWORD PTR $T11[rbp-53], 1107558400	; 42040000H
-	mov	rax, QWORD PTR [rcx+16704]
-	movss	xmm0, DWORD PTR [rax+96]
+	mov	DWORD PTR $T60[rbp-256], 1045220557	; 3e4ccccdH
+	mov	DWORD PTR $T60[rbp-252], 1045220557	; 3e4ccccdH
+	mov	DWORD PTR $T60[rbp-248], 1045220557	; 3e4ccccdH
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [r13+15120]
+	movups	XMMWORD PTR backup$171[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [r13+19432]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [r13+19428], esi
+	je	SHORT $LN540@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	xmm0, XMMWORD PTR $T60[rbp-256]
+	movups	XMMWORD PTR [r13+15120], xmm0
+$LN540@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	add	r15, r15
+	mov	rdx, QWORD PTR [rdi]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 129  : 	std::string LayerName = m_Layers[LayerIndex]->GetName();
+
+	mov	rdx, QWORD PTR [rdx+r15*8]
+; File C:\dev\Photo Studio\Photo Studio\Source\Layer.cpp
+
+; 22   :     return m_LayerName;
+
+	add	rdx, 56					; 00000038H
+	lea	rcx, QWORD PTR LayerName$[rbp-256]
+	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@AEBV01@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+	npad	1
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 131  : 	if (Dragging) {
+
+	test	r12b, r12b
+	je	SHORT $LN10@DrawLayer
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 3330 :         return append(_Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
+
+	mov	r8d, 1
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	lea	rcx, QWORD PTR LayerName$[rbp-256]
+	call	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append
+$LN10@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3231 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [rbx+19448]
+	movss	xmm1, DWORD PTR [rbx+14932]
+	movss	xmm0, DWORD PTR [rbx+14936]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
 
-	mov	BYTE PTR [rax+245], 1
-	mov	rbx, QWORD PTR [rcx+16704]
+	mov	DWORD PTR $T66[rsp], 17
+	movss	DWORD PTR $T66[rsp+4], xmm1
+	movss	DWORD PTR $T66[rsp+8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T66[rsp]
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+
+; 3237 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+14932], 1092616192	; 41200000H
+	mov	DWORD PTR [rbx+14936], 1092616192	; 41200000H
+
+; 8128 :     ImGuiWindow* window = GImGui->CurrentWindow;
+
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rcx, QWORD PTR [rax+16704]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
 ; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	movss	DWORD PTR $T11[rbp-57], xmm0
+	movss	xmm0, DWORD PTR [rcx+96]
+	movss	DWORD PTR $T68[rsp], xmm0
+	mov	DWORD PTR $T68[rsp+4], 1112014848	; 42480000H
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
 
-; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
+; 2273 :         const value_type* _Result = _Bx._Buf;
 
-	movsxd	rcx, DWORD PTR [rbx+304]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+	lea	rcx, QWORD PTR LayerName$[rbp-256]
 
-; 8590 :     ImGuiID id = ImHashStr(str, str_end ? (str_end - str) : 0, seed);
+; 2274 :         if (_Large_string_engaged()) {
 
-	mov	rax, QWORD PTR [rbx+312]
-	mov	r8d, DWORD PTR [rax+rcx*4-4]
-	lea	rcx, OFFSET FLAT:??_C@_0BA@MENHHACE@LayerProperties@
-	call	?ImHashStr@@YAIPEBD_KI@Z		; ImHashStr
+	cmp	QWORD PTR LayerName$[rbp-232], 16
+	cmovae	rcx, QWORD PTR LayerName$[rbp-256]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 
-; 8591 : #ifndef IMGUI_DISABLE_DEBUG_TOOLS
-; 8592 :     ImGuiContext& g = *Ctx;
-; 8593 :     if (g.DebugHookIdInfo == id)
-
-	mov	r8, QWORD PTR [rbx]
-	mov	esi, eax
-	cmp	DWORD PTR [r8+16780], eax
-	jne	SHORT $LN72@DrawLayers
-
-; 8594 :         ImGui::DebugHookIdInfo(id, ImGuiDataType_String, str, str_end);
-
-	lea	r8, OFFSET FLAT:??_C@_0BA@MENHHACE@LayerProperties@
-	mov	edx, 11
-	mov	ecx, eax
-	call	?DebugHookIdInfo@ImGui@@YAXIHPEBX0@Z	; ImGui::DebugHookIdInfo
-$LN72@DrawLayers:
-
-; 5660 :     return BeginChildEx(str_id, id, size_arg, child_flags, window_flags);
+; 136  : 	ImGui::BeginChild(LayerName.c_str(), ImVec2(ImGui::GetWindowWidth(), 50.0f));
 
 	xor	r9d, r9d
-	mov	DWORD PTR [rsp+32], 0
-	lea	r8, QWORD PTR $T11[rbp-57]
-	mov	edx, esi
-	lea	rcx, OFFSET FLAT:??_C@_0BA@MENHHACE@LayerProperties@
-	call	?BeginChildEx@ImGui@@YA_NPEBDIAEBUImVec2@@HH@Z ; ImGui::BeginChildEx
-
-; 3152 :     ImGuiContext& g = *GImGui;
-
-	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-
-; 3153 :     if (g.ColorStack.Size < count)
-
-	movsxd	rax, DWORD PTR [r8+19432]
-	cmp	eax, 1
-	jl	SHORT $LN60@DrawLayers
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
-
-	mov	rcx, QWORD PTR [r8+19440]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3162 :         g.ColorStack.pop_back();
-
-	lea	rdx, QWORD PTR [rax+rax*4]
-	movsxd	rax, DWORD PTR [rcx+rdx*4-20]
-	movups	xmm0, XMMWORD PTR [rcx+rdx*4-16]
-	add	rax, 942				; 000003aeH
-	add	rax, rax
-	movups	XMMWORD PTR [r8+rax*8], xmm0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
-
-	dec	DWORD PTR [r8+19432]
-$LN60@DrawLayers:
+	lea	rdx, QWORD PTR $T68[rsp]
+	call	?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@HH@Z ; ImGui::BeginChild
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
 ; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
 
-	mov	rax, QWORD PTR [r8+16704]
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rbx+16704]
 	mov	BYTE PTR [rax+245], 1
-	mov	rcx, QWORD PTR [r8+16704]
+	mov	rax, QWORD PTR [rbx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
-; 2858 :     float       CalcFontSize() const    { ImGuiContext& g = *Ctx; float scale = g.FontBaseSize * FontWindowScale * FontDpiScale; if (ParentWindow) scale *= ParentWindow->FontWindowScale; return scale; }
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
 
-	mov	rax, QWORD PTR [rcx]
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	addss	xmm1, DWORD PTR __real@41300000
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, DWORD PTR __real@40a00000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [rbx+19448]
+	movss	xmm1, DWORD PTR [rbx+15000]
+	movss	xmm0, DWORD PTR [rbx+15004]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
+
+	mov	DWORD PTR $T76[rsp], 26
+	movss	DWORD PTR $T76[rsp+4], xmm1
+	movss	DWORD PTR $T76[rsp+8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T76[rsp]
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+
+; 3237 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+15000], 0
+	mov	DWORD PTR [rbx+15004], 1066192077	; 3f8ccccdH
+
+; 3217 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rcx, QWORD PTR [rbx+19448]
+	movss	xmm0, DWORD PTR [rbx+14908]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 1015 :     ImGuiStyleMod(ImGuiStyleVar idx, float v)   { VarIdx = idx; BackupFloat[0] = v; }
+
+	mov	DWORD PTR $T77[rsp], 12
+	movss	DWORD PTR $T77[rsp+4], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3222 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
+
+	lea	rdx, QWORD PTR $T77[rsp]
+	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
+
+; 3223 :         *pvar = val;
+
+	mov	DWORD PTR [rbx+14908], 1090519040	; 41000000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
+
+	movaps	xmm6, XMMWORD PTR __xmm@3f8000003ecccccd3ecccccd3ecccccd
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3141 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3142 :     ImGuiColorMod backup;
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$175[rsp], 21
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15408]
+	movups	XMMWORD PTR backup$175[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$175[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 21
+	je	SHORT $LN241@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15408], xmm6
+$LN241@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
+
+	movaps	xmm6, XMMWORD PTR __xmm@3f8000003f0000003f0000003f000000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3141 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3142 :     ImGuiColorMod backup;
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$173[rsp], 22
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15424]
+	movups	XMMWORD PTR backup$173[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$173[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 22
+	je	SHORT $LN250@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15424], xmm6
+$LN250@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 292  :     constexpr ImVec4(float _x, float _y, float _z, float _w)  : x(_x), y(_y), z(_z), w(_w) { }
+
+	movaps	xmm6, XMMWORD PTR __xmm@3f8000003f0ccccd3f0ccccd3f0ccccd
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3141 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3142 :     ImGuiColorMod backup;
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$174[rsp], 23
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15440]
+	movups	XMMWORD PTR backup$174[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$174[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 23
+	je	SHORT $LN259@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15440], xmm6
+$LN259@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 148  : 		ImGui::PushFont(Primitive::m_IconFont);
+
+	mov	rcx, QWORD PTR ?m_IconFont@Primitive@@2PEAUImFont@@EA ; Primitive::m_IconFont
+	call	?PushFont@ImGui@@YAXPEAUImFont@@@Z	; ImGui::PushFont
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8423 :     ImGuiContext& g = *GImGui;
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rax, QWORD PTR [rdx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rcx, QWORD PTR [rdx+16704]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 8425 :     window->FontWindowScale = scale;
@@ -3203,31 +3535,672 @@ $LN60@DrawLayers:
 
 ; 2858 :     float       CalcFontSize() const    { ImGuiContext& g = *Ctx; float scale = g.FontBaseSize * FontWindowScale * FontDpiScale; if (ParentWindow) scale *= ParentWindow->FontWindowScale; return scale; }
 
+	mov	rax, QWORD PTR [rcx]
 	movss	xmm0, DWORD PTR [rax+15996]
 	mulss	xmm0, DWORD PTR __real@3f19999a
-	mov	rax, QWORD PTR [rcx+944]
 	mulss	xmm0, DWORD PTR [rcx+724]
+	mov	rax, QWORD PTR [rcx+944]
 	test	rax, rax
-	je	SHORT $LN56@DrawLayers
+	je	SHORT $LN270@DrawLayer
 	mulss	xmm0, DWORD PTR [rax+720]
-$LN56@DrawLayers:
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 276  : 	ImGui::PushFont(Primitive::m_IconFont);
-
-	mov	rcx, QWORD PTR ?m_IconFont@Primitive@@2PEAUImFont@@EA ; Primitive::m_IconFont
+$LN270@DrawLayer:
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 8426 :     g.FontSize = g.DrawListSharedData.FontSize = window->CalcFontSize();
 
-	movss	DWORD PTR [r8+16016], xmm0
-	movss	DWORD PTR [r8+15992], xmm0
+	movss	DWORD PTR [rdx+16016], xmm0
+	movss	DWORD PTR [rdx+15992], xmm0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1902 :         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
+
+	mov	rcx, QWORD PTR [rdi]
+	mov	rax, QWORD PTR [rdi+8]
+	sub	rax, rcx
+	sar	rax, 4
+	cmp	rax, r14
+	jbe	$LN669@DrawLayer
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 
-; 276  : 	ImGui::PushFont(Primitive::m_IconFont);
+; 154  : 		if (m_Layers.at(LayerIndex)->m_Visible) {
 
-	call	?PushFont@ImGui@@YAXPEAUImFont@@@Z	; ImGui::PushFont
+	mov	rax, QWORD PTR [rcx+r15*8]
+	mov	DWORD PTR $T83[rsp], 1104674816		; 41d80000H
+	mov	DWORD PTR $T83[rsp+4], 1104674816	; 41d80000H
+	xor	r8d, r8d
+	lea	rdx, QWORD PTR $T83[rsp]
+	cmp	BYTE PTR [rax+32], r8b
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+
+	lea	rcx, OFFSET FLAT:??_C@_03LDIMJOGN@?n?$KD?$LE@
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 154  : 		if (m_Layers.at(LayerIndex)->m_Visible) {
+
+	jne	SHORT $LN674@DrawLayer
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+
+	lea	rcx, OFFSET FLAT:??_C@_03KKJHKPCM@?n?$KD?$LF@
+$LN674@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 161  : 		if (Visible) {
+
+	call	?ButtonEx@ImGui@@YA_NPEBDAEBUImVec2@@H@Z ; ImGui::ButtonEx
+	test	al, al
+	je	SHORT $LN13@DrawLayer
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1902 :         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
+
+	mov	rcx, QWORD PTR [rdi]
+	mov	rax, QWORD PTR [rdi+8]
+	sub	rax, rcx
+	sar	rax, 4
+	cmp	rax, r14
+	jbe	$LN669@DrawLayer
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 162  : 			m_Layers.at(LayerIndex)->m_Visible = !m_Layers.at(LayerIndex)->m_Visible;
+
+	mov	rcx, QWORD PTR [rcx+r15*8]
+	cmp	BYTE PTR [rcx+32], 0
+	sete	al
+	mov	BYTE PTR [rcx+32], al
+$LN13@DrawLayer:
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8423 :     ImGuiContext& g = *GImGui;
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rax, QWORD PTR [rdx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rcx, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8425 :     window->FontWindowScale = scale;
+
+	mov	DWORD PTR [rcx+720], 1065353216		; 3f800000H
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 2858 :     float       CalcFontSize() const    { ImGuiContext& g = *Ctx; float scale = g.FontBaseSize * FontWindowScale * FontDpiScale; if (ParentWindow) scale *= ParentWindow->FontWindowScale; return scale; }
+
+	mov	rax, QWORD PTR [rcx]
+	movss	xmm0, DWORD PTR [rcx+724]
+	mulss	xmm0, DWORD PTR [rax+15996]
+	mov	rax, QWORD PTR [rcx+944]
+	test	rax, rax
+	je	SHORT $LN324@DrawLayer
+	mulss	xmm0, DWORD PTR [rax+720]
+$LN324@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8426 :     g.FontSize = g.DrawListSharedData.FontSize = window->CalcFontSize();
+
+	movss	DWORD PTR [rdx+16016], xmm0
+	movss	DWORD PTR [rdx+15992], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 167  : 		ImGui::PopFont();
+
+	call	?PopFont@ImGui@@YAXXZ			; ImGui::PopFont
+
+; 168  : 
+; 169  : 		ImGui::PopStyleColor(3);
+
+	mov	r9d, esi
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3152 :     ImGuiContext& g = *GImGui;
+
+	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3153 :     if (g.ColorStack.Size < count)
+
+	mov	eax, DWORD PTR [r8+19432]
+	cmp	eax, 3
+	jge	SHORT $LL327@DrawLayer
+
+; 3154 :     {
+; 3155 :         IM_ASSERT_USER_ERROR(g.ColorStack.Size > count, "Calling PopStyleColor() too many times!");
+; 3156 :         count = g.ColorStack.Size;
+
+	mov	r9d, eax
+
+; 3157 :     }
+; 3158 :     while (count > 0)
+
+	test	eax, eax
+	jle	SHORT $LN328@DrawLayer
+	npad	10
+$LL327@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
+
+	cdqe
+	lea	rdx, QWORD PTR [rax+rax*4]
+	mov	rcx, QWORD PTR [r8+19440]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3161 :         g.Style.Colors[backup.Col] = backup.BackupValue;
+
+	movsxd	rax, DWORD PTR [rcx+rdx*4-20]
+	add	rax, 942				; 000003aeH
+	add	rax, rax
+	movups	xmm0, XMMWORD PTR [rcx+rdx*4-16]
+	movups	XMMWORD PTR [r8+rax*8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
+
+	dec	DWORD PTR [r8+19432]
+	mov	eax, DWORD PTR [r8+19432]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3163 :         count--;
+
+	dec	r9d
+
+; 3157 :     }
+; 3158 :     while (count > 0)
+
+	test	r9d, r9d
+	jg	SHORT $LL327@DrawLayer
+$LN328@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 171  : 		ImGui::PopStyleVar(2);
+
+	mov	ecx, 2
+	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
+
+; 172  : 
+; 173  : 		ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	movaps	xmm0, xmm7
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rdx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	addss	xmm1, xmm7
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, DWORD PTR __real@42140000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+
+; 10721:     ImGuiWindow* window = GetCurrentWindowRead();
+
+	mov	rax, QWORD PTR [rdx+16704]
+
+; 10722:     return window->DC.CursorPos;
+
+	movss	xmm1, DWORD PTR [rax+320]
+	movss	xmm2, DWORD PTR [rax+324]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 181  : 		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 50), 0.5f);
+
+	movaps	xmm0, xmm2
+	addss	xmm0, DWORD PTR __real@424c0000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T93[rsp], xmm1
+	movss	DWORD PTR $T93[rsp+4], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 181  : 		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 50), 0.5f);
+
+	subss	xmm2, DWORD PTR __real@3f800000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T94[rsp], xmm1
+	movss	DWORD PTR $T94[rsp+4], xmm2
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 181  : 		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y-1}, { ps.x,ps.y+51}, IM_COL32(255, 255, 255, 50), 0.5f);
+
+	movss	xmm9, DWORD PTR __real@3f000000
+	movss	DWORD PTR [rsp+32], xmm9
+	mov	r9d, 855638015				; 32ffffffH
+	lea	r8, QWORD PTR $T93[rsp]
+	lea	rdx, QWORD PTR $T94[rsp]
+	mov	rcx, QWORD PTR [rax+736]
+	call	?AddLine@ImDrawList@@QEAAXAEBUImVec2@@0IM@Z ; ImDrawList::AddLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rcx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	addss	xmm1, DWORD PTR __real@40600000
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	movss	xmm6, DWORD PTR __real@42280000
+	addss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+
+; 10721:     ImGuiWindow* window = GetCurrentWindowRead();
+
+	mov	rax, QWORD PTR [rcx+16704]
+
+; 10722:     return window->DC.CursorPos;
+
+	movss	xmm2, DWORD PTR [rax+320]
+	movss	xmm3, DWORD PTR [rax+324]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8389 :     return window->DrawList;
+
+	movaps	xmm1, xmm3
+	addss	xmm1, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 185  : 		ImGui::GetWindowDrawList()->AddRectFilled({ ps.x, ps.y }, { ps.x + 42,ps.y + 42 }, IM_COL32(255, 255, 255, 100));
+
+	movaps	xmm0, xmm2
+	addss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T100[rsp], xmm0
+	movss	DWORD PTR $T100[rsp+4], xmm1
+	movss	DWORD PTR $T101[rsp], xmm2
+	movss	DWORD PTR $T101[rsp+4], xmm3
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 185  : 		ImGui::GetWindowDrawList()->AddRectFilled({ ps.x, ps.y }, { ps.x + 42,ps.y + 42 }, IM_COL32(255, 255, 255, 100));
+
+	mov	DWORD PTR [rsp+40], 0
+	movss	DWORD PTR [rsp+32], xmm7
+	mov	r9d, 1694498815				; 64ffffffH
+	lea	r8, QWORD PTR $T100[rsp]
+	lea	rdx, QWORD PTR $T101[rsp]
+	mov	rcx, QWORD PTR [rax+736]
+	call	?AddRectFilled@ImDrawList@@QEAAXAEBUImVec2@@0IMH@Z ; ImDrawList::AddRectFilled
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rcx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	addss	xmm1, DWORD PTR __real@41c40000
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+
+; 10721:     ImGuiWindow* window = GetCurrentWindowRead();
+
+	mov	rax, QWORD PTR [rcx+16704]
+
+; 10722:     return window->DC.CursorPos;
+
+	movss	xmm3, DWORD PTR [rax+320]
+	movss	xmm4, DWORD PTR [rax+324]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8389 :     return window->DrawList;
+
+	mov	rbx, QWORD PTR [rax+736]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	mov	QWORD PTR $T106[rsp], 1065353216	; 3f800000H
+	mov	DWORD PTR $T108[rsp], 0
+	mov	DWORD PTR $T108[rsp+4], 1065353216	; 3f800000H
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 189  : 		ImGui::GetWindowDrawList()->AddImage(
+
+	movaps	xmm1, xmm4
+	subss	xmm1, DWORD PTR __real@41a80000
+	movaps	xmm0, xmm3
+	addss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T110[rsp], xmm0
+	movss	DWORD PTR $T110[rsp+4], xmm1
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 189  : 		ImGui::GetWindowDrawList()->AddImage(
+
+	addss	xmm4, DWORD PTR __real@41a80000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T112[rsp], xmm3
+	movss	DWORD PTR $T112[rsp+4], xmm4
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rax, QWORD PTR [rdi]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 189  : 		ImGui::GetWindowDrawList()->AddImage(
+
+	mov	rax, QWORD PTR [rax+r15*8]
+	mov	r15d, DWORD PTR [rax+24]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp
+
+; 1657 :     const bool push_texture_id = user_texture_id != _CmdHeader.TextureId;
+
+	mov	r13, QWORD PTR [rbx+152]
+
+; 1658 :     if (push_texture_id)
+
+	cmp	r15, r13
+	je	SHORT $LN31@DrawLayer
+
+; 1659 :         PushTextureID(user_texture_id);
+
+	mov	edx, r15d
+	mov	rcx, rbx
+	call	?PushTextureID@ImDrawList@@QEAAXPEAX@Z	; ImDrawList::PushTextureID
+$LN31@DrawLayer:
+
+; 1660 : 
+; 1661 :     PrimReserve(6, 4);
+
+	mov	edx, 6
+	lea	r8d, QWORD PTR [rdx-2]
+	mov	rcx, rbx
+	call	?PrimReserve@ImDrawList@@QEAAXHH@Z	; ImDrawList::PrimReserve
+
+; 1662 :     PrimRectUV(p_min, p_max, uv_min, uv_max, col);
+
+	mov	DWORD PTR [rsp+40], -1			; ffffffffH
+	lea	rax, QWORD PTR $T106[rsp]
+	mov	QWORD PTR [rsp+32], rax
+	lea	r9, QWORD PTR $T108[rsp]
+	lea	r8, QWORD PTR $T110[rsp]
+	lea	rdx, QWORD PTR $T112[rsp]
+	mov	rcx, rbx
+	call	?PrimRectUV@ImDrawList@@QEAAXAEBUImVec2@@000I@Z ; ImDrawList::PrimRectUV
+
+; 1663 : 
+; 1664 :     if (push_texture_id)
+
+	cmp	r15, r13
+	je	SHORT $LN32@DrawLayer
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
+
+	movsxd	rcx, DWORD PTR [rbx+104]
+	lea	eax, DWORD PTR [rcx-1]
+	mov	DWORD PTR [rbx+104], eax
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_draw.cpp
+
+; 619  :     _CmdHeader.TextureId = (_TextureIdStack.Size == 0) ? (ImTextureID)NULL : _TextureIdStack.Data[_TextureIdStack.Size - 1];
+
+	test	eax, eax
+	jne	SHORT $LN36@DrawLayer
+	xor	eax, eax
+	jmp	SHORT $LN37@DrawLayer
+$LN36@DrawLayer:
+	mov	rax, QWORD PTR [rbx+112]
+	mov	rax, QWORD PTR [rax+rcx*8-16]
+$LN37@DrawLayer:
+	mov	QWORD PTR [rbx+152], rax
+
+; 620  :     _OnChangedTextureID();
+
+	mov	rcx, rbx
+	call	?_OnChangedTextureID@ImDrawList@@QEAAXXZ ; ImDrawList::_OnChangedTextureID
+$LN32@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 197  : 		ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	movaps	xmm0, xmm7
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rbx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rbx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	addss	xmm1, xmm7
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, DWORD PTR __real@42140000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+	xorps	xmm6, xmm6
+
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$178[rsp], 21
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15408]
+	movups	XMMWORD PTR backup$178[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$178[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 21
+	je	SHORT $LN57@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15408], xmm6
+$LN57@DrawLayer:
+
+; 3141 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3142 :     ImGuiColorMod backup;
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$176[rsp], 23
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15440]
+	movups	XMMWORD PTR backup$176[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$176[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 23
+	je	SHORT $LN66@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15440], xmm6
+$LN66@DrawLayer:
+
+; 3141 :     ImGuiContext& g = *GImGui;
+
+	mov	rbx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3142 :     ImGuiColorMod backup;
+; 3143 :     backup.Col = idx;
+
+	mov	DWORD PTR backup$177[rsp], 22
+
+; 3144 :     backup.BackupValue = g.Style.Colors[idx];
+
+	movups	xmm0, XMMWORD PTR [rbx+15424]
+	movups	XMMWORD PTR backup$177[rsp+4], xmm0
+
+; 3145 :     g.ColorStack.push_back(backup);
+
+	lea	rcx, QWORD PTR [rbx+19432]
+	lea	rdx, QWORD PTR backup$177[rsp]
+	call	?push_back@?$ImVector@UImGuiColorMod@@@@QEAAXAEBUImGuiColorMod@@@Z ; ImVector<ImGuiColorMod>::push_back
+
+; 3146 :     if (g.DebugFlashStyleColorIdx != idx)
+
+	cmp	DWORD PTR [rbx+19428], 22
+	je	SHORT $LN75@DrawLayer
+
+; 3147 :         g.Style.Colors[idx] = col;
+
+	movups	XMMWORD PTR [rbx+15424], xmm6
+$LN75@DrawLayer:
 
 ; 3231 :     ImGuiContext& g = *GImGui;
 
@@ -3235,236 +4208,752 @@ $LN56@DrawLayers:
 
 ; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
 
-	lea	rdx, QWORD PTR $T15[rbp-57]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
-
-	mov	DWORD PTR $T15[rbp-57], 26
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
-
-	movss	xmm1, DWORD PTR [rbx+15000]
 	lea	rcx, QWORD PTR [rbx+19448]
+	movss	xmm1, DWORD PTR [rbx+15000]
 	movss	xmm0, DWORD PTR [rbx+15004]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
 ; 1016 :     ImGuiStyleMod(ImGuiStyleVar idx, ImVec2 v)  { VarIdx = idx; BackupFloat[0] = v.x; BackupFloat[1] = v.y; }
 
-	movss	DWORD PTR $T15[rbp-53], xmm1
-	movss	DWORD PTR $T15[rbp-49], xmm0
+	mov	DWORD PTR $T124[rsp], 26
+	movss	DWORD PTR $T124[rsp+4], xmm1
+	movss	DWORD PTR $T124[rsp+8], xmm0
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 3236 :         g.StyleVarStack.push_back(ImGuiStyleMod(idx, *pvar));
 
+	lea	rdx, QWORD PTR $T124[rsp]
 	call	?push_back@?$ImVector@UImGuiStyleMod@@@@QEAAXAEBUImGuiStyleMod@@@Z ; ImVector<ImGuiStyleMod>::push_back
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
-
-; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
-
-	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
-
-	lea	rdx, QWORD PTR $T19[rbp-57]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 3237 :         *pvar = val;
 
 	mov	DWORD PTR [rbx+15000], 0
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+	mov	DWORD PTR [rbx+15004], 1056964608	; 3f000000H
 
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+; 8128 :     ImGuiWindow* window = GImGui->CurrentWindow;
 
-	xor	r8d, r8d
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+	mov	rax, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rcx, QWORD PTR [rax+16704]
 
-; 3237 :         *pvar = val;
+; 8129 :     return window->Size.x;
 
-	mov	DWORD PTR [rbx+15004], 1069547520	; 3fc00000H
+	movss	xmm0, DWORD PTR [rcx+96]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 207  : 		bool Button = ImGui::ButtonEx(("               " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 37.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+
+	subss	xmm0, DWORD PTR __real@42140000
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
 ; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	mov	DWORD PTR $T19[rbp-57], 1105199104	; 41e00000H
+	movss	DWORD PTR $T126[rsp], xmm0
+	mov	DWORD PTR $T126[rsp+4], 1112014848	; 42480000H
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4952 :     if (_Right.max_size() - _Right_size < _Left_size) {
+
+	mov	rax, 9223372036854775807		; 7fffffffffffffffH
+	mov	rcx, QWORD PTR LayerName$[rbp-240]
+	sub	rax, rcx
+	cmp	rax, 15
+	jb	$LN678@DrawLayer
+
+; 2273 :         const value_type* _Result = _Bx._Buf;
+
+	lea	rax, QWORD PTR LayerName$[rbp-256]
+
+; 2274 :         if (_Large_string_engaged()) {
+
+	cmp	QWORD PTR LayerName$[rbp-232], 16
+	cmovae	rax, QWORD PTR LayerName$[rbp-256]
+
+; 4956 :     return {_String_constructor_concat_tag{}, _Right, _Left, _Left_size, _Right.c_str(), _Right_size};
+
+	mov	QWORD PTR [rsp+48], rcx
+	mov	QWORD PTR [rsp+40], rax
+	mov	QWORD PTR [rsp+32], 15
+	lea	r9, OFFSET FLAT:??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@
+	lea	rcx, QWORD PTR $T133[rsp]
+	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@U_String_constructor_concat_tag@1@AEBV01@QEBD_K23@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+	npad	1
+
+; 2273 :         const value_type* _Result = _Bx._Buf;
+
+	lea	rcx, QWORD PTR $T133[rsp]
+
+; 2274 :         if (_Large_string_engaged()) {
+
+	cmp	QWORD PTR $T133[rbp-232], 16
+	cmovae	rcx, QWORD PTR $T133[rsp]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 207  : 		bool Button = ImGui::ButtonEx(("               " + LayerName).c_str(), ImVec2(ImGui::GetWindowWidth() - 37.0f, 50.0f), ImGuiButtonFlags_PressedOnClick);
+
+	mov	r8d, 16
+	lea	rdx, QWORD PTR $T126[rsp]
+	call	?ButtonEx@ImGui@@YA_NPEBDAEBUImVec2@@H@Z ; ImGui::ButtonEx
+	movzx	ebx, al
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	mov	rdx, QWORD PTR $T133[rbp-232]
+	cmp	rdx, 16
+	jb	SHORT $LN132@DrawLayer
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
+
+	mov	rcx, QWORD PTR $T133[rsp]
+	mov	rax, rcx
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN144@DrawLayer
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	rcx, QWORD PTR [rcx-8]
+	sub	rax, rcx
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	add	rax, -8
+	cmp	rax, 31
+	jbe	SHORT $LN144@DrawLayer
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN144@DrawLayer:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN132@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4877 :         _My_data._Mysize = 0;
+
+	movdqa	xmm0, XMMWORD PTR __xmm@000000000000000f0000000000000000
+	movdqu	XMMWORD PTR $T133[rbp-240], xmm0
+
+; 4878 :         _My_data._Myres  = _BUF_SIZE - 1;
+; 4879 :         // the _Traits::assign is last so the codegen doesn't think the char write can alias this
+; 4880 :         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+
+	mov	BYTE PTR $T133[rsp], 0
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 208  : 		if (!Dragging) {
+
+	test	r12b, r12b
+	jne	SHORT $LN15@DrawLayer
+
+; 209  : 			m_SelectedLayers.at(LayerIndex) = ImGui::IsItemHovered();
+
+	xor	ecx, ecx
+	call	?IsItemHovered@ImGui@@YA_NH@Z		; ImGui::IsItemHovered
+	movzx	r9d, al
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 3176 :         if (size() <= _Off) {
+
+	cmp	QWORD PTR [rdi+48], r14
+	jbe	$LN679@DrawLayer
+
+; 2391 :         _Myoff += _Off;
+
+	mov	rdx, r14
+	shr	rdx, 5
+
+; 2392 :         _Myptr += _Myoff / _VBITS;
+
+	mov	r8, QWORD PTR [rdi+24]
+	mov	rcx, r14
+	and	ecx, 31
+
+; 2393 :         _Myoff %= _VBITS;
+
+	mov	eax, 1
+	shl	eax, cl
+	mov	ecx, DWORD PTR [r8+rdx*4]
+
+; 2428 :         if (_Val) {
+
+	test	r9b, r9b
+	je	SHORT $LN477@DrawLayer
+
+; 2429 :             *const_cast<_Vbase*>(_Getptr()) |= _Mask();
+
+	or	eax, ecx
+
+; 2430 :         } else {
+
+	jmp	SHORT $LN478@DrawLayer
+$LN477@DrawLayer:
+
+; 2431 :             *const_cast<_Vbase*>(_Getptr()) &= ~_Mask();
+
+	not	eax
+	and	eax, ecx
+$LN478@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 210  : 			if (Button) {
+
+	mov	DWORD PTR [r8+rdx*4], eax
+	test	bl, bl
+	je	SHORT $LN15@DrawLayer
+
+; 211  : 				SetActiveLayer(LayerIndex);
+
+	mov	QWORD PTR [rdi+64], r14
+$LN15@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3152 :     ImGuiContext& g = *GImGui;
+
+	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3153 :     if (g.ColorStack.Size < count)
+
+	mov	eax, DWORD PTR [r8+19432]
+	cmp	eax, 3
+	jge	SHORT $LL150@DrawLayer
+
+; 3154 :     {
+; 3155 :         IM_ASSERT_USER_ERROR(g.ColorStack.Size > count, "Calling PopStyleColor() too many times!");
+; 3156 :         count = g.ColorStack.Size;
+
+	mov	esi, eax
+
+; 3157 :     }
+; 3158 :     while (count > 0)
+
+	test	eax, eax
+	jle	SHORT $LN151@DrawLayer
+	npad	9
+$LL150@DrawLayer:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
+
+	cdqe
+	lea	rdx, QWORD PTR [rax+rax*4]
+	mov	rcx, QWORD PTR [r8+19440]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3161 :         g.Style.Colors[backup.Col] = backup.BackupValue;
+
+	movsxd	rax, DWORD PTR [rcx+rdx*4-20]
+	add	rax, 942				; 000003aeH
+	add	rax, rax
+	movups	xmm0, XMMWORD PTR [rcx+rdx*4-16]
+	movups	XMMWORD PTR [r8+rax*8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
+
+	dec	DWORD PTR [r8+19432]
+	mov	eax, DWORD PTR [r8+19432]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3163 :         count--;
+
+	dec	esi
+
+; 3157 :     }
+; 3158 :     while (count > 0)
+
+	test	esi, esi
+	jg	SHORT $LL150@DrawLayer
+	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+$LN151@DrawLayer:
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
 ; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
 
-	mov	rax, QWORD PTR [rcx+16704]
+	mov	rax, QWORD PTR [r8+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [r8+16704]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
 
 ; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	mov	DWORD PTR $T19[rbp-53], 1102053376	; 41b00000H
+	addss	xmm1, DWORD PTR __real@42440000
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, xmm7
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+
+; 10721:     ImGuiWindow* window = GetCurrentWindowRead();
+
+	mov	rax, QWORD PTR [r8+16704]
+
+; 10722:     return window->DC.CursorPos;
+
+	movss	xmm1, DWORD PTR [rax+320]
+	movss	xmm2, DWORD PTR [rax+324]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
 ; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
 
 	mov	BYTE PTR [rax+245], 1
-	mov	rax, QWORD PTR [rcx+16704]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+	mov	rax, QWORD PTR [r8+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+; 8389 :     return window->DrawList;
 
-	lea	rcx, OFFSET FLAT:??_C@_03EJBBKDIN@?n?$IF?$IF@
+	mov	rcx, QWORD PTR [rax+736]
+
+; 8184 :     return window->Size;
+
+	movaps	xmm0, xmm1
+	addss	xmm0, DWORD PTR [rax+96]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	DWORD PTR $T155[rsp], xmm0
+	movss	DWORD PTR $T155[rsp+4], xmm2
+	movss	DWORD PTR $T156[rsp], xmm1
+	movss	DWORD PTR $T156[rsp+4], xmm2
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 219  : 		ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x+ImGui::GetWindowSize().x,ps.y}, IM_COL32(255, 255, 255, 50), 0.5f);
+
+	movss	DWORD PTR [rsp+32], xmm9
+	mov	r9d, 855638015				; 32ffffffH
+	lea	r8, QWORD PTR $T155[rsp]
+	lea	rdx, QWORD PTR $T156[rsp]
+	call	?AddLine@ImDrawList@@QEAAXAEBUImVec2@@0IM@Z ; ImDrawList::AddLine
+
+; 220  : 		if (Dragging) {
+
+	test	r12b, r12b
+	je	$LN16@DrawLayer
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rdx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
 ; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
 
-	movss	xmm2, DWORD PTR [rax+88]
 	movss	xmm1, DWORD PTR [rax+92]
-	subss	xmm2, DWORD PTR [rax+192]
 	subss	xmm1, DWORD PTR [rax+196]
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
-
-; 10758:     window->DC.IsSetPos = true;
-
-	mov	BYTE PTR [rax+385], 1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
 ; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	addss	xmm2, DWORD PTR __real@40a00000
-	addss	xmm1, DWORD PTR __real@40a00000
+	addss	xmm1, xmm7
+
+; 2632 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2631 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, xmm7
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
 ; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
 
-	movss	DWORD PTR [rax+320], xmm2
+	movss	DWORD PTR [rax+320], xmm0
 	movss	DWORD PTR [rax+324], xmm1
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
 
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
 
-	call	?ButtonEx@ImGui@@YA_NPEBDAEBUImVec2@@H@Z ; ImGui::ButtonEx
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+	mov	BYTE PTR [rax+385], 1
 
-; 281  : 	if (ImGui::Button(ICON_MD_ADD, ImVec2(28, 22))) {
+; 10721:     ImGuiWindow* window = GetCurrentWindowRead();
 
-	test	al, al
-	je	SHORT $LN168@DrawLayers
+	mov	rax, QWORD PTR [rdx+16704]
 
-; 282  : 		m_ActiveLayer = AddLayer();
+; 10722:     return window->DC.CursorPos;
 
-	mov	rcx, rdi
-	call	?AddLayer@LayerManager@@QEAA_KXZ	; LayerManager::AddLayer
-	mov	QWORD PTR [rdi+64], rax
-$LN168@DrawLayers:
+	movss	xmm1, DWORD PTR [rax+320]
+	movss	xmm2, DWORD PTR [rax+324]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
 
-; 283  : 		//m_ActiveLayer += 1;
-; 284  : 	}
-; 285  : 
-; 286  : 	ImGui::SameLine();
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
 
-	movss	xmm1, DWORD PTR __real@bf800000
-	xorps	xmm0, xmm0
-	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rdx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
+; 8389 :     return window->DrawList;
 
-	lea	rcx, OFFSET FLAT:??_C@_03OGFCONIF@?n?$KB?$LC@
+	mov	rcx, QWORD PTR [rax+736]
+
+; 8184 :     return window->Size;
+
+	movaps	xmm0, xmm1
+	addss	xmm0, DWORD PTR [rax+96]
 ; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
 
 ; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
 
-	mov	DWORD PTR $T20[rbp-57], 1105199104	; 41e00000H
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
-
-	xor	r8d, r8d
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
-
-; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
-
-	mov	DWORD PTR $T20[rbp-53], 1102053376	; 41b00000H
-; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
-
-; 736  :     return ButtonEx(label, size_arg, ImGuiButtonFlags_None);
-
-	lea	rdx, QWORD PTR $T20[rbp-57]
-	call	?ButtonEx@ImGui@@YA_NPEBDAEBUImVec2@@H@Z ; ImGui::ButtonEx
+	movss	DWORD PTR $T163[rsp], xmm0
+	movss	DWORD PTR $T163[rsp+4], xmm2
+	movss	DWORD PTR $T164[rsp], xmm1
+	movss	DWORD PTR $T164[rsp+4], xmm2
 ; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
 
-; 288  : 	if (ImGui::Button(ICON_MD_DELETE, ImVec2(28, 22)) && m_ActiveLayer > 0) {
+; 223  : 			ImGui::GetWindowDrawList()->AddLine({ ps.x, ps.y }, { ps.x + ImGui::GetWindowSize().x,ps.y }, IM_COL32(255, 255, 255, 50), 0.5f);
 
-	test	al, al
-	je	SHORT $LN7@DrawLayers
-	mov	r8, QWORD PTR [rdi+64]
-	test	r8, r8
-	je	SHORT $LN7@DrawLayers
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+	movss	DWORD PTR [rsp+32], xmm9
+	mov	r9d, 855638015				; 32ffffffH
+	lea	r8, QWORD PTR $T163[rsp]
+	lea	rdx, QWORD PTR $T164[rsp]
+	call	?AddLine@ImDrawList@@QEAAXAEBUImVec2@@0IM@Z ; ImDrawList::AddLine
+$LN16@DrawLayer:
 
-; 126  :         _Ptr += _Off;
-
-	shl	r8, 4
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 289  : 		m_Layers.erase(m_Layers.begin() + m_ActiveLayer);
-
-	lea	rdx, QWORD PTR $T30[rbp-57]
-; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
-
-; 126  :         _Ptr += _Off;
-
-	add	r8, QWORD PTR [rdi]
-; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
-
-; 289  : 		m_Layers.erase(m_Layers.begin() + m_ActiveLayer);
-
-	mov	rcx, rdi
-	call	?erase@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@QEAA?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@2@@Z ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::erase
-
-; 290  : 		m_ActiveLayer -= 1;
-
-	dec	QWORD PTR [rdi+64]
-$LN7@DrawLayers:
-
-; 291  : 	}
-; 292  : 
-; 293  : 	ImGui::PopStyleVar();
-
-	mov	ecx, 1
-	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
-
-; 294  : 
-; 295  : 	ImGui::PopFont();
-
-	call	?PopFont@ImGui@@YAXXZ			; ImGui::PopFont
-
-; 296  : 
-; 297  : 	ImGui::EndChild();
+; 224  : 		}
+; 225  : 	}
+; 226  : 	ImGui::EndChild();
 
 	call	?EndChild@ImGui@@YAXXZ			; ImGui::EndChild
 
-; 298  : 
-; 299  : 	ImGui::End();
+; 227  : 	ImGui::PopStyleVar();
 
-	call	?End@ImGui@@YAXXZ			; ImGui::End
+	mov	ecx, 1
+	call	?PopStyleVar@ImGui@@YAXH@Z		; ImGui::PopStyleVar
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
 
-; 300  : 
-; 301  : 	/*ImGuiWindowClass window_class;
-; 302  : 	window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_NoUndocking;
-; 303  : 	ImGui::SetNextWindowClass(&window_class);*/
-; 304  : }
+; 3152 :     ImGuiContext& g = *GImGui;
 
-	mov	rcx, QWORD PTR __$ArrayPad$[rbp-57]
-	xor	rcx, rsp
-	call	__security_check_cookie
-	lea	r11, QWORD PTR [rsp+144]
-	mov	rbx, QWORD PTR [r11+24]
-	mov	rsi, QWORD PTR [r11+32]
-	mov	rdi, QWORD PTR [r11+40]
-	movaps	xmm6, XMMWORD PTR [r11-16]
-	movaps	xmm7, XMMWORD PTR [rsp+112]
-	movaps	xmm8, XMMWORD PTR [r11-48]
-	mov	rsp, r11
-	pop	rbp
-	ret	0
-?DrawLayersWindow@LayerManager@@QEAAXXZ ENDP		; LayerManager::DrawLayersWindow
+	mov	r8, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+
+; 3153 :     if (g.ColorStack.Size < count)
+
+	movsxd	rax, DWORD PTR [r8+19432]
+	cmp	eax, 1
+	jl	SHORT $LN283@DrawLayer
+
+; 3162 :         g.ColorStack.pop_back();
+
+	lea	rdx, QWORD PTR [rax+rax*4]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2029 :     inline T&           back()                              { IM_ASSERT(Size > 0); return Data[Size - 1]; }
+
+	mov	rcx, QWORD PTR [r8+19440]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 3161 :         g.Style.Colors[backup.Col] = backup.BackupValue;
+
+	movsxd	rax, DWORD PTR [rcx+rdx*4-20]
+	add	rax, 942				; 000003aeH
+	add	rax, rax
+	movups	xmm0, XMMWORD PTR [rcx+rdx*4-16]
+	movups	XMMWORD PTR [r8+rax*8], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2042 :     inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }
+
+	dec	DWORD PTR [r8+19432]
+$LN283@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 2282 :         return _BUF_SIZE <= _Myres;
+
+	mov	rdx, QWORD PTR LayerName$[rbp-232]
+	cmp	rdx, 16
+
+; 4868 :         if (_My_data._Large_string_engaged()) {
+
+	jb	$LN302@DrawLayer
+
+; 4869 :             _ASAN_STRING_REMOVE(*this);
+; 4870 :             const pointer _Ptr = _My_data._Bx._Ptr;
+; 4871 :             auto& _Al          = _Getal();
+; 4872 :             _Destroy_in_place(_My_data._Bx._Ptr);
+; 4873 :             _My_data._Activate_SSO_buffer();
+; 4874 :             _Al.deallocate(_Ptr, _My_data._Myres + 1);
+
+	inc	rdx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xmemory
+
+; 946  :         _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
+
+	mov	rcx, QWORD PTR LayerName$[rbp-256]
+	mov	rax, rcx
+
+; 251  :         if (_Bytes >= _Big_allocation_threshold) { // boost the alignment of big allocations to help autovectorization
+
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN314@DrawLayer
+
+; 147  :     _Bytes += _Non_user_size;
+
+	add	rdx, 39					; 00000027H
+
+; 148  : 
+; 149  :     const uintptr_t* const _Ptr_user = static_cast<uintptr_t*>(_Ptr);
+; 150  :     const uintptr_t _Ptr_container   = _Ptr_user[-1];
+
+	mov	rcx, QWORD PTR [rcx-8]
+	sub	rax, rcx
+
+; 151  : 
+; 152  :     // If the following asserts, it likely means that we are performing
+; 153  :     // an aligned delete on memory coming from an unaligned allocation.
+; 154  :     _STL_ASSERT(_Ptr_user[-2] == _Big_allocation_sentinel, "invalid argument");
+; 155  : 
+; 156  :     // Extra paranoia on aligned allocation/deallocation; ensure _Ptr_container is
+; 157  :     // in range [_Min_back_shift, _Non_user_size]
+; 158  : #ifdef _DEBUG
+; 159  :     constexpr uintptr_t _Min_back_shift = 2 * sizeof(void*);
+; 160  : #else // ^^^ _DEBUG / !_DEBUG vvv
+; 161  :     constexpr uintptr_t _Min_back_shift = sizeof(void*);
+; 162  : #endif // _DEBUG
+; 163  :     const uintptr_t _Back_shift = reinterpret_cast<uintptr_t>(_Ptr) - _Ptr_container;
+; 164  :     _STL_VERIFY(_Back_shift >= _Min_back_shift && _Back_shift <= _Non_user_size, "invalid argument");
+
+	add	rax, -8
+	cmp	rax, 31
+	jbe	SHORT $LN314@DrawLayer
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN314@DrawLayer:
+
+; 255  :         ::operator delete(_Ptr, _Bytes);
+
+	call	??3@YAXPEAX_K@Z				; operator delete
+	jmp	$LN302@DrawLayer
+$LN679@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 3177 :             _Xran();
+
+	call	?_Xran@?$vector@_NV?$allocator@_N@std@@@std@@QEBAXXZ ; std::vector<bool,std::allocator<bool> >::_Xran
+	int	3
+$LN669@DrawLayer:
+
+; 1903 :             _Xrange();
+
+	call	?_Xrange@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@CAXXZ ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::_Xrange
+	npad	1
+$LN676@DrawLayer:
+	call	?_Xrange@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@CAXXZ ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::_Xrange
+	int	3
+$LN677@DrawLayer:
+
+; 3177 :             _Xran();
+
+	call	?_Xran@?$vector@_NV?$allocator@_N@std@@@std@@QEBAXXZ ; std::vector<bool,std::allocator<bool> >::_Xran
+	npad	1
+$LN678@DrawLayer:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4953 :         _Xlen_string();
+
+	call	?_Xlen_string@std@@YAXXZ		; std::_Xlen_string
+	int	3
+$LN672@DrawLayer:
+?DrawLayer@LayerManager@@AEAAXH_NM@Z ENDP		; LayerManager::DrawLayer
 _TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+backup$171 = 64
+backup$172 = 64
+backup$173 = 64
+$T77 = 64
+$T76 = 64
+backup$174 = 64
+backup$175 = 64
+$T66 = 64
+$T124 = 64
+backup$176 = 64
+backup$177 = 64
+backup$178 = 64
+$T163 = 64
+$T155 = 64
+$T126 = 64
+$T112 = 64
+$T108 = 88
+$T101 = 88
+$T93 = 88
+$T83 = 88
+$T68 = 88
+$T106 = 96
+$T100 = 96
+$T94 = 96
+$T164 = 104
+$T156 = 104
+$T110 = 104
+$T133 = 112
+$T20 = 144
+$T29 = 152
+$T38 = 160
+$T48 = 168
+$T60 = 176
+$T49 = 176
+LayerPtr$179 = 176
+LayerName$ = 192
+__$ArrayPad$ = 224
+this$ = 352
+LayerIndex$ = 360
+Dragging$ = 368
+Opacity$ = 376
+?dtor$0@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA PROC ; `LayerManager::DrawLayer'::`1'::dtor$0
+	lea	rcx, QWORD PTR LayerPtr$179[rdx]
+	jmp	??1?$shared_ptr@VLayer@@@std@@QEAA@XZ	; std::shared_ptr<Layer>::~shared_ptr<Layer>
+?dtor$0@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA ENDP ; `LayerManager::DrawLayer'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+backup$171 = 64
+backup$172 = 64
+backup$173 = 64
+$T77 = 64
+$T76 = 64
+backup$174 = 64
+backup$175 = 64
+$T66 = 64
+$T124 = 64
+backup$176 = 64
+backup$177 = 64
+backup$178 = 64
+$T163 = 64
+$T155 = 64
+$T126 = 64
+$T112 = 64
+$T108 = 88
+$T101 = 88
+$T93 = 88
+$T83 = 88
+$T68 = 88
+$T106 = 96
+$T100 = 96
+$T94 = 96
+$T164 = 104
+$T156 = 104
+$T110 = 104
+$T133 = 112
+$T20 = 144
+$T29 = 152
+$T38 = 160
+$T48 = 168
+$T60 = 176
+$T49 = 176
+LayerPtr$179 = 176
+LayerName$ = 192
+__$ArrayPad$ = 224
+this$ = 352
+LayerIndex$ = 360
+Dragging$ = 368
+Opacity$ = 376
+?dtor$1@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA PROC ; `LayerManager::DrawLayer'::`1'::dtor$1
+	lea	rcx, QWORD PTR LayerName$[rdx]
+	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
+?dtor$1@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA ENDP ; `LayerManager::DrawLayer'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+backup$171 = 64
+backup$172 = 64
+backup$173 = 64
+$T77 = 64
+$T76 = 64
+backup$174 = 64
+backup$175 = 64
+$T66 = 64
+$T124 = 64
+backup$176 = 64
+backup$177 = 64
+backup$178 = 64
+$T163 = 64
+$T155 = 64
+$T126 = 64
+$T112 = 64
+$T108 = 88
+$T101 = 88
+$T93 = 88
+$T83 = 88
+$T68 = 88
+$T106 = 96
+$T100 = 96
+$T94 = 96
+$T164 = 104
+$T156 = 104
+$T110 = 104
+$T133 = 112
+$T20 = 144
+$T29 = 152
+$T38 = 160
+$T48 = 168
+$T60 = 176
+$T49 = 176
+LayerPtr$179 = 176
+LayerName$ = 192
+__$ArrayPad$ = 224
+this$ = 352
+LayerIndex$ = 360
+Dragging$ = 368
+Opacity$ = 376
+?dtor$2@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA PROC ; `LayerManager::DrawLayer'::`1'::dtor$2
+	lea	rcx, QWORD PTR $T133[rdx]
+	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
+?dtor$2@?0??DrawLayer@LayerManager@@AEAAXH_NM@Z@4HA ENDP ; `LayerManager::DrawLayer'::`1'::dtor$2
+text$x	ENDS
 END

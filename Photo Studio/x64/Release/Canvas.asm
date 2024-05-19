@@ -87,6 +87,7 @@ PUBLIC	?DrawCanvas@Canvas@@QEAAXXZ			; Canvas::DrawCanvas
 PUBLIC	?SetActive@Canvas@@QEAAXXZ			; Canvas::SetActive
 PUBLIC	??1Canvas@@QEAA@XZ				; Canvas::~Canvas
 PUBLIC	??0Canvas@@QEAA@AEAVTools@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$vec@$01M$0A@@glm@@H@Z ; Canvas::Canvas
+PUBLIC	??0ImGuiWindowClass@@QEAA@XZ			; ImGuiWindowClass::ImGuiWindowClass
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN11@Sentry_bas
@@ -149,8 +150,8 @@ $pdata$?GetCanvasMousePosition@Canvas@@QEAA?AU?$vec@$02M$0A@@glm@@XZ DD imagerel
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?DrawCanvas@Canvas@@QEAAXXZ DD imagerel $LN2117@DrawCanvas
-	DD	imagerel $LN2117@DrawCanvas+6156
+$pdata$?DrawCanvas@Canvas@@QEAAXXZ DD imagerel $LN2124@DrawCanvas
+	DD	imagerel $LN2124@DrawCanvas+6217
 	DD	imagerel $unwind$?DrawCanvas@Canvas@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -241,42 +242,42 @@ $unwind$?SetActive@Canvas@@QEAAXXZ DQ 00000681d00031d01r ; 5.65576e-310
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawCanvas@Canvas@@QEAAXXZ DQ 04c0216350004a52ar ; 1.41915e+58
-	DQ	00565003004039100r		; 1.12982e-282
-	DQ	039005008f4003806r		; 3.92712e-34
-	DQ	0300c037900460a06r		; 3.02412e-77
+$ip2state$?DrawCanvas@Canvas@@QEAAXXZ DQ 04c0217010004a52ar ; 1.4194e+58
+	DQ	0058d003004039100r		; 6.24084e-282
+	DQ	045005008fa003806r		; 2.4651e+24
+	DQ	0300c038500460a06r		; 3.02414e-77
 	DQ	0064d00380e03e900r		; 2.55626e-278
 	DQ	00038120565004c10r		; 1.33896e-307
-	DD	0301406c5H
+	DD	0301406a9H
 	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $stateUnwindMap$?DrawCanvas@Canvas@@QEAAXXZ DW 0a14H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0661H
+	DW	06a1H
 	DB	042H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0bc1H
+	DW	0c01H
 	DB	07aH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	05e1H
+	DW	0621H
 	DB	0b2H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DW	0241H
+	DW	0281H
 	DB	0eaH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DD	02450561H
+	DD	024505a1H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DD	02c50a81H
+	DD	02c50ac1H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DD	034502c1H
+	DD	03450301H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DD	03c50b01H
+	DD	03c50b41H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DD	044506e1H
+	DD	04450721H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DB	0c0H
+	DB	0e0H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -286,18 +287,18 @@ $cppxdata$?DrawCanvas@Canvas@@QEAAXXZ DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DrawCanvas@Canvas@@QEAAXXZ DQ 00071f860001f7119r ; 1.5994e-306
-	DQ	00073d8500072e858r		; 1.76626e-306
-	DQ	00075b8400074c848r		; 1.93312e-306
-	DQ	0007798330076a838r		; 2.09998e-306
-	DQ	0007978290078882er		; 2.26685e-306
-	DQ	000fe6421007a6825r		; 6.92454e-304
-	DQ	000f6012100fd3421r		; 5.01365e-304
+$unwind$?DrawCanvas@Canvas@@QEAAXXZ DQ 00072f860001f7119r ; 1.68841e-306
+	DQ	00074d8500073e858r		; 1.85526e-306
+	DQ	00076b8400075c848r		; 2.02212e-306
+	DQ	0007898330077a838r		; 2.18899e-306
+	DQ	0007a78290079882er		; 2.35585e-306
+	DQ	001006421007b6825r		; 7.46936e-304
+	DQ	000f8012100ff3421r		; 5.46935e-304
 	DQ	0700dc00fe011f013r		; 5.77347e+231
 	DD	0500cH
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$?DrawCanvas@Canvas@@QEAAXXZ
-	DD	070aH
+	DD	071aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT

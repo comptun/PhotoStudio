@@ -67,8 +67,8 @@ EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01
 EXTRN	__imp_??1?$basic_ios@DU?$char_traits@D@std@@@std@@UEAA@XZ:PROC
 EXTRN	__imp_?xsputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEBD_J@Z:PROC
 EXTRN	__imp_?xsgetn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JPEAD_J@Z:PROC
-EXTRN	__imp_?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ:PROC
 EXTRN	?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ:PROC ; std::basic_streambuf<char,std::char_traits<char> >::showmanyc
+EXTRN	__imp_?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MEAA_JXZ:PROC
 EXTRN	__imp_??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UEAA@XZ:PROC
 EXTRN	__imp_?_Pnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEBA_JXZ:PROC
 EXTRN	__imp_?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IEAAPEADXZ:PROC

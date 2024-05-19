@@ -122,13 +122,13 @@ pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$?DrawToolbar@Tools@@QEAAXXZ DD imagerel $LN103@DrawToolba
-	DD	imagerel $LN103@DrawToolba+1322
+	DD	imagerel $LN103@DrawToolba+1310
 	DD	imagerel $unwind$?DrawToolbar@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
 $pdata$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DD imagerel $LN94@DrawToolPr
-	DD	imagerel $LN94@DrawToolPr+1064
+	DD	imagerel $LN94@DrawToolPr+1056
 	DD	imagerel $unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -150,7 +150,7 @@ $unwind$?DrawToolPropertiesMenu@Tools@@QEAAXXZ DQ 00015741a00082819r ; 2.98348e-
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 0220208e500022d26r ; 7.22141e-145
+$ip2state$?DrawToolbar@Tools@@QEAAXXZ DQ 0220208b500022d26r ; 7.22112e-145
 	DQ	022025c0022025c00r		; 7.3514e-145
 	DQ	022025c0022025c00r		; 7.3514e-145
 	DQ	022025c0022025c00r		; 7.3514e-145
