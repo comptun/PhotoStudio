@@ -22,7 +22,7 @@ void Windows::DrawColorWindow()
 
     ImGui::SetCursorPos({ 7,7 });
     
-    ImGui::ColorPicker4("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoSidePreview);
+    ImGui::ColorPicker4PS("##MyColor##5", (float*)&WindowData::m_Color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoSidePreview);
     //std::cout << WindowData::m_Color.a << "\n";
     //WindowData::m_Color.a = 1.0f;
     ImGui::EndPS();
