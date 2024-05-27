@@ -9,7 +9,6 @@ PUBLIC	??_C@_09BJOGEADB@?$CDCOLLAPSE@			; `string'
 PUBLIC	??_C@_09BJIHMJFE@imgui?4ini@			; `string'
 PUBLIC	??_C@_0O@HCOAADPE@imgui_log?4txt@		; `string'
 PUBLIC	??_C@_06OJHGLDPL@?$CInull?$CJ@			; `string'
-PUBLIC	??_C@_00CNPNBAHC@@				; `string'
 PUBLIC	??_C@_0CB@GNIOCDHI@Clipper?3?5Begin?$CI?$CFd?0?$CF?42f?$CJ?5in?5?8?$CFs?8@ ; `string'
 PUBLIC	??_C@_0BI@CAOKIKBG@Clipper?3?5End?$CI?$CJ?5in?5?8?$CFs?8?6@ ; `string'
 PUBLIC	??_C@_0CL@INMALPKG@Clipper?3?5Step?$CI?$CJ?3?5inside?5frozen?5@ ; `string'
@@ -162,8 +161,6 @@ PUBLIC	??_C@_01GAPBHFFA@T@				; `string'
 PUBLIC	??_C@_01HJOKEEBB@U@				; `string'
 PUBLIC	??_C@_01FCMHBHNC@V@				; `string'
 PUBLIC	??_C@_01ELNMCGJD@W@				; `string'
-PUBLIC	??_C@_01MMEEDKFM@X@				; `string'
-PUBLIC	??_C@_01NFFPALBN@Y@				; `string'
 PUBLIC	??_C@_01POHCFINO@Z@				; `string'
 PUBLIC	??_C@_02LCPENACN@F1@				; `string'
 PUBLIC	??_C@_02JJNJIDOO@F2@				; `string'
@@ -382,7 +379,6 @@ PUBLIC	??_C@_0DI@OLLMNIML@?$FLdocking?$FN?5DockNodeRemoveWindow?5@ ; `string'
 PUBLIC	??_C@_0EC@OJPOEPNF@?$FLviewport?$FN?5Node?5?$CF08X?5transfer?5V@ ; `string'
 PUBLIC	??_C@_03NDEAONJP@?5?5?5@			; `string'
 PUBLIC	??_C@_0M@IALBNCNH@?$CDWindowMenu@		; `string'
-PUBLIC	??_C@_02DKCKIIND@?$CFs@				; `string'
 PUBLIC	??_C@_0N@BFNBGBBP@?5?$CIwill?5sort?$CJ@		; `string'
 PUBLIC	??_C@_0DE@DDFDIKCC@?$FLdocking?$FN?5In?5node?50x?$CF08X?3?5?$CFd?5ne@ ; `string'
 PUBLIC	??_C@_0CG@OGIFOOH@?$FLdocking?$FN?5?9?5Tab?50x?$CF08X?5?8?$CFs?8?5Ord@ ; `string'
@@ -2964,10 +2960,6 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_0N@BFNBGBBP@?5?$CIwill?5sort?$CJ@ DB ' (will sort)', 00H ; `string'
 CONST	ENDS
-;	COMDAT ??_C@_02DKCKIIND@?$CFs@
-CONST	SEGMENT
-??_C@_02DKCKIIND@?$CFs@ DB '%s', 00H			; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_0M@IALBNCNH@?$CDWindowMenu@
 CONST	SEGMENT
 ??_C@_0M@IALBNCNH@?$CDWindowMenu@ DB '#WindowMenu', 00H	; `string'
@@ -3912,14 +3904,6 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_01POHCFINO@Z@ DB 'Z', 00H				; `string'
 CONST	ENDS
-;	COMDAT ??_C@_01NFFPALBN@Y@
-CONST	SEGMENT
-??_C@_01NFFPALBN@Y@ DB 'Y', 00H				; `string'
-CONST	ENDS
-;	COMDAT ??_C@_01MMEEDKFM@X@
-CONST	SEGMENT
-??_C@_01MMEEDKFM@X@ DB 'X', 00H				; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_01ELNMCGJD@W@
 CONST	SEGMENT
 ??_C@_01ELNMCGJD@W@ DB 'W', 00H				; `string'
@@ -4557,10 +4541,6 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_0CB@GNIOCDHI@Clipper?3?5Begin?$CI?$CFd?0?$CF?42f?$CJ?5in?5?8?$CFs?8@ DB 'C'
 	DB	'lipper: Begin(%d,%.2f) in ''%s''', 0aH, 00H	; `string'
-CONST	ENDS
-;	COMDAT ??_C@_00CNPNBAHC@@
-CONST	SEGMENT
-??_C@_00CNPNBAHC@@ DB 00H				; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_06OJHGLDPL@?$CInull?$CJ@
 CONST	SEGMENT
@@ -6083,7 +6063,6 @@ PUBLIC	?DestroyContext@ImGui@@YAXPEAUImGuiContext@@@Z	; ImGui::DestroyContext
 PUBLIC	?DockSpace@ImGui@@YAIIAEBUImVec2@@HPEBUImGuiWindowClass@@@Z ; ImGui::DockSpace
 PUBLIC	?SetNextWindowSize@ImGui@@YAXAEBUImVec2@@H@Z	; ImGui::SetNextWindowSize
 PUBLIC	?GetID@ImGui@@YAIPEBD@Z				; ImGui::GetID
-PUBLIC	?SetCursorPosX@ImGui@@YAXM@Z			; ImGui::SetCursorPosX
 PUBLIC	?SetWindowFocus@ImGui@@YAXXZ			; ImGui::SetWindowFocus
 PUBLIC	?IsWindowHovered@ImGui@@YA_NH@Z			; ImGui::IsWindowHovered
 PUBLIC	?End@ImGui@@YAXXZ				; ImGui::End
@@ -6093,7 +6072,6 @@ PUBLIC	?SetNextWindowClass@ImGui@@YAXPEBUImGuiWindowClass@@@Z ; ImGui::SetNextWi
 PUBLIC	?SetNextWindowDockID@ImGui@@YAXIH@Z		; ImGui::SetNextWindowDockID
 PUBLIC	?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ	; ImGui::GetContentRegionAvail
 PUBLIC	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ			; ImGui::GetIO
-PUBLIC	?SetNextItemWidth@ImGui@@YAXM@Z			; ImGui::SetNextItemWidth
 PUBLIC	?SetCursorPos@ImGui@@YAXAEBUImVec2@@@Z		; ImGui::SetCursorPos
 PUBLIC	?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z	; ImGui::PushStyleColor
 PUBLIC	?GetWindowWidth@ImGui@@YAMXZ			; ImGui::GetWindowWidth
@@ -6105,6 +6083,7 @@ PUBLIC	?PopStyleColor@ImGui@@YAXH@Z			; ImGui::PopStyleColor
 PUBLIC	?GetCursorScreenPos@ImGui@@YA?AUImVec2@@XZ	; ImGui::GetCursorScreenPos
 PUBLIC	?GetScrollY@ImGui@@YAMXZ			; ImGui::GetScrollY
 PUBLIC	?EndChild@ImGui@@YAXXZ				; ImGui::EndChild
+PUBLIC	?SetNextItemWidth@ImGui@@YAXM@Z			; ImGui::SetNextItemWidth
 PUBLIC	?GetWindowSize@ImGui@@YA?AUImVec2@@XZ		; ImGui::GetWindowSize
 PUBLIC	?PopStyleVar@ImGui@@YAXH@Z			; ImGui::PopStyleVar
 PUBLIC	?GetWindowPos@ImGui@@YA?AUImVec2@@XZ		; ImGui::GetWindowPos
@@ -6114,6 +6093,7 @@ PUBLIC	?PopFont@ImGui@@YAXXZ				; ImGui::PopFont
 PUBLIC	?PushStyleVar@ImGui@@YAXHM@Z			; ImGui::PushStyleVar
 PUBLIC	?PushStyleVar@ImGui@@YAXHAEBUImVec2@@@Z		; ImGui::PushStyleVar
 PUBLIC	?SetWindowFontScale@ImGui@@YAXM@Z		; ImGui::SetWindowFontScale
+PUBLIC	?SetCursorPosX@ImGui@@YAXM@Z			; ImGui::SetCursorPosX
 ;	COMDAT ?viewports@?FP@??ShowMetricsWindow@ImGui@@YAXPEA_N@Z@4U?$ImVector@PEAUImGuiViewportP@@@@A
 _BSS	SEGMENT
 ?viewports@?FP@??ShowMetricsWindow@ImGui@@YAXPEA_N@Z@4U?$ImVector@PEAUImGuiViewportP@@@@A DB 010H DUP (?) ; `ImGui::ShowMetricsWindow'::`95'::viewports

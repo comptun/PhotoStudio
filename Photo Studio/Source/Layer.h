@@ -17,7 +17,6 @@ public:
 
 	glm::vec2 m_LayerOffset;
 	glm::vec2 m_ActualOffset;
-private:
 	std::string m_LayerName;
 };
 

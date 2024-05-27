@@ -15,8 +15,8 @@ PUBLIC	glad_glGenFramebuffers
 PUBLIC	glad_glDeleteFramebuffers
 PUBLIC	glad_glFramebufferTexture2D
 PUBLIC	glad_glGetProgramInfoLog
-PUBLIC	glad_glGetProgramiv
 PUBLIC	glad_glCompileShader
+PUBLIC	glad_glGetProgramiv
 PUBLIC	glad_glShaderSource
 PUBLIC	glad_glDeleteProgram
 PUBLIC	glad_glUniform4f
@@ -799,8 +799,8 @@ glad_glGenFramebuffers DQ 01H DUP (?)
 glad_glDeleteFramebuffers DQ 01H DUP (?)
 glad_glFramebufferTexture2D DQ 01H DUP (?)
 glad_glGetProgramInfoLog DQ 01H DUP (?)
-glad_glGetProgramiv DQ 01H DUP (?)
 glad_glCompileShader DQ 01H DUP (?)
+glad_glGetProgramiv DQ 01H DUP (?)
 glad_glShaderSource DQ 01H DUP (?)
 glad_glDeleteProgram DQ 01H DUP (?)
 glad_glUniform4f DQ 01H DUP (?)

@@ -4,11 +4,18 @@ include listing.inc
 
 INCLUDELIB OLDNAMES
 
+PUBLIC	??_C@_00CNPNBAHC@@				; `string'
 PUBLIC	??_C@_06BIFLPOGA@Layer?5@			; `string'
 PUBLIC	??_C@_01CLKCMJKC@?5@				; `string'
 PUBLIC	??_C@_03LDIMJOGN@?n?$KD?$LE@			; `string'
 PUBLIC	??_C@_03KKJHKPCM@?n?$KD?$LF@			; `string'
 PUBLIC	??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ ; `string'
+PUBLIC	??_C@_0L@KOOGALIH@Properties@			; `string'
+PUBLIC	??_C@_02DKCKIIND@?$CFs@				; `string'
+PUBLIC	??_C@_04FABLJDN@Name@				; `string'
+PUBLIC	??_C@_02IEBMKJDF@?$CD?$CD@			; `string'
+PUBLIC	??_C@_01MMEEDKFM@X@				; `string'
+PUBLIC	??_C@_01NFFPALBN@Y@				; `string'
 PUBLIC	??_C@_06IJMNPAPH@Layers@			; `string'
 PUBLIC	??_C@_09DJFJMHEJ@LayerList@			; `string'
 PUBLIC	??_C@_0BA@MENHHACE@LayerProperties@		; `string'
@@ -22,6 +29,7 @@ PUBLIC	??_C@_0BA@FOIKENOD@vector?5too?5long@		; `string'
 PUBLIC	??_R3?$_Ref_count_obj2@VLayer@@@std@@8		; std::_Ref_count_obj2<Layer>::`RTTI Class Hierarchy Descriptor'
 PUBLIC	??_R1A@?0A@EA@_Ref_count_base@std@@8		; std::_Ref_count_base::`RTTI Base Class Descriptor at (0,-1,0,64)'
 PUBLIC	??_R1A@?0A@EA@?$_Ref_count_obj2@VLayer@@@std@@8	; std::_Ref_count_obj2<Layer>::`RTTI Base Class Descriptor at (0,-1,0,64)'
+PUBLIC	?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA ; `__local_stdio_printf_options'::`2'::_OptionsStorage
 PUBLIC	??_R4?$_Ref_count_obj2@VLayer@@@std@@6B@	; std::_Ref_count_obj2<Layer>::`RTTI Complete Object Locator'
 PUBLIC	??_R0?AV?$_Ref_count_obj2@VLayer@@@std@@@8	; std::_Ref_count_obj2<Layer> `RTTI Type Descriptor'
 PUBLIC	?Pos@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A	; Input::Mouse::Pos
@@ -33,7 +41,12 @@ PUBLIC	??_7?$_Ref_count_obj2@VLayer@@@std@@6B@		; std::_Ref_count_obj2<Layer>::`
 PUBLIC	??_R2?$_Ref_count_obj2@VLayer@@@std@@8		; std::_Ref_count_obj2<Layer>::`RTTI Base Class Array'
 EXTRN	__imp_SDL_GetWindowPosition:PROC
 EXTRN	__imp_SDL_GL_GetCurrentWindow:PROC
+EXTRN	__imp___stdio_common_vsprintf_s:PROC
 EXTRN	__imp_?_Xout_of_range@std@@YAXPEBD@Z:PROC
+;	COMDAT ?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA
+_BSS	SEGMENT
+?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA DQ 01H DUP (?) ; `__local_stdio_printf_options'::`2'::_OptionsStorage
+_BSS	ENDS
 ;	COMDAT ?Pos@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A
 _BSS	SEGMENT
 ?Pos@Mouse@Input@@2U?$vec@$01M$0A@@glm@@A DQ 01H DUP (?) ; Input::Mouse::Pos
@@ -160,6 +173,30 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_06IJMNPAPH@Layers@ DB 'Layers', 00H		; `string'
 CONST	ENDS
+;	COMDAT ??_C@_01NFFPALBN@Y@
+CONST	SEGMENT
+??_C@_01NFFPALBN@Y@ DB 'Y', 00H				; `string'
+CONST	ENDS
+;	COMDAT ??_C@_01MMEEDKFM@X@
+CONST	SEGMENT
+??_C@_01MMEEDKFM@X@ DB 'X', 00H				; `string'
+CONST	ENDS
+;	COMDAT ??_C@_02IEBMKJDF@?$CD?$CD@
+CONST	SEGMENT
+??_C@_02IEBMKJDF@?$CD?$CD@ DB '##', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04FABLJDN@Name@
+CONST	SEGMENT
+??_C@_04FABLJDN@Name@ DB 'Name', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_02DKCKIIND@?$CFs@
+CONST	SEGMENT
+??_C@_02DKCKIIND@?$CFs@ DB '%s', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0L@KOOGALIH@Properties@
+CONST	SEGMENT
+??_C@_0L@KOOGALIH@Properties@ DB 'Properties', 00H	; `string'
+CONST	ENDS
 ;	COMDAT ??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@
 CONST	SEGMENT
 ??_C@_0BA@FMPIKLLM@?5?5?5?5?5?5?5?5?5?5?5?5?5?5?5@ DB '               ', 00H ; `string'
@@ -179,6 +216,10 @@ CONST	ENDS
 ;	COMDAT ??_C@_06BIFLPOGA@Layer?5@
 CONST	SEGMENT
 ??_C@_06BIFLPOGA@Layer?5@ DB 'Layer ', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_00CNPNBAHC@@
+CONST	SEGMENT
+??_C@_00CNPNBAHC@@ DB 00H				; `string'
 PUBLIC	??$construct_at@II$0A@@std@@YAPEAIQEAI$$QEAI@Z	; std::construct_at<unsigned int,unsigned int,0>
 PUBLIC	??$_Voidify_iter@PEAI@std@@YAPEAXPEAI@Z		; std::_Voidify_iter<unsigned int *>
 PUBLIC	??$construct_at@IAEBI$0A@@std@@YAPEAIQEAIAEBI@Z	; std::construct_at<unsigned int,unsigned int const &,0>
@@ -303,6 +344,7 @@ PUBLIC	??$_Get_unwrapped@AEAV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@
 PUBLIC	??$copy_backward@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@V12@@std@@YA?AV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@0@V10@00@Z ; std::copy_backward<std::_Vb_iterator<std::_Wrap_alloc<std::allocator<unsigned int> > >,std::_Vb_iterator<std::_Wrap_alloc<std::allocator<unsigned int> > > >
 PUBLIC	??$addressof@$$CBV?$_String_val@U?$_Simple_types@D@std@@@std@@@std@@YAPEBV?$_String_val@U?$_Simple_types@D@std@@@0@AEBV10@@Z ; std::addressof<std::_String_val<std::_Simple_types<char> > const >
 PUBLIC	??$addressof@V?$_String_val@U?$_Simple_types@D@std@@@std@@@std@@YAPEAV?$_String_val@U?$_Simple_types@D@std@@@0@AEAV10@@Z ; std::addressof<std::_String_val<std::_Simple_types<char> > >
+PUBLIC	??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Reallocate_for<`std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign'::`2'::<lambda_1>,char const *>
 PUBLIC	??$?0AEBV?$allocator@I@std@@$$V@?$_Compressed_pair@V?$allocator@I@std@@V?$_Vector_val@U?$_Simple_types@I@std@@@2@$00@std@@QEAA@U_One_then_variadic_args_t@1@AEBV?$allocator@I@1@@Z ; std::_Compressed_pair<std::allocator<unsigned int>,std::_Vector_val<std::_Simple_types<unsigned int> >,1>::_Compressed_pair<std::allocator<unsigned int>,std::_Vector_val<std::_Simple_types<unsigned int> >,1><std::allocator<unsigned int> const &>
 PUBLIC	??$fill@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@_N@std@@YAXV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@0@0AEB_N@Z ; std::fill<std::_Vb_iterator<std::_Wrap_alloc<std::allocator<unsigned int> > >,bool>
 PUBLIC	??$_Construct_in_place@PEADAEAPEAD@std@@YAXAEAPEAD0@Z ; std::_Construct_in_place<char *,char * &>
@@ -318,6 +360,7 @@ PUBLIC	??$destroy@V?$shared_ptr@VLayer@@@std@@@?$_Default_allocator_traits@V?$al
 PUBLIC	??$_Unfancy@V?$shared_ptr@VLayer@@@std@@@std@@YAPEAV?$shared_ptr@VLayer@@@0@PEAV10@@Z ; std::_Unfancy<std::shared_ptr<Layer> >
 PUBLIC	??$_Move_unchecked@PEAV?$shared_ptr@VLayer@@@std@@PEAV12@@std@@YAPEAV?$shared_ptr@VLayer@@@0@PEAV10@00@Z ; std::_Move_unchecked<std::shared_ptr<Layer> *,std::shared_ptr<Layer> *>
 PUBLIC	??$addressof@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@std@@YAPEAV?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@0@AEAV10@@Z ; std::addressof<std::_Vector_val<std::_Simple_types<std::shared_ptr<Layer> > > >
+PUBLIC	??$sprintf_s@$0BAA@@@YAHAEAY0BAA@DPEBDZZ	; sprintf_s<256>
 PUBLIC	??$move@AEAV?$shared_ptr@VLayer@@@std@@@std@@YA$$QEAV?$shared_ptr@VLayer@@@0@AEAV10@@Z ; std::move<std::shared_ptr<Layer> &>
 PUBLIC	??$make_shared@VLayer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEA_K_K_KAEAU?$vec@$03M$0A@@glm@@@std@@YA?AV?$shared_ptr@VLayer@@@0@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AEA_K$$QEA_K2AEAU?$vec@$03M$0A@@glm@@@Z ; std::make_shared<Layer,std::basic_string<char,std::char_traits<char>,std::allocator<char> > &,unsigned __int64 &,unsigned __int64,unsigned __int64,glm::vec<4,float,0> &>
 PUBLIC	??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@QEBD$$QEAV10@@Z ; std::operator+<char,std::char_traits<char>,std::allocator<char> >
@@ -352,6 +395,8 @@ PUBLIC	??0?$_Vb_const_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@QE
 PUBLIC	??Y?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@QEAAAEAV01@_J@Z ; std::_Vb_iterator<std::_Wrap_alloc<std::allocator<unsigned int> > >::operator+=
 PUBLIC	?move@?$_Char_traits@DH@std@@SAPEADQEADQEBD_K@Z	; std::_Char_traits<char,int>::move
 PUBLIC	?_Memcpy_val_from@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXAEBV12@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Memcpy_val_from
+PUBLIC	??R<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV23@QEBD_K@Z@QEBA@QEAD10@Z ; `std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign'::`2'::<lambda_1>::operator()
+PUBLIC	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 PUBLIC	?_Swap_proxy_and_iterators@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXAEAV12@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Swap_proxy_and_iterators
 PUBLIC	??0?$vector@IV?$allocator@I@std@@@std@@QEAA@AEBV?$allocator@I@1@@Z ; std::vector<unsigned int,std::allocator<unsigned int> >::vector<unsigned int,std::allocator<unsigned int> >
 PUBLIC	??1?$vector@IV?$allocator@I@std@@@std@@QEAA@XZ	; std::vector<unsigned int,std::allocator<unsigned int> >::~vector<unsigned int,std::allocator<unsigned int> >
@@ -368,6 +413,7 @@ PUBLIC	?__autoclassinit2@?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@
 PUBLIC	?_Take_contents@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXAEAV12@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Take_contents
 PUBLIC	??R<lambda_1>@?1??append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV23@QEBD_K@Z@QEBA@QEAD0101@Z ; `std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append'::`2'::<lambda_1>::operator()
 PUBLIC	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append
+PUBLIC	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 PUBLIC	?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBA_KXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::size
 PUBLIC	?_Tidy_init@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Tidy_init
 PUBLIC	?_Tidy@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@AEAAXXZ ; std::vector<std::shared_ptr<Layer>,std::allocator<std::shared_ptr<Layer> > >::_Tidy
@@ -388,6 +434,7 @@ PUBLIC	??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr
 PUBLIC	??Y?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@std@@QEAAAEAV01@_J@Z ; std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::shared_ptr<Layer> > > >::operator+=
 PUBLIC	?__autoclassinit2@?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@std@@QEAAX_K@Z ; std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::shared_ptr<Layer> > > >::__autoclassinit2
 PUBLIC	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@$$QEAV01@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+PUBLIC	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 PUBLIC	??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator+=
 PUBLIC	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::append
 PUBLIC	?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBAPEBDXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::c_str
@@ -410,6 +457,7 @@ PUBLIC	??4?$_Vb_reference@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@QEAAAEA
 PUBLIC	??B?$_Vb_reference@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@QEBA_NXZ ; std::_Vb_reference<std::_Wrap_alloc<std::allocator<unsigned int> > >::operator bool
 PUBLIC	??H?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@V?$shared_ptr@VLayer@@@std@@@std@@@std@@@std@@QEBA?AV01@_J@Z ; std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::shared_ptr<Layer> > > >::operator+
 PUBLIC	?DrawLayersWindow@LayerManager@@QEAAXXZ		; LayerManager::DrawLayersWindow
+PUBLIC	?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ ; LayerManager::DrawLayerPropertiesWindow
 PUBLIC	?DrawLayer@LayerManager@@AEAAXH_NM@Z		; LayerManager::DrawLayer
 PUBLIC	?NextLayerDraggable@LayerManager@@AEAAXH@Z	; LayerManager::NextLayerDraggable
 PUBLIC	?GetActiveLayer@LayerManager@@QEAA?AV?$shared_ptr@VLayer@@@std@@XZ ; LayerManager::GetActiveLayer
@@ -433,6 +481,9 @@ PUBLIC	?_Getcont@_Iterator_base0@std@@QEBAPEBU_Container_base0@2@XZ ; std::_Iter
 PUBLIC	?_Adopt@_Iterator_base0@std@@QEAAXPEBX@Z	; std::_Iterator_base0::_Adopt
 PUBLIC	?_Alloc_proxy@_Container_base0@std@@QEAAXAEBU_Fake_allocator@2@@Z ; std::_Container_base0::_Alloc_proxy
 PUBLIC	?_Swap_proxy_and_iterators@_Container_base0@std@@QEAAXAEAU12@@Z ; std::_Container_base0::_Swap_proxy_and_iterators
+PUBLIC	vsprintf_s
+PUBLIC	_vsprintf_s_l
+PUBLIC	__local_stdio_printf_options
 EXTRN	??_E?$_Ref_count_obj2@VLayer@@@std@@UEAAPEAXI@Z:PROC ; std::_Ref_count_obj2<Layer>::`vector deleting destructor'
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -904,6 +955,36 @@ $pdata$??$copy_backward@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD imagerel $LN91@Reallocate
+	DD	imagerel $LN91@Reallocate+39
+	DD	imagerel $unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD imagerel $LN91@Reallocate+39
+	DD	imagerel $LN91@Reallocate+287
+	DD	imagerel $chain$1$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD imagerel $LN91@Reallocate+287
+	DD	imagerel $LN91@Reallocate+294
+	DD	imagerel $chain$3$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$4$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD imagerel $LN91@Reallocate+294
+	DD	imagerel $LN91@Reallocate+300
+	DD	imagerel $chain$4$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$5$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD imagerel $LN91@Reallocate+300
+	DD	imagerel $LN91@Reallocate+306
+	DD	imagerel $chain$5$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$??$fill@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@_N@std@@YAXV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@0@0AEB_N@Z DD imagerel $LN29@fill
 	DD	imagerel $LN29@fill+56
 	DD	imagerel $unwind$??$fill@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@_N@std@@YAXV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@0@0AEB_N@Z
@@ -1033,6 +1114,12 @@ pdata	SEGMENT
 $pdata$2$??$_Move_unchecked@PEAV?$shared_ptr@VLayer@@@std@@PEAV12@@std@@YAPEAV?$shared_ptr@VLayer@@@0@PEAV10@00@Z DD imagerel $LN46@Move_unche+148
 	DD	imagerel $LN46@Move_unche+167
 	DD	imagerel $chain$2$??$_Move_unchecked@PEAV?$shared_ptr@VLayer@@@std@@PEAV12@@std@@YAPEAV?$shared_ptr@VLayer@@@0@PEAV10@00@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??$sprintf_s@$0BAA@@@YAHAEAY0BAA@DPEBDZZ DD imagerel $LN9@sprintf_s
+	DD	imagerel $LN9@sprintf_s+91
+	DD	imagerel $unwind$??$sprintf_s@$0BAA@@@YAHAEAY0BAA@DPEBDZZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -1168,6 +1255,30 @@ $pdata$?move@?$_Char_traits@DH@std@@SAPEADQEADQEBD_K@Z DD imagerel $LN33@move
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$??R<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV23@QEBD_K@Z@QEBA@QEAD10@Z DD imagerel $LN17@operator
+	DD	imagerel $LN17@operator+42
+	DD	imagerel $unwind$??R<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV23@QEBD_K@Z@QEBA@QEAD10@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DD imagerel $LN43@assign
+	DD	imagerel $LN43@assign+25
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DD imagerel $LN43@assign+25
+	DD	imagerel $LN43@assign+77
+	DD	imagerel $chain$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DD imagerel $LN43@assign+77
+	DD	imagerel $LN43@assign+98
+	DD	imagerel $chain$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$??1?$vector@IV?$allocator@I@std@@@std@@QEAA@XZ DD imagerel $LN33@vector
 	DD	imagerel $LN33@vector+92
 	DD	imagerel $unwind$??1?$vector@IV?$allocator@I@std@@@std@@QEAA@XZ
@@ -1210,6 +1321,24 @@ $pdata$1$?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QE
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DD imagerel $LN49@assign
+	DD	imagerel $LN49@assign+38
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DD imagerel $LN49@assign+38
+	DD	imagerel $LN49@assign+93
+	DD	imagerel $chain$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DD imagerel $LN49@assign+93
+	DD	imagerel $LN49@assign+114
+	DD	imagerel $chain$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?_Tidy@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@AEAAXXZ DD imagerel $LN30@Tidy
 	DD	imagerel $LN30@Tidy+104
 	DD	imagerel $unwind$?_Tidy@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@AEAAXXZ
@@ -1243,6 +1372,24 @@ pdata	SEGMENT
 $pdata$?_Xran@?$vector@_NV?$allocator@_N@std@@@std@@QEBAXXZ DD imagerel $LN4@Xran
 	DD	imagerel $LN4@Xran+18
 	DD	imagerel $unwind$?_Xran@?$vector@_NV?$allocator@_N@std@@@std@@QEBAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DD imagerel $LN51@operator
+	DD	imagerel $LN51@operator+38
+	DD	imagerel $unwind$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$0$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DD imagerel $LN51@operator+38
+	DD	imagerel $LN51@operator+93
+	DD	imagerel $chain$0$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$1$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DD imagerel $LN51@operator+93
+	DD	imagerel $LN51@operator+114
+	DD	imagerel $chain$1$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -1318,6 +1465,12 @@ $pdata$?DrawLayersWindow@LayerManager@@QEAAXXZ DD imagerel $LN171@DrawLayers
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ DD imagerel $LN263
+	DD	imagerel $LN263+1331
+	DD	imagerel $unwind$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?DrawLayer@LayerManager@@AEAAXH_NM@Z DD imagerel $LN681@DrawLayer
 	DD	imagerel $LN681@DrawLayer+4145
 	DD	imagerel $unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z
@@ -1375,6 +1528,28 @@ pdata	SEGMENT
 $pdata$?to_string@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z DD imagerel $LN7@to_string
 	DD	imagerel $LN7@to_string+23
 	DD	imagerel $unwind$?to_string@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$vsprintf_s DD imagerel $LN6@vsprintf_s
+	DD	imagerel $LN6@vsprintf_s+90
+	DD	imagerel $unwind$vsprintf_s
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$_vsprintf_s_l DD imagerel $LN4@vsprintf_s
+	DD	imagerel $LN4@vsprintf_s+82
+	DD	imagerel $unwind$_vsprintf_s_l
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$_vsprintf_s_l DQ 00008340a00040a01r	; 1.14081e-308
+	DD	07006520aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$vsprintf_s DQ 00009640f00060f01r	; 1.30596e-308
+	DQ	0700b520f0008340fr		; 5.30195e+231
+xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$?to_string@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z DQ 03002520600020601r ; 1.97773e-77
@@ -1532,6 +1707,43 @@ $unwind$?DrawLayer@LayerManager@@AEAAXH_NM@Z DQ 0000f982a00113819r ; 2.16867e-30
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$ip2state$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ DB 06H
+	DB	08cH
+	DB	00H
+	DB	0a1H, 06H
+	DB	02H
+	DB	0aeH
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ DB 02H
+	DB	0aH
+	DD	imagerel ??1?$shared_ptr@VLayer@@@std@@QEAA@XZ
+	DB	090H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ DB 028H
+	DD	imagerel $stateUnwindMap$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ
+	DD	imagerel $ip2state$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ DD 0d3719H
+	DD	01b6826H
+	DD	03f7422H
+	DD	03e6422H
+	DD	03d3422H
+	DD	0380122H
+	DD	0e012f014H
+	DD	05010H
+	DD	imagerel __GSHandlerCheck_EH4
+	DD	imagerel $cppxdata$?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ
+	DD	01a2H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $unwind$?DrawLayersWindow@LayerManager@@QEAAXXZ DQ 000088828000f3619r ; 1.1865e-308
 	DQ	0000a681f00097823r		; 1.44723e-308
 	DQ	0001a641b001b741br		; 3.67013e-308
@@ -1600,6 +1812,25 @@ $unwind$??1?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLaye
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$chain$1$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DD 021H
+	DD	imagerel $LN51@operator
+	DD	imagerel $LN51@operator+38
+	DD	imagerel $unwind$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DQ 00006640500020521r ; 8.88736e-309
+	DD	imagerel $LN51@operator
+	DD	imagerel $LN51@operator+38
+	DD	imagerel $unwind$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@QEBD@Z DQ 00007340a00040a01r ; 1.00174e-308
+	DD	07006320aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $unwind$?_Xran@?$vector@_NV?$allocator@_N@std@@@std@@QEBAXXZ DQ 00000420400010401r ; 3.58617e-310
 xdata	ENDS
 ;	COMDAT xdata
@@ -1621,6 +1852,25 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$?_Tidy@?$vector@V?$shared_ptr@VLayer@@@std@@V?$allocator@V?$shared_ptr@VLayer@@@std@@@2@@std@@AEAAXXZ DQ 03002320600020601r ; 1.96423e-77
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DD 021H
+	DD	imagerel $LN49@assign
+	DD	imagerel $LN49@assign+38
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DQ 00006640500020521r ; 8.88736e-309
+	DD	imagerel $LN49@assign
+	DD	imagerel $LN49@assign+38
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD@Z DQ 00007340a00040a01r ; 1.00174e-308
+	DD	07006320aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1659,6 +1909,30 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$??1?$vector@IV?$allocator@I@std@@@std@@QEAA@XZ DQ 03002320600020601r ; 1.96423e-77
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$1$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DD 021H
+	DD	imagerel $LN43@assign
+	DD	imagerel $LN43@assign+25
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$0$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DQ 00006640500020521r ; 8.88736e-309
+	DD	imagerel $LN43@assign
+	DD	imagerel $LN43@assign+25
+	DD	imagerel $unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z DQ 00007340a00040a01r ; 1.00174e-308
+	DD	07006320aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??R<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV23@QEBD_K@Z@QEBA@QEAD10@Z DQ 00006340a00040a01r ; 8.62672e-309
+	DD	07006320aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -1810,6 +2084,11 @@ $unwind$??$make_shared@VLayer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allo
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$unwind$??$sprintf_s@$0BAA@@@YAHAEAY0BAA@DPEBDZZ DQ 07012521600041601r ; 7.11078e+231
+	DD	030106011H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $chain$2$??$_Move_unchecked@PEAV?$shared_ptr@VLayer@@@std@@PEAV12@@std@@YAPEAV?$shared_ptr@VLayer@@@0@PEAV10@00@Z DD 021H
 	DD	imagerel $LN46@Move_unche
 	DD	imagerel $LN46@Move_unche+29
@@ -1956,6 +2235,42 @@ xdata	ENDS
 xdata	SEGMENT
 $unwind$??$fill@V?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@std@@_N@std@@YAXV?$_Vb_iterator@U?$_Wrap_alloc@V?$allocator@I@std@@@std@@@0@0AEB_N@Z DQ 00009641000061001r ; 1.30596e-308
 	DQ	0e00c321000085410r		; -4.72551e+154
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$5$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DQ 00004740000040021r ; 6.19283e-309
+	DD	0c5400H
+	DD	imagerel $LN91@Reallocate
+	DD	imagerel $LN91@Reallocate+39
+	DD	imagerel $unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$4$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DD 021H
+	DD	imagerel $LN91@Reallocate
+	DD	imagerel $LN91@Reallocate+39
+	DD	imagerel $unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$3$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DQ 00004740000040021r ; 6.19283e-309
+	DD	0c5400H
+	DD	imagerel $LN91@Reallocate
+	DD	imagerel $LN91@Reallocate+39
+	DD	imagerel $unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$1$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DQ 00004741200041221r ; 6.19321e-309
+	DD	0c5405H
+	DD	imagerel $LN91@Reallocate
+	DD	imagerel $LN91@Reallocate+39
+	DD	imagerel $unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z DQ 0f007420b00050b01r ; -4.51355e+231
+	DQ	0000030026003e005r		; 2.60801e-310
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -2490,4 +2805,869 @@ xdata	ENDS
 xdata	SEGMENT
 $unwind$??$_Copy_memmove@PEAIPEAI@std@@YAPEAIPEAI00@Z DQ 00009340a00040a01r ; 1.27987e-308
 	DD	07006320aH
+; Function compile flags: /Ogtpy
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+; File C:\dev\Photo Studio\Photo Studio\Source\Utilities.cpp
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+;	COMDAT ?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ
+_TEXT	SEGMENT
+$T13 = 64
+$T16 = 72
+$T1 = 88
+step_fast$ = 120
+step$ = 128
+step_fast$ = 136
+step$ = 144
+OffsetX$ = 152
+OffsetY$ = 156
+LayerName$ = 160
+__$ArrayPad$ = 416
+this$ = 480
+?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ PROC	; LayerManager::DrawLayerPropertiesWindow, COMDAT
+
+; 232  : {
+
+$LN263:
+	mov	rax, rsp
+	mov	QWORD PTR [rax+16], rbx
+	mov	QWORD PTR [rax+24], rsi
+	mov	QWORD PTR [rax+32], rdi
+	push	rbp
+	push	r14
+	push	r15
+	lea	rbp, QWORD PTR [rax-216]
+	sub	rsp, 448				; 000001c0H
+	movaps	XMMWORD PTR [rax-40], xmm6
+	mov	rax, QWORD PTR __security_cookie
+	xor	rax, rsp
+	mov	QWORD PTR __$ArrayPad$[rbp-256], rax
+	mov	rsi, rcx
+
+; 233  : 	ImGui::BeginPS("Properties", ImGuiWindowFlags_AlwaysVerticalScrollbar);
+
+	lea	rdx, OFFSET FLAT:??_C@_0L@KOOGALIH@Properties@
+	lea	rcx, QWORD PTR $T1[rsp]
+	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@QEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+	mov	edx, 16384				; 00004000H
+	mov	rcx, rax
+	call	?BeginPS@ImGui@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z ; ImGui::BeginPS
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rcx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 2635 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm1, DWORD PTR [rax+92]
+	subss	xmm1, DWORD PTR [rax+196]
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	movss	xmm6, DWORD PTR __real@41200000
+	addss	xmm1, xmm6
+
+; 2635 : static inline ImVec2  operator-(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x - rhs.x, lhs.y - rhs.y); }
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+
+; 2634 : static inline ImVec2  operator+(const ImVec2& lhs, const ImVec2& rhs)   { return ImVec2(lhs.x + rhs.x, lhs.y + rhs.y); }
+
+	addss	xmm0, xmm6
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10756:     window->DC.CursorPos = window->Pos - window->Scroll + local_pos;
+
+	movss	DWORD PTR [rax+320], xmm0
+	movss	DWORD PTR [rax+324], xmm1
+
+; 10757:     //window->DC.CursorMaxPos = ImMax(window->DC.CursorMaxPos, window->DC.CursorPos);
+; 10758:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 237  : 	char LayerName[256] = "";
+
+	mov	BYTE PTR LayerName$[rbp-256], 0
+	xor	edx, edx
+	mov	r8d, 255				; 000000ffH
+	lea	rcx, QWORD PTR LayerName$[rbp-255]
+	call	memset
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rbx, QWORD PTR [rsi+64]
+	shl	rbx, 4
+	add	rbx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+8]
+	test	rax, rax
+	je	SHORT $LN41@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN41@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	r8, QWORD PTR [rbx]
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rbx, QWORD PTR [rbx+8]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 4145 :         return _Mypair._Myval2._Myptr();
+
+	add	r8, 56					; 00000038H
+
+; 2274 :         if (_Large_string_engaged()) {
+
+	cmp	QWORD PTR [r8+24], 16
+	jb	SHORT $LN45@DrawLayerP
+
+; 2275 :             _Result = _Unfancy(_Bx._Ptr);
+
+	mov	r8, QWORD PTR [r8]
+$LN45@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 238  : 	sprintf_s(LayerName, "%s", GetActiveLayer()->m_LayerName.c_str());
+
+	lea	rdx, OFFSET FLAT:??_C@_02DKCKIIND@?$CFs@
+	lea	rcx, QWORD PTR LayerName$[rbp-256]
+	call	??$sprintf_s@$0BAA@@@YAHAEAY0BAA@DPEBDZZ ; sprintf_s<256>
+	mov	rdi, -1
+	test	rbx, rbx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN58@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN58@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+12], eax
+	cmp	eax, 1
+	jne	SHORT $LN58@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax+8]
+$LN58@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 239  : 	ImGui::Text("Name");
+
+	lea	rcx, OFFSET FLAT:??_C@_04FABLJDN@Name@
+	call	?Text@ImGui@@YAXPEBDZZ			; ImGui::Text
+
+; 240  : 	ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8183 :     ImGuiWindow* window = GetCurrentWindowRead();
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rdx+16704]
+
+; 8184 :     return window->Size;
+
+	movss	xmm4, DWORD PTR [rax+96]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 242  : 	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x - 78);
+
+	subss	xmm4, DWORD PTR __real@429c0000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rdx+19152], 1
+
+; 10804:     g.NextItemData.Width = item_width;
+
+	movss	DWORD PTR [rdx+19168], xmm4
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.h
+
+; 279  :     constexpr ImVec2(float _x, float _y)    : x(_x), y(_y) { }
+
+	mov	QWORD PTR $T13[rsp], 0
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3638 :     return InputTextEx(label, NULL, buf, (int)buf_size, ImVec2(0, 0), flags, callback, user_data);
+
+	xor	eax, eax
+	mov	QWORD PTR [rsp+56], rax
+	mov	QWORD PTR [rsp+48], rax
+	mov	DWORD PTR [rsp+40], eax
+	lea	rax, QWORD PTR $T13[rsp]
+	mov	QWORD PTR [rsp+32], rax
+	mov	r9d, 256				; 00000100H
+	lea	r8, QWORD PTR LayerName$[rbp-256]
+	xor	edx, edx
+	lea	rcx, OFFSET FLAT:??_C@_02IEBMKJDF@?$CD?$CD@
+	call	?InputTextEx@ImGui@@YA_NPEBD0PEADHAEBUImVec2@@HP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z ; ImGui::InputTextEx
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 244  : 	if (ImGui::InputText("##", LayerName, 256)) {
+
+	test	al, al
+	je	$LN191@DrawLayerP
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rcx, QWORD PTR [rsi+64]
+	shl	rcx, 4
+	add	rcx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rcx+8]
+	test	rax, rax
+	je	SHORT $LN152@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN152@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rcx]
+	mov	QWORD PTR $T16[rsp], rax
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	r14, QWORD PTR [rcx+8]
+	mov	QWORD PTR $T16[rsp+8], r14
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 245  : 		GetActiveLayer()->m_LayerName = LayerName;
+
+	lea	rcx, QWORD PTR [rax+56]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring
+
+; 400  :             return __builtin_strlen(_First);
+
+	lea	rax, QWORD PTR LayerName$[rbp-256]
+	mov	rbx, rdi
+	npad	7
+$LL260@DrawLayerP:
+	inc	rbx
+	cmp	BYTE PTR [rax+rbx], 0
+	jne	SHORT $LL260@DrawLayerP
+
+; 3414 :         if (_Count <= _Mypair._Myval2._Myres) {
+
+	mov	rax, QWORD PTR [rcx+24]
+	cmp	rbx, rax
+	ja	SHORT $LN160@DrawLayerP
+
+; 2264 :         value_type* _Result = _Bx._Buf;
+
+	mov	r15, rcx
+
+; 2265 :         if (_Large_string_engaged()) {
+
+	cmp	rax, 16
+	jb	SHORT $LN163@DrawLayerP
+
+; 2266 :             _Result = _Unfancy(_Bx._Ptr);
+
+	mov	r15, QWORD PTR [rcx]
+$LN163@DrawLayerP:
+
+; 3417 :             _Mypair._Myval2._Mysize = _Count;
+
+	mov	QWORD PTR [rcx+16], rbx
+
+; 119  :         _CSTD memmove(_First1, _First2, _Count * sizeof(_Elem));
+
+	mov	r8, rbx
+	lea	rdx, QWORD PTR LayerName$[rbp-256]
+	mov	rcx, r15
+	call	memmove
+
+; 3419 :             _Traits::assign(_Old_ptr[_Count], _Elem());
+
+	mov	BYTE PTR [r15+rbx], 0
+
+; 3420 :             return *this;
+
+	jmp	SHORT $LN159@DrawLayerP
+$LN160@DrawLayerP:
+
+; 3421 :         }
+; 3422 : 
+; 3423 :         return _Reallocate_for(
+
+	lea	r9, QWORD PTR LayerName$[rbp-256]
+	mov	rdx, rbx
+	call	??$_Reallocate_for@V<lambda_1>@?1??assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV34@QEBD_K@Z@PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAAEAV01@_KV<lambda_1>@?1??assign@01@QEAAAEAV01@QEBD0@Z@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Reallocate_for<`std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign'::`2'::<lambda_1>,char const *>
+	npad	1
+$LN159@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 245  : 		GetActiveLayer()->m_LayerName = LayerName;
+
+	test	r14, r14
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN191@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [r14+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN191@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rbx, QWORD PTR $T16[rsp+8]
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+12], eax
+	cmp	eax, 1
+	jne	SHORT $LN191@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rcx, QWORD PTR $T16[rsp+8]
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+$LN191@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_internal.h
+
+; 3237 :     inline    ImGuiWindow*  GetCurrentWindow()          { ImGuiContext& g = *GImGui; g.CurrentWindow->WriteAccessed = true; return g.CurrentWindow; }
+
+	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rcx+16704]
+	mov	BYTE PTR [rax+245], 1
+	mov	rax, QWORD PTR [rcx+16704]
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10764:     window->DC.CursorPos.x = window->Pos.x - window->Scroll.x + x;
+
+	movss	xmm0, DWORD PTR [rax+88]
+	subss	xmm0, DWORD PTR [rax+192]
+	addss	xmm0, xmm6
+	movss	DWORD PTR [rax+320], xmm0
+
+; 10765:     //window->DC.CursorMaxPos.x = ImMax(window->DC.CursorMaxPos.x, window->DC.CursorPos.x);
+; 10766:     window->DC.IsSetPos = true;
+
+	mov	BYTE PTR [rax+385], 1
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rbx, QWORD PTR [rsi+64]
+	shl	rbx, 4
+	add	rbx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+8]
+	test	rax, rax
+	je	SHORT $LN94@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN94@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rbx]
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rbx, QWORD PTR [rbx+8]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 249  : 	int OffsetX = GetActiveLayer()->m_LayerOffset.x, OffsetY = GetActiveLayer()->m_LayerOffset.y;
+
+	cvttss2si eax, DWORD PTR [rax+36]
+	mov	DWORD PTR OffsetX$[rbp-256], eax
+	test	rbx, rbx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN104@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN104@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+12], eax
+	cmp	eax, 1
+	jne	SHORT $LN104@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax+8]
+$LN104@DrawLayerP:
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rbx, QWORD PTR [rsi+64]
+	shl	rbx, 4
+	add	rbx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+8]
+	test	rax, rax
+	je	SHORT $LN120@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN120@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rbx]
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rbx, QWORD PTR [rbx+8]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 249  : 	int OffsetX = GetActiveLayer()->m_LayerOffset.x, OffsetY = GetActiveLayer()->m_LayerOffset.y;
+
+	cvttss2si eax, DWORD PTR [rax+40]
+	mov	DWORD PTR OffsetY$[rbp-256], eax
+	test	rbx, rbx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN130@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN130@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+12], eax
+	cmp	eax, 1
+	jne	SHORT $LN130@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax+8]
+$LN130@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8184 :     return window->Size;
+
+	mov	rcx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rcx+16704]
+	movss	xmm0, DWORD PTR [rax+96]
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rcx+19152], 1
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 250  : 	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x / 2 - 35);
+
+	movss	xmm6, DWORD PTR __real@3f000000
+	mulss	xmm0, xmm6
+	subss	xmm0, DWORD PTR __real@420c0000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10804:     g.NextItemData.Width = item_width;
+
+	movss	DWORD PTR [rcx+19168], xmm0
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 251  : 	if (ImGui::InputInt("X", &OffsetX)) {
+
+	mov	DWORD PTR step_fast$[rsp], 100		; 00000064H
+	mov	DWORD PTR step$[rbp-256], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3599 :     return InputScalar(label, ImGuiDataType_S32, (void*)v, (void*)(step > 0 ? &step : NULL), (void*)(step_fast > 0 ? &step_fast : NULL), format, flags);
+
+	lea	r14, OFFSET FLAT:??_C@_02DPKJAMEF@?$CFd@
+	mov	QWORD PTR [rsp+40], r14
+	lea	rax, QWORD PTR step_fast$[rsp]
+	mov	QWORD PTR [rsp+32], rax
+	lea	r9, QWORD PTR step$[rbp-256]
+	lea	r8, QWORD PTR OffsetX$[rbp-256]
+	lea	rcx, OFFSET FLAT:??_C@_01MMEEDKFM@X@
+	call	?InputScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z ; ImGui::InputScalar
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 251  : 	if (ImGui::InputInt("X", &OffsetX)) {
+
+	test	al, al
+	je	SHORT $LN202@DrawLayerP
+	movd	xmm0, DWORD PTR OffsetX$[rbp-256]
+
+; 252  : 		GetActiveLayer()->m_LayerOffset.x = OffsetX;
+
+	cvtdq2ps xmm0, xmm0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rbx, QWORD PTR [rsi+64]
+	shl	rbx, 4
+	add	rbx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+8]
+	test	rax, rax
+	je	SHORT $LN218@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN218@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rbx]
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rbx, QWORD PTR [rbx+8]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 252  : 		GetActiveLayer()->m_LayerOffset.x = OffsetX;
+
+	movss	DWORD PTR [rax+36], xmm0
+	test	rbx, rbx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN202@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN202@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+12], eax
+	cmp	eax, 1
+	jne	SHORT $LN202@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax+8]
+$LN202@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 254  : 	ImGui::SameLine();
+
+	movss	xmm1, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 8184 :     return window->Size;
+
+	mov	rdx, QWORD PTR ?GImGui@@3PEAUImGuiContext@@EA ; GImGui
+	mov	rax, QWORD PTR [rdx+16704]
+	movss	xmm4, DWORD PTR [rax+96]
+
+; 10803:     g.NextItemData.Flags |= ImGuiNextItemDataFlags_HasWidth;
+
+	or	DWORD PTR [rdx+19152], 1
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 255  : 	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x / 2 - 35);
+
+	mulss	xmm4, xmm6
+	subss	xmm4, DWORD PTR __real@420c0000
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui.cpp
+
+; 10804:     g.NextItemData.Width = item_width;
+
+	movss	DWORD PTR [rdx+19168], xmm4
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 256  : 	if (ImGui::InputInt("Y", &OffsetY)) {
+
+	mov	DWORD PTR step_fast$[rbp-256], 100	; 00000064H
+	mov	DWORD PTR step$[rbp-256], 1
+; File C:\dev\Photo Studio\Photo Studio\Dependencies\imgui\imgui_widgets.cpp
+
+; 3599 :     return InputScalar(label, ImGuiDataType_S32, (void*)v, (void*)(step > 0 ? &step : NULL), (void*)(step_fast > 0 ? &step_fast : NULL), format, flags);
+
+	mov	QWORD PTR [rsp+40], r14
+	lea	rax, QWORD PTR step_fast$[rbp-256]
+	mov	QWORD PTR [rsp+32], rax
+	lea	r9, QWORD PTR step$[rbp-256]
+	lea	r8, QWORD PTR OffsetY$[rbp-256]
+	lea	rcx, OFFSET FLAT:??_C@_01NFFPALBN@Y@
+	call	?InputScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z ; ImGui::InputScalar
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 256  : 	if (ImGui::InputInt("Y", &OffsetY)) {
+
+	test	al, al
+	je	SHORT $LN243@DrawLayerP
+	movd	xmm0, DWORD PTR OffsetY$[rbp-256]
+
+; 257  : 		GetActiveLayer()->m_LayerOffset.y = OffsetY;
+
+	cvtdq2ps xmm0, xmm0
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\vector
+
+; 1887 :         return _My_data._Myfirst[_Pos];
+
+	mov	rbx, QWORD PTR [rsi+64]
+	shl	rbx, 4
+	add	rbx, QWORD PTR [rsi]
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1389 :         if (_Rep) {
+
+	mov	rax, QWORD PTR [rbx+8]
+	test	rax, rax
+	je	SHORT $LN233@DrawLayerP
+
+; 1162 :         _MT_INCR(_Uses);
+
+	lock inc DWORD PTR [rax+8]
+$LN233@DrawLayerP:
+
+; 1350 :         _Ptr = _Other._Ptr;
+
+	mov	rax, QWORD PTR [rbx]
+
+; 1351 :         _Rep = _Other._Rep;
+
+	mov	rbx, QWORD PTR [rbx+8]
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 257  : 		GetActiveLayer()->m_LayerOffset.y = OffsetY;
+
+	movss	DWORD PTR [rax+40], xmm0
+	test	rbx, rbx
+; File C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\memory
+
+; 1395 :         if (_Rep) {
+
+	je	SHORT $LN243@DrawLayerP
+
+; 1170 :         if (_MT_DECR(_Uses) == 0) {
+
+	mov	eax, edi
+	lock xadd DWORD PTR [rbx+8], eax
+	cmp	eax, 1
+	jne	SHORT $LN243@DrawLayerP
+
+; 1171 :             _Destroy();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax]
+
+; 1177 :         if (_MT_DECR(_Weaks) == 0) {
+
+	lock xadd DWORD PTR [rbx+12], edi
+	cmp	edi, 1
+	jne	SHORT $LN243@DrawLayerP
+
+; 1178 :             _Delete_this();
+
+	mov	rax, QWORD PTR [rbx]
+	mov	rcx, rbx
+	call	QWORD PTR [rax+8]
+$LN243@DrawLayerP:
+; File C:\dev\Photo Studio\Photo Studio\Source\Utilities.cpp
+
+; 44   : 		ImGui::EndChild();
+
+	call	?EndChild@ImGui@@YAXXZ			; ImGui::EndChild
+
+; 45   : 
+; 46   : 		ImGui::End();
+
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+; File C:\dev\Photo Studio\Photo Studio\Source\LayerManager.cpp
+
+; 261  : }
+
+	mov	rcx, QWORD PTR __$ArrayPad$[rbp-256]
+	xor	rcx, rsp
+	call	__security_check_cookie
+	lea	r11, QWORD PTR [rsp+448]
+	mov	rbx, QWORD PTR [r11+40]
+	mov	rsi, QWORD PTR [r11+48]
+	mov	rdi, QWORD PTR [r11+56]
+	movaps	xmm6, XMMWORD PTR [r11-16]
+	mov	rsp, r11
+	pop	r15
+	pop	r14
+	pop	rbp
+	ret	0
+?DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ ENDP	; LayerManager::DrawLayerPropertiesWindow
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T13 = 64
+$T16 = 72
+$T1 = 88
+step_fast$ = 120
+step$ = 128
+step_fast$ = 136
+step$ = 144
+OffsetX$ = 152
+OffsetY$ = 156
+LayerName$ = 160
+__$ArrayPad$ = 416
+this$ = 480
+?dtor$2@?0??DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ@4HA PROC ; `LayerManager::DrawLayerPropertiesWindow'::`1'::dtor$2
+	lea	rcx, QWORD PTR $T16[rdx]
+	jmp	??1?$shared_ptr@VLayer@@@std@@QEAA@XZ	; std::shared_ptr<Layer>::~shared_ptr<Layer>
+?dtor$2@?0??DrawLayerPropertiesWindow@LayerManager@@QEAAXXZ@4HA ENDP ; `LayerManager::DrawLayerPropertiesWindow'::`1'::dtor$2
+text$x	ENDS
 END

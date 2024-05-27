@@ -300,9 +300,7 @@ void Application::RenderUI()
         window_class.DockNodeFlagsOverrideSet = ImGuiDockNodeFlags_NoWindowMenuButton;
         ImGui::SetNextWindowClass(&window_class);
 
-        ImGui::BeginPS("Properties");
-
-        ImGui::EndPS();
+        m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayerPropertiesWindow();
 
         m_Canvases.at(CanvasData::m_ActiveCanvas)->DrawLayersWindow();
         /*ImGui::Begin("Layers");

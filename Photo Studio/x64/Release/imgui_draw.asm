@@ -6155,6 +6155,7 @@ PUBLIC	?ClearInputData@ImFontAtlas@@QEAAXXZ		; ImFontAtlas::ClearInputData
 PUBLIC	?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z ; ImGui::ShadeVertsLinearUV
 PUBLIC	?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z ; ImGui::ShadeVertsLinearColorGradientKeepAlpha
 PUBLIC	??0ImDrawChannel@@QEAA@XZ			; ImDrawChannel::ImDrawChannel
+PUBLIC	?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z ; ImDrawList::AddRectFilledMultiColor
 PUBLIC	?PathRect@ImDrawList@@QEAAXAEBUImVec2@@0MH@Z	; ImDrawList::PathRect
 PUBLIC	?_PathArcToN@ImDrawList@@QEAAXAEBUImVec2@@MMMH@Z ; ImDrawList::_PathArcToN
 PUBLIC	?_PathArcToFastEx@ImDrawList@@QEAAXAEBUImVec2@@MHHH@Z ; ImDrawList::_PathArcToFastEx
@@ -7412,6 +7413,42 @@ pdata	SEGMENT
 $pdata$5$?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z DD imagerel $LN56@ShadeVerts+1065
 	DD	imagerel $LN56@ShadeVerts+1109
 	DD	imagerel $chain$5$?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil
+	DD	imagerel $LN115@AddRectFil+104
+	DD	imagerel $unwind$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$2$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil+104
+	DD	imagerel $LN115@AddRectFil+202
+	DD	imagerel $chain$2$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil+202
+	DD	imagerel $LN115@AddRectFil+259
+	DD	imagerel $chain$3$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$11$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil+259
+	DD	imagerel $LN115@AddRectFil+1349
+	DD	imagerel $chain$11$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$4$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil+1349
+	DD	imagerel $LN115@AddRectFil+1708
+	DD	imagerel $chain$4$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$12$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD imagerel $LN115@AddRectFil+1708
+	DD	imagerel $LN115@AddRectFil+1737
+	DD	imagerel $chain$12$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -10627,6 +10664,52 @@ $unwind$?PathRect@ImDrawList@@QEAAXAEBUImVec2@@0MH@Z DQ 0001234fb000cfb01r ; 2.5
 	DQ	0000768230005882cr		; 1.03004e-308
 	DQ	0001464130015e413r		; 2.83571e-308
 	DD	0f00cf213H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$12$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD 021H
+	DD	imagerel $LN115@AddRectFil
+	DD	imagerel $LN115@AddRectFil+104
+	DD	imagerel $unwind$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$4$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DD 021H
+	DD	imagerel $LN115@AddRectFil+104
+	DD	imagerel $LN115@AddRectFil+202
+	DD	imagerel $chain$2$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$11$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DQ 00007f872000e7221r ; 1.10843e-308
+	DQ	00009d8420008e868r		; 1.36908e-308
+	DQ	0000ca821000bb839r		; 1.76014e-308
+	DQ	0000e8809000d9815r		; 2.02084e-308
+	DD	imagerel $LN115@AddRectFil+1349
+	DD	imagerel $LN115@AddRectFil+1708
+	DD	imagerel $chain$4$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$3$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DQ 00028340400020421r ; 6.73173e-308
+	DD	imagerel $LN115@AddRectFil+104
+	DD	imagerel $LN115@AddRectFil+202
+	DD	imagerel $chain$2$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$2$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DQ 00010682d00062d21r ; 2.28167e-308
+	DQ	0000f7805000ac810r		; 2.15121e-308
+	DD	imagerel $LN115@AddRectFil
+	DD	imagerel $LN115@AddRectFil+104
+	DD	imagerel $unwind$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIIIMH@Z DQ 0002a641b000b1b01r ; 7.34025e-308
+	DQ	00022011b0029541br		; 5.00762e-308
+	DQ	0c00ed010e012f014r		; -3.85159
+	DD	0700cH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT

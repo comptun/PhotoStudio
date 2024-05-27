@@ -33,6 +33,7 @@ public:
 	void UnbindActiveLayer();
 	void DrawLayers();
 	void DrawLayersWindow();
+	void DrawLayerPropertiesWindow();
 	std::shared_ptr<Layer> GetActiveLayer();
 	std::vector<std::shared_ptr<Layer>> m_Layers;
 private:

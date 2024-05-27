@@ -1221,7 +1221,6 @@ PUBLIC	??_C@_04GOKPGOLB@long@				; `string'
 PUBLIC	??_C@_08GKCNMOBP@longeeer@			; `string'
 PUBLIC	??_C@_0CE@EHNPIEAF@Some?5?$CFs?5text?5?$CFd?0?$CFd?6Over?5two?5lin@ ; `string'
 PUBLIC	??_C@_07JBEDBOJM@W?3?5?$CF?41f@			; `string'
-PUBLIC	??_C@_02IEBMKJDF@?$CD?$CD@			; `string'
 PUBLIC	??_C@_0CJ@GCIECJKE@Tables?1Vertical?5scrolling?0?5with@ ; `string'
 PUBLIC	??_C@_0CC@BKCLIGGC@Vertical?5scrolling?0?5with?5clippi@ ; `string'
 PUBLIC	??_C@_0MD@ODEEHCKN@Here?5we?5activate?5ScrollY?0?5which@ ; `string'
@@ -1316,7 +1315,6 @@ PUBLIC	??_C@_0BB@LHIHCMOK@Tables?1Tree?5view@		; `string'
 PUBLIC	??_C@_09CKCINJFP@Tree?5view@			; `string'
 PUBLIC	??_C@_0FL@DJAPIBOB@See?5?$CCColumns?5flags?$CC?5section?5to?5@ ; `string'
 PUBLIC	??_C@_05FLIJPOAM@3ways@				; `string'
-PUBLIC	??_C@_04FABLJDN@Name@				; `string'
 PUBLIC	??_C@_0BC@CHHDIFEC@Tables?1Item?5width@		; `string'
 PUBLIC	??_C@_0L@JMOFGNLE@Item?5width@			; `string'
 PUBLIC	??_C@_0MP@KOFCKOGB@Showcase?5using?5PushItemWidth?$CI?$CJ?5@ ; `string'
@@ -6038,10 +6036,6 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_0BC@CHHDIFEC@Tables?1Item?5width@ DB 'Tables/Item width', 00H ; `string'
 CONST	ENDS
-;	COMDAT ??_C@_04FABLJDN@Name@
-CONST	SEGMENT
-??_C@_04FABLJDN@Name@ DB 'Name', 00H			; `string'
-CONST	ENDS
 ;	COMDAT ??_C@_05FLIJPOAM@3ways@
 CONST	SEGMENT
 ??_C@_05FLIJPOAM@3ways@ DB '3ways', 00H			; `string'
@@ -6478,10 +6472,6 @@ CONST	ENDS
 CONST	SEGMENT
 ??_C@_0CJ@GCIECJKE@Tables?1Vertical?5scrolling?0?5with@ DB 'Tables/Vertic'
 	DB	'al scrolling, with clipping', 00H		; `string'
-CONST	ENDS
-;	COMDAT ??_C@_02IEBMKJDF@?$CD?$CD@
-CONST	SEGMENT
-??_C@_02IEBMKJDF@?$CD?$CD@ DB '##', 00H			; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_07JBEDBOJM@W?3?5?$CF?41f@
 CONST	SEGMENT
@@ -12079,6 +12069,8 @@ PUBLIC	?Strdup@ExampleAppConsole@@SAPEADPEBD@Z		; ExampleAppConsole::Strdup
 PUBLIC	?Strnicmp@ExampleAppConsole@@SAHPEBD0H@Z	; ExampleAppConsole::Strnicmp
 PUBLIC	??1ExampleAppConsole@@QEAA@XZ			; ExampleAppConsole::~ExampleAppConsole
 PUBLIC	??1ImGuiTextFilter@@QEAA@XZ			; ImGuiTextFilter::~ImGuiTextFilter
+PUBLIC	??BImColor@@QEBAIXZ				; ImColor::operator unsigned int
+PUBLIC	??0ImColor@@QEAA@AEBUImVec4@@@Z			; ImColor::ImColor
 PUBLIC	?SelectAll@ImGuiInputTextCallbackData@@QEAAXXZ	; ImGuiInputTextCallbackData::SelectAll
 ;	COMDAT ?selection@?CCP@??ShowDemoWindowTables@@YAXXZ@4U?$ImVector@H@@A
 _BSS	SEGMENT

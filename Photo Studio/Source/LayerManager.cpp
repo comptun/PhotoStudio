@@ -228,6 +228,38 @@ void LayerManager::DrawLayer(int LayerIndex, bool Dragging, float Opacity)
 	ImGui::PopStyleColor();
 }
 
+void LayerManager::DrawLayerPropertiesWindow()
+{
+	ImGui::BeginPS("Properties", ImGuiWindowFlags_AlwaysVerticalScrollbar);
+
+	ImGui::SetCursorPos({ 10,10 });
+
+	char LayerName[256] = "";
+	sprintf_s(LayerName, "%s", GetActiveLayer()->m_LayerName.c_str());
+	ImGui::Text("Name");
+	ImGui::SameLine();
+
+	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x - 78);
+
+	if (ImGui::InputText("##", LayerName, 256)) {
+		GetActiveLayer()->m_LayerName = LayerName;
+	}
+
+	ImGui::SetCursorPosX(10.0f);
+	int OffsetX = GetActiveLayer()->m_LayerOffset.x, OffsetY = GetActiveLayer()->m_LayerOffset.y;
+	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x / 2 - 35);
+	if (ImGui::InputInt("X", &OffsetX)) {
+		GetActiveLayer()->m_LayerOffset.x = OffsetX;
+	}
+	ImGui::SameLine();
+	ImGui::SetNextItemWidth(ImGui::GetWindowSize().x / 2 - 35);
+	if (ImGui::InputInt("Y", &OffsetY)) {
+		GetActiveLayer()->m_LayerOffset.y = OffsetY;
+	}
+
+	ImGui::EndPS();
+}
+
 void LayerManager::DrawLayersWindow()
 {
 	ImGui::BeginPS("Layers");

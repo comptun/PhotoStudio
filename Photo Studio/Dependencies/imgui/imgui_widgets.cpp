@@ -6116,15 +6116,16 @@ bool ImGui::ColorPicker4PS(const char* label, float col[4], ImGuiColorEditFlags 
     else if (flags & ImGuiColorEditFlags_PickerHueBar)
     {
         // Render SV Square
-        draw_list->AddRectFilledMultiColor(picker_pos, picker_pos + ImVec2(sv_picker_size, sv_height), col_white, hue_color32, hue_color32, col_white);
-        draw_list->AddRectFilledMultiColor(picker_pos, picker_pos + ImVec2(sv_picker_size, sv_height), 0, 0, col_black, col_black);
+        draw_list->AddRectFilledMultiColor(picker_pos, picker_pos + ImVec2(sv_picker_size, sv_height), col_white, hue_color32, hue_color32, col_white, 4.0f, ImDrawFlags_RoundCornersAll);
+        draw_list->AddRectFilledMultiColor(picker_pos, picker_pos + ImVec2(sv_picker_size, sv_height), 0, 0, col_black, col_black, 3.0f, ImDrawFlags_RoundCornersAll);
         RenderFrameBorder(picker_pos, picker_pos + ImVec2(sv_picker_size, sv_height), 0.0f);
         sv_cursor_pos.x = ImClamp(IM_ROUND(picker_pos.x + ImSaturate(S) * sv_picker_size), picker_pos.x + 2, picker_pos.x + sv_picker_size - 2); // Sneakily prevent the circle to stick out too much
         sv_cursor_pos.y = ImClamp(IM_ROUND(picker_pos.y + ImSaturate(1 - V) * sv_height), picker_pos.y + 2, picker_pos.y + sv_height - 2);
 
         // Render Hue Bar
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < 6; ++i) {
             draw_list->AddRectFilledMultiColor(ImVec2(bar0_pos_x, picker_pos.y + i * (sv_height / 6)), ImVec2(bar0_pos_x + bars_width, picker_pos.y + (i + 1) * (sv_height / 6)), col_hues[i], col_hues[i], col_hues[i + 1], col_hues[i + 1]);
+        }
         float bar0_line_y = IM_ROUND(picker_pos.y + H * sv_height);
         RenderFrameBorder(ImVec2(bar0_pos_x, picker_pos.y), ImVec2(bar0_pos_x + bars_width, picker_pos.y + sv_height), 0.0f);
         RenderArrowsForVerticalBar(draw_list, ImVec2(bar0_pos_x - 1, bar0_line_y), ImVec2(bars_triangles_half_sz + 1, bars_triangles_half_sz), bars_width + 2.0f, style.Alpha);
